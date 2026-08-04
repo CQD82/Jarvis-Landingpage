@@ -96,3 +96,59 @@
       0 0 24px color-mix(in oklab, var(--hud-cyan) 8%, transparent);
   }
 }
+
+@keyframes radar-sweep {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes ping-ring {
+  0% {
+    transform: scale(0.55);
+    opacity: 0.55;
+  }
+  100% {
+    transform: scale(1.9);
+    opacity: 0;
+  }
+}
+@keyframes dash-flow {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
+@keyframes dot-travel {
+  0%,
+  8% {
+    left: 50%;
+    top: 50%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    left: var(--dot-x, 50%);
+    top: var(--dot-y, 50%);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .animate-radar-sweep {
+    animation: radar-sweep 6s linear infinite;
+  }
+  .animate-ping-ring {
+    animation: ping-ring 2.6s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+  .animate-dash-flow {
+    stroke-dasharray: 4 6;
+    animation: dash-flow 1s linear infinite;
+  }
+  .animate-dot-travel {
+    animation: dot-travel 1.8s linear infinite;
+  }
+}

@@ -5,6 +5,7 @@ import { ModelTiers } from "@/components/landing/ModelTiers"
 import { Nav } from "@/components/landing/Nav"
 import { Pipeline } from "@/components/landing/Pipeline"
 import { Security } from "@/components/landing/Security"
+import { SystemMap } from "@/components/landing/SystemMap"
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Nav />
       <main>
         <Hero />
+        <SystemMap />
         <Features />
         <Pipeline />
         <ModelTiers />

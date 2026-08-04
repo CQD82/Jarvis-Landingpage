@@ -127,6 +127,46 @@ export const modelTiers: ModelTier[] = [
   { tier: "Cloud-Fallback", hardware: "Extern, streng ratenbegrenzt", role: "Nur als letzter Ausweg, ein einziger erlaubter Egress" },
 ];
 
+export interface TechCategory {
+  icon: LucideIcon;
+  title: string;
+  tools: string[];
+}
+
+/** The six spokes of the system map — every tool/component in the stack, grouped. */
+export const techCategories: TechCategory[] = [
+  {
+    icon: GitBranch,
+    title: "GitOps & Automatisierung",
+    tools: ["Ansible", "FluxCD", "Helmfile", "Renovate", "Forgejo"],
+  },
+  {
+    icon: Server,
+    title: "Cluster & Storage",
+    tools: ["K3s", "Longhorn", "MetalLB", "Traefik", "cert-manager"],
+  },
+  {
+    icon: BrainCircuit,
+    title: "KI-Inferenz",
+    tools: ["LiteLLM", "llama.cpp", "Qdrant", "NVIDIA NIM"],
+  },
+  {
+    icon: ShieldCheck,
+    title: "Sicherheit & Netzwerk",
+    tools: ["Cilium", "Kyverno", "Falco", "Trivy", "Authentik", "SOPS + Age"],
+  },
+  {
+    icon: Mic,
+    title: "Voice & Vision",
+    tools: ["Wyoming", "Wake-Agent", "Vision-Tracker", "Kokoro TTS", "HUD"],
+  },
+  {
+    icon: Activity,
+    title: "Observability & Ops",
+    tools: ["Prometheus", "Grafana", "Velero", "n8n", "Shelly-Exporter"],
+  },
+];
+
 export const securityHighlights: string[] = [
   "Verschlüsselung sensibler Cluster-Daten im Ruhezustand",
   "Vollständiges API-Audit-Logging mit RBAC-Nachvollziehbarkeit",
