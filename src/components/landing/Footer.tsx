@@ -10,12 +10,6 @@ export function Footer() {
           <span className="font-mono text-xs">v4.2</span>
         </div>
         <p className="font-mono text-xs">Privates Homelab-Projekt</p>
-        <a
-          href="mailto:jarvisclusterhomelab@gmail.com"
-          className="transition-colors hover:text-foreground"
-        >
-          jarvisclusterhomelab@gmail.com
-        </a>
       </div>
     </footer>
   );

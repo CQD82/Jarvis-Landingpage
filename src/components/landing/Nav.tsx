@@ -31,12 +31,6 @@ export function Nav() {
             </a>
           ))}
         </nav>
-        <a
-          href="mailto:jarvisclusterhomelab@gmail.com"
-          className="rounded-md border border-primary/40 px-3 py-1.5 text-sm text-primary transition-colors hover:bg-primary/10"
-        >
-          Kontakt
-        </a>
       </div>
     </header>
   );
