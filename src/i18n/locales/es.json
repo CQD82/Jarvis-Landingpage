@@ -187,9 +187,9 @@
     "title": "Consumo eléctrico estimado",
     "description": "Una aproximación basada en la potencia nominal del hardware utilizado — no son valores medidos, sino una idea del orden de magnitud.",
     "rows": [
-      { "label": "Nodos edge (Pi 5 + NPU) ×4", "watts": "~40 W" },
+      { "label": "Nodos edge (Pi 5 + NPU + SSD) ×4", "watts": "~44 W" },
       { "label": "Nodos worker (Pi 5 + NVMe) ×10", "watts": "~78 W" },
-      { "label": "Nodo Pi 4", "watts": "~6 W" },
+      { "label": "Nodo Pi 4 (8 GB + SSD)", "watts": "~8 W" },
       { "label": "Nivel CPU (ODROID-H5)", "watts": "~15 W" },
       { "label": "Switch de red", "watts": "~15 W" },
       { "label": "Disco de backup (WD Elements 22 TB)", "watts": "~6 W" },
@@ -197,9 +197,9 @@
       { "label": "Estación GPU (prom. con autosuspend)", "watts": "~20 W" }
     ],
     "totalLabel": "Carga continua estimada",
-    "totalValue": "~181 W",
+    "totalValue": "~187 W",
     "monthlyLabel": "Proyección mensual",
-    "monthlyValue": "~130 kWh",
+    "monthlyValue": "~135 kWh",
     "wolTitle": "Wake-on-LAN para la estación GPU",
     "wolBody": "La estación GPU (HP Z840), con más de 300 W de pico, es con diferencia el mayor consumidor individual del clúster — pero solo se necesita para el nivel de inferencia más exigente. Un mecanismo de autosuspend la pone a dormir tras un periodo sin solicitudes; un paquete mágico Wake-on-LAN la despierta específicamente cuando una solicitud necesita ese nivel. Así, su contribución al consumo continuo se reduce a una pequeña fracción ponderada en el tiempo, sin renunciar a la potencia de GPU bajo demanda."
   },
