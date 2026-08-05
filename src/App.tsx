@@ -1,8 +1,10 @@
+import { CursorGlow } from "@/components/landing/CursorGlow"
 import { Features } from "@/components/landing/Features"
 import { Footer } from "@/components/landing/Footer"
 import { Hero } from "@/components/landing/Hero"
 import { ModelTiers } from "@/components/landing/ModelTiers"
 import { Nav } from "@/components/landing/Nav"
+import { NeuralBackground } from "@/components/landing/NeuralBackground"
 import { Pipeline } from "@/components/landing/Pipeline"
 import { ScrollProgress } from "@/components/landing/ScrollProgress"
 import { Security } from "@/components/landing/Security"
@@ -11,6 +13,8 @@ import { SystemMap } from "@/components/landing/SystemMap"
 function App() {
   return (
     <div className="min-h-screen">
+      <NeuralBackground />
+      <CursorGlow />
       <ScrollProgress />
       <Nav />
       <main>

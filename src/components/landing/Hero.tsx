@@ -1,7 +1,9 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Radar } from "lucide-react";
 import { GradientShimmer } from "@/components/ui/gradient-shimmer";
+import { CountUpStat } from "@/components/landing/CountUpStat";
 import { HudCorners } from "@/components/landing/HudCorners";
+import { StatusTicker } from "@/components/landing/StatusTicker";
 import { stats } from "@/data/jarvis";
 
 /** Repulsor-red → armor-gold sweep for the hero title. */
@@ -87,6 +89,15 @@ export function Hero() {
             Architektur
           </a>
         </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="mt-8 font-mono text-[0.7rem] tracking-widest text-muted-foreground uppercase"
+        >
+          <StatusTicker />
+        </motion.div>
       </div>
 
       <motion.div
@@ -100,7 +111,7 @@ export function Hero() {
           {stats.map((stat) => (
             <div key={stat.label} className="bg-card px-4 py-6 text-center">
               <dt className="font-display text-3xl font-semibold text-primary text-glow">
-                {stat.value}
+                <CountUpStat value={stat.value} />
               </dt>
               <dd className="mt-1 font-mono text-[0.7rem] tracking-wide text-muted-foreground uppercase">
                 {stat.label}
