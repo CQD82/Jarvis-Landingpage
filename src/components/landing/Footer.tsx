@@ -13,6 +13,14 @@ export function Footer() {
           <span className="font-mono text-xs">v4.2</span>
         </div>
         <p className="font-mono text-xs">{t("footer.tagline")}</p>
+        <nav className="flex items-center gap-4 font-mono text-xs">
+          <a href="/impressum" className="transition-colors hover:text-foreground">
+            {t("footer.impressum")}
+          </a>
+          <a href="/datenschutz" className="transition-colors hover:text-foreground">
+            {t("footer.datenschutz")}
+          </a>
+        </nav>
       </div>
     </footer>
   );

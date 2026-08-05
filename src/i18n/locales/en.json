@@ -211,6 +211,8 @@
     "tabs": { "kitt": "K.I.T.T.", "matrix": "Matrix", "jarvis": "JARVIS" }
   },
   "footer": {
-    "tagline": "Private Homelab Project"
+    "tagline": "Private Homelab Project",
+    "impressum": "Legal Notice",
+    "datenschutz": "Privacy Policy"
   }
 }

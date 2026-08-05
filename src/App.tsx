@@ -15,8 +15,10 @@ import { PowerConsumption } from "@/components/landing/PowerConsumption"
 import { ScrollProgress } from "@/components/landing/ScrollProgress"
 import { Security } from "@/components/landing/Security"
 import { SystemMap } from "@/components/landing/SystemMap"
+import { DatenschutzPage } from "@/components/legal/Datenschutz"
+import { ImpressumPage } from "@/components/legal/Impressum"
 
-function App() {
+function Landing() {
   return (
     <div className="min-h-screen">
       <DocumentMeta />
@@ -40,6 +42,20 @@ function App() {
       <Footer />
     </div>
   )
+}
+
+function App() {
+  // No client-side router in this single-page site — the two legal pages
+  // are the only exceptions, plain document pages served at their own
+  // path. Cloudflare's SPA fallback (and Vite's dev server) both serve
+  // index.html for any unmatched path, so a normal <a href="/impressum">
+  // link works without any route configuration.
+  const path = window.location.pathname.replace(/\/+$/, "") || "/"
+
+  if (path === "/impressum") return <ImpressumPage />
+  if (path === "/datenschutz") return <DatenschutzPage />
+
+  return <Landing />
 }
 
 export default App

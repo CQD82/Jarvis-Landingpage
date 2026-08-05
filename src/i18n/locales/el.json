@@ -211,6 +211,8 @@
     "tabs": { "kitt": "K.I.T.T.", "matrix": "Matrix", "jarvis": "JARVIS" }
   },
   "footer": {
-    "tagline": "Ιδιωτικό project homelab"
+    "tagline": "Ιδιωτικό project homelab",
+    "impressum": "Νομικές πληροφορίες",
+    "datenschutz": "Απόρρητο"
   }
 }
