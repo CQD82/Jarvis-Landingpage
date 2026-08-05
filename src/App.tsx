@@ -4,12 +4,14 @@ import { Hero } from "@/components/landing/Hero"
 import { ModelTiers } from "@/components/landing/ModelTiers"
 import { Nav } from "@/components/landing/Nav"
 import { Pipeline } from "@/components/landing/Pipeline"
+import { ScrollProgress } from "@/components/landing/ScrollProgress"
 import { Security } from "@/components/landing/Security"
 import { SystemMap } from "@/components/landing/SystemMap"
 
 function App() {
   return (
     <div className="min-h-screen">
+      <ScrollProgress />
       <Nav />
       <main>
         <Hero />

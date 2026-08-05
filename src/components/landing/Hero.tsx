@@ -1,15 +1,30 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Radar } from "lucide-react";
 import { GradientShimmer } from "@/components/ui/gradient-shimmer";
+import { HudCorners } from "@/components/landing/HudCorners";
 import { stats } from "@/data/jarvis";
 
 export function Hero() {
   return (
     <section id="top" className="relative overflow-hidden px-6 pt-20 pb-24 sm:pt-28">
-      {/* Ambient glow */}
+      {/* Ambient glow — layered cyan + violet for depth */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[560px] bg-[radial-gradient(ellipse_at_top,color-mix(in_oklab,var(--hud-cyan)_18%,transparent),transparent_65%)]"
+        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[560px] bg-[radial-gradient(ellipse_at_top,color-mix(in_oklab,var(--hud-cyan)_20%,transparent),transparent_65%)]"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute top-10 left-1/2 -z-10 h-[420px] w-[720px] -translate-x-1/2 rounded-full bg-[radial-gradient(ellipse,color-mix(in_oklab,var(--hud-violet)_16%,transparent),transparent_70%)] blur-2xl"
+      />
+      {/* Thin rotating targeting ring behind the title */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute top-24 left-1/2 -z-10 size-[420px] -translate-x-1/2 rounded-full border border-primary/10 sm:size-[520px]"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute top-24 left-1/2 -z-10 size-[420px] -translate-x-1/2 animate-radar-sweep rounded-full border-t border-primary/25 sm:size-[520px]"
+        style={{ animationDuration: "14s" }}
       />
 
       <div className="mx-auto max-w-4xl text-center">
@@ -67,23 +82,26 @@ export function Hero() {
         </motion.div>
       </div>
 
-      <motion.dl
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.4 }}
-        className="mx-auto mt-20 grid max-w-3xl grid-cols-2 gap-px overflow-hidden rounded-xl border border-border bg-border sm:grid-cols-4"
+        className="relative mx-auto mt-20 max-w-3xl"
       >
-        {stats.map((stat) => (
-          <div key={stat.label} className="bg-card px-4 py-6 text-center">
-            <dt className="font-display text-3xl font-semibold text-primary text-glow">
-              {stat.value}
-            </dt>
-            <dd className="mt-1 font-mono text-[0.7rem] tracking-wide text-muted-foreground uppercase">
-              {stat.label}
-            </dd>
-          </div>
-        ))}
-      </motion.dl>
+        <HudCorners />
+        <dl className="grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-border bg-border sm:grid-cols-4">
+          {stats.map((stat) => (
+            <div key={stat.label} className="bg-card px-4 py-6 text-center">
+              <dt className="font-display text-3xl font-semibold text-primary text-glow">
+                {stat.value}
+              </dt>
+              <dd className="mt-1 font-mono text-[0.7rem] tracking-wide text-muted-foreground uppercase">
+                {stat.label}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </motion.div>
     </section>
   );
 }
