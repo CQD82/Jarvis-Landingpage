@@ -5,10 +5,12 @@
   },
   "nav": {
     "countdown": "Compte à rebours",
+    "hardware": "Matériel",
     "overview": "Vue d'ensemble",
     "features": "Fonctionnalités",
     "architecture": "Architecture",
     "models": "Modèles IA",
+    "hud": "HUD en direct",
     "security": "Sécurité"
   },
   "hero": {
@@ -136,6 +138,77 @@
       "Accès selon le moindre privilège pour toute l'automatisation"
     ],
     "footerNote": "Les détails d'infrastructure, les adresses réseau internes et les scripts opérationnels restent privés et ne sont volontairement pas publiés sur ce site."
+  },
+  "gallery": {
+    "eyebrow": "Sur place",
+    "title": "L'installation réelle",
+    "description": "Pas de rendus, pas de photos de banque d'images — le matériel réel, tel qu'il se trouve dans la baie et sur l'établi.",
+    "captions": {
+      "rackFull": "La baie serveur : 18 nœuds, switch et onduleur dans un rack 19″.",
+      "rackBays": "Baies des nœuds de calcul au-dessus du commutateur réseau.",
+      "assembly": "Pré-assemblage de la flotte de nœuds avant son installation en baie.",
+      "odroid": "L'ODROID-H5 — support du niveau d'inférence CPU.",
+      "aiHat": "Raspberry Pi AI HAT+ avec NPU Hailo pour l'inférence en périphérie.",
+      "heatsinks": "Modules de calcul Raspberry Pi 5 à refroidissement passif.",
+      "workbench": "L'établi en pleine construction.",
+      "rackWithZ840": "Vue d'ensemble de la baie : baies de nœuds, switch et la station GPU (Z840) dans l'emplacement du bas.",
+      "odroidAssembly": "Assemblage de l'ODROID-H5 avec son dissipateur passif.",
+      "aiHatBoxes": "Deux Raspberry Pi AI HAT+ 2 avec NPU Hailo, prêts à l'expédition.",
+      "chipMacro": "Gros plan : le SoC d'un module de calcul.",
+      "backupDrive": "Disque dur de 22 To pour les sauvegardes Velero."
+    }
+  },
+  "deepDive": {
+    "eyebrow": "En détail",
+    "title": "Comment les pièces s'articulent",
+    "description": "Quatre briques expliquées de plus près — sans code, sans configuration interne, juste le principe de fonctionnement.",
+    "items": [
+      {
+        "title": "Suivi visuel & Logitech MeetUp",
+        "body": "La Logitech MeetUp est une caméra de visioconférence avec pan/tilt/zoom motorisé, pilotée via le standard ouvert UVC. Un pod du cluster possède la caméra en exclusivité et assure deux tâches à la fois : détection de visages sur chaque image (YuNet, sur CPU) et, pour les personnes enregistrées, une comparaison par embedding (SFace) avec une base vectorielle (Qdrant). Dès qu'une personne connue est reconnue, un régulateur simple avec zone morte et limite de vitesse maintient la caméra pointée sur elle. Le flux est aussi exposé pour l'affichage tête haute. Seuls les embeddings des personnes enregistrées sont stockés — jamais d'images brutes, jamais d'appel au cloud ; les visages inconnus sont comptés, jamais suivis."
+      },
+      {
+        "title": "ZeroClaw — le framework d'agents",
+        "body": "ZeroClaw orchestre les requêtes entre les niveaux de modèles IA et les dote d'outils (tool-calling) — accès aux appareils domotiques, aux données du Vision-Tracker ou aux workflows n8n. Contrairement à une simple réponse de modèle, un agent peut planifier en plusieurs étapes : vérifier l'état, décider, agir. Le modèle choisi pour le tool-calling est comparé en continu à des alternatives avant qu'une version ne passe en production."
+      },
+      {
+        "title": "n8n — automatisation sans code",
+        "body": "n8n relie les services de JARVIS entre eux pour créer des automatisations. Quand le Vision-Tracker détecte une présence, n8n construit un contexte pour l'assistant vocal, avec salutation personnalisée et contrôle de l'éclairage. Il évalue aussi les données de consommation électrique et exécute des vérifications récurrentes comme l'état des sauvegardes. Les workflows sont versionnés en JSON dans le même dépôt Git que le reste de l'infrastructure."
+      },
+      {
+        "title": "Le cluster Kubernetes (K3s)",
+        "body": "K3s est une distribution Kubernetes légère conçue pour le matériel edge et ARM. Trois nœuds forment le plan de contrôle, les autres agissent comme workers. FluxCD réconcilie l'état du cluster avec un dépôt Git toutes les 10 minutes — tout changement manuel est annulé au passage suivant. Longhorn gère le stockage répliqué entre les nœuds, Cilium le réseau, chiffrement inclus. L'ensemble de l'état est ainsi reproductible à tout moment depuis un seul dépôt."
+      }
+    ]
+  },
+  "power": {
+    "eyebrow": "Énergie & efficacité",
+    "title": "Consommation électrique estimée",
+    "description": "Une approximation basée sur la puissance nominale du matériel utilisé — pas des valeurs mesurées, mais un ordre de grandeur.",
+    "rows": [
+      { "label": "Nœuds edge (Pi 5 + NPU) ×4", "watts": "~40 W" },
+      { "label": "Nœuds worker (Pi 5) ×9", "watts": "~70 W" },
+      { "label": "Autres nœuds Pi ×4", "watts": "~25 W" },
+      { "label": "Niveau CPU (ODROID-H5)", "watts": "~15 W" },
+      { "label": "Commutateur réseau", "watts": "~15 W" },
+      { "label": "Station GPU (moy. avec autosuspend)", "watts": "~20 W" }
+    ],
+    "totalLabel": "Charge continue estimée",
+    "totalValue": "~185 W",
+    "monthlyLabel": "Projection mensuelle",
+    "monthlyValue": "~133 kWh",
+    "wolTitle": "Wake-on-LAN pour la station GPU",
+    "wolBody": "La station GPU (HP Z840), avec plus de 300 W en pointe, est de loin le plus gros consommateur individuel du cluster — mais elle n'est nécessaire que pour le niveau d'inférence le plus exigeant. Un mécanisme d'autosuspend la met en veille après une période sans requête ; un paquet magique Wake-on-LAN la réveille précisément quand une requête a besoin de ce niveau. Sa contribution à la consommation continue tombe ainsi à une petite fraction pondérée dans le temps, sans renoncer à la puissance GPU à la demande."
+  },
+  "hud": {
+    "eyebrow": "Supervision",
+    "title": "État du système en direct",
+    "description": "Trois vues HUD du même état du cluster.",
+    "disclaimer": "Simulation illustrative pour cette page — pas de connexion en direct au cluster privé.",
+    "powerLabel": "CONSOMMATION ACTUELLE",
+    "nodeOnline": "EN LIGNE",
+    "nodeSuspended": "SUSPENDU",
+    "tabs": { "kitt": "K.I.T.T.", "matrix": "Matrix", "jarvis": "JARVIS" }
   },
   "footer": {
     "tagline": "Projet homelab privé"

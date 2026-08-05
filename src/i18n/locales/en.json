@@ -5,10 +5,12 @@
   },
   "nav": {
     "countdown": "Countdown",
+    "hardware": "Hardware",
     "overview": "Overview",
     "features": "Capabilities",
     "architecture": "Architecture",
     "models": "AI Models",
+    "hud": "Live HUD",
     "security": "Security"
   },
   "hero": {
@@ -136,6 +138,77 @@
       "Least-privilege access for all automation"
     ],
     "footerNote": "Infrastructure details, internal network addresses, and operational scripts stay private and are deliberately not published on this site."
+  },
+  "gallery": {
+    "eyebrow": "On Site",
+    "title": "The Real Setup",
+    "description": "No renders, no stock photos — the actual hardware, as it stands in the rack and on the workbench.",
+    "captions": {
+      "rackFull": "The server rack: 18 nodes, switch, and UPS in a 19″ enclosure.",
+      "rackBays": "Compute-node bays above the network switch.",
+      "assembly": "Pre-assembling the node fleet before it moves into the rack.",
+      "odroid": "The ODROID-H5 — carrier of the CPU inference tier.",
+      "aiHat": "Raspberry Pi AI HAT+ with a Hailo NPU for edge inference.",
+      "heatsinks": "Raspberry Pi 5 compute modules with passive cooling.",
+      "workbench": "The workbench mid-build.",
+      "rackWithZ840": "Rack overview: node bays, switch, and the GPU workstation (Z840) in the bottom slot.",
+      "odroidAssembly": "Assembling the ODROID-H5 with its passive heatsink.",
+      "aiHatBoxes": "Two Raspberry Pi AI HAT+ 2 units with a Hailo NPU, ready to ship.",
+      "chipMacro": "Close-up: the SoC of a compute module.",
+      "backupDrive": "22 TB hard drive for the Velero backups."
+    }
+  },
+  "deepDive": {
+    "eyebrow": "In Detail",
+    "title": "How the Pieces Work Together",
+    "description": "Four building blocks explained more closely — no code, no internal configuration, just the underlying principle.",
+    "items": [
+      {
+        "title": "Vision Tracker & Logitech MeetUp",
+        "body": "The Logitech MeetUp is a conference camera with motorized pan/tilt/zoom, controlled over the open UVC standard. One pod in the cluster owns the camera exclusively and handles two jobs at once: face detection on every frame (YuNet, CPU-based) and, for enrolled people, an embedding match (SFace) against a vector database (Qdrant). Once a known person is recognized, a simple controller with a dead zone and a speed limit keeps the camera pointed at them. The feed is also exposed as a stream for the heads-up display. Only embeddings of enrolled people are ever stored — never raw images, never a cloud call; unknown faces are counted but not tracked."
+      },
+      {
+        "title": "ZeroClaw — the Agent Framework",
+        "body": "ZeroClaw orchestrates requests across the AI model tiers and equips them with tools (tool-calling) — access to smart-home devices, Vision-Tracker data, or n8n workflows. Unlike a single model reply, an agent can plan in multiple steps: check status, decide, act. The model chosen for tool-calling is continuously benchmarked against alternatives before a version goes into production."
+      },
+      {
+        "title": "n8n — Automation Without Code",
+        "body": "n8n wires the JARVIS services together into automations. When the Vision Tracker recognizes someone present, n8n builds context for the voice assistant, including a personalized greeting and lighting control. It also evaluates power-consumption data and runs recurring checks like backup status. Workflows are versioned as JSON in the same Git repository as the rest of the infrastructure."
+      },
+      {
+        "title": "The Kubernetes Cluster (K3s)",
+        "body": "K3s is a lightweight Kubernetes distribution built for edge and ARM hardware. Three nodes form the control plane, the rest run as workers. FluxCD reconciles cluster state against a Git repository every 10 minutes — any manual change gets reverted on the next pass. Longhorn handles replicated storage across nodes, Cilium the network including encryption. The entire state is reproducible from a single repository at any time."
+      }
+    ]
+  },
+  "power": {
+    "eyebrow": "Power & Efficiency",
+    "title": "Estimated Power Consumption",
+    "description": "An approximation based on the rated power draw of the hardware in use — not measured values, but a sense of the order of magnitude.",
+    "rows": [
+      { "label": "Edge nodes (Pi 5 + NPU) ×4", "watts": "~40 W" },
+      { "label": "Worker nodes (Pi 5) ×9", "watts": "~70 W" },
+      { "label": "Other Pi nodes ×4", "watts": "~25 W" },
+      { "label": "CPU tier (ODROID-H5)", "watts": "~15 W" },
+      { "label": "Network switch", "watts": "~15 W" },
+      { "label": "GPU workstation (avg. with autosuspend)", "watts": "~20 W" }
+    ],
+    "totalLabel": "Estimated continuous load",
+    "totalValue": "~185 W",
+    "monthlyLabel": "Projected per month",
+    "monthlyValue": "~133 kWh",
+    "wolTitle": "Wake-on-LAN for the GPU Workstation",
+    "wolBody": "The GPU workstation (HP Z840), at 300+ W peak, is by far the single biggest consumer in the cluster — but it's only needed for the more demanding inference tier. An autosuspend mechanism puts it to sleep after a period without requests; a Wake-on-LAN magic packet wakes it specifically when a request needs that tier. That cuts its contribution to continuous consumption down to a small time-weighted fraction, without giving up on-demand GPU power."
+  },
+  "hud": {
+    "eyebrow": "Monitoring",
+    "title": "Live System Status",
+    "description": "Three HUD views of the same cluster state.",
+    "disclaimer": "An illustrative simulation for this page — not a live connection to the private cluster.",
+    "powerLabel": "CURRENT DRAW",
+    "nodeOnline": "ONLINE",
+    "nodeSuspended": "SUSPENDED",
+    "tabs": { "kitt": "K.I.T.T.", "matrix": "Matrix", "jarvis": "JARVIS" }
   },
   "footer": {
     "tagline": "Private Homelab Project"

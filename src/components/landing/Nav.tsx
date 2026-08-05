@@ -3,8 +3,26 @@ import { useTranslation } from "react-i18next";
 import { LanguageSwitcher } from "@/components/landing/LanguageSwitcher";
 import { Logo } from "@/components/landing/Logo";
 
-const HREFS = ["#go-live", "#system-map", "#features", "#architecture", "#models", "#security"];
-const NAV_KEYS = ["countdown", "overview", "features", "architecture", "models", "security"] as const;
+const HREFS = [
+  "#go-live",
+  "#hardware",
+  "#system-map",
+  "#features",
+  "#architecture",
+  "#models",
+  "#hud",
+  "#security",
+];
+const NAV_KEYS = [
+  "countdown",
+  "hardware",
+  "overview",
+  "features",
+  "architecture",
+  "models",
+  "hud",
+  "security",
+] as const;
 
 /** Highlights the nav link for whichever section is currently in view. */
 function useActiveSection(ids: string[]) {
@@ -48,7 +66,7 @@ export function Nav() {
             v4.2
           </span>
         </a>
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-5 lg:flex xl:gap-7">
           {NAV_KEYS.map((key, i) => {
             const href = HREFS[i];
             const isActive = active === href.slice(1);

@@ -190,6 +190,15 @@
     transform: translate(4%, 5%);
   }
 }
+@keyframes kitt-scan {
+  0%,
+  100% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(100%);
+  }
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .animate-radar-sweep {
@@ -204,6 +213,9 @@
   }
   .animate-dot-travel {
     animation: dot-travel 1.8s linear infinite;
+  }
+  .animate-kitt-scan {
+    animation: kitt-scan 1.6s ease-in-out infinite;
   }
   body::before {
     animation: orb-drift 22s ease-in-out infinite;

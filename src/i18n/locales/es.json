@@ -5,10 +5,12 @@
   },
   "nav": {
     "countdown": "Cuenta atrás",
+    "hardware": "Hardware",
     "overview": "Resumen",
     "features": "Funciones",
     "architecture": "Arquitectura",
     "models": "Modelos de IA",
+    "hud": "HUD en vivo",
     "security": "Seguridad"
   },
   "hero": {
@@ -136,6 +138,77 @@
       "Acceso de mínimo privilegio para toda la automatización"
     ],
     "footerNote": "Los detalles de infraestructura, direcciones de red internas y scripts operativos se mantienen privados y deliberadamente no se publican en este sitio."
+  },
+  "gallery": {
+    "eyebrow": "In situ",
+    "title": "La instalación real",
+    "description": "Sin renders, sin fotos de banco de imágenes — el hardware real, tal como está en el rack y en la mesa de trabajo.",
+    "captions": {
+      "rackFull": "El rack de servidores: 18 nodos, switch y SAI en un armario de 19″.",
+      "rackBays": "Bahías de los nodos de cómputo sobre el switch de red.",
+      "assembly": "Preensamblaje de la flota de nodos antes de instalarla en el rack.",
+      "odroid": "El ODROID-H5 — soporte del nivel de inferencia por CPU.",
+      "aiHat": "Raspberry Pi AI HAT+ con NPU Hailo para inferencia en el borde.",
+      "heatsinks": "Módulos de cómputo Raspberry Pi 5 con refrigeración pasiva.",
+      "workbench": "La mesa de trabajo durante el montaje.",
+      "rackWithZ840": "Vista general del rack: bahías de nodos, switch y la estación GPU (Z840) en la ranura inferior.",
+      "odroidAssembly": "Montaje del ODROID-H5 con su disipador pasivo.",
+      "aiHatBoxes": "Dos Raspberry Pi AI HAT+ 2 con NPU Hailo, listos para enviar.",
+      "chipMacro": "Primer plano: el SoC de un módulo de cómputo.",
+      "backupDrive": "Disco duro de 22 TB para las copias de seguridad de Velero."
+    }
+  },
+  "deepDive": {
+    "eyebrow": "En detalle",
+    "title": "Cómo encajan las piezas",
+    "description": "Cuatro componentes explicados más de cerca — sin código, sin configuración interna, solo el principio de funcionamiento.",
+    "items": [
+      {
+        "title": "Vision-Tracker y Logitech MeetUp",
+        "body": "La Logitech MeetUp es una cámara de videoconferencia con pan/tilt/zoom motorizado, controlada mediante el estándar abierto UVC. Un pod del clúster posee la cámara en exclusiva y cumple dos funciones a la vez: detección facial en cada fotograma (YuNet, en CPU) y, para personas registradas, una comparación por embedding (SFace) contra una base de datos vectorial (Qdrant). Al reconocer a una persona conocida, un controlador simple con zona muerta y límite de velocidad mantiene la cámara apuntando hacia ella. La imagen también se expone como stream para la pantalla HUD. Solo se almacenan los embeddings de personas registradas — nunca imágenes en bruto, nunca una llamada a la nube; los rostros desconocidos se cuentan, pero no se siguen."
+      },
+      {
+        "title": "ZeroClaw — el framework de agentes",
+        "body": "ZeroClaw orquesta las solicitudes entre los niveles de modelos de IA y las dota de herramientas (tool-calling) — acceso a dispositivos domóticos, datos del Vision-Tracker o flujos de n8n. A diferencia de una única respuesta de modelo, un agente puede planificar en varios pasos: consultar estado, decidir, actuar. El modelo elegido para tool-calling se compara continuamente con alternativas antes de pasar a producción."
+      },
+      {
+        "title": "n8n — automatización sin código",
+        "body": "n8n conecta los servicios de JARVIS entre sí para crear automatizaciones. Cuando el Vision-Tracker detecta una presencia, n8n construye el contexto para el asistente de voz, incluyendo un saludo personalizado y control de iluminación. También evalúa los datos de consumo eléctrico y ejecuta comprobaciones recurrentes como el estado de las copias de seguridad. Los flujos se versionan como JSON en el mismo repositorio Git que el resto de la infraestructura."
+      },
+      {
+        "title": "El clúster de Kubernetes (K3s)",
+        "body": "K3s es una distribución ligera de Kubernetes pensada para hardware edge y ARM. Tres nodos forman el plano de control, el resto actúan como workers. FluxCD reconcilia el estado del clúster con un repositorio Git cada 10 minutos — cualquier cambio manual se revierte en el siguiente ciclo. Longhorn gestiona el almacenamiento replicado entre nodos, Cilium la red, incluido el cifrado. Todo el estado es así reproducible en cualquier momento desde un único repositorio."
+      }
+    ]
+  },
+  "power": {
+    "eyebrow": "Energía y eficiencia",
+    "title": "Consumo eléctrico estimado",
+    "description": "Una aproximación basada en la potencia nominal del hardware utilizado — no son valores medidos, sino una idea del orden de magnitud.",
+    "rows": [
+      { "label": "Nodos edge (Pi 5 + NPU) ×4", "watts": "~40 W" },
+      { "label": "Nodos worker (Pi 5) ×9", "watts": "~70 W" },
+      { "label": "Otros nodos Pi ×4", "watts": "~25 W" },
+      { "label": "Nivel CPU (ODROID-H5)", "watts": "~15 W" },
+      { "label": "Switch de red", "watts": "~15 W" },
+      { "label": "Estación GPU (prom. con autosuspend)", "watts": "~20 W" }
+    ],
+    "totalLabel": "Carga continua estimada",
+    "totalValue": "~185 W",
+    "monthlyLabel": "Proyección mensual",
+    "monthlyValue": "~133 kWh",
+    "wolTitle": "Wake-on-LAN para la estación GPU",
+    "wolBody": "La estación GPU (HP Z840), con más de 300 W de pico, es con diferencia el mayor consumidor individual del clúster — pero solo se necesita para el nivel de inferencia más exigente. Un mecanismo de autosuspend la pone a dormir tras un periodo sin solicitudes; un paquete mágico Wake-on-LAN la despierta específicamente cuando una solicitud necesita ese nivel. Así, su contribución al consumo continuo se reduce a una pequeña fracción ponderada en el tiempo, sin renunciar a la potencia de GPU bajo demanda."
+  },
+  "hud": {
+    "eyebrow": "Monitorización",
+    "title": "Estado del sistema en vivo",
+    "description": "Tres vistas HUD del mismo estado del clúster.",
+    "disclaimer": "Simulación ilustrativa para esta página — sin conexión en vivo al clúster privado.",
+    "powerLabel": "CONSUMO ACTUAL",
+    "nodeOnline": "EN LÍNEA",
+    "nodeSuspended": "SUSPENDIDO",
+    "tabs": { "kitt": "K.I.T.T.", "matrix": "Matrix", "jarvis": "JARVIS" }
   },
   "footer": {
     "tagline": "Proyecto homelab privado"
