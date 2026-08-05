@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "JARVIS — Clúster de IA Homelab",
-    "description": "JARVIS — un homelab Kubernetes privado de 19 nodos: infraestructura GitOps declarativa, inferencia de IA local en varios niveles, seguimiento visual y segmentación de red de confianza cero."
+    "description": "JARVIS — un homelab Kubernetes privado de 18 nodos: infraestructura GitOps declarativa, inferencia de IA local en varios niveles, seguimiento visual y segmentación de red de confianza cero."
   },
   "nav": {
     "countdown": "Cuenta atrás",
@@ -15,19 +15,19 @@
   },
   "hero": {
     "badge": "PROYECTO HOMELAB PRIVADO · v4.2 LISTO PARA PRODUCCIÓN",
-    "description": "Un homelab Kubernetes de 19 nodos que piensa, ve y escucha en casa — gestionado de forma totalmente declarativa, con inferencia de IA local en varios niveles y segmentación de red de confianza cero.",
+    "description": "Un homelab Kubernetes de 18 nodos que piensa, ve y escucha en casa — gestionado de forma totalmente declarativa, con inferencia de IA local en varios niveles y segmentación de red de confianza cero.",
     "ctaPrimary": "Ver funciones",
     "ctaSecondary": "Arquitectura"
   },
   "statusTicker": [
     "ENLACE NEURONAL: ESTABLE",
-    "19/19 NODOS EN LÍNEA",
+    "18/18 NODOS EN LÍNEA",
     "LATENCIA DE INFERENCIA: NOMINAL",
     "SEGMENTACIÓN DE RED: ACTIVA",
     "GITOPS: SINCRONIZADO"
   ],
   "stats": [
-    { "value": "19", "label": "Nodos en el clúster" },
+    { "value": "18", "label": "Nodos en el clúster" },
     { "value": "7", "label": "Niveles de inferencia de IA" },
     { "value": "6", "label": "Namespaces, denegación por defecto" },
     { "value": "100%", "label": "Declarativo vía GitOps" }
@@ -62,8 +62,8 @@
         "description": "Un monorepo de Git como única fuente de verdad. Ansible para la capa de nodos, FluxCD para el estado del clúster — cada cambio es un commit revisable, cada desviación se reconcilia automáticamente."
       },
       {
-        "title": "Clúster bare-metal de 19 nodos",
-        "description": "Raspberry Pi 5, un ODROID-H5 y una estación de trabajo GPU combinados en un clúster K3s — desde el dispositivo perimetral hasta el hardware de inferencia, todo autoalojado, sin VMs en la nube."
+        "title": "Clúster bare-metal de 18 nodos",
+        "description": "Varios modelos de Raspberry Pi, un ODROID-H5 y una estación de trabajo GPU combinados en un clúster K3s — desde el dispositivo perimetral hasta el hardware de inferencia, todo autoalojado, sin VMs en la nube."
       },
       {
         "title": "Inferencia de IA local en varios niveles",
@@ -144,12 +144,13 @@
     "title": "La instalación real",
     "description": "Sin renders, sin fotos de banco de imágenes — el hardware real, tal como está en el rack y en la mesa de trabajo.",
     "captions": {
-      "rackFull": "El rack de servidores: 19 nodos, switch y SAI en un armario de 19″.",
+      "rackFull": "El rack de servidores: 18 nodos, switch y SAI en un armario de 19″.",
       "rackBays": "Bahías de los nodos de cómputo sobre el switch de red.",
       "assembly": "Preensamblaje de la flota de nodos antes de instalarla en el rack.",
       "odroid": "El ODROID-H5 — soporte del nivel de inferencia por CPU.",
       "aiHat": "Raspberry Pi AI HAT+ con NPU Hailo para inferencia en el borde.",
       "heatsinks": "Módulos de cómputo Raspberry Pi 5 con refrigeración pasiva.",
+      "piZero": "El Raspberry Pi Zero 2 W — el nodo más pequeño del clúster, en funciones de nodo sensor/watchdog.",
       "workbench": "La mesa de trabajo durante el montaje.",
       "rackWithZ840": "Vista general del rack: bahías de nodos, switch y la estación GPU (Z840) en la ranura inferior.",
       "odroidAssembly": "Montaje del ODROID-H5 con su disipador pasivo.",
@@ -187,17 +188,17 @@
     "description": "Una aproximación basada en la potencia nominal del hardware utilizado — no son valores medidos, sino una idea del orden de magnitud.",
     "rows": [
       { "label": "Nodos edge (Pi 5 + NPU) ×4", "watts": "~40 W" },
-      { "label": "Nodos worker (Pi 5) ×9", "watts": "~70 W" },
-      { "label": "Otros nodos Pi ×4", "watts": "~25 W" },
+      { "label": "Nodos worker (Pi 5 + NVMe) ×10", "watts": "~78 W" },
+      { "label": "Nodo Pi 4", "watts": "~6 W" },
       { "label": "Nivel CPU (ODROID-H5)", "watts": "~15 W" },
       { "label": "Switch de red", "watts": "~15 W" },
       { "label": "Nodo sensor/watchdog (Pi Zero 2W)", "watts": "~1 W" },
       { "label": "Estación GPU (prom. con autosuspend)", "watts": "~20 W" }
     ],
     "totalLabel": "Carga continua estimada",
-    "totalValue": "~186 W",
+    "totalValue": "~175 W",
     "monthlyLabel": "Proyección mensual",
-    "monthlyValue": "~134 kWh",
+    "monthlyValue": "~126 kWh",
     "wolTitle": "Wake-on-LAN para la estación GPU",
     "wolBody": "La estación GPU (HP Z840), con más de 300 W de pico, es con diferencia el mayor consumidor individual del clúster — pero solo se necesita para el nivel de inferencia más exigente. Un mecanismo de autosuspend la pone a dormir tras un periodo sin solicitudes; un paquete mágico Wake-on-LAN la despierta específicamente cuando una solicitud necesita ese nivel. Así, su contribución al consumo continuo se reduce a una pequeña fracción ponderada en el tiempo, sin renunciar a la potencia de GPU bajo demanda."
   },

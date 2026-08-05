@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "JARVIS — Homelab AI Cluster",
-    "description": "JARVIS — a private 19-node Kubernetes homelab: declarative GitOps infrastructure, multi-tier local AI inference, vision tracking, and zero-trust network segmentation."
+    "description": "JARVIS — a private 18-node Kubernetes homelab: declarative GitOps infrastructure, multi-tier local AI inference, vision tracking, and zero-trust network segmentation."
   },
   "nav": {
     "countdown": "Countdown",
@@ -15,19 +15,19 @@
   },
   "hero": {
     "badge": "PRIVATE HOMELAB PROJECT · v4.2 PRODUCTION-READY",
-    "description": "A 19-node Kubernetes homelab that thinks, sees, and listens at home — run entirely declaratively, with multi-tier local AI inference and zero-trust network segmentation.",
+    "description": "An 18-node Kubernetes homelab that thinks, sees, and listens at home — run entirely declaratively, with multi-tier local AI inference and zero-trust network segmentation.",
     "ctaPrimary": "View Capabilities",
     "ctaSecondary": "Architecture"
   },
   "statusTicker": [
     "NEURAL LINK: STABLE",
-    "19/19 NODES ONLINE",
+    "18/18 NODES ONLINE",
     "INFERENCE LATENCY: NOMINAL",
     "NETWORK SEGMENTATION: ACTIVE",
     "GITOPS: SYNCHRONIZED"
   ],
   "stats": [
-    { "value": "19", "label": "Nodes in the Cluster" },
+    { "value": "18", "label": "Nodes in the Cluster" },
     { "value": "7", "label": "AI Inference Tiers" },
     { "value": "6", "label": "Namespaces, Default-Deny" },
     { "value": "100%", "label": "Declarative via GitOps" }
@@ -62,8 +62,8 @@
         "description": "A Git monorepo as the single source of truth. Ansible for the node layer, FluxCD for cluster state — every change is a reviewable commit, every drift is reconciled automatically."
       },
       {
-        "title": "19-Node Bare-Metal Cluster",
-        "description": "Raspberry Pi 5s, an ODROID-H5, and a GPU workstation combined into a K3s cluster — from edge device to inference hardware, all self-hosted, no cloud VMs."
+        "title": "18-Node Bare-Metal Cluster",
+        "description": "Various Raspberry Pi models, an ODROID-H5, and a GPU workstation combined into a K3s cluster — from edge device to inference hardware, all self-hosted, no cloud VMs."
       },
       {
         "title": "Multi-Tier Local AI Inference",
@@ -144,12 +144,13 @@
     "title": "The Real Setup",
     "description": "No renders, no stock photos — the actual hardware, as it stands in the rack and on the workbench.",
     "captions": {
-      "rackFull": "The server rack: 19 nodes, switch, and UPS in a 19″ enclosure.",
+      "rackFull": "The server rack: 18 nodes, switch, and UPS in a 19″ enclosure.",
       "rackBays": "Compute-node bays above the network switch.",
       "assembly": "Pre-assembling the node fleet before it moves into the rack.",
       "odroid": "The ODROID-H5 — carrier of the CPU inference tier.",
       "aiHat": "Raspberry Pi AI HAT+ with a Hailo NPU for edge inference.",
       "heatsinks": "Raspberry Pi 5 compute modules with passive cooling.",
+      "piZero": "The Raspberry Pi Zero 2 W — the smallest node in the cluster, running as a sensor/watchdog node.",
       "workbench": "The workbench mid-build.",
       "rackWithZ840": "Rack overview: node bays, switch, and the GPU workstation (Z840) in the bottom slot.",
       "odroidAssembly": "Assembling the ODROID-H5 with its passive heatsink.",
@@ -187,17 +188,17 @@
     "description": "An approximation based on the rated power draw of the hardware in use — not measured values, but a sense of the order of magnitude.",
     "rows": [
       { "label": "Edge nodes (Pi 5 + NPU) ×4", "watts": "~40 W" },
-      { "label": "Worker nodes (Pi 5) ×9", "watts": "~70 W" },
-      { "label": "Other Pi nodes ×4", "watts": "~25 W" },
+      { "label": "Worker nodes (Pi 5 + NVMe) ×10", "watts": "~78 W" },
+      { "label": "Pi 4 node", "watts": "~6 W" },
       { "label": "CPU tier (ODROID-H5)", "watts": "~15 W" },
       { "label": "Network switch", "watts": "~15 W" },
       { "label": "Sensor/watchdog node (Pi Zero 2W)", "watts": "~1 W" },
       { "label": "GPU workstation (avg. with autosuspend)", "watts": "~20 W" }
     ],
     "totalLabel": "Estimated continuous load",
-    "totalValue": "~186 W",
+    "totalValue": "~175 W",
     "monthlyLabel": "Projected per month",
-    "monthlyValue": "~134 kWh",
+    "monthlyValue": "~126 kWh",
     "wolTitle": "Wake-on-LAN for the GPU Workstation",
     "wolBody": "The GPU workstation (HP Z840), at 300+ W peak, is by far the single biggest consumer in the cluster — but it's only needed for the more demanding inference tier. An autosuspend mechanism puts it to sleep after a period without requests; a Wake-on-LAN magic packet wakes it specifically when a request needs that tier. That cuts its contribution to continuous consumption down to a small time-weighted fraction, without giving up on-demand GPU power."
   },

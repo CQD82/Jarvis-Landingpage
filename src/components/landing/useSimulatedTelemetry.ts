@@ -5,13 +5,13 @@ export interface NodeState {
   status: "online" | "suspended";
 }
 
-const NODE_COUNT = 19;
+const NODE_COUNT = 18;
 // The last node slot stands in for the GPU tier (the Z840) — the one that
 // actually cycles suspended/online, illustrating the Wake-on-LAN story from
 // the power-consumption section.
 const GPU_NODE_INDEX = NODE_COUNT - 1;
 
-const BASE_POWER_W = 166;
+const BASE_POWER_W = 155;
 const GPU_AWAKE_POWER_W = 250;
 const GPU_AWAKE_MS = 6000;
 const GPU_CYCLE_MS = 22000;

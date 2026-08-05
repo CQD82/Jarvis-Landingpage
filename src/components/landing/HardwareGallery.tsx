@@ -9,6 +9,7 @@ import nodeAssembly from "@/assets/hardware/node-assembly.jpg";
 import odroidAssembly from "@/assets/hardware/odroid-assembly.jpg";
 import odroidH5Case from "@/assets/hardware/odroid-h5-case.jpg";
 import pi5Heatsinks from "@/assets/hardware/pi5-heatsinks.jpg";
+import piZero2W from "@/assets/hardware/pi-zero-2w.jpg";
 import rackNodeBays from "@/assets/hardware/rack-node-bays.jpg";
 import rackWithZ840 from "@/assets/hardware/rack-with-z840.jpg";
 import workbenchSetup from "@/assets/hardware/workbench-setup.jpg";
@@ -22,6 +23,7 @@ const PHOTOS: { src: string; captionKey: string; span?: string }[] = [
   { src: aiHatMounted, captionKey: "aiHat" },
   { src: aiHatBoxes, captionKey: "aiHatBoxes" },
   { src: pi5Heatsinks, captionKey: "heatsinks" },
+  { src: piZero2W, captionKey: "piZero" },
   { src: chipMacro, captionKey: "chipMacro" },
   { src: backupDrive, captionKey: "backupDrive" },
   { src: workbenchSetup, captionKey: "workbench" },
