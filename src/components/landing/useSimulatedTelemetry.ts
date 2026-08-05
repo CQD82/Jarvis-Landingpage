@@ -11,7 +11,7 @@ const NODE_COUNT = 18;
 // the power-consumption section.
 const GPU_NODE_INDEX = NODE_COUNT - 1;
 
-const BASE_POWER_W = 155;
+const BASE_POWER_W = 161;
 const GPU_AWAKE_POWER_W = 250;
 const GPU_AWAKE_MS = 6000;
 const GPU_CYCLE_MS = 22000;

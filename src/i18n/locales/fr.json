@@ -156,7 +156,7 @@
       "odroidAssembly": "Assemblage de l'ODROID-H5 avec son dissipateur passif.",
       "aiHatBoxes": "Deux Raspberry Pi AI HAT+ 2 avec NPU Hailo, prêts à l'expédition.",
       "chipMacro": "Gros plan : le SoC d'un module de calcul.",
-      "backupDrive": "Disque dur de 22 To pour les sauvegardes Velero."
+      "backupDrive": "Disque dur WD Elements de 22 To pour les sauvegardes Velero."
     }
   },
   "deepDive": {
@@ -192,13 +192,14 @@
       { "label": "Nœud Pi 4", "watts": "~6 W" },
       { "label": "Niveau CPU (ODROID-H5)", "watts": "~15 W" },
       { "label": "Commutateur réseau", "watts": "~15 W" },
+      { "label": "Disque de sauvegarde (WD Elements 22 To)", "watts": "~6 W" },
       { "label": "Nœud capteur/watchdog (Pi Zero 2W)", "watts": "~1 W" },
       { "label": "Station GPU (moy. avec autosuspend)", "watts": "~20 W" }
     ],
     "totalLabel": "Charge continue estimée",
-    "totalValue": "~175 W",
+    "totalValue": "~181 W",
     "monthlyLabel": "Projection mensuelle",
-    "monthlyValue": "~126 kWh",
+    "monthlyValue": "~130 kWh",
     "wolTitle": "Wake-on-LAN pour la station GPU",
     "wolBody": "La station GPU (HP Z840), avec plus de 300 W en pointe, est de loin le plus gros consommateur individuel du cluster — mais elle n'est nécessaire que pour le niveau d'inférence le plus exigeant. Un mécanisme d'autosuspend la met en veille après une période sans requête ; un paquet magique Wake-on-LAN la réveille précisément quand une requête a besoin de ce niveau. Sa contribution à la consommation continue tombe ainsi à une petite fraction pondérée dans le temps, sans renoncer à la puissance GPU à la demande."
   },
