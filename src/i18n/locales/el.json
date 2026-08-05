@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "JARVIS — Homelab AI Cluster",
-    "description": "Το JARVIS — ένα ιδιωτικό homelab Kubernetes με 18 κόμβους: δηλωτική υποδομή GitOps, τοπική AI inference πολλαπλών επιπέδων, παρακολούθηση όρασης και zero-trust segmentation δικτύου."
+    "description": "Το JARVIS — ένα ιδιωτικό homelab Kubernetes με 19 κόμβους: δηλωτική υποδομή GitOps, τοπική AI inference πολλαπλών επιπέδων, παρακολούθηση όρασης και zero-trust segmentation δικτύου."
   },
   "nav": {
     "countdown": "Αντίστροφη μέτρηση",
@@ -15,19 +15,19 @@
   },
   "hero": {
     "badge": "ΙΔΙΩΤΙΚΟ HOMELAB PROJECT · v4.2 ΕΤΟΙΜΟ ΓΙΑ ΠΑΡΑΓΩΓΗ",
-    "description": "Ένα homelab Kubernetes με 18 κόμβους που σκέφτεται, βλέπει και ακούει στο σπίτι — λειτουργεί εξ ολοκλήρου δηλωτικά, με τοπική AI inference πολλαπλών επιπέδων και zero-trust segmentation δικτύου.",
+    "description": "Ένα homelab Kubernetes με 19 κόμβους που σκέφτεται, βλέπει και ακούει στο σπίτι — λειτουργεί εξ ολοκλήρου δηλωτικά, με τοπική AI inference πολλαπλών επιπέδων και zero-trust segmentation δικτύου.",
     "ctaPrimary": "Δείτε τις δυνατότητες",
     "ctaSecondary": "Αρχιτεκτονική"
   },
   "statusTicker": [
     "NEURAL LINK: ΣΤΑΘΕΡΟ",
-    "18/18 ΚΟΜΒΟΙ ONLINE",
+    "19/19 ΚΟΜΒΟΙ ONLINE",
     "ΚΑΘΥΣΤΕΡΗΣΗ INFERENCE: ΦΥΣΙΟΛΟΓΙΚΗ",
     "SEGMENTATION ΔΙΚΤΥΟΥ: ΕΝΕΡΓΟ",
     "GITOPS: ΣΥΓΧΡΟΝΙΣΜΕΝΟ"
   ],
   "stats": [
-    { "value": "18", "label": "Κόμβοι στο cluster" },
+    { "value": "19", "label": "Κόμβοι στο cluster" },
     { "value": "7", "label": "Επίπεδα AI inference" },
     { "value": "6", "label": "Namespaces, Default-Deny" },
     { "value": "100%", "label": "Δηλωτικό μέσω GitOps" }
@@ -62,7 +62,7 @@
         "description": "Ένα Git monorepo ως μοναδική πηγή αλήθειας. Ansible για το επίπεδο κόμβων, FluxCD για την κατάσταση του cluster — κάθε αλλαγή είναι ένα commit προς έλεγχο, κάθε drift συμφιλιώνεται αυτόματα."
       },
       {
-        "title": "Cluster 18 κόμβων bare-metal",
+        "title": "Cluster 19 κόμβων bare-metal",
         "description": "Raspberry Pi 5, ένα ODROID-H5 και ένα GPU workstation ενωμένα σε ένα K3s cluster — από τη συσκευή edge μέχρι το hardware inference, όλα αυτοφιλοξενούμενα, χωρίς cloud VMs."
       },
       {
@@ -144,7 +144,7 @@
     "title": "Το πραγματικό setup",
     "description": "Καμία απεικόνιση, καμία φωτογραφία αποθέματος — το πραγματικό hardware, όπως βρίσκεται στο rack και στον πάγκο εργασίας.",
     "captions": {
-      "rackFull": "Το rack διακομιστών: 18 κόμβοι, switch και UPS σε ερμάριο 19″.",
+      "rackFull": "Το rack διακομιστών: 19 κόμβοι, switch και UPS σε ερμάριο 19″.",
       "rackBays": "Θέσεις των κόμβων υπολογισμού πάνω από το δικτυακό switch.",
       "assembly": "Προσυναρμολόγηση του στόλου κόμβων πριν μπει στο rack.",
       "odroid": "Το ODROID-H5 — φορέας του επιπέδου inference CPU.",
@@ -191,12 +191,13 @@
       { "label": "Άλλοι κόμβοι Pi ×4", "watts": "~25 W" },
       { "label": "Επίπεδο CPU (ODROID-H5)", "watts": "~15 W" },
       { "label": "Δικτυακό switch", "watts": "~15 W" },
+      { "label": "Κόμβος αισθητήρα/watchdog (Pi Zero 2W)", "watts": "~1 W" },
       { "label": "Σταθμός GPU (μ.ο. με autosuspend)", "watts": "~20 W" }
     ],
     "totalLabel": "Εκτιμώμενο συνεχές φορτίο",
-    "totalValue": "~185 W",
+    "totalValue": "~186 W",
     "monthlyLabel": "Προβολή ανά μήνα",
-    "monthlyValue": "~133 kWh",
+    "monthlyValue": "~134 kWh",
     "wolTitle": "Wake-on-LAN για τον σταθμό GPU",
     "wolBody": "Ο σταθμός GPU (HP Z840), με πάνω από 300 W αιχμή, είναι μακράν ο μεγαλύτερος μεμονωμένος καταναλωτής στο cluster — όμως χρειάζεται μόνο για το πιο απαιτητικό επίπεδο inference. Ένας μηχανισμός autosuspend τον θέτει σε αδράνεια μετά από περίοδο χωρίς αιτήματα· ένα magic packet Wake-on-LAN τον ξυπνά ακριβώς όταν ένα αίτημα χρειάζεται αυτό το επίπεδο. Έτσι η συμβολή του στη συνεχή κατανάλωση πέφτει σε ένα μικρό χρονικά σταθμισμένο κλάσμα, χωρίς να θυσιάζεται η ισχύς GPU όταν χρειάζεται."
   },

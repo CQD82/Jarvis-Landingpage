@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "JARVIS — Cluster IA Homelab",
-    "description": "JARVIS — un homelab Kubernetes privé de 18 nœuds : infrastructure GitOps déclarative, inférence IA locale à plusieurs niveaux, suivi visuel et segmentation réseau zero-trust."
+    "description": "JARVIS — un homelab Kubernetes privé de 19 nœuds : infrastructure GitOps déclarative, inférence IA locale à plusieurs niveaux, suivi visuel et segmentation réseau zero-trust."
   },
   "nav": {
     "countdown": "Compte à rebours",
@@ -15,19 +15,19 @@
   },
   "hero": {
     "badge": "PROJET HOMELAB PRIVÉ · v4.2 PRÊT POUR LA PRODUCTION",
-    "description": "Un homelab Kubernetes de 18 nœuds qui pense, voit et écoute à la maison — géré de façon entièrement déclarative, avec une inférence IA locale à plusieurs niveaux et une segmentation réseau zero-trust.",
+    "description": "Un homelab Kubernetes de 19 nœuds qui pense, voit et écoute à la maison — géré de façon entièrement déclarative, avec une inférence IA locale à plusieurs niveaux et une segmentation réseau zero-trust.",
     "ctaPrimary": "Voir les fonctionnalités",
     "ctaSecondary": "Architecture"
   },
   "statusTicker": [
     "LIEN NEURONAL : STABLE",
-    "18/18 NŒUDS EN LIGNE",
+    "19/19 NŒUDS EN LIGNE",
     "LATENCE D'INFÉRENCE : NOMINALE",
     "SEGMENTATION RÉSEAU : ACTIVE",
     "GITOPS : SYNCHRONISÉ"
   ],
   "stats": [
-    { "value": "18", "label": "Nœuds dans le cluster" },
+    { "value": "19", "label": "Nœuds dans le cluster" },
     { "value": "7", "label": "Niveaux d'inférence IA" },
     { "value": "6", "label": "Namespaces, refus par défaut" },
     { "value": "100%", "label": "Déclaratif via GitOps" }
@@ -62,7 +62,7 @@
         "description": "Un monorepo Git comme source unique de vérité. Ansible pour la couche nœud, FluxCD pour l'état du cluster — chaque changement est un commit relisible, chaque dérive est réconciliée automatiquement."
       },
       {
-        "title": "Cluster bare-metal à 18 nœuds",
+        "title": "Cluster bare-metal à 19 nœuds",
         "description": "Des Raspberry Pi 5, un ODROID-H5 et une station de travail GPU réunis en cluster K3s — du périphérique en périphérie au matériel d'inférence, tout est auto-hébergé, sans VM cloud."
       },
       {
@@ -144,7 +144,7 @@
     "title": "L'installation réelle",
     "description": "Pas de rendus, pas de photos de banque d'images — le matériel réel, tel qu'il se trouve dans la baie et sur l'établi.",
     "captions": {
-      "rackFull": "La baie serveur : 18 nœuds, switch et onduleur dans un rack 19″.",
+      "rackFull": "La baie serveur : 19 nœuds, switch et onduleur dans un rack 19″.",
       "rackBays": "Baies des nœuds de calcul au-dessus du commutateur réseau.",
       "assembly": "Pré-assemblage de la flotte de nœuds avant son installation en baie.",
       "odroid": "L'ODROID-H5 — support du niveau d'inférence CPU.",
@@ -191,12 +191,13 @@
       { "label": "Autres nœuds Pi ×4", "watts": "~25 W" },
       { "label": "Niveau CPU (ODROID-H5)", "watts": "~15 W" },
       { "label": "Commutateur réseau", "watts": "~15 W" },
+      { "label": "Nœud capteur/watchdog (Pi Zero 2W)", "watts": "~1 W" },
       { "label": "Station GPU (moy. avec autosuspend)", "watts": "~20 W" }
     ],
     "totalLabel": "Charge continue estimée",
-    "totalValue": "~185 W",
+    "totalValue": "~186 W",
     "monthlyLabel": "Projection mensuelle",
-    "monthlyValue": "~133 kWh",
+    "monthlyValue": "~134 kWh",
     "wolTitle": "Wake-on-LAN pour la station GPU",
     "wolBody": "La station GPU (HP Z840), avec plus de 300 W en pointe, est de loin le plus gros consommateur individuel du cluster — mais elle n'est nécessaire que pour le niveau d'inférence le plus exigeant. Un mécanisme d'autosuspend la met en veille après une période sans requête ; un paquet magique Wake-on-LAN la réveille précisément quand une requête a besoin de ce niveau. Sa contribution à la consommation continue tombe ainsi à une petite fraction pondérée dans le temps, sans renoncer à la puissance GPU à la demande."
   },
