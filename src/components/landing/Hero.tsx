@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Radar } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { GradientShimmer } from "@/components/ui/gradient-shimmer";
 import { CountUpStat } from "@/components/landing/CountUpStat";
 import { HudCorners } from "@/components/landing/HudCorners";
 import { StatusTicker } from "@/components/landing/StatusTicker";
-import { stats } from "@/data/jarvis";
 
 /** Repulsor-red → armor-gold sweep for the hero title. */
 const TITLE_GRADIENT = [
@@ -13,7 +13,15 @@ const TITLE_GRADIENT = [
   { position: 1, color: "#ffe3a3" },
 ];
 
+interface Stat {
+  value: string;
+  label: string;
+}
+
 export function Hero() {
+  const { t } = useTranslation();
+  const stats = t("stats", { returnObjects: true }) as Stat[];
+
   return (
     <section id="top" className="relative overflow-hidden px-6 pt-20 pb-24 sm:pt-28">
       {/* Ambient glow — layered gold + red for depth, armor-plate style */}
@@ -44,7 +52,7 @@ export function Hero() {
           className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/5 px-4 py-1.5 font-mono text-xs tracking-wider text-primary"
         >
           <Radar className="size-3.5 animate-pulse" aria-hidden="true" />
-          PRIVATES HOMELAB PROJEKT · v4.2 PRODUCTION-READY
+          {t("hero.badge")}
         </motion.div>
 
         <motion.h1
@@ -64,9 +72,7 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="mx-auto mt-6 max-w-2xl text-balance text-lg text-muted-foreground sm:text-xl"
         >
-          Ein 18-Node Kubernetes-Homelab, das zuhause denkt, sieht und
-          zuhört — vollständig deklarativ betrieben, mit mehrstufiger
-          lokaler KI-Inferenz und Zero-Trust-Netzwerksegmentierung.
+          {t("hero.description")}
         </motion.p>
 
         <motion.div
@@ -79,14 +85,14 @@ export function Hero() {
             href="#features"
             className="group inline-flex items-center gap-2 rounded-md bg-primary px-5 py-2.5 font-medium text-primary-foreground shadow-[0_0_24px_color-mix(in_oklab,var(--hud-gold)_35%,transparent)] transition-transform hover:scale-[1.03]"
           >
-            Fähigkeiten ansehen
+            {t("hero.ctaPrimary")}
             <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
           </a>
           <a
             href="#architecture"
             className="rounded-md border border-border px-5 py-2.5 font-medium text-foreground transition-colors hover:border-primary/50 hover:bg-primary/5"
           >
-            Architektur
+            {t("hero.ctaSecondary")}
           </a>
         </motion.div>
 
@@ -108,8 +114,8 @@ export function Hero() {
       >
         <HudCorners />
         <dl className="grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-border bg-border sm:grid-cols-4">
-          {stats.map((stat) => (
-            <div key={stat.label} className="bg-card px-4 py-6 text-center">
+          {stats.map((stat, i) => (
+            <div key={i} className="bg-card px-4 py-6 text-center">
               <dt className="font-display text-3xl font-semibold text-primary text-glow">
                 <CountUpStat value={stat.value} />
               </dt>

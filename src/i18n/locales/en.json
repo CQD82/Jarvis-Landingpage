@@ -1,0 +1,143 @@
+{
+  "meta": {
+    "title": "JARVIS — Homelab AI Cluster",
+    "description": "JARVIS — a private 18-node Kubernetes homelab: declarative GitOps infrastructure, multi-tier local AI inference, vision tracking, and zero-trust network segmentation."
+  },
+  "nav": {
+    "countdown": "Countdown",
+    "overview": "Overview",
+    "features": "Capabilities",
+    "architecture": "Architecture",
+    "models": "AI Models",
+    "security": "Security"
+  },
+  "hero": {
+    "badge": "PRIVATE HOMELAB PROJECT · v4.2 PRODUCTION-READY",
+    "description": "An 18-node Kubernetes homelab that thinks, sees, and listens at home — run entirely declaratively, with multi-tier local AI inference and zero-trust network segmentation.",
+    "ctaPrimary": "View Capabilities",
+    "ctaSecondary": "Architecture"
+  },
+  "statusTicker": [
+    "NEURAL LINK: STABLE",
+    "18/18 NODES ONLINE",
+    "INFERENCE LATENCY: NOMINAL",
+    "NETWORK SEGMENTATION: ACTIVE",
+    "GITOPS: SYNCHRONIZED"
+  ],
+  "stats": [
+    { "value": "18", "label": "Nodes in the Cluster" },
+    { "value": "7", "label": "AI Inference Tiers" },
+    { "value": "6", "label": "Namespaces, Default-Deny" },
+    { "value": "100%", "label": "Declarative via GitOps" }
+  ],
+  "goLive": {
+    "eyebrow": "Timeline",
+    "title": "Go-Live Countdown",
+    "description": "Planned production start of the entire cluster — from bare-metal bootstrap to the speaking assistant.",
+    "target": "Target · December 1, 2026",
+    "units": { "days": "Days", "hours": "Hrs", "minutes": "Min", "seconds": "Sec" }
+  },
+  "systemMap": {
+    "eyebrow": "System Overview",
+    "title": "The Entire Toolchain at a Glance",
+    "description": "JARVIS as the hub across six domains — from GitOps and AI inference to security, voice & vision, and observability.",
+    "categories": [
+      { "title": "GitOps & Automation" },
+      { "title": "Cluster & Storage" },
+      { "title": "AI Inference" },
+      { "title": "Security & Network" },
+      { "title": "Voice & Vision" },
+      { "title": "Observability & Ops" }
+    ]
+  },
+  "features": {
+    "eyebrow": "Core Capabilities",
+    "title": "What JARVIS Does",
+    "description": "From bare-metal node to speaking assistant — every capability runs on its own network, declaratively managed and versioned.",
+    "items": [
+      {
+        "title": "GitOps Infrastructure",
+        "description": "A Git monorepo as the single source of truth. Ansible for the node layer, FluxCD for cluster state — every change is a reviewable commit, every drift is reconciled automatically."
+      },
+      {
+        "title": "18-Node Bare-Metal Cluster",
+        "description": "Raspberry Pi 5s, an ODROID-H5, and a GPU workstation combined into a K3s cluster — from edge device to inference hardware, all self-hosted, no cloud VMs."
+      },
+      {
+        "title": "Multi-Tier Local AI Inference",
+        "description": "Requests are routed across staged hardware tiers — from NPU edge devices for instant short answers to a GPU workstation for complex reasoning. Cloud serves only as a tightly limited fallback."
+      },
+      {
+        "title": "Vision Tracker",
+        "description": "Active person recognition with camera tracking (pan/tilt/zoom). Processing stays entirely in-cluster; only embeddings of enrolled people are stored — never raw images, no cloud path."
+      },
+      {
+        "title": "Voice Assistant & HUD",
+        "description": "Wake-word detection, speech output, and a heads-up display showing identity and status in real time — including personalized greetings and presence-triggered automations."
+      },
+      {
+        "title": "Zero-Trust Network Segmentation",
+        "description": "Default-deny network policies per workload namespace, encrypted node-to-node traffic, and an explicit, versioned allow-set instead of implicit reachability."
+      },
+      {
+        "title": "Security & Compliance",
+        "description": "Controls aligned with ISO 27001, NIS-2, and CIS: secrets stored encrypted only, full API audit logging, runtime threat detection, and automated image scanning."
+      },
+      {
+        "title": "Automated Version Governance",
+        "description": "Dependencies and chart versions are continuously checked and proposed as reviewable pull requests — no silent 'latest', every change visible and traceable."
+      },
+      {
+        "title": "Backup, DR & Observability",
+        "description": "Tested backup and restore paths for the entire cluster, continuous monitoring, and dashboards across nodes, workloads, and network."
+      },
+      {
+        "title": "Home Automation",
+        "description": "Integration with smart-home devices on the local network and presence-driven automations, orchestrated from the same platform as the AI and voice services."
+      }
+    ]
+  },
+  "pipeline": {
+    "eyebrow": "Architecture",
+    "title": "Fully Declarative Rollout",
+    "description": "No more imperative Bash: every layer of the cluster is managed by a dedicated tool, every change is a commit.",
+    "steps": [
+      { "title": "Ansible", "description": "Node layer: OS, storage, GPU, and device preparation." },
+      { "title": "Helmfile", "description": "Minimal pre-Flux bootstrap for the core cluster services." },
+      { "title": "FluxCD", "description": "Rolls out all cluster workloads declaratively and reconciles drift automatically." },
+      { "title": "Renovate", "description": "Automatically opens pull requests for every version update." }
+    ],
+    "footerNote": "git commit → git push → Flux reconciles cluster state back to the Git source automatically"
+  },
+  "modelTiers": {
+    "eyebrow": "AI Model Layer",
+    "title": "The Right Hardware for Every Request",
+    "description": "Requests are routed across staged tiers — from edge accelerator to GPU workstation. Cloud is a tightly bounded fallback, not the default path.",
+    "headers": { "tier": "Tier", "hardware": "Hardware", "role": "Role" },
+    "rows": [
+      { "tier": "Edge / NPU", "hardware": "Edge AI accelerator", "role": "Intent recognition, instant answers" },
+      { "tier": "CPU Tier", "hardware": "Compact board, CPU inference", "role": "Large mixture-of-experts model for reasoning" },
+      { "tier": "Worker Tier", "hardware": "Compact cluster nodes", "role": "Distributed everyday inference" },
+      { "tier": "GPU Tier", "hardware": "Workstation with dedicated GPU", "role": "Production real-time inference" },
+      { "tier": "GPU Tier (Expansion)", "hardware": "Next-gen GPU", "role": "Multimodal audio & vision models" },
+      { "tier": "Cloud Fallback", "hardware": "External, tightly rate-limited", "role": "Last resort only, the single permitted egress" }
+    ]
+  },
+  "security": {
+    "eyebrow": "Security & Compliance",
+    "title": "Aligned with ISO 27001, NIS-2, and CIS",
+    "description": "Even as a private project, run like a production system — with documented controls instead of trust by word of mouth.",
+    "highlights": [
+      "Encryption of sensitive cluster data at rest",
+      "Full API audit logging with RBAC traceability",
+      "Secrets stored encrypted only in the repository (never in plaintext)",
+      "Policy enforcement, runtime threat detection, and image scanning",
+      "Encrypted node-to-node network traffic",
+      "Least-privilege access for all automation"
+    ],
+    "footerNote": "Infrastructure details, internal network addresses, and operational scripts stay private and are deliberately not published on this site."
+  },
+  "footer": {
+    "tagline": "Private Homelab Project"
+  }
+}

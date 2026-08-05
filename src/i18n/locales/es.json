@@ -1,0 +1,143 @@
+{
+  "meta": {
+    "title": "JARVIS — Clúster de IA Homelab",
+    "description": "JARVIS — un homelab Kubernetes privado de 18 nodos: infraestructura GitOps declarativa, inferencia de IA local en varios niveles, seguimiento visual y segmentación de red de confianza cero."
+  },
+  "nav": {
+    "countdown": "Cuenta atrás",
+    "overview": "Resumen",
+    "features": "Funciones",
+    "architecture": "Arquitectura",
+    "models": "Modelos de IA",
+    "security": "Seguridad"
+  },
+  "hero": {
+    "badge": "PROYECTO HOMELAB PRIVADO · v4.2 LISTO PARA PRODUCCIÓN",
+    "description": "Un homelab Kubernetes de 18 nodos que piensa, ve y escucha en casa — gestionado de forma totalmente declarativa, con inferencia de IA local en varios niveles y segmentación de red de confianza cero.",
+    "ctaPrimary": "Ver funciones",
+    "ctaSecondary": "Arquitectura"
+  },
+  "statusTicker": [
+    "ENLACE NEURONAL: ESTABLE",
+    "18/18 NODOS EN LÍNEA",
+    "LATENCIA DE INFERENCIA: NOMINAL",
+    "SEGMENTACIÓN DE RED: ACTIVA",
+    "GITOPS: SINCRONIZADO"
+  ],
+  "stats": [
+    { "value": "18", "label": "Nodos en el clúster" },
+    { "value": "7", "label": "Niveles de inferencia de IA" },
+    { "value": "6", "label": "Namespaces, denegación por defecto" },
+    { "value": "100%", "label": "Declarativo vía GitOps" }
+  ],
+  "goLive": {
+    "eyebrow": "Cronograma",
+    "title": "Cuenta atrás para el lanzamiento",
+    "description": "Inicio de producción planificado para todo el clúster — desde el arranque bare-metal hasta el asistente de voz.",
+    "target": "Objetivo · 1 de diciembre de 2026",
+    "units": { "days": "Días", "hours": "Hrs", "minutes": "Min", "seconds": "Seg" }
+  },
+  "systemMap": {
+    "eyebrow": "Resumen del sistema",
+    "title": "Toda la cadena de herramientas de un vistazo",
+    "description": "JARVIS como núcleo de seis dominios — desde GitOps e inferencia de IA hasta seguridad, voz y visión, y observabilidad.",
+    "categories": [
+      { "title": "GitOps y automatización" },
+      { "title": "Clúster y almacenamiento" },
+      { "title": "Inferencia de IA" },
+      { "title": "Seguridad y red" },
+      { "title": "Voz y visión" },
+      { "title": "Observabilidad y operaciones" }
+    ]
+  },
+  "features": {
+    "eyebrow": "Funciones principales",
+    "title": "Qué hace JARVIS",
+    "description": "Desde el nodo bare-metal hasta el asistente de voz — cada función corre en su propia red, gestionada y versionada de forma declarativa.",
+    "items": [
+      {
+        "title": "Infraestructura GitOps",
+        "description": "Un monorepo de Git como única fuente de verdad. Ansible para la capa de nodos, FluxCD para el estado del clúster — cada cambio es un commit revisable, cada desviación se reconcilia automáticamente."
+      },
+      {
+        "title": "Clúster bare-metal de 18 nodos",
+        "description": "Raspberry Pi 5, un ODROID-H5 y una estación de trabajo GPU combinados en un clúster K3s — desde el dispositivo perimetral hasta el hardware de inferencia, todo autoalojado, sin VMs en la nube."
+      },
+      {
+        "title": "Inferencia de IA local en varios niveles",
+        "description": "Las solicitudes se enrutan por niveles de hardware escalonados — desde dispositivos NPU perimetrales para respuestas instantáneas hasta una estación GPU para razonamiento complejo. La nube solo actúa como respaldo muy limitado."
+      },
+      {
+        "title": "Vision-Tracker",
+        "description": "Reconocimiento activo de personas con seguimiento de cámara (pan/tilt/zoom). El procesamiento permanece totalmente en el clúster; solo se almacenan los embeddings de personas registradas — nunca imágenes en bruto, sin ruta a la nube."
+      },
+      {
+        "title": "Asistente de voz y HUD",
+        "description": "Detección de palabra de activación, salida de voz y una pantalla HUD que muestra identidad y estado en tiempo real — incluyendo saludos personalizados y automatizaciones activadas por presencia."
+      },
+      {
+        "title": "Segmentación de red de confianza cero",
+        "description": "Políticas de red de denegación por defecto por namespace de carga de trabajo, tráfico cifrado de nodo a nodo, y un conjunto de permisos explícito y versionado en lugar de accesibilidad implícita."
+      },
+      {
+        "title": "Seguridad y cumplimiento",
+        "description": "Controles alineados con ISO 27001, NIS-2 y CIS: secretos almacenados solo cifrados, registro de auditoría API completo, detección de amenazas en tiempo de ejecución y escaneo automático de imágenes."
+      },
+      {
+        "title": "Gobernanza automatizada de versiones",
+        "description": "Las dependencias y versiones de charts se revisan continuamente y se proponen como pull requests revisables — nunca un 'latest' silencioso, cada cambio visible y trazable."
+      },
+      {
+        "title": "Backup, recuperación ante desastres y observabilidad",
+        "description": "Rutas de backup y restauración probadas para todo el clúster, monitorización continua y paneles sobre nodos, cargas de trabajo y red."
+      },
+      {
+        "title": "Domótica",
+        "description": "Integración con dispositivos domóticos en la red local y automatizaciones basadas en presencia, orquestadas desde la misma plataforma que los servicios de IA y voz."
+      }
+    ]
+  },
+  "pipeline": {
+    "eyebrow": "Arquitectura",
+    "title": "Despliegue totalmente declarativo",
+    "description": "Se acabó el Bash imperativo: cada capa del clúster la gestiona una herramienta dedicada, cada cambio es un commit.",
+    "steps": [
+      { "title": "Ansible", "description": "Capa de nodos: preparación de SO, almacenamiento, GPU y dispositivos." },
+      { "title": "Helmfile", "description": "Bootstrap mínimo previo a Flux para los servicios centrales del clúster." },
+      { "title": "FluxCD", "description": "Despliega todas las cargas de trabajo del clúster de forma declarativa y reconcilia la desviación automáticamente." },
+      { "title": "Renovate", "description": "Abre automáticamente pull requests para cada actualización de versión." }
+    ],
+    "footerNote": "git commit → git push → Flux reconcilia automáticamente el estado del clúster con el estado de Git"
+  },
+  "modelTiers": {
+    "eyebrow": "Capa de modelos de IA",
+    "title": "El hardware adecuado para cada solicitud",
+    "description": "Las solicitudes se enrutan por niveles escalonados — desde el acelerador perimetral hasta la estación GPU. La nube es un respaldo muy limitado, no la ruta habitual.",
+    "headers": { "tier": "Nivel", "hardware": "Hardware", "role": "Rol" },
+    "rows": [
+      { "tier": "Edge / NPU", "hardware": "Acelerador de IA perimetral", "role": "Reconocimiento de intención, respuestas instantáneas" },
+      { "tier": "Nivel CPU", "hardware": "Placa compacta, inferencia por CPU", "role": "Modelo grande de mixture-of-experts para razonamiento" },
+      { "tier": "Nivel Worker", "hardware": "Nodos de clúster compactos", "role": "Inferencia cotidiana distribuida" },
+      { "tier": "Nivel GPU", "hardware": "Estación de trabajo con GPU dedicada", "role": "Inferencia en tiempo real en producción" },
+      { "tier": "Nivel GPU (ampliación)", "hardware": "GPU de nueva generación", "role": "Modelos multimodales de audio y visión" },
+      { "tier": "Respaldo en la nube", "hardware": "Externo, con límite de tasa estricto", "role": "Solo como último recurso, la única salida permitida" }
+    ]
+  },
+  "security": {
+    "eyebrow": "Seguridad y cumplimiento",
+    "title": "Alineado con ISO 27001, NIS-2 y CIS",
+    "description": "Incluso como proyecto privado, operado como un sistema de producción — con controles documentados en vez de confianza de palabra.",
+    "highlights": [
+      "Cifrado de datos sensibles del clúster en reposo",
+      "Registro de auditoría API completo con trazabilidad RBAC",
+      "Secretos almacenados solo cifrados en el repositorio (nunca en texto plano)",
+      "Aplicación de políticas, detección de amenazas en tiempo de ejecución y escaneo de imágenes",
+      "Tráfico de red cifrado de nodo a nodo",
+      "Acceso de mínimo privilegio para toda la automatización"
+    ],
+    "footerNote": "Los detalles de infraestructura, direcciones de red internas y scripts operativos se mantienen privados y deliberadamente no se publican en este sitio."
+  },
+  "footer": {
+    "tagline": "Proyecto homelab privado"
+  }
+}

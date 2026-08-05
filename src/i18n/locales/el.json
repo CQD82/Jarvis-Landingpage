@@ -1,0 +1,143 @@
+{
+  "meta": {
+    "title": "JARVIS — Homelab AI Cluster",
+    "description": "Το JARVIS — ένα ιδιωτικό homelab Kubernetes με 18 κόμβους: δηλωτική υποδομή GitOps, τοπική AI inference πολλαπλών επιπέδων, παρακολούθηση όρασης και zero-trust segmentation δικτύου."
+  },
+  "nav": {
+    "countdown": "Αντίστροφη μέτρηση",
+    "overview": "Επισκόπηση",
+    "features": "Δυνατότητες",
+    "architecture": "Αρχιτεκτονική",
+    "models": "Μοντέλα AI",
+    "security": "Ασφάλεια"
+  },
+  "hero": {
+    "badge": "ΙΔΙΩΤΙΚΟ HOMELAB PROJECT · v4.2 ΕΤΟΙΜΟ ΓΙΑ ΠΑΡΑΓΩΓΗ",
+    "description": "Ένα homelab Kubernetes με 18 κόμβους που σκέφτεται, βλέπει και ακούει στο σπίτι — λειτουργεί εξ ολοκλήρου δηλωτικά, με τοπική AI inference πολλαπλών επιπέδων και zero-trust segmentation δικτύου.",
+    "ctaPrimary": "Δείτε τις δυνατότητες",
+    "ctaSecondary": "Αρχιτεκτονική"
+  },
+  "statusTicker": [
+    "NEURAL LINK: ΣΤΑΘΕΡΟ",
+    "18/18 ΚΟΜΒΟΙ ONLINE",
+    "ΚΑΘΥΣΤΕΡΗΣΗ INFERENCE: ΦΥΣΙΟΛΟΓΙΚΗ",
+    "SEGMENTATION ΔΙΚΤΥΟΥ: ΕΝΕΡΓΟ",
+    "GITOPS: ΣΥΓΧΡΟΝΙΣΜΕΝΟ"
+  ],
+  "stats": [
+    { "value": "18", "label": "Κόμβοι στο cluster" },
+    { "value": "7", "label": "Επίπεδα AI inference" },
+    { "value": "6", "label": "Namespaces, Default-Deny" },
+    { "value": "100%", "label": "Δηλωτικό μέσω GitOps" }
+  ],
+  "goLive": {
+    "eyebrow": "Χρονοδιάγραμμα",
+    "title": "Αντίστροφη μέτρηση για το Go-Live",
+    "description": "Προγραμματισμένη έναρξη παραγωγικής λειτουργίας ολόκληρου του cluster — από το bare-metal bootstrap μέχρι τον ομιλούντα βοηθό.",
+    "target": "Στόχος · 1η Δεκεμβρίου 2026",
+    "units": { "days": "Ημέρες", "hours": "Ώρες", "minutes": "Λεπτά", "seconds": "Δευτ." }
+  },
+  "systemMap": {
+    "eyebrow": "Επισκόπηση συστήματος",
+    "title": "Όλη η αλυσίδα εργαλείων με μια ματιά",
+    "description": "Το JARVIS ως κόμβος έξι τομέων — από GitOps και AI inference μέχρι ασφάλεια, Voice & Vision και observability.",
+    "categories": [
+      { "title": "GitOps & Αυτοματισμός" },
+      { "title": "Cluster & Αποθήκευση" },
+      { "title": "AI Inference" },
+      { "title": "Ασφάλεια & Δίκτυο" },
+      { "title": "Voice & Vision" },
+      { "title": "Observability & Ops" }
+    ]
+  },
+  "features": {
+    "eyebrow": "Βασικές λειτουργίες",
+    "title": "Τι κάνει το JARVIS",
+    "description": "Από τον κόμβο bare-metal μέχρι τον ομιλούντα βοηθό — κάθε λειτουργία τρέχει στο δικό της δίκτυο, με δηλωτική διαχείριση και versioning.",
+    "items": [
+      {
+        "title": "Υποδομή GitOps",
+        "description": "Ένα Git monorepo ως μοναδική πηγή αλήθειας. Ansible για το επίπεδο κόμβων, FluxCD για την κατάσταση του cluster — κάθε αλλαγή είναι ένα commit προς έλεγχο, κάθε drift συμφιλιώνεται αυτόματα."
+      },
+      {
+        "title": "Cluster 18 κόμβων bare-metal",
+        "description": "Raspberry Pi 5, ένα ODROID-H5 και ένα GPU workstation ενωμένα σε ένα K3s cluster — από τη συσκευή edge μέχρι το hardware inference, όλα αυτοφιλοξενούμενα, χωρίς cloud VMs."
+      },
+      {
+        "title": "Τοπική AI inference πολλαπλών επιπέδων",
+        "description": "Τα αιτήματα δρομολογούνται μέσα από διαβαθμισμένα επίπεδα hardware — από συσκευές NPU στο edge για άμεσες σύντομες απαντήσεις μέχρι ένα GPU workstation για πολύπλοκο reasoning. Το cloud χρησιμεύει μόνο ως αυστηρά περιορισμένο fallback."
+      },
+      {
+        "title": "Vision-Tracker",
+        "description": "Ενεργή αναγνώριση προσώπων με παρακολούθηση κάμερας (pan/tilt/zoom). Η επεξεργασία παραμένει πλήρως εντός του cluster· αποθηκεύονται μόνο τα embeddings εγγεγραμμένων προσώπων — ποτέ ακατέργαστες εικόνες, χωρίς διαδρομή προς το cloud."
+      },
+      {
+        "title": "Φωνητικός βοηθός & HUD",
+        "description": "Ανίχνευση λέξης αφύπνισης, εκφώνηση ομιλίας και μια οθόνη HUD που εμφανίζει ταυτότητα και κατάσταση σε πραγματικό χρόνο — με προσωποποιημένους χαιρετισμούς και αυτοματισμούς βάσει παρουσίας."
+      },
+      {
+        "title": "Zero-Trust segmentation δικτύου",
+        "description": "Πολιτικές δικτύου default-deny ανά namespace φόρτου εργασίας, κρυπτογραφημένη κίνηση κόμβου-προς-κόμβο και ένα ρητό, versioned σύνολο επιτρεπόμενων αντί για σιωπηρή προσβασιμότητα."
+      },
+      {
+        "title": "Ασφάλεια & Συμμόρφωση",
+        "description": "Έλεγχοι ευθυγραμμισμένοι με ISO 27001, NIS-2 και CIS: τα secrets αποθηκεύονται μόνο κρυπτογραφημένα, πλήρες API audit logging, ανίχνευση απειλών σε runtime και αυτόματο image scanning."
+      },
+      {
+        "title": "Αυτοματοποιημένη διαχείριση εκδόσεων",
+        "description": "Οι εξαρτήσεις και οι εκδόσεις charts ελέγχονται συνεχώς και προτείνονται ως pull requests προς έλεγχο — ποτέ σιωπηλό «latest», κάθε αλλαγή ορατή και ιχνηλατήσιμη."
+      },
+      {
+        "title": "Backup, DR & Observability",
+        "description": "Δοκιμασμένες διαδρομές backup και restore για ολόκληρο το cluster, συνεχής παρακολούθηση και dashboards για κόμβους, φόρτους εργασίας και δίκτυο."
+      },
+      {
+        "title": "Αυτοματισμός σπιτιού",
+        "description": "Σύνδεση με συσκευές smart-home στο τοπικό δίκτυο και αυτοματισμοί βάσει παρουσίας, οργανωμένοι από την ίδια πλατφόρμα με τις υπηρεσίες AI και voice."
+      }
+    ]
+  },
+  "pipeline": {
+    "eyebrow": "Αρχιτεκτονική",
+    "title": "Πλήρως δηλωτική ανάπτυξη",
+    "description": "Τέλος στο imperative Bash: κάθε επίπεδο του cluster διαχειρίζεται από ένα ειδικό εργαλείο, κάθε αλλαγή είναι ένα commit.",
+    "steps": [
+      { "title": "Ansible", "description": "Επίπεδο κόμβων: προετοιμασία OS, storage, GPU και συσκευών." },
+      { "title": "Helmfile", "description": "Ελάχιστο pre-Flux bootstrap για τις βασικές υπηρεσίες του cluster." },
+      { "title": "FluxCD", "description": "Αναπτύσσει όλα τα workloads του cluster δηλωτικά και συμφιλιώνει το drift αυτόματα." },
+      { "title": "Renovate", "description": "Ανοίγει αυτόματα pull requests για κάθε ενημέρωση έκδοσης." }
+    ],
+    "footerNote": "git commit → git push → Το Flux συμφιλιώνει αυτόματα την κατάσταση του cluster με το Git"
+  },
+  "modelTiers": {
+    "eyebrow": "Επίπεδο μοντέλων AI",
+    "title": "Το σωστό hardware για κάθε αίτημα",
+    "description": "Τα αιτήματα δρομολογούνται μέσα από διαβαθμισμένα επίπεδα — από τον επιταχυντή στο edge μέχρι το GPU workstation. Το cloud είναι ένα αυστηρά περιορισμένο fallback, όχι ο κανόνας.",
+    "headers": { "tier": "Επίπεδο", "hardware": "Hardware", "role": "Ρόλος" },
+    "rows": [
+      { "tier": "Edge / NPU", "hardware": "Επιταχυντής AI στο edge", "role": "Αναγνώριση πρόθεσης, άμεσες απαντήσεις" },
+      { "tier": "Επίπεδο CPU", "hardware": "Συμπαγές board, inference σε CPU", "role": "Μεγάλο μοντέλο mixture-of-experts για reasoning" },
+      { "tier": "Επίπεδο Worker", "hardware": "Συμπαγείς κόμβοι cluster", "role": "Κατανεμημένη καθημερινή inference" },
+      { "tier": "Επίπεδο GPU", "hardware": "Workstation με αποκλειστική GPU", "role": "Παραγωγική inference σε πραγματικό χρόνο" },
+      { "tier": "Επίπεδο GPU (επέκταση)", "hardware": "GPU επόμενης γενιάς", "role": "Πολυτροπικά μοντέλα ήχου & όρασης" },
+      { "tier": "Cloud Fallback", "hardware": "Εξωτερικό, αυστηρά rate-limited", "role": "Μόνο ως έσχατη λύση, το μοναδικό επιτρεπόμενο egress" }
+    ]
+  },
+  "security": {
+    "eyebrow": "Ασφάλεια & Συμμόρφωση",
+    "title": "Ευθυγραμμισμένο με ISO 27001, NIS-2 και CIS",
+    "description": "Ακόμη και ως ιδιωτικό project, λειτουργεί όπως ένα παραγωγικό σύστημα — με τεκμηριωμένους ελέγχους αντί για εμπιστοσύνη στα λόγια.",
+    "highlights": [
+      "Κρυπτογράφηση ευαίσθητων δεδομένων του cluster σε κατάσταση ηρεμίας",
+      "Πλήρες API audit logging με ιχνηλασιμότητα RBAC",
+      "Τα secrets αποθηκεύονται μόνο κρυπτογραφημένα στο repository (ποτέ σε plaintext)",
+      "Επιβολή πολιτικών, ανίχνευση απειλών σε runtime και image scanning",
+      "Κρυπτογραφημένη κίνηση δικτύου κόμβου-προς-κόμβο",
+      "Πρόσβαση ελάχιστου προνομίου για κάθε αυτοματισμό"
+    ],
+    "footerNote": "Οι λεπτομέρειες υποδομής, οι εσωτερικές διευθύνσεις δικτύου και τα scripts λειτουργίας παραμένουν ιδιωτικά και δεν δημοσιεύονται σκόπιμα σε αυτόν τον ιστότοπο."
+  },
+  "footer": {
+    "tagline": "Ιδιωτικό project homelab"
+  }
+}

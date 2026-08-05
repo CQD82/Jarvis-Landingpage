@@ -1,4 +1,5 @@
 import { CursorGlow } from "@/components/landing/CursorGlow"
+import { DocumentMeta } from "@/components/landing/DocumentMeta"
 import { Features } from "@/components/landing/Features"
 import { Footer } from "@/components/landing/Footer"
 import { GoLiveCountdown } from "@/components/landing/GoLiveCountdown"
@@ -14,6 +15,7 @@ import { SystemMap } from "@/components/landing/SystemMap"
 function App() {
   return (
     <div className="min-h-screen">
+      <DocumentMeta />
       <NeuralBackground />
       <CursorGlow />
       <ScrollProgress />

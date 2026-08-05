@@ -1,16 +1,11 @@
 import { gsap } from "gsap";
 import { useEffect, useRef } from "react";
-
-const MESSAGES = [
-  "NEURAL LINK: STABIL",
-  "18/18 NODES ONLINE",
-  "INFERENZ-LATENZ: NOMINAL",
-  "NETZWERK-SEGMENTIERUNG: AKTIV",
-  "GITOPS: SYNCHRONISIERT",
-];
+import { useTranslation } from "react-i18next";
 
 /** Rotating single-line HUD readout, cross-faded via GSAP. Static on reduced motion. */
 export function StatusTicker() {
+  const { t } = useTranslation();
+  const messages = t("statusTicker", { returnObjects: true }) as string[];
   const ref = useRef<HTMLSpanElement | null>(null);
 
   useEffect(() => {
@@ -24,7 +19,7 @@ export function StatusTicker() {
 
     const showNext = () => {
       if (cancelled) return;
-      index = (index + 1) % MESSAGES.length;
+      index = (index + 1) % messages.length;
       gsap.to(el, {
         opacity: 0,
         y: -6,
@@ -32,7 +27,7 @@ export function StatusTicker() {
         ease: "power1.in",
         onComplete: () => {
           if (cancelled) return;
-          el.textContent = MESSAGES[index];
+          el.textContent = messages[index];
           gsap.fromTo(
             el,
             { opacity: 0, y: 6 },
@@ -47,13 +42,13 @@ export function StatusTicker() {
       cancelled = true;
       window.clearInterval(interval);
     };
-  }, []);
+  }, [messages]);
 
   return (
     <span className="inline-flex items-center gap-2">
       <span className="size-1.5 shrink-0 rounded-full bg-[var(--hud-reactor)] shadow-[0_0_6px_var(--hud-reactor)]" />
       <span ref={ref} className="inline-block">
-        {MESSAGES[0]}
+        {messages[0]}
       </span>
     </span>
   );

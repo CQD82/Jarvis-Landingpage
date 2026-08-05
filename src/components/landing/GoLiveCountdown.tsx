@@ -1,5 +1,6 @@
 import { gsap } from "gsap";
 import { useEffect, useRef } from "react";
+import { useTranslation } from "react-i18next";
 import { HudCorners } from "@/components/landing/HudCorners";
 import { Reveal } from "@/components/landing/Reveal";
 import { SectionHeading } from "@/components/landing/SectionHeading";
@@ -24,15 +25,15 @@ function getTimeParts(): TimeParts {
   };
 }
 
-const UNITS: { key: keyof TimeParts; label: string }[] = [
-  { key: "days", label: "Tage" },
-  { key: "hours", label: "Std" },
-  { key: "minutes", label: "Min" },
-  { key: "seconds", label: "Sek" },
-];
+const UNIT_KEYS: (keyof TimeParts)[] = ["days", "hours", "minutes", "seconds"];
 
 /** HUD-style countdown to go-live, ticking every second with a GSAP flip pulse per digit change. */
 export function GoLiveCountdown() {
+  const { t } = useTranslation();
+  const unitLabels = t("goLive.units", { returnObjects: true }) as Record<
+    keyof TimeParts,
+    string
+  >;
   const refs = useRef<Partial<Record<keyof TimeParts, HTMLSpanElement | null>>>({});
   const hasRunOnce = useRef(false);
 
@@ -43,7 +44,7 @@ export function GoLiveCountdown() {
 
     const tick = () => {
       const parts = getTimeParts();
-      for (const { key } of UNITS) {
+      for (const key of UNIT_KEYS) {
         const el = refs.current[key];
         if (!el) continue;
         const value =
@@ -71,9 +72,9 @@ export function GoLiveCountdown() {
     <section id="go-live" className="border-t border-border/60 px-6 py-24">
       <Reveal>
         <SectionHeading
-          eyebrow="Zeitplan"
-          title="Go-Live Countdown"
-          description="Geplanter produktiver Start des gesamten Clusters — vom Bare-Metal-Bootstrap bis zur sprechenden Assistenz."
+          eyebrow={t("goLive.eyebrow")}
+          title={t("goLive.title")}
+          description={t("goLive.description")}
         />
       </Reveal>
 
@@ -81,10 +82,10 @@ export function GoLiveCountdown() {
         <div className="relative mx-auto mt-14 max-w-xl">
           <HudCorners />
           <p className="mb-4 text-center font-mono text-xs tracking-[0.3em] text-primary/80 uppercase">
-            Zielsetzung · 01. Dezember 2026
+            {t("goLive.target")}
           </p>
           <div className="grid grid-cols-4 gap-px overflow-hidden rounded-xl border border-border bg-border">
-            {UNITS.map(({ key, label }) => (
+            {UNIT_KEYS.map((key) => (
               <div key={key} className="bg-card px-3 py-6 text-center">
                 <span
                   ref={(el) => {
@@ -95,7 +96,7 @@ export function GoLiveCountdown() {
                   00
                 </span>
                 <span className="mt-1 block font-mono text-[0.65rem] tracking-wide text-muted-foreground uppercase">
-                  {label}
+                  {unitLabels[key]}
                 </span>
               </div>
             ))}

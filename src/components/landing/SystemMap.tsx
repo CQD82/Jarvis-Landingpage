@@ -1,9 +1,14 @@
 import { motion } from "framer-motion";
 import { Radar } from "lucide-react";
 import type { CSSProperties } from "react";
+import { useTranslation } from "react-i18next";
 import { Reveal } from "@/components/landing/Reveal";
 import { SectionHeading } from "@/components/landing/SectionHeading";
-import { techCategories } from "@/data/jarvis";
+import { techCategoryIcons, techCategoryTools } from "@/data/jarvis";
+
+interface CategoryText {
+  title: string;
+}
 
 /**
  * Six spokes evenly spaced around the hub, starting at the top (-90deg).
@@ -21,13 +26,16 @@ const SPOKES = ANGLES_DEG.map((deg) => {
 });
 
 export function SystemMap() {
+  const { t } = useTranslation();
+  const categories = t("systemMap.categories", { returnObjects: true }) as CategoryText[];
+
   return (
     <section id="system-map" className="border-t border-border/60 px-6 py-24">
       <Reveal>
         <SectionHeading
-          eyebrow="System-Übersicht"
-          title="Die gesamte Werkzeugkette auf einen Blick"
-          description="JARVIS als Knotenpunkt aus sechs Domänen — von GitOps über KI-Inferenz bis Sicherheit, Voice & Vision und Observability."
+          eyebrow={t("systemMap.eyebrow")}
+          title={t("systemMap.title")}
+          description={t("systemMap.description")}
         />
       </Reveal>
 
@@ -87,11 +95,13 @@ export function SystemMap() {
           </div>
 
           {/* Category cards */}
-          {techCategories.map((category, i) => {
+          {categories.map((category, i) => {
             const spoke = SPOKES[i];
+            const Icon = techCategoryIcons[i];
+            const tools = techCategoryTools[i];
             return (
               <div
-                key={category.title}
+                key={i}
                 className="absolute w-48 -translate-x-1/2 -translate-y-1/2"
                 style={{ left: `${spoke.x}%`, top: `${spoke.y}%` }}
               >
@@ -103,13 +113,13 @@ export function SystemMap() {
                   className="rounded-lg border border-border bg-card/90 p-3 text-center backdrop-blur-sm"
                 >
                   <div className="mx-auto inline-flex size-8 items-center justify-center rounded-md border border-primary/30 bg-primary/10 text-primary">
-                    <category.icon className="size-4" aria-hidden="true" />
+                    <Icon className="size-4" aria-hidden="true" />
                   </div>
                   <p className="mt-2 font-display text-xs font-semibold tracking-wide">
                     {category.title}
                   </p>
                   <div className="mt-2 flex flex-wrap justify-center gap-1">
-                    {category.tools.map((tool) => (
+                    {tools.map((tool) => (
                       <span
                         key={tool}
                         className="rounded border border-border bg-background/60 px-1.5 py-0.5 font-mono text-[0.65rem] text-muted-foreground"
@@ -127,28 +137,31 @@ export function SystemMap() {
 
       {/* Fallback grid — small/medium screens */}
       <div className="mx-auto mt-14 grid max-w-3xl grid-cols-1 gap-4 sm:grid-cols-2 lg:hidden">
-        {techCategories.map((category, i) => (
-          <Reveal key={category.title} delay={Math.min(i * 0.05, 0.3)}>
-            <div className="rounded-lg border border-border bg-card p-4">
-              <div className="inline-flex size-9 items-center justify-center rounded-md border border-primary/30 bg-primary/10 text-primary">
-                <category.icon className="size-4" aria-hidden="true" />
+        {categories.map((category, i) => {
+          const Icon = techCategoryIcons[i];
+          return (
+            <Reveal key={i} delay={Math.min(i * 0.05, 0.3)}>
+              <div className="rounded-lg border border-border bg-card p-4">
+                <div className="inline-flex size-9 items-center justify-center rounded-md border border-primary/30 bg-primary/10 text-primary">
+                  <Icon className="size-4" aria-hidden="true" />
+                </div>
+                <p className="mt-3 font-display text-sm font-semibold tracking-wide">
+                  {category.title}
+                </p>
+                <div className="mt-2 flex flex-wrap gap-1.5">
+                  {techCategoryTools[i].map((tool) => (
+                    <span
+                      key={tool}
+                      className="rounded border border-border bg-background/60 px-1.5 py-0.5 font-mono text-[0.7rem] text-muted-foreground"
+                    >
+                      {tool}
+                    </span>
+                  ))}
+                </div>
               </div>
-              <p className="mt-3 font-display text-sm font-semibold tracking-wide">
-                {category.title}
-              </p>
-              <div className="mt-2 flex flex-wrap gap-1.5">
-                {category.tools.map((tool) => (
-                  <span
-                    key={tool}
-                    className="rounded border border-border bg-background/60 px-1.5 py-0.5 font-mono text-[0.7rem] text-muted-foreground"
-                  >
-                    {tool}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </Reveal>
-        ))}
+            </Reveal>
+          );
+        })}
       </div>
     </section>
   );

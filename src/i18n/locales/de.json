@@ -1,0 +1,143 @@
+{
+  "meta": {
+    "title": "JARVIS — Homelab AI Cluster",
+    "description": "JARVIS — ein privates 18-Node Kubernetes-Homelab: deklarative GitOps-Infrastruktur, mehrstufige lokale KI-Inferenz, Vision-Tracking und Zero-Trust-Netzwerksegmentierung."
+  },
+  "nav": {
+    "countdown": "Countdown",
+    "overview": "Übersicht",
+    "features": "Fähigkeiten",
+    "architecture": "Architektur",
+    "models": "KI-Modelle",
+    "security": "Sicherheit"
+  },
+  "hero": {
+    "badge": "PRIVATES HOMELAB PROJEKT · v4.2 PRODUCTION-READY",
+    "description": "Ein 18-Node Kubernetes-Homelab, das zuhause denkt, sieht und zuhört — vollständig deklarativ betrieben, mit mehrstufiger lokaler KI-Inferenz und Zero-Trust-Netzwerksegmentierung.",
+    "ctaPrimary": "Fähigkeiten ansehen",
+    "ctaSecondary": "Architektur"
+  },
+  "statusTicker": [
+    "NEURAL LINK: STABIL",
+    "18/18 NODES ONLINE",
+    "INFERENZ-LATENZ: NOMINAL",
+    "NETZWERK-SEGMENTIERUNG: AKTIV",
+    "GITOPS: SYNCHRONISIERT"
+  ],
+  "stats": [
+    { "value": "18", "label": "Nodes im Cluster" },
+    { "value": "7", "label": "KI-Inferenz-Tiers" },
+    { "value": "6", "label": "Namespaces, Default-Deny" },
+    { "value": "100%", "label": "Deklarativ via GitOps" }
+  ],
+  "goLive": {
+    "eyebrow": "Zeitplan",
+    "title": "Go-Live Countdown",
+    "description": "Geplanter produktiver Start des gesamten Clusters — vom Bare-Metal-Bootstrap bis zur sprechenden Assistenz.",
+    "target": "Zielsetzung · 01. Dezember 2026",
+    "units": { "days": "Tage", "hours": "Std", "minutes": "Min", "seconds": "Sek" }
+  },
+  "systemMap": {
+    "eyebrow": "System-Übersicht",
+    "title": "Die gesamte Werkzeugkette auf einen Blick",
+    "description": "JARVIS als Knotenpunkt aus sechs Domänen — von GitOps über KI-Inferenz bis Sicherheit, Voice & Vision und Observability.",
+    "categories": [
+      { "title": "GitOps & Automatisierung" },
+      { "title": "Cluster & Storage" },
+      { "title": "KI-Inferenz" },
+      { "title": "Sicherheit & Netzwerk" },
+      { "title": "Voice & Vision" },
+      { "title": "Observability & Ops" }
+    ]
+  },
+  "features": {
+    "eyebrow": "Kernfunktionen",
+    "title": "Was JARVIS leistet",
+    "description": "Vom Bare-Metal-Node bis zur sprechenden Assistenz — jede Fähigkeit läuft im eigenen Netzwerk, deklarativ verwaltet und versioniert.",
+    "items": [
+      {
+        "title": "GitOps-Infrastruktur",
+        "description": "Ein Git-Monorepo als Single Source of Truth. Ansible für die Node-Ebene, FluxCD für den Cluster-Zustand — jede Änderung ein reviewbarer Commit, jeder Drift wird automatisch zurückreconciled."
+      },
+      {
+        "title": "18-Node Bare-Metal-Cluster",
+        "description": "Raspberry Pi 5, ein ODROID-H5 und eine GPU-Workstation im Verbund als K3s-Cluster — vom Edge-Gerät bis zur Inferenz-Hardware alles selbst betrieben, keine Cloud-VMs."
+      },
+      {
+        "title": "Mehrstufige lokale KI-Inferenz",
+        "description": "Anfragen laufen über gestaffelte Hardware-Tiers — vom NPU-Edge-Gerät für sofortige Kurzantworten bis zur GPU-Workstation für komplexes Reasoning. Cloud dient nur als eng limitierter Fallback."
+      },
+      {
+        "title": "Vision-Tracker",
+        "description": "Aktive Personenerkennung mit Kameraverfolgung (Pan/Tilt/Zoom). Verarbeitung vollständig lokal im Cluster, gespeichert werden ausschließlich Embeddings enrollter Personen — nie Rohbilder, kein Cloud-Pfad."
+      },
+      {
+        "title": "Sprachassistent & HUD",
+        "description": "Wake-Word-Erkennung, Sprachausgabe und ein Head-up-Display, das Identität und Status in Echtzeit anzeigt — inklusive namentlicher Begrüßung und präsenzgesteuerten Automationen."
+      },
+      {
+        "title": "Zero-Trust-Netzwerksegmentierung",
+        "description": "Default-Deny-Netzwerkrichtlinien je Workload-Namespace, verschlüsselter Node-zu-Node-Traffic und ein explizites, versioniertes Allow-Set statt impliziter Erreichbarkeit."
+      },
+      {
+        "title": "Sicherheit & Compliance",
+        "description": "An ISO 27001, NIS-2 und CIS orientierte Kontrollen: Secrets ausschließlich verschlüsselt, vollständiges API-Audit-Logging, Laufzeit-Bedrohungserkennung und automatisches Image-Scanning."
+      },
+      {
+        "title": "Automatisierte Versions-Governance",
+        "description": "Abhängigkeiten und Chart-Versionen werden laufend geprüft und als reviewbare Pull-Requests vorgeschlagen — kein stilles „latest“, jede Änderung sichtbar und nachvollziehbar."
+      },
+      {
+        "title": "Backup, DR & Observability",
+        "description": "Getestete Backup- und Restore-Pfade für den gesamten Cluster, durchgehendes Monitoring und Dashboards über Nodes, Workloads und Netzwerk hinweg."
+      },
+      {
+        "title": "Heimautomation",
+        "description": "Anbindung an Smart-Home-Geräte im lokalen Netz und präsenzgesteuerte Automationen, orchestriert aus derselben Plattform wie die KI- und Voice-Dienste."
+      }
+    ]
+  },
+  "pipeline": {
+    "eyebrow": "Architektur",
+    "title": "Vollständig deklarative Ausrollung",
+    "description": "Kein imperatives Bash mehr: jede Ebene des Clusters wird von einem dedizierten Tool verwaltet, jede Änderung ist ein Commit.",
+    "steps": [
+      { "title": "Ansible", "description": "Node-Ebene: Betriebssystem, Storage, GPU- und Geräte-Vorbereitung." },
+      { "title": "Helmfile", "description": "Minimaler Pre-Flux-Bootstrap für die Kern-Cluster-Dienste." },
+      { "title": "FluxCD", "description": "Rollt alle Cluster-Workloads deklarativ aus und reconciled Drift automatisch." },
+      { "title": "Renovate", "description": "Öffnet automatisch Pull-Requests für jedes Versions-Update." }
+    ],
+    "footerNote": "git commit → git push → Flux reconciled Cluster-Zustand automatisch zurück auf den Git-Stand"
+  },
+  "modelTiers": {
+    "eyebrow": "KI-Modell-Layer",
+    "title": "Die richtige Hardware für jede Anfrage",
+    "description": "Anfragen werden über gestaffelte Tiers geroutet — vom Edge-Beschleuniger bis zur GPU-Workstation. Cloud ist ein eng begrenzter Fallback, kein Regelfall.",
+    "headers": { "tier": "Tier", "hardware": "Hardware", "role": "Rolle" },
+    "rows": [
+      { "tier": "Edge / NPU", "hardware": "KI-Beschleuniger am Edge", "role": "Intent-Erkennung, Sofortantworten" },
+      { "tier": "CPU-Tier", "hardware": "Kompaktes Board, CPU-Inferenz", "role": "Großes Mixture-of-Experts-Modell für Reasoning" },
+      { "tier": "Worker-Tier", "hardware": "Kompakte Cluster-Nodes", "role": "Verteilte Alltagsinferenz" },
+      { "tier": "GPU-Tier", "hardware": "Workstation mit dedizierter GPU", "role": "Produktive Echtzeit-Inferenz" },
+      { "tier": "GPU-Tier (Ausbau)", "hardware": "Nächste GPU-Generation", "role": "Multimodale Audio- & Vision-Modelle" },
+      { "tier": "Cloud-Fallback", "hardware": "Extern, streng ratenbegrenzt", "role": "Nur als letzter Ausweg, ein einziger erlaubter Egress" }
+    ]
+  },
+  "security": {
+    "eyebrow": "Sicherheit & Compliance",
+    "title": "An ISO 27001, NIS-2 und CIS orientiert",
+    "description": "Auch als privates Projekt betrieben wie ein produktives System — mit dokumentierten Kontrollen statt Vertrauen auf Zuruf.",
+    "highlights": [
+      "Verschlüsselung sensibler Cluster-Daten im Ruhezustand",
+      "Vollständiges API-Audit-Logging mit RBAC-Nachvollziehbarkeit",
+      "Secrets ausschließlich verschlüsselt im Repository (nie im Klartext)",
+      "Policy-Enforcement, Laufzeit-Bedrohungserkennung und Image-Scanning",
+      "Verschlüsselter Node-zu-Node-Netzwerkverkehr",
+      "Least-Privilege-Zugriff für sämtliche Automatisierung"
+    ],
+    "footerNote": "Infrastruktur-Details, interne Netzwerkadressen und Betriebs-Skripte bleiben privat und werden auf dieser Seite bewusst nicht veröffentlicht."
+  },
+  "footer": {
+    "tagline": "Privates Homelab-Projekt"
+  }
+}

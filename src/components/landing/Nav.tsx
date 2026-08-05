@@ -1,14 +1,10 @@
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { LanguageSwitcher } from "@/components/landing/LanguageSwitcher";
 import { Logo } from "@/components/landing/Logo";
 
-const links = [
-  { href: "#go-live", label: "Countdown" },
-  { href: "#system-map", label: "Übersicht" },
-  { href: "#features", label: "Fähigkeiten" },
-  { href: "#architecture", label: "Architektur" },
-  { href: "#models", label: "KI-Modelle" },
-  { href: "#security", label: "Sicherheit" },
-];
+const HREFS = ["#go-live", "#system-map", "#features", "#architecture", "#models", "#security"];
+const NAV_KEYS = ["countdown", "overview", "features", "architecture", "models", "security"] as const;
 
 /** Highlights the nav link for whichever section is currently in view. */
 function useActiveSection(ids: string[]) {
@@ -37,12 +33,13 @@ function useActiveSection(ids: string[]) {
 }
 
 export function Nav() {
-  const active = useActiveSection(links.map((l) => l.href.slice(1)));
+  const { t } = useTranslation();
+  const active = useActiveSection(HREFS.map((href) => href.slice(1)));
 
   return (
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-md">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
-        <a href="#top" className="flex items-center gap-2.5">
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-6">
+        <a href="#top" className="flex shrink-0 items-center gap-2.5">
           <Logo size={26} />
           <span className="font-display text-lg font-semibold tracking-widest">
             JARVIS
@@ -52,23 +49,25 @@ export function Nav() {
           </span>
         </a>
         <nav className="hidden items-center gap-8 md:flex">
-          {links.map((link) => {
-            const isActive = active === link.href.slice(1);
+          {NAV_KEYS.map((key, i) => {
+            const href = HREFS[i];
+            const isActive = active === href.slice(1);
             return (
               <a
-                key={link.href}
-                href={link.href}
+                key={href}
+                href={href}
                 className={`text-sm transition-colors ${
                   isActive
                     ? "text-primary text-glow"
                     : "text-muted-foreground hover:text-foreground"
                 }`}
               >
-                {link.label}
+                {t(`nav.${key}`)}
               </a>
             );
           })}
         </nav>
+        <LanguageSwitcher />
       </div>
     </header>
   );
