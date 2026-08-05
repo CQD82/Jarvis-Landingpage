@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Logo } from "@/components/landing/Logo";
 
 const links = [
+  { href: "#go-live", label: "Countdown" },
   { href: "#system-map", label: "Übersicht" },
   { href: "#features", label: "Fähigkeiten" },
   { href: "#architecture", label: "Architektur" },

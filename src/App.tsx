@@ -1,6 +1,7 @@
 import { CursorGlow } from "@/components/landing/CursorGlow"
 import { Features } from "@/components/landing/Features"
 import { Footer } from "@/components/landing/Footer"
+import { GoLiveCountdown } from "@/components/landing/GoLiveCountdown"
 import { Hero } from "@/components/landing/Hero"
 import { ModelTiers } from "@/components/landing/ModelTiers"
 import { Nav } from "@/components/landing/Nav"
@@ -19,6 +20,7 @@ function App() {
       <Nav />
       <main>
         <Hero />
+        <GoLiveCountdown />
         <SystemMap />
         <Features />
         <Pipeline />
