@@ -17,7 +17,7 @@ export function Features() {
         {features.map((feature, i) => (
           <Reveal key={feature.title} delay={Math.min(i * 0.05, 0.3)}>
             <div className="group h-full rounded-xl border border-border bg-card p-6 transition-colors hover:border-primary/40">
-              <div className="inline-flex size-10 items-center justify-center rounded-lg border border-primary/30 bg-primary/10 text-primary transition-shadow group-hover:shadow-[0_0_16px_color-mix(in_oklab,var(--hud-cyan)_40%,transparent)]">
+              <div className="inline-flex size-10 items-center justify-center rounded-lg border border-primary/30 bg-primary/10 text-primary transition-shadow group-hover:shadow-[0_0_16px_color-mix(in_oklab,var(--hud-gold)_40%,transparent)]">
                 <feature.icon className="size-5" aria-hidden="true" />
               </div>
               <h3 className="mt-4 font-display text-base font-semibold tracking-tight">

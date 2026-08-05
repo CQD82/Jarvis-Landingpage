@@ -6,36 +6,38 @@
 /*
   JARVIS runs a single always-dark "HUD" theme by design (futuristic
   sci-fi control-panel aesthetic) rather than a light/dark toggle.
+  Palette: Mark-XLVI-style armor — red + gold plating, with the icy
+  white-cyan "arc reactor" glow reserved for core/energy accents only.
   Tokens still follow the shadcn convention so any future shadcn/ui
   component drops in without restyling.
 */
 :root {
   --radius: 0.5rem;
 
-  --background: #05070d;
-  --foreground: #e6f6ff;
-  --card: #0a0f1a;
-  --card-foreground: #e6f6ff;
-  --popover: #0a0f1a;
-  --popover-foreground: #e6f6ff;
-  --primary: #22d3ee;
-  --primary-foreground: #05070d;
-  --secondary: #101725;
-  --secondary-foreground: #9fd8ec;
-  --muted: #0d1421;
-  --muted-foreground: #7791a8;
-  --accent: #142033;
-  --accent-foreground: #67e8f9;
-  --destructive: #fb7185;
-  --border: rgba(103, 232, 249, 0.14);
-  --input: rgba(103, 232, 249, 0.16);
-  --ring: #22d3ee;
+  --background: #0c0705;
+  --foreground: #f5e9d6;
+  --card: #170f09;
+  --card-foreground: #f5e9d6;
+  --popover: #170f09;
+  --popover-foreground: #f5e9d6;
+  --primary: #f2b545;
+  --primary-foreground: #1a1006;
+  --secondary: #241209;
+  --secondary-foreground: #f2c98a;
+  --muted: #1c130b;
+  --muted-foreground: #c2b09a;
+  --accent: #2a160a;
+  --accent-foreground: #f2b545;
+  --destructive: #ff5a36;
+  --border: rgba(242, 181, 69, 0.16);
+  --input: rgba(242, 181, 69, 0.2);
+  --ring: #f2b545;
 
   /* HUD-specific accents */
-  --hud-cyan: #22d3ee;
-  --hud-blue: #3b82f6;
-  --hud-violet: #818cf8;
-  --hud-grid: rgba(103, 232, 249, 0.05);
+  --hud-gold: #f2b545;
+  --hud-red: #e0303f;
+  --hud-reactor: #bdeeff;
+  --hud-grid: rgba(242, 181, 69, 0.045);
 }
 
 @theme inline {
@@ -81,7 +83,7 @@
     background-image:
       repeating-linear-gradient(
         0deg,
-        rgba(34, 211, 238, 0.025) 0px,
+        rgba(242, 181, 69, 0.03) 0px,
         transparent 1px,
         transparent 3px
       ),
@@ -109,14 +111,14 @@
     left: -12%;
     width: 42vw;
     height: 42vw;
-    background: color-mix(in oklab, var(--hud-cyan) 9%, transparent);
+    background: color-mix(in oklab, var(--hud-gold) 9%, transparent);
   }
   body::after {
     right: -12%;
     bottom: -15%;
     width: 46vw;
     height: 46vw;
-    background: color-mix(in oklab, var(--hud-violet) 8%, transparent);
+    background: color-mix(in oklab, var(--hud-red) 10%, transparent);
   }
 }
 
@@ -129,13 +131,13 @@
 @layer utilities {
   .text-glow {
     text-shadow:
-      0 0 12px color-mix(in oklab, var(--hud-cyan) 55%, transparent),
-      0 0 32px color-mix(in oklab, var(--hud-cyan) 25%, transparent);
+      0 0 12px color-mix(in oklab, var(--hud-gold) 55%, transparent),
+      0 0 32px color-mix(in oklab, var(--hud-gold) 25%, transparent);
   }
   .border-glow {
     box-shadow:
-      0 0 0 1px color-mix(in oklab, var(--hud-cyan) 25%, transparent) inset,
-      0 0 24px color-mix(in oklab, var(--hud-cyan) 8%, transparent);
+      0 0 0 1px color-mix(in oklab, var(--hud-gold) 25%, transparent) inset,
+      0 0 24px color-mix(in oklab, var(--hud-gold) 8%, transparent);
   }
 }
 

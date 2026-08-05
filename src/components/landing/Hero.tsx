@@ -4,17 +4,24 @@ import { GradientShimmer } from "@/components/ui/gradient-shimmer";
 import { HudCorners } from "@/components/landing/HudCorners";
 import { stats } from "@/data/jarvis";
 
+/** Repulsor-red → armor-gold sweep for the hero title. */
+const TITLE_GRADIENT = [
+  { position: 0, color: "#ff5c3d" },
+  { position: 0.5, color: "#f2b545" },
+  { position: 1, color: "#ffe3a3" },
+];
+
 export function Hero() {
   return (
     <section id="top" className="relative overflow-hidden px-6 pt-20 pb-24 sm:pt-28">
-      {/* Ambient glow — layered cyan + violet for depth */}
+      {/* Ambient glow — layered gold + red for depth, armor-plate style */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[560px] bg-[radial-gradient(ellipse_at_top,color-mix(in_oklab,var(--hud-cyan)_20%,transparent),transparent_65%)]"
+        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[560px] bg-[radial-gradient(ellipse_at_top,color-mix(in_oklab,var(--hud-gold)_20%,transparent),transparent_65%)]"
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute top-10 left-1/2 -z-10 h-[420px] w-[720px] -translate-x-1/2 rounded-full bg-[radial-gradient(ellipse,color-mix(in_oklab,var(--hud-violet)_16%,transparent),transparent_70%)] blur-2xl"
+        className="pointer-events-none absolute top-10 left-1/2 -z-10 h-[420px] w-[720px] -translate-x-1/2 rounded-full bg-[radial-gradient(ellipse,color-mix(in_oklab,var(--hud-red)_18%,transparent),transparent_70%)] blur-2xl"
       />
       {/* Thin rotating targeting ring behind the title */}
       <div
@@ -44,7 +51,7 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="font-display text-6xl font-bold tracking-tight sm:text-8xl"
         >
-          <GradientShimmer gradient="mint" duration={2.2} spread={4}>
+          <GradientShimmer gradient={TITLE_GRADIENT} duration={2.2} spread={4}>
             JARVIS
           </GradientShimmer>
         </motion.h1>
@@ -68,7 +75,7 @@ export function Hero() {
         >
           <a
             href="#features"
-            className="group inline-flex items-center gap-2 rounded-md bg-primary px-5 py-2.5 font-medium text-primary-foreground shadow-[0_0_24px_color-mix(in_oklab,var(--hud-cyan)_35%,transparent)] transition-transform hover:scale-[1.03]"
+            className="group inline-flex items-center gap-2 rounded-md bg-primary px-5 py-2.5 font-medium text-primary-foreground shadow-[0_0_24px_color-mix(in_oklab,var(--hud-gold)_35%,transparent)] transition-transform hover:scale-[1.03]"
           >
             Fähigkeiten ansehen
             <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />

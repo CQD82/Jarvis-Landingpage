@@ -46,7 +46,7 @@ export function SystemMap() {
                 y1={50}
                 x2={spoke.x}
                 y2={spoke.y}
-                stroke="var(--hud-cyan)"
+                stroke="var(--hud-gold)"
                 strokeOpacity={0.35}
                 strokeWidth={0.4}
                 className="animate-dash-flow"
@@ -70,15 +70,16 @@ export function SystemMap() {
             />
           ))}
 
-          {/* Core */}
+          {/* Core — the "arc reactor": icy white-cyan energy glow, distinct
+              from the gold armor-frame lines/cards around it */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-            <div className="absolute inset-0 rounded-full border border-primary/40 opacity-60 animate-ping-ring" />
-            <div className="absolute inset-0 rounded-full border border-primary/30 opacity-40 animate-ping-ring [animation-delay:0.9s]" />
-            <div className="relative flex size-20 items-center justify-center rounded-full border border-primary/50 bg-card border-glow">
+            <div className="absolute inset-0 rounded-full border border-[var(--hud-reactor)]/50 opacity-60 animate-ping-ring" />
+            <div className="absolute inset-0 rounded-full border border-[var(--hud-reactor)]/35 opacity-40 animate-ping-ring [animation-delay:0.9s]" />
+            <div className="relative flex size-20 items-center justify-center rounded-full border border-primary/50 bg-card shadow-[0_0_0_1px_color-mix(in_oklab,var(--hud-reactor)_30%,transparent)_inset,0_0_28px_color-mix(in_oklab,var(--hud-reactor)_35%,transparent)]">
               <div className="absolute inset-1 overflow-hidden rounded-full">
-                <div className="absolute inset-0 animate-radar-sweep bg-[conic-gradient(from_0deg,transparent_0deg,color-mix(in_oklab,var(--hud-cyan)_35%,transparent)_25deg,transparent_50deg)]" />
+                <div className="absolute inset-0 animate-radar-sweep bg-[conic-gradient(from_0deg,transparent_0deg,color-mix(in_oklab,var(--hud-reactor)_45%,transparent)_25deg,transparent_50deg)]" />
               </div>
-              <Radar className="relative size-7 text-primary" aria-hidden="true" />
+              <Radar className="relative size-7 text-[var(--hud-reactor)]" aria-hidden="true" />
             </div>
             <p className="mt-3 text-center font-display text-xs font-semibold tracking-[0.2em] text-primary">
               JARVIS

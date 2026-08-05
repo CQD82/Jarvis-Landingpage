@@ -1,8 +1,8 @@
 /**
- * JARVIS mark: a hexagonal HUD emblem — six targeting ticks around a
- * glowing core. Echoes the hexagonal layout of the SystemMap section
- * so the brand mark and the system diagram read as the same visual
- * language.
+ * JARVIS mark: a hexagonal HUD emblem — six gold targeting ticks/frame
+ * around a glowing white-cyan "arc reactor" core. Echoes the hexagonal
+ * layout of the SystemMap section so the brand mark and the system
+ * diagram read as the same visual language.
  */
 interface LogoProps {
   size?: number;
@@ -33,8 +33,8 @@ export function Logo({ size = 28, animated = true, className }: LogoProps) {
     >
       <defs>
         <radialGradient id="jarvis-logo-core" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="var(--hud-cyan)" stopOpacity="0.9" />
-          <stop offset="100%" stopColor="var(--hud-cyan)" stopOpacity="0" />
+          <stop offset="0%" stopColor="var(--hud-reactor)" stopOpacity="0.9" />
+          <stop offset="100%" stopColor="var(--hud-reactor)" stopOpacity="0" />
         </radialGradient>
       </defs>
 
@@ -45,8 +45,8 @@ export function Logo({ size = 28, animated = true, className }: LogoProps) {
           y1={y1}
           x2={x2}
           y2={y2}
-          stroke="var(--hud-cyan)"
-          strokeOpacity={0.55}
+          stroke="var(--hud-gold)"
+          strokeOpacity={0.6}
           strokeWidth={1.5}
           strokeLinecap="round"
         />
@@ -55,13 +55,13 @@ export function Logo({ size = 28, animated = true, className }: LogoProps) {
       <polygon
         points={HEX_POINTS}
         fill="none"
-        stroke="var(--hud-cyan)"
+        stroke="var(--hud-gold)"
         strokeWidth={1.5}
         strokeLinejoin="round"
       />
 
       <circle cx={24} cy={24} r={11} fill="url(#jarvis-logo-core)" className={animated ? "animate-pulse" : undefined} />
-      <circle cx={24} cy={24} r={3} fill="var(--hud-cyan)" />
+      <circle cx={24} cy={24} r={3} fill="var(--hud-reactor)" />
     </svg>
   );
 }
