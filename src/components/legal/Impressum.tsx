@@ -5,28 +5,11 @@ export function ImpressumPage() {
   return (
     <LegalLayout title="Impressum">
       <LegalSection title="Angaben gemäß § 5 Digitale-Dienste-Gesetz (DDG)">
-        <p>
-          Marcus Kollosch
-          <br />
-          Zur Bergwiese 5
-          <br />
-          82152 Planegg
-          <br />
-          Deutschland
-        </p>
-      </LegalSection>
-
-      <LegalSection title="Kontakt">
-        <p>
-          E-Mail:{" "}
-          <a href="mailto:jarvisclusterhomelab@gmail.com">
-            jarvisclusterhomelab@gmail.com
-          </a>
-        </p>
+        <p>Marcus Kollosch</p>
       </LegalSection>
 
       <LegalSection title="Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV">
-        <p>Marcus Kollosch, Anschrift wie oben.</p>
+        <p>Marcus Kollosch</p>
       </LegalSection>
 
       <LegalSection title="Projekthinweis">

@@ -5,16 +5,7 @@ export function DatenschutzPage() {
   return (
     <LegalLayout title="Datenschutzerklärung">
       <LegalSection title="1. Verantwortlicher">
-        <p>
-          Marcus Kollosch
-          <br />
-          Zur Bergwiese 5, 82152 Planegg, Deutschland
-          <br />
-          E-Mail:{" "}
-          <a href="mailto:jarvisclusterhomelab@gmail.com">
-            jarvisclusterhomelab@gmail.com
-          </a>
-        </p>
+        <p>Marcus Kollosch</p>
       </LegalSection>
 
       <LegalSection title="2. Allgemeines zur Datenverarbeitung">
@@ -86,11 +77,9 @@ export function DatenschutzPage() {
 
       <LegalSection title="7. Kontaktaufnahme">
         <p>
-          Diese Website enthält kein Kontaktformular. Wenn Sie mich per
-          E-Mail kontaktieren, werden Ihre Angaben (E-Mail-Adresse,
-          gegebenenfalls Name und Nachricht) ausschließlich zur Bearbeitung
-          Ihrer Anfrage gespeichert und nicht ohne Ihre Einwilligung
-          weitergegeben (Art. 6 Abs. 1 lit. b bzw. f DSGVO).
+          Diese Website enthält kein Kontaktformular und keine veröffentlichte
+          Kontakt-E-Mail-Adresse. Über diese Website selbst werden daher keine
+          personenbezogenen Kontaktdaten erhoben oder verarbeitet.
         </p>
       </LegalSection>
 
