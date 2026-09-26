@@ -59,7 +59,7 @@
     "items": [
       {
         "title": "Infraestructura GitOps",
-        "description": "Un monorepo de Git como única fuente de verdad. Ansible para la capa de nodos, FluxCD para el estado del clúster — cada cambio es un commit revisable, cada desviación se reconcilia automáticamente."
+        "description": "Un monorepo de Git como única fuente de verdad. Scripts de shell idempotentes para la capa de host, FluxCD para el estado del clúster — cada cambio es un commit revisable, cada desviación se reconcilia automáticamente."
       },
       {
         "title": "Clúster bare-metal de 18 nodos",
@@ -104,7 +104,7 @@
     "title": "Despliegue totalmente declarativo",
     "description": "Se acabó el Bash imperativo: cada capa del clúster la gestiona una herramienta dedicada, cada cambio es un commit.",
     "steps": [
-      { "title": "Ansible", "description": "Capa de nodos: preparación de SO, almacenamiento, GPU y dispositivos." },
+      { "title": "Scripts de host", "description": "Capa de nodos: preparación de SO, almacenamiento, GPU y dispositivos." },
       { "title": "Helmfile", "description": "Bootstrap mínimo previo a Flux para los servicios centrales del clúster." },
       { "title": "FluxCD", "description": "Despliega todas las cargas de trabajo del clúster de forma declarativa y reconcilia la desviación automáticamente." },
       { "title": "Renovate", "description": "Abre automáticamente pull requests para cada actualización de versión." }
@@ -134,6 +134,7 @@
       "Registro de auditoría API completo con trazabilidad RBAC",
       "Secretos almacenados solo cifrados en el repositorio (nunca en texto plano)",
       "Aplicación de políticas, detección de amenazas en tiempo de ejecución y escaneo de imágenes",
+      "Los agentes se ejecutan aislados en un sandbox gVisor, sin token de cuenta de servicio ni acceso al host",
       "Tráfico de red cifrado de nodo a nodo",
       "Acceso de mínimo privilegio para toda la automatización"
     ],
@@ -170,7 +171,7 @@
       },
       {
         "title": "ZeroClaw — el framework de agentes",
-        "body": "ZeroClaw orquesta las solicitudes entre los niveles de modelos de IA y las dota de herramientas (tool-calling) — acceso a dispositivos domóticos, datos del Vision-Tracker o flujos de n8n. A diferencia de una única respuesta de modelo, un agente puede planificar en varios pasos: consultar estado, decidir, actuar. El modelo elegido para tool-calling se compara continuamente con alternativas antes de pasar a producción."
+        "body": "ZeroClaw orquesta las solicitudes entre los niveles de modelos de IA y las dota de herramientas (tool-calling) — acceso a dispositivos domóticos, datos del Vision-Tracker o flujos de n8n. A diferencia de una única respuesta de modelo, un agente puede planificar en varios pasos: consultar estado, decidir, actuar. El modelo elegido para tool-calling se compara continuamente con alternativas antes de pasar a producción. Cada pod de agente se ejecuta aislado en un sandbox gVisor, sin token de cuenta de servicio ni acceso al kernel del host."
       },
       {
         "title": "n8n — automatización sin código",

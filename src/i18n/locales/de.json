@@ -59,7 +59,7 @@
     "items": [
       {
         "title": "GitOps-Infrastruktur",
-        "description": "Ein Git-Monorepo als Single Source of Truth. Ansible für die Node-Ebene, FluxCD für den Cluster-Zustand — jede Änderung ein reviewbarer Commit, jeder Drift wird automatisch zurückreconciled."
+        "description": "Ein Git-Monorepo als Single Source of Truth. Idempotente Bash-Skripte für die Host-Ebene, FluxCD für den Cluster-Zustand — jede Änderung ein reviewbarer Commit, jeder Drift wird automatisch zurückreconciled."
       },
       {
         "title": "18-Node Bare-Metal-Cluster",
@@ -104,7 +104,7 @@
     "title": "Vollständig deklarative Ausrollung",
     "description": "Kein imperatives Bash mehr: jede Ebene des Clusters wird von einem dedizierten Tool verwaltet, jede Änderung ist ein Commit.",
     "steps": [
-      { "title": "Ansible", "description": "Node-Ebene: Betriebssystem, Storage, GPU- und Geräte-Vorbereitung." },
+      { "title": "Host-Skripte", "description": "Node-Ebene: Betriebssystem, Storage, GPU- und Geräte-Vorbereitung." },
       { "title": "Helmfile", "description": "Minimaler Pre-Flux-Bootstrap für die Kern-Cluster-Dienste." },
       { "title": "FluxCD", "description": "Rollt alle Cluster-Workloads deklarativ aus und reconciled Drift automatisch." },
       { "title": "Renovate", "description": "Öffnet automatisch Pull-Requests für jedes Versions-Update." }
@@ -134,6 +134,7 @@
       "Vollständiges API-Audit-Logging mit RBAC-Nachvollziehbarkeit",
       "Secrets ausschließlich verschlüsselt im Repository (nie im Klartext)",
       "Policy-Enforcement, Laufzeit-Bedrohungserkennung und Image-Scanning",
+      "Agenten laufen isoliert in einer gVisor-Sandbox, ohne Service-Account-Token und ohne Zugriff auf den Host",
       "Verschlüsselter Node-zu-Node-Netzwerkverkehr",
       "Least-Privilege-Zugriff für sämtliche Automatisierung"
     ],
@@ -170,7 +171,7 @@
       },
       {
         "title": "ZeroClaw — das Agenten-Framework",
-        "body": "ZeroClaw orchestriert Anfragen über die KI-Modell-Tiers hinweg und stattet sie mit Werkzeugen aus (Tool-Calling) — etwa Zugriff auf Smart-Home-Geräte, Vision-Tracker-Daten oder n8n-Workflows. Anders als eine einzelne Modellantwort kann ein Agent mehrstufig planen: Status abfragen, entscheiden, handeln. Die Modellwahl für Tool-Calling wird laufend gegen Alternativen benchmarkt, bevor eine Version produktiv geht."
+        "body": "ZeroClaw orchestriert Anfragen über die KI-Modell-Tiers hinweg und stattet sie mit Werkzeugen aus (Tool-Calling) — etwa Zugriff auf Smart-Home-Geräte, Vision-Tracker-Daten oder n8n-Workflows. Anders als eine einzelne Modellantwort kann ein Agent mehrstufig planen: Status abfragen, entscheiden, handeln. Die Modellwahl für Tool-Calling wird laufend gegen Alternativen benchmarkt, bevor eine Version produktiv geht. Jeder Agenten-Pod läuft dabei isoliert in einer gVisor-Sandbox ohne Service-Account-Token und ohne Zugriff auf den Host-Kernel."
       },
       {
         "title": "n8n — Automatisierung ohne Code",

@@ -59,7 +59,7 @@
     "items": [
       {
         "title": "GitOps Infrastructure",
-        "description": "A Git monorepo as the single source of truth. Ansible for the node layer, FluxCD for cluster state — every change is a reviewable commit, every drift is reconciled automatically."
+        "description": "A Git monorepo as the single source of truth. Idempotent shell scripts for the host layer, FluxCD for cluster state — every change is a reviewable commit, every drift is reconciled automatically."
       },
       {
         "title": "18-Node Bare-Metal Cluster",
@@ -104,7 +104,7 @@
     "title": "Fully Declarative Rollout",
     "description": "No more imperative Bash: every layer of the cluster is managed by a dedicated tool, every change is a commit.",
     "steps": [
-      { "title": "Ansible", "description": "Node layer: OS, storage, GPU, and device preparation." },
+      { "title": "Host Scripts", "description": "Node layer: OS, storage, GPU, and device preparation." },
       { "title": "Helmfile", "description": "Minimal pre-Flux bootstrap for the core cluster services." },
       { "title": "FluxCD", "description": "Rolls out all cluster workloads declaratively and reconciles drift automatically." },
       { "title": "Renovate", "description": "Automatically opens pull requests for every version update." }
@@ -134,6 +134,7 @@
       "Full API audit logging with RBAC traceability",
       "Secrets stored encrypted only in the repository (never in plaintext)",
       "Policy enforcement, runtime threat detection, and image scanning",
+      "Agents run isolated in a gVisor sandbox, with no service-account token and no host access",
       "Encrypted node-to-node network traffic",
       "Least-privilege access for all automation"
     ],
@@ -170,7 +171,7 @@
       },
       {
         "title": "ZeroClaw — the Agent Framework",
-        "body": "ZeroClaw orchestrates requests across the AI model tiers and equips them with tools (tool-calling) — access to smart-home devices, Vision-Tracker data, or n8n workflows. Unlike a single model reply, an agent can plan in multiple steps: check status, decide, act. The model chosen for tool-calling is continuously benchmarked against alternatives before a version goes into production."
+        "body": "ZeroClaw orchestrates requests across the AI model tiers and equips them with tools (tool-calling) — access to smart-home devices, Vision-Tracker data, or n8n workflows. Unlike a single model reply, an agent can plan in multiple steps: check status, decide, act. The model chosen for tool-calling is continuously benchmarked against alternatives before a version goes into production. Every agent pod runs isolated inside a gVisor sandbox, with no service-account token and no access to the host kernel."
       },
       {
         "title": "n8n — Automation Without Code",
