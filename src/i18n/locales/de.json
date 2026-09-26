@@ -160,6 +160,18 @@
       "backupDrive": "WD Elements 22-TB-Festplatte für die Velero-Backups."
     }
   },
+  "howItWorks": {
+    "eyebrow": "Funktionsprinzip",
+    "title": "So verarbeitet JARVIS eine Anfrage",
+    "description": "Vom ersten Signal bis zur Antwort — eine vereinfachte, illustrative Darstellung des Datenflusses.",
+    "stages": [
+      { "title": "Eingabe", "items": ["Sprache (Wake-Word)", "Vision-Tracker (Kamera)", "Chat / IDE"] },
+      { "title": "Routing & KI-Modelle", "items": ["LiteLLM-Gateway", "Edge → CPU → Worker → GPU", "Automatische Tier-Wahl"] },
+      { "title": "Agenten", "items": ["ZeroClaw (Tool-Calling, Sandbox)", "Hermes (Gedächtnis, Telegram/CLI)"] },
+      { "title": "Ausgabe", "items": ["Sprachausgabe", "Head-up-Display", "Automatisierung (n8n)"] }
+    ],
+    "footerNote": "Vereinfachte, illustrative Darstellung des Funktionsprinzips — keine exakte Netzwerktopologie, keine internen Adressen oder Konfigurationsdetails."
+  },
   "deepDive": {
     "eyebrow": "Im Detail",
     "title": "Wie die Teile zusammenspielen",

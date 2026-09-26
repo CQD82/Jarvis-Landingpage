@@ -160,6 +160,18 @@
       "backupDrive": "WD Elements 22 TB hard drive for the Velero backups."
     }
   },
+  "howItWorks": {
+    "eyebrow": "How It Works",
+    "title": "How JARVIS Processes a Request",
+    "description": "From the first signal to the response — a simplified, illustrative view of the data flow.",
+    "stages": [
+      { "title": "Input", "items": ["Voice (wake word)", "Vision Tracker (camera)", "Chat / IDE"] },
+      { "title": "Routing & AI Models", "items": ["LiteLLM gateway", "Edge → CPU → Worker → GPU", "Automatic tier selection"] },
+      { "title": "Agents", "items": ["ZeroClaw (tool-calling, sandboxed)", "Hermes (memory, Telegram/CLI)"] },
+      { "title": "Output", "items": ["Voice reply", "Heads-up display", "Automation (n8n)"] }
+    ],
+    "footerNote": "A simplified, illustrative view of how the system works — not an exact network topology, and no internal addresses or configuration details."
+  },
   "deepDive": {
     "eyebrow": "In Detail",
     "title": "How the Pieces Work Together",

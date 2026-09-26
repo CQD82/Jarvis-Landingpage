@@ -6,6 +6,7 @@ import { Footer } from "@/components/landing/Footer"
 import { GoLiveCountdown } from "@/components/landing/GoLiveCountdown"
 import { HardwareGallery } from "@/components/landing/HardwareGallery"
 import { Hero } from "@/components/landing/Hero"
+import { HowItWorks } from "@/components/landing/HowItWorks"
 import { LiveHud } from "@/components/landing/LiveHud"
 import { ModelTiers } from "@/components/landing/ModelTiers"
 import { Nav } from "@/components/landing/Nav"
@@ -32,6 +33,7 @@ function Landing() {
         <HardwareGallery />
         <SystemMap />
         <Features />
+        <HowItWorks />
         <DeepDive />
         <Pipeline />
         <ModelTiers />

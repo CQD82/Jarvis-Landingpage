@@ -160,6 +160,18 @@
       "backupDrive": "Σκληρός δίσκος WD Elements 22 TB για τα backups του Velero."
     }
   },
+  "howItWorks": {
+    "eyebrow": "Αρχή λειτουργίας",
+    "title": "Πώς επεξεργάζεται το JARVIS ένα αίτημα",
+    "description": "Από το πρώτο σήμα μέχρι την απάντηση — μια απλοποιημένη, ενδεικτική απεικόνιση της ροής δεδομένων.",
+    "stages": [
+      { "title": "Είσοδος", "items": ["Φωνή (wake word)", "Vision-Tracker (κάμερα)", "Chat / IDE"] },
+      { "title": "Δρομολόγηση & μοντέλα AI", "items": ["LiteLLM gateway", "Edge → CPU → Worker → GPU", "Αυτόματη επιλογή tier"] },
+      { "title": "Agents", "items": ["ZeroClaw (tool-calling, sandboxed)", "Hermes (μνήμη, Telegram/CLI)"] },
+      { "title": "Έξοδος", "items": ["Φωνητική απάντηση", "Head-up display", "Αυτοματισμός (n8n)"] }
+    ],
+    "footerNote": "Απλοποιημένη, ενδεικτική απεικόνιση της αρχής λειτουργίας — όχι ακριβής τοπολογία δικτύου, χωρίς εσωτερικές διευθύνσεις ή στοιχεία ρύθμισης."
+  },
   "deepDive": {
     "eyebrow": "Στη λεπτομέρεια",
     "title": "Πώς συνεργάζονται τα κομμάτια",

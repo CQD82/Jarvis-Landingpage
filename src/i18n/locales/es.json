@@ -160,6 +160,18 @@
       "backupDrive": "Disco duro WD Elements de 22 TB para las copias de seguridad de Velero."
     }
   },
+  "howItWorks": {
+    "eyebrow": "Principio de funcionamiento",
+    "title": "Cómo procesa JARVIS una solicitud",
+    "description": "Desde la primera señal hasta la respuesta — una representación simplificada e ilustrativa del flujo de datos.",
+    "stages": [
+      { "title": "Entrada", "items": ["Voz (palabra de activación)", "Vision-Tracker (cámara)", "Chat / IDE"] },
+      { "title": "Enrutamiento y modelos de IA", "items": ["Puerta de enlace LiteLLM", "Edge → CPU → Worker → GPU", "Selección automática de nivel"] },
+      { "title": "Agentes", "items": ["ZeroClaw (tool-calling, aislado)", "Hermes (memoria, Telegram/CLI)"] },
+      { "title": "Salida", "items": ["Respuesta de voz", "Pantalla HUD", "Automatización (n8n)"] }
+    ],
+    "footerNote": "Representación simplificada e ilustrativa del principio de funcionamiento — no es una topología de red exacta, ni direcciones internas ni detalles de configuración."
+  },
   "deepDive": {
     "eyebrow": "En detalle",
     "title": "Cómo encajan las piezas",

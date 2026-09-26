@@ -1,8 +1,10 @@
 import type { LucideIcon } from "lucide-react";
 import {
   Activity,
+  Bot,
   BrainCircuit,
   Camera,
+  Cpu,
   GitBranch,
   Home,
   Lock,
@@ -10,6 +12,7 @@ import {
   RefreshCcw,
   Server,
   ShieldCheck,
+  Volume2,
   Workflow,
 } from "lucide-react";
 
@@ -54,3 +57,6 @@ export const techCategoryIcons: LucideIcon[] = [
   Mic,
   Activity,
 ];
+
+/** Matches howItWorks.stages in the locale files. */
+export const howItWorksStageIcons: LucideIcon[] = [Mic, Cpu, Bot, Volume2];
