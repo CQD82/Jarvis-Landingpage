@@ -180,6 +180,10 @@
       {
         "title": "Das Kubernetes-Cluster (K3s)",
         "body": "K3s ist eine schlanke Kubernetes-Distribution für Edge- und ARM-Hardware. Drei Nodes bilden die Kontrollebene, der Rest arbeitet als Worker. FluxCD gleicht den Cluster-Zustand alle 10 Minuten mit einem Git-Repository ab — manuelle Änderungen werden beim nächsten Durchlauf automatisch zurückgesetzt. Longhorn übernimmt replizierten Storage über die Nodes hinweg, Cilium das Netzwerk inklusive Verschlüsselung. Der gesamte Zustand ist damit jederzeit aus einem einzigen Repository reproduzierbar."
+      },
+      {
+        "title": "Hermes Agent — der Gedächtnis-Layer",
+        "body": "Anders als ZeroClaw, das pro Aufgabe eine isolierte Sandbox startet, läuft Hermes Agent (Nous Research, MIT-Lizenz) als dauerhaft aktiver Gesprächspartner über Telegram und Kommandozeile mit geteiltem Gedächtnis über mehrere Kanäle hinweg. Direkte Terminal- und Code-Ausführung sind im Agenten selbst deaktiviert — jede tatsächliche Werkzeugausführung läuft ausschließlich über die bereits sandboxte ZeroClaw-Instanz. Das Gedächtnis liegt in der eigenen Cluster-Datenbank (Qdrant), nicht in einem externen Cloud-Dienst, und die Modellwahl ist fest auf die lokalen KI-Tiers verdrahtet, ohne automatisches Ausweichen zu einem fremden Anbieter. Vor dem produktiven Einsatz durchläuft die Konfiguration einen mehrtägigen Abnahmetest mit gezielten Negativproben."
       }
     ]
   },
