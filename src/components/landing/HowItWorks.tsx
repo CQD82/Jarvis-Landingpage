@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
+import type { LucideIcon } from "lucide-react";
 import { Fragment } from "react";
 import { useTranslation } from "react-i18next";
+import { HudCorners } from "@/components/landing/HudCorners";
 import { Reveal } from "@/components/landing/Reveal";
 import { SectionHeading } from "@/components/landing/SectionHeading";
 import { howItWorksStageIcons } from "@/data/jarvis";
@@ -10,15 +12,65 @@ interface Stage {
   items: string[];
 }
 
-/** A flowing pulse between two stage cards — desktop only, mirrors the SystemMap traveling-dot language. */
+const HEX_POINTS = "24,4 41.6,14 41.6,34 24,44 6.4,34 6.4,14";
+const CYCLE = 3.2;
+const STEP = CYCLE / 4;
+
+/** Hexagonal node badge — echoes the JARVIS logo mark. The reactor core
+ * pulses on a loop timed to the connector pulses so the whole row reads as
+ * one traveling signal rather than four independent animations. */
+function HexNode({ icon: Icon, delay }: { icon: LucideIcon; delay: number }) {
+  return (
+    <div className="relative mx-auto flex size-16 shrink-0 items-center justify-center">
+      <svg viewBox="0 0 48 48" className="absolute inset-0 size-full" aria-hidden="true">
+        <polygon
+          points={HEX_POINTS}
+          fill="none"
+          stroke="var(--hud-gold)"
+          strokeWidth={1.5}
+          strokeLinejoin="round"
+          opacity={0.7}
+        />
+      </svg>
+      <motion.div
+        className="absolute inset-[6px] rounded-full"
+        style={{
+          background: "radial-gradient(circle, var(--hud-reactor) 0%, transparent 72%)",
+        }}
+        animate={{ opacity: [0.12, 0.65, 0.12], scale: [0.85, 1.05, 0.85] }}
+        transition={{ duration: CYCLE, repeat: Infinity, delay, ease: "easeInOut" }}
+      />
+      <Icon className="relative z-10 size-6 text-primary" aria-hidden="true" />
+    </div>
+  );
+}
+
+/** Connector between two nodes: a persistently energized dashed line plus a
+ * bright traveling pulse with a glow trail, synced to the node it arrives at. */
 function FlowConnector({ delay }: { delay: number }) {
   return (
-    <div className="relative mx-1 hidden h-px w-10 shrink-0 self-center bg-border lg:block xl:w-14">
+    <div className="relative mx-1 hidden h-px w-12 shrink-0 self-center lg:block xl:w-16">
+      <svg viewBox="0 0 100 2" preserveAspectRatio="none" className="absolute inset-0 size-full" aria-hidden="true">
+        <line
+          x1={0}
+          y1={1}
+          x2={100}
+          y2={1}
+          stroke="var(--hud-gold)"
+          strokeOpacity={0.4}
+          strokeWidth={1.5}
+          className="animate-dash-flow"
+        />
+      </svg>
       <motion.div
-        className="absolute top-1/2 size-1.5 -translate-y-1/2 rounded-full bg-primary shadow-[0_0_6px_var(--hud-gold)]"
+        className="absolute top-1/2 size-2 -translate-y-1/2 rounded-full bg-primary"
+        style={{
+          boxShadow:
+            "0 0 6px 2px var(--hud-gold), 0 0 16px 4px color-mix(in oklab, var(--hud-gold) 60%, transparent)",
+        }}
         initial={{ left: "0%", opacity: 0 }}
         animate={{ left: ["0%", "100%"], opacity: [0, 1, 1, 0] }}
-        transition={{ duration: 1.6, repeat: Infinity, ease: "linear", delay }}
+        transition={{ duration: STEP, repeat: Infinity, repeatDelay: CYCLE - STEP, ease: "easeInOut", delay }}
       />
     </div>
   );
@@ -29,7 +81,12 @@ export function HowItWorks() {
   const stages = t("howItWorks.stages", { returnObjects: true }) as Stage[];
 
   return (
-    <section id="flow" className="border-t border-border/60 bg-card/30 px-6 py-24">
+    <section id="flow" className="relative overflow-hidden border-t border-border/60 bg-card/30 px-6 py-24">
+      <div
+        className="pointer-events-none absolute top-1/2 left-1/2 -z-10 h-[420px] w-[900px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(ellipse,color-mix(in_oklab,var(--hud-reactor)_10%,transparent),transparent_70%)] blur-3xl"
+        aria-hidden="true"
+      />
+
       <Reveal>
         <SectionHeading
           eyebrow={t("howItWorks.eyebrow")}
@@ -39,33 +96,36 @@ export function HowItWorks() {
       </Reveal>
 
       <Reveal delay={0.1}>
-        <div className="mx-auto mt-14 flex max-w-5xl flex-col items-stretch gap-4 lg:flex-row lg:items-center lg:gap-0">
-          {stages.map((stage, i) => {
-            const Icon = howItWorksStageIcons[i];
-            return (
-              <Fragment key={i}>
-                <div className="w-full rounded-xl border border-border bg-card p-5 text-center lg:flex-1">
-                  <div className="mx-auto inline-flex size-10 items-center justify-center rounded-lg border border-primary/30 bg-primary/10 text-primary">
-                    <Icon className="size-5" aria-hidden="true" />
-                  </div>
-                  <h3 className="mt-3 font-display text-sm font-semibold tracking-wide">
-                    {stage.title}
-                  </h3>
-                  <div className="mt-3 flex flex-wrap justify-center gap-1.5">
-                    {stage.items.map((item) => (
-                      <span
-                        key={item}
-                        className="rounded border border-border bg-background/60 px-1.5 py-0.5 font-mono text-[0.65rem] text-muted-foreground"
-                      >
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                {i < stages.length - 1 ? <FlowConnector delay={i * 0.35} /> : null}
-              </Fragment>
-            );
-          })}
+        <div className="relative mx-auto mt-16 max-w-5xl">
+          <HudCorners />
+          <div className="border-glow rounded-2xl border border-border bg-background/40 px-6 py-10 backdrop-blur-sm sm:px-10">
+            <div className="flex flex-col items-stretch gap-6 lg:flex-row lg:items-center lg:gap-0">
+              {stages.map((stage, i) => {
+                const Icon = howItWorksStageIcons[i];
+                return (
+                  <Fragment key={i}>
+                    <div className="w-full lg:flex-1">
+                      <HexNode icon={Icon} delay={i * STEP} />
+                      <h3 className="mt-3 text-center font-display text-sm font-semibold tracking-wide">
+                        {stage.title}
+                      </h3>
+                      <div className="mt-3 flex flex-wrap justify-center gap-1.5">
+                        {stage.items.map((item) => (
+                          <span
+                            key={item}
+                            className="rounded border border-border bg-card/80 px-1.5 py-0.5 font-mono text-[0.65rem] text-muted-foreground"
+                          >
+                            {item}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                    {i < stages.length - 1 ? <FlowConnector delay={i * STEP} /> : null}
+                  </Fragment>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </Reveal>
 
