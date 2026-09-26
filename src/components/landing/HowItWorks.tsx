@@ -1,6 +1,7 @@
-import { motion } from "framer-motion";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import type { LucideIcon } from "lucide-react";
-import { Fragment } from "react";
+import type { ReactNode } from "react";
+import { Fragment, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { HudCorners } from "@/components/landing/HudCorners";
 import { Reveal } from "@/components/landing/Reveal";
@@ -76,24 +77,57 @@ function FlowConnector({ delay }: { delay: number }) {
   );
 }
 
+/**
+ * Each stage card tracks its own scroll progress and drifts/fades into
+ * place independently — the parallax effect (depth via differing speeds)
+ * rather than a single fade-in trigger. `depth` sets how far it travels:
+ * higher depth = feels farther back = moves more relative to the scroll.
+ */
+function ParallaxStage({ depth, children }: { depth: number; children: ReactNode }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const reduceMotion = useReducedMotion();
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start 95%", "start 45%"] });
+  const y = useTransform(scrollYProgress, [0, 1], [reduceMotion ? 0 : depth, 0]);
+  const opacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
+
+  return (
+    <motion.div ref={ref} style={{ y, opacity }} className="w-full lg:flex-1">
+      {children}
+    </motion.div>
+  );
+}
+
 export function HowItWorks() {
   const { t } = useTranslation();
   const stages = t("howItWorks.stages", { returnObjects: true }) as Stage[];
 
+  const sectionRef = useRef<HTMLElement>(null);
+  const reduceMotion = useReducedMotion();
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start end", "end start"] });
+  const bgY = useTransform(scrollYProgress, [0, 1], reduceMotion ? ["0%", "0%"] : ["-12%", "12%"]);
+  const headingY = useTransform(scrollYProgress, [0, 1], reduceMotion ? [0, 0] : [40, -40]);
+
   return (
-    <section id="flow" className="relative overflow-hidden border-t border-border/60 bg-card/30 px-6 py-24">
-      <div
+    <section
+      ref={sectionRef}
+      id="flow"
+      className="relative overflow-hidden border-t border-border/60 bg-card/30 px-6 py-24"
+    >
+      <motion.div
+        style={{ y: bgY }}
         className="pointer-events-none absolute top-1/2 left-1/2 -z-10 h-[420px] w-[900px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(ellipse,color-mix(in_oklab,var(--hud-reactor)_10%,transparent),transparent_70%)] blur-3xl"
         aria-hidden="true"
       />
 
-      <Reveal>
-        <SectionHeading
-          eyebrow={t("howItWorks.eyebrow")}
-          title={t("howItWorks.title")}
-          description={t("howItWorks.description")}
-        />
-      </Reveal>
+      <motion.div style={{ y: headingY }}>
+        <Reveal>
+          <SectionHeading
+            eyebrow={t("howItWorks.eyebrow")}
+            title={t("howItWorks.title")}
+            description={t("howItWorks.description")}
+          />
+        </Reveal>
+      </motion.div>
 
       <Reveal delay={0.1}>
         <div className="relative mx-auto mt-16 max-w-5xl">
@@ -104,7 +138,7 @@ export function HowItWorks() {
                 const Icon = howItWorksStageIcons[i];
                 return (
                   <Fragment key={i}>
-                    <div className="w-full lg:flex-1">
+                    <ParallaxStage depth={30 + i * 18}>
                       <HexNode icon={Icon} delay={i * STEP} />
                       <h3 className="mt-3 text-center font-display text-sm font-semibold tracking-wide">
                         {stage.title}
@@ -119,7 +153,7 @@ export function HowItWorks() {
                           </span>
                         ))}
                       </div>
-                    </div>
+                    </ParallaxStage>
                     {i < stages.length - 1 ? <FlowConnector delay={i * STEP} /> : null}
                   </Fragment>
                 );
