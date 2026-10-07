@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Radar } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import clusterArt from "@/assets/hero/cluster-art.jpg";
 import { GradientShimmer } from "@/components/ui/gradient-shimmer";
 import { CountUpStat } from "@/components/landing/CountUpStat";
 import { HudCorners } from "@/components/landing/HudCorners";
@@ -43,6 +44,26 @@ export function Hero() {
         className="pointer-events-none absolute top-24 left-1/2 -z-10 size-[420px] -translate-x-1/2 animate-radar-sweep rounded-full border-t border-primary/25 sm:size-[520px]"
         style={{ animationDuration: "14s" }}
       />
+
+      <motion.div
+        initial={{ opacity: 0, scale: 0.92, y: -12 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="relative mx-auto mb-10 max-w-sm sm:max-w-md lg:max-w-lg"
+      >
+        <HudCorners />
+        <div className="border-glow overflow-hidden rounded-2xl border border-border">
+          <img
+            src={clusterArt}
+            alt={t("hero.artAlt")}
+            className="aspect-[4/3] w-full object-cover"
+            style={{
+              maskImage: "radial-gradient(ellipse at center, black 65%, transparent 100%)",
+              WebkitMaskImage: "radial-gradient(ellipse at center, black 65%, transparent 100%)",
+            }}
+          />
+        </div>
+      </motion.div>
 
       <div className="mx-auto max-w-4xl text-center">
         <motion.div

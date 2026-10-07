@@ -17,6 +17,7 @@
     "badge": "PRIVATE HOMELAB PROJECT · v4.2 PRODUCTION-READY",
     "description": "An 18-node Kubernetes homelab that thinks, sees, and listens at home — run entirely declaratively, with multi-tier local AI inference and zero-trust network segmentation.",
     "ctaPrimary": "View Capabilities",
+    "artAlt": "Stylized 3D visualization of the JARVIS cluster — an artistic rendering, not an actual photo of the hardware.",
     "ctaSecondary": "Architecture"
   },
   "statusTicker": [
