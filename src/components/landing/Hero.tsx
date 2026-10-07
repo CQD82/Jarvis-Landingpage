@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, Radar } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import clusterArt from "@/assets/hero/cluster-art.jpg";
@@ -6,6 +6,7 @@ import { GradientShimmer } from "@/components/ui/gradient-shimmer";
 import { CountUpStat } from "@/components/landing/CountUpStat";
 import { HudCorners } from "@/components/landing/HudCorners";
 import { StatusTicker } from "@/components/landing/StatusTicker";
+import { TiltPanel } from "@/components/landing/TiltPanel";
 
 /** Repulsor-red → armor-gold sweep for the hero title. */
 const TITLE_GRADIENT = [
@@ -22,6 +23,7 @@ interface Stat {
 export function Hero() {
   const { t } = useTranslation();
   const stats = t("stats", { returnObjects: true }) as Stat[];
+  const reduceMotion = useReducedMotion();
 
   return (
     <section id="top" className="relative overflow-hidden px-6 pt-20 pb-24 sm:pt-28">
@@ -52,17 +54,26 @@ export function Hero() {
         className="relative mx-auto mb-10 max-w-sm sm:max-w-md lg:max-w-lg"
       >
         <HudCorners />
-        <div className="border-glow overflow-hidden rounded-2xl border border-border">
-          <img
-            src={clusterArt}
-            alt={t("hero.artAlt")}
-            className="aspect-[4/3] w-full object-cover"
-            style={{
-              maskImage: "radial-gradient(ellipse at center, black 65%, transparent 100%)",
-              WebkitMaskImage: "radial-gradient(ellipse at center, black 65%, transparent 100%)",
-            }}
-          />
-        </div>
+        <motion.div
+          animate={reduceMotion ? undefined : { y: [0, -6, 0] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <TiltPanel
+            className="border-glow relative overflow-hidden rounded-2xl border border-border"
+            maxTiltX={6}
+            maxTiltY={8}
+          >
+            <img
+              src={clusterArt}
+              alt={t("hero.artAlt")}
+              className="aspect-[4/3] w-full object-cover"
+              style={{
+                maskImage: "radial-gradient(ellipse at center, black 65%, transparent 100%)",
+                WebkitMaskImage: "radial-gradient(ellipse at center, black 65%, transparent 100%)",
+              }}
+            />
+          </TiltPanel>
+        </motion.div>
       </motion.div>
 
       <div className="mx-auto max-w-4xl text-center">
