@@ -10,7 +10,7 @@ export function Footer() {
         <div className="flex items-center gap-2">
           <Logo size={18} animated={false} />
           <span className="font-display tracking-widest">JARVIS</span>
-          <span className="font-mono text-xs">v4.2</span>
+          <span className="font-mono text-xs">v5.2</span>
         </div>
         <p className="font-mono text-xs">{t("footer.tagline")}</p>
         <nav className="flex items-center gap-4 font-mono text-xs">

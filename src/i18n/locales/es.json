@@ -14,7 +14,7 @@
     "security": "Seguridad"
   },
   "hero": {
-    "badge": "PROYECTO HOMELAB PRIVADO · v4.2 LISTO PARA PRODUCCIÓN",
+    "badge": "PROYECTO HOMELAB PRIVADO · v5.2 LISTO PARA PRODUCCIÓN",
     "description": "Un homelab Kubernetes de 18 nodos que piensa, ve y escucha en casa — gestionado de forma totalmente declarativa, con inferencia de IA local en varios niveles y segmentación de red de confianza cero.",
     "ctaPrimary": "Ver funciones",
     "artAlt": "Visualización 3D estilizada del clúster JARVIS — una representación artística, no una foto real del hardware.",
@@ -135,6 +135,7 @@
       "Registro de auditoría API completo con trazabilidad RBAC",
       "Secretos almacenados solo cifrados en el repositorio (nunca en texto plano)",
       "Aplicación de políticas, detección de amenazas en tiempo de ejecución y escaneo de imágenes",
+    "Las imágenes de contenedor propias se firman (cosign) y solo se admiten con una firma válida",
       "Los agentes se ejecutan aislados en un sandbox gVisor, sin token de cuenta de servicio ni acceso al host",
       "Tráfico de red cifrado de nodo a nodo",
       "Acceso de mínimo privilegio para toda la automatización"

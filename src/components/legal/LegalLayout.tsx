@@ -47,7 +47,7 @@ export function LegalLayout({ title, children }: LegalLayoutProps) {
           <div className="flex items-center gap-2">
             <Logo size={18} animated={false} />
             <span className="font-display tracking-widest">JARVIS</span>
-            <span className="font-mono text-xs">v4.2</span>
+            <span className="font-mono text-xs">v5.2</span>
           </div>
           <nav className="flex items-center gap-5 font-mono text-xs">
             <a href="/" className="transition-colors hover:text-foreground">

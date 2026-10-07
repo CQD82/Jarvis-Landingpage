@@ -14,7 +14,7 @@
     "security": "Sicherheit"
   },
   "hero": {
-    "badge": "PRIVATES HOMELAB PROJEKT · v4.2 PRODUCTION-READY",
+    "badge": "PRIVATES HOMELAB PROJEKT · v5.2 PRODUCTION-READY",
     "description": "Ein 18-Node Kubernetes-Homelab, das zuhause denkt, sieht und zuhört — vollständig deklarativ betrieben, mit mehrstufiger lokaler KI-Inferenz und Zero-Trust-Netzwerksegmentierung.",
     "ctaPrimary": "Fähigkeiten ansehen",
     "artAlt": "Stilisierte 3D-Visualisierung des JARVIS-Clusters — künstlerische Darstellung, kein echtes Foto der Hardware.",
@@ -135,6 +135,7 @@
       "Vollständiges API-Audit-Logging mit RBAC-Nachvollziehbarkeit",
       "Secrets ausschließlich verschlüsselt im Repository (nie im Klartext)",
       "Policy-Enforcement, Laufzeit-Bedrohungserkennung und Image-Scanning",
+    "Eigene Container-Images werden signiert (cosign) und nur mit gültiger Signatur zugelassen",
       "Agenten laufen isoliert in einer gVisor-Sandbox, ohne Service-Account-Token und ohne Zugriff auf den Host",
       "Verschlüsselter Node-zu-Node-Netzwerkverkehr",
       "Least-Privilege-Zugriff für sämtliche Automatisierung"

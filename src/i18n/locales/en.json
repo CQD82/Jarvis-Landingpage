@@ -14,7 +14,7 @@
     "security": "Security"
   },
   "hero": {
-    "badge": "PRIVATE HOMELAB PROJECT · v4.2 PRODUCTION-READY",
+    "badge": "PRIVATE HOMELAB PROJECT · v5.2 PRODUCTION-READY",
     "description": "An 18-node Kubernetes homelab that thinks, sees, and listens at home — run entirely declaratively, with multi-tier local AI inference and zero-trust network segmentation.",
     "ctaPrimary": "View Capabilities",
     "artAlt": "Stylized 3D visualization of the JARVIS cluster — an artistic rendering, not an actual photo of the hardware.",
@@ -135,6 +135,7 @@
       "Full API audit logging with RBAC traceability",
       "Secrets stored encrypted only in the repository (never in plaintext)",
       "Policy enforcement, runtime threat detection, and image scanning",
+    "Own container images are signed (cosign) and admitted only with a valid signature",
       "Agents run isolated in a gVisor sandbox, with no service-account token and no host access",
       "Encrypted node-to-node network traffic",
       "Least-privilege access for all automation"

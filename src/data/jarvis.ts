@@ -44,9 +44,9 @@ export const techCategoryTools: string[][] = [
   ["FluxCD", "Helmfile", "Renovate", "Forgejo"],
   ["K3s", "Longhorn", "Cilium LB-IPAM + L2", "Traefik", "cert-manager", "Garage"],
   ["LiteLLM", "llama.cpp", "llama-swap", "Qdrant", "NVIDIA NIM"],
-  ["Cilium", "Kyverno", "Falco", "Trivy", "gVisor", "Authentik", "SOPS + Age"],
+  ["Cilium", "Kyverno", "Falco", "Trivy", "gVisor", "cosign", "Authentik", "SOPS + Age"],
   ["Wyoming", "Wake-Agent", "Vision-Tracker", "Kokoro TTS", "HUD"],
-  ["VictoriaMetrics", "VictoriaLogs", "Grafana", "Velero", "kured", "system-upgrade-controller", "n8n", "Shelly-Exporter"],
+  ["VictoriaMetrics", "VictoriaLogs", "Grafana", "Alertmanager", "Velero", "kured", "system-upgrade-controller", "n8n", "Shelly-Exporter"],
 ];
 
 export const techCategoryIcons: LucideIcon[] = [
