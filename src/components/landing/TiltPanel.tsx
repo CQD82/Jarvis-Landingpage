@@ -34,7 +34,13 @@ export function TiltPanel({ children, className, maxTiltX = 7, maxTiltY = 9 }: T
   const sheenY = useTransform(pointerY, [-0.5, 0.5], ["10%", "90%"]);
   const sheenBackground = useTransform(
     [sheenX, sheenY],
-    ([x, y]) => `radial-gradient(circle at ${x} ${y}, rgba(255,255,255,0.12), transparent 55%)`,
+    // Explicit ellipse size (not "circle"/farthest-corner): width/height
+    // percentages are each relative to the panel's own width/height, so the
+    // glow covers the same proportion of the panel regardless of its aspect
+    // ratio — a "circle ... 55%" sized off the diagonal left tall mobile
+    // panels (e.g. the flow diagram's stacked stages) with the glow fading
+    // out before it reached the bottom.
+    ([x, y]) => `radial-gradient(ellipse 75% 75% at ${x} ${y}, rgba(255,255,255,0.12), transparent 100%)`,
   );
 
   function handlePointerMove(event: ReactMouseEvent<HTMLDivElement>) {
