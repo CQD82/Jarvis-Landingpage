@@ -138,7 +138,8 @@
     "Eigene Container-Images werden signiert (cosign) und nur mit gültiger Signatur zugelassen",
       "Agenten laufen isoliert in einer gVisor-Sandbox, ohne Service-Account-Token und ohne Zugriff auf den Host",
       "Verschlüsselter Node-zu-Node-Netzwerkverkehr",
-      "Least-Privilege-Zugriff für sämtliche Automatisierung"
+      "Least-Privilege-Zugriff für sämtliche Automatisierung",
+      "Monatlicher automatisierter Restore-Test verifiziert die Wiederherstellbarkeit der Backups auf einem eigens dafür per Wake-on-LAN geweckten Knoten"
     ],
     "footerNote": "Infrastruktur-Details, interne Netzwerkadressen und Betriebs-Skripte bleiben privat und werden auf dieser Seite bewusst nicht veröffentlicht."
   },
@@ -213,12 +214,13 @@
       { "label": "Netzwerk-Switch", "watts": "~15 W" },
       { "label": "Backup-Festplatte (WD Elements 22 TB)", "watts": "~6 W" },
       { "label": "Sensor-/Watchdog-Node (Pi Zero 2W)", "watts": "~1 W" },
+      { "label": "i5-8500 (WoL-Restore-Prüfstand, meist im Ruhezustand)", "watts": "~2 W" },
       { "label": "GPU-Workstation (Ø mit Autosuspend)", "watts": "~20 W" }
     ],
     "totalLabel": "Geschätzte Dauerlast",
-    "totalValue": "~192 W",
+    "totalValue": "~194 W",
     "monthlyLabel": "Hochgerechnet pro Monat",
-    "monthlyValue": "~138 kWh",
+    "monthlyValue": "~140 kWh",
     "wolTitle": "Wake-on-LAN für die GPU-Workstation",
     "wolBody": "Die GPU-Workstation (HP Z840) hat mit über 300 W Spitzenlast den größten Einzelverbrauch im Cluster — wird aber nur für die anspruchsvollere Inferenz-Stufe gebraucht. Ein Autosuspend-Mechanismus versetzt sie nach einer Phase ohne Anfragen in den Ruhezustand; ein Wake-on-LAN-Magic-Packet weckt sie gezielt wieder auf, sobald eine Anfrage diese Stufe braucht. So sinkt ihr Beitrag zum Dauerverbrauch auf einen kleinen zeitgewichteten Bruchteil, ohne bei Bedarf auf GPU-Leistung zu verzichten."
   },

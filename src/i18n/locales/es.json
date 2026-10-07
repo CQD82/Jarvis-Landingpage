@@ -138,7 +138,8 @@
     "Las imágenes de contenedor propias se firman (cosign) y solo se admiten con una firma válida",
       "Los agentes se ejecutan aislados en un sandbox gVisor, sin token de cuenta de servicio ni acceso al host",
       "Tráfico de red cifrado de nodo a nodo",
-      "Acceso de mínimo privilegio para toda la automatización"
+      "Acceso de mínimo privilegio para toda la automatización",
+      "Una prueba de restauración automatizada mensual verifica la recuperabilidad de las copias de seguridad en un nodo despertado por Wake-on-LAN solo para este fin"
     ],
     "footerNote": "Los detalles de infraestructura, direcciones de red internas y scripts operativos se mantienen privados y deliberadamente no se publican en este sitio."
   },
@@ -213,12 +214,13 @@
       { "label": "Switch de red", "watts": "~15 W" },
       { "label": "Disco de backup (WD Elements 22 TB)", "watts": "~6 W" },
       { "label": "Nodo sensor/watchdog (Pi Zero 2W)", "watts": "~1 W" },
+      { "label": "i5-8500 (banco de pruebas de restauración WoL, casi siempre en reposo)", "watts": "~2 W" },
       { "label": "Estación GPU (prom. con autosuspend)", "watts": "~20 W" }
     ],
     "totalLabel": "Carga continua estimada",
-    "totalValue": "~192 W",
+    "totalValue": "~194 W",
     "monthlyLabel": "Proyección mensual",
-    "monthlyValue": "~138 kWh",
+    "monthlyValue": "~140 kWh",
     "wolTitle": "Wake-on-LAN para la estación GPU",
     "wolBody": "La estación GPU (HP Z840), con más de 300 W de pico, es con diferencia el mayor consumidor individual del clúster — pero solo se necesita para el nivel de inferencia más exigente. Un mecanismo de autosuspend la pone a dormir tras un periodo sin solicitudes; un paquete mágico Wake-on-LAN la despierta específicamente cuando una solicitud necesita ese nivel. Así, su contribución al consumo continuo se reduce a una pequeña fracción ponderada en el tiempo, sin renunciar a la potencia de GPU bajo demanda."
   },

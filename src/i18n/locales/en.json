@@ -138,7 +138,8 @@
     "Own container images are signed (cosign) and admitted only with a valid signature",
       "Agents run isolated in a gVisor sandbox, with no service-account token and no host access",
       "Encrypted node-to-node network traffic",
-      "Least-privilege access for all automation"
+      "Least-privilege access for all automation",
+      "A monthly automated restore test verifies backup restorability on a node woken via Wake-on-LAN just for this purpose"
     ],
     "footerNote": "Infrastructure details, internal network addresses, and operational scripts stay private and are deliberately not published on this site."
   },
@@ -213,12 +214,13 @@
       { "label": "Network switch", "watts": "~15 W" },
       { "label": "Backup drive (WD Elements 22 TB)", "watts": "~6 W" },
       { "label": "Sensor/watchdog node (Pi Zero 2W)", "watts": "~1 W" },
+      { "label": "i5-8500 (WoL restore test-bed, mostly asleep)", "watts": "~2 W" },
       { "label": "GPU workstation (avg. with autosuspend)", "watts": "~20 W" }
     ],
     "totalLabel": "Estimated continuous load",
-    "totalValue": "~192 W",
+    "totalValue": "~194 W",
     "monthlyLabel": "Projected per month",
-    "monthlyValue": "~138 kWh",
+    "monthlyValue": "~140 kWh",
     "wolTitle": "Wake-on-LAN for the GPU Workstation",
     "wolBody": "The GPU workstation (HP Z840), at 300+ W peak, is by far the single biggest consumer in the cluster — but it's only needed for the more demanding inference tier. An autosuspend mechanism puts it to sleep after a period without requests; a Wake-on-LAN magic packet wakes it specifically when a request needs that tier. That cuts its contribution to continuous consumption down to a small time-weighted fraction, without giving up on-demand GPU power."
   },

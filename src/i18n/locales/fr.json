@@ -138,7 +138,8 @@
     "Les images de conteneurs maison sont signées (cosign) et admises uniquement avec une signature valide",
       "Les agents s'exécutent isolés dans un bac à sable gVisor, sans jeton de compte de service ni accès à l'hôte",
       "Trafic réseau chiffré de nœud à nœud",
-      "Accès selon le moindre privilège pour toute l'automatisation"
+      "Accès selon le moindre privilège pour toute l'automatisation",
+      "Un test de restauration automatisé mensuel vérifie la restaurabilité des sauvegardes sur un nœud réveillé par Wake-on-LAN uniquement à cet effet"
     ],
     "footerNote": "Les détails d'infrastructure, les adresses réseau internes et les scripts opérationnels restent privés et ne sont volontairement pas publiés sur ce site."
   },
@@ -213,12 +214,13 @@
       { "label": "Commutateur réseau", "watts": "~15 W" },
       { "label": "Disque de sauvegarde (WD Elements 22 To)", "watts": "~6 W" },
       { "label": "Nœud capteur/watchdog (Pi Zero 2W)", "watts": "~1 W" },
+      { "label": "i5-8500 (banc de test de restauration WoL, en veille la plupart du temps)", "watts": "~2 W" },
       { "label": "Station GPU (moy. avec autosuspend)", "watts": "~20 W" }
     ],
     "totalLabel": "Charge continue estimée",
-    "totalValue": "~192 W",
+    "totalValue": "~194 W",
     "monthlyLabel": "Projection mensuelle",
-    "monthlyValue": "~138 kWh",
+    "monthlyValue": "~140 kWh",
     "wolTitle": "Wake-on-LAN pour la station GPU",
     "wolBody": "La station GPU (HP Z840), avec plus de 300 W en pointe, est de loin le plus gros consommateur individuel du cluster — mais elle n'est nécessaire que pour le niveau d'inférence le plus exigeant. Un mécanisme d'autosuspend la met en veille après une période sans requête ; un paquet magique Wake-on-LAN la réveille précisément quand une requête a besoin de ce niveau. Sa contribution à la consommation continue tombe ainsi à une petite fraction pondérée dans le temps, sans renoncer à la puissance GPU à la demande."
   },
