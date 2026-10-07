@@ -122,7 +122,7 @@
       { "tier": "Niveau CPU", "hardware": "Carte compacte, inférence CPU", "role": "Grand modèle mixture-of-experts pour le raisonnement" },
       { "tier": "Niveau Worker", "hardware": "Nœuds de cluster compacts", "role": "Inférence quotidienne distribuée" },
       { "tier": "Niveau GPU", "hardware": "Station de travail avec GPU dédié", "role": "Inférence temps réel en production" },
-      { "tier": "Niveau GPU (extension)", "hardware": "GPU nouvelle génération", "role": "Modèles multimodaux audio & vision" },
+      { "tier": "Niveau GPU (extension)", "hardware": "GPU nouvelle génération", "role": "Plus de contexte et de marge VRAM pour les mêmes modèles de chat" },
       { "tier": "Recours cloud", "hardware": "Externe, strictement limité en débit", "role": "Uniquement en dernier recours, seul egress autorisé" }
     ]
   },

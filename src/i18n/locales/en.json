@@ -122,7 +122,7 @@
       { "tier": "CPU Tier", "hardware": "Compact board, CPU inference", "role": "Large mixture-of-experts model for reasoning" },
       { "tier": "Worker Tier", "hardware": "Compact cluster nodes", "role": "Distributed everyday inference" },
       { "tier": "GPU Tier", "hardware": "Workstation with dedicated GPU", "role": "Production real-time inference" },
-      { "tier": "GPU Tier (Expansion)", "hardware": "Next-gen GPU", "role": "Multimodal audio & vision models" },
+      { "tier": "GPU Tier (Expansion)", "hardware": "Next-gen GPU", "role": "More context & VRAM headroom for the same chat models" },
       { "tier": "Cloud Fallback", "hardware": "External, tightly rate-limited", "role": "Last resort only, the single permitted egress" }
     ]
   },

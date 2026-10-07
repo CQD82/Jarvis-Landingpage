@@ -122,7 +122,7 @@
       { "tier": "Επίπεδο CPU", "hardware": "Συμπαγές board, inference σε CPU", "role": "Μεγάλο μοντέλο mixture-of-experts για reasoning" },
       { "tier": "Επίπεδο Worker", "hardware": "Συμπαγείς κόμβοι cluster", "role": "Κατανεμημένη καθημερινή inference" },
       { "tier": "Επίπεδο GPU", "hardware": "Workstation με αποκλειστική GPU", "role": "Παραγωγική inference σε πραγματικό χρόνο" },
-      { "tier": "Επίπεδο GPU (επέκταση)", "hardware": "GPU επόμενης γενιάς", "role": "Πολυτροπικά μοντέλα ήχου & όρασης" },
+      { "tier": "Επίπεδο GPU (επέκταση)", "hardware": "GPU επόμενης γενιάς", "role": "Περισσότερο context & περιθώριο VRAM για τα ίδια μοντέλα chat" },
       { "tier": "Cloud Fallback", "hardware": "Εξωτερικό, αυστηρά rate-limited", "role": "Μόνο ως έσχατη λύση, το μοναδικό επιτρεπόμενο egress" }
     ]
   },

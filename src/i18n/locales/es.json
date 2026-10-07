@@ -122,7 +122,7 @@
       { "tier": "Nivel CPU", "hardware": "Placa compacta, inferencia por CPU", "role": "Modelo grande de mixture-of-experts para razonamiento" },
       { "tier": "Nivel Worker", "hardware": "Nodos de clúster compactos", "role": "Inferencia cotidiana distribuida" },
       { "tier": "Nivel GPU", "hardware": "Estación de trabajo con GPU dedicada", "role": "Inferencia en tiempo real en producción" },
-      { "tier": "Nivel GPU (ampliación)", "hardware": "GPU de nueva generación", "role": "Modelos multimodales de audio y visión" },
+      { "tier": "Nivel GPU (ampliación)", "hardware": "GPU de nueva generación", "role": "Más contexto y margen de VRAM para los mismos modelos de chat" },
       { "tier": "Respaldo en la nube", "hardware": "Externo, con límite de tasa estricto", "role": "Solo como último recurso, la única salida permitida" }
     ]
   },

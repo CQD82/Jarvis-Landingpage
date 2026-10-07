@@ -122,7 +122,7 @@
       { "tier": "CPU-Tier", "hardware": "Kompaktes Board, CPU-Inferenz", "role": "Großes Mixture-of-Experts-Modell für Reasoning" },
       { "tier": "Worker-Tier", "hardware": "Kompakte Cluster-Nodes", "role": "Verteilte Alltagsinferenz" },
       { "tier": "GPU-Tier", "hardware": "Workstation mit dedizierter GPU", "role": "Produktive Echtzeit-Inferenz" },
-      { "tier": "GPU-Tier (Ausbau)", "hardware": "Nächste GPU-Generation", "role": "Multimodale Audio- & Vision-Modelle" },
+      { "tier": "GPU-Tier (Ausbau)", "hardware": "Nächste GPU-Generation", "role": "Mehr Kontext & VRAM-Spielraum für dieselben Chat-Modelle" },
       { "tier": "Cloud-Fallback", "hardware": "Extern, streng ratenbegrenzt", "role": "Nur als letzter Ausweg, ein einziger erlaubter Egress" }
     ]
   },
