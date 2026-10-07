@@ -156,7 +156,7 @@
       "rackWithZ840": "Επισκόπηση του rack: θέσεις κόμβων, switch και ο σταθμός GPU (Z840) στην κάτω θέση.",
       "odroidAssembly": "Συναρμολόγηση του ODROID-H5 με την παθητική ψύκτρα του.",
       "aiHatBoxes": "Δύο Raspberry Pi AI HAT+ 2 με Hailo NPU, για το Raspberry Pi 5 16GB.",
-      "chipMacro": "Close-up: το SoC μιας μονάδας υπολογισμού.",
+      "chipMacro": "Close-up: το chip RP3A0-AU (SoC) πάνω στο Raspberry Pi Zero 2 W.",
       "backupDrive": "Σκληρός δίσκος WD Elements 22 TB για τα backups του Velero."
     }
   },

@@ -156,7 +156,7 @@
       "rackWithZ840": "Rack overview: node bays, switch, and the GPU workstation (Z840) in the bottom slot.",
       "odroidAssembly": "Assembling the ODROID-H5 with its passive heatsink.",
       "aiHatBoxes": "Two Raspberry Pi AI HAT+ 2 units with a Hailo NPU, for the Raspberry Pi 5 16GB.",
-      "chipMacro": "Close-up: the SoC of a compute module.",
+      "chipMacro": "Close-up: the RP3A0-AU chip (SoC) on the Raspberry Pi Zero 2 W.",
       "backupDrive": "WD Elements 22 TB hard drive for the Velero backups."
     }
   },

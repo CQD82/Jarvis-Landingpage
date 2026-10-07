@@ -156,7 +156,7 @@
       "rackWithZ840": "Vista general del rack: bahías de nodos, switch y la estación GPU (Z840) en la ranura inferior.",
       "odroidAssembly": "Montaje del ODROID-H5 con su disipador pasivo.",
       "aiHatBoxes": "Dos Raspberry Pi AI HAT+ 2 con NPU Hailo, para el Raspberry Pi 5 de 16 GB.",
-      "chipMacro": "Primer plano: el SoC de un módulo de cómputo.",
+      "chipMacro": "Primer plano: el chip RP3A0-AU (SoC) del Raspberry Pi Zero 2 W.",
       "backupDrive": "Disco duro WD Elements de 22 TB para las copias de seguridad de Velero."
     }
   },
