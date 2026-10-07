@@ -1,6 +1,13 @@
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import {
+  motion,
+  useMotionValue,
+  useReducedMotion,
+  useScroll,
+  useSpring,
+  useTransform,
+} from "framer-motion";
 import type { LucideIcon } from "lucide-react";
-import type { ReactNode } from "react";
+import type { MouseEvent as ReactMouseEvent, ReactNode } from "react";
 import { Fragment, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { HudCorners } from "@/components/landing/HudCorners";
@@ -17,31 +24,77 @@ const HEX_POINTS = "24,4 41.6,14 41.6,34 24,44 6.4,34 6.4,14";
 const CYCLE = 3.2;
 const STEP = CYCLE / 4;
 
-/** Hexagonal node badge — echoes the JARVIS logo mark. The reactor core
- * pulses on a loop timed to the connector pulses so the whole row reads as
- * one traveling signal rather than four independent animations. */
+/**
+ * Hexagonal node badge, built as a true 3D object (preserve-3d + per-layer
+ * translateZ): a dim rim sits behind, the reactor glow floats in the
+ * middle, the icon sits in front — then the whole badge slowly rotates on
+ * its Y axis like a hologram, so perspective actually separates the layers
+ * instead of just implying depth with a drop-shadow.
+ */
 function HexNode({ icon: Icon, delay }: { icon: LucideIcon; delay: number }) {
+  const reduceMotion = useReducedMotion();
+
   return (
-    <div className="relative mx-auto flex size-16 shrink-0 items-center justify-center">
-      <svg viewBox="0 0 48 48" className="absolute inset-0 size-full" aria-hidden="true">
-        <polygon
-          points={HEX_POINTS}
-          fill="none"
-          stroke="var(--hud-gold)"
-          strokeWidth={1.5}
-          strokeLinejoin="round"
-          opacity={0.7}
-        />
-      </svg>
+    <div style={{ perspective: 300 }} className="mx-auto size-16 shrink-0">
       <motion.div
-        className="absolute inset-[6px] rounded-full"
-        style={{
-          background: "radial-gradient(circle, var(--hud-reactor) 0%, transparent 72%)",
-        }}
-        animate={{ opacity: [0.12, 0.65, 0.12], scale: [0.85, 1.05, 0.85] }}
-        transition={{ duration: CYCLE, repeat: Infinity, delay, ease: "easeInOut" }}
-      />
-      <Icon className="relative z-10 size-6 text-primary" aria-hidden="true" />
+        className="relative size-full"
+        style={{ transformStyle: "preserve-3d" }}
+        animate={reduceMotion ? undefined : { rotateY: [0, 14, 0, -14, 0] }}
+        transition={{ duration: 7, repeat: Infinity, delay, ease: "easeInOut" }}
+      >
+        {/* back rim — set behind the glow */}
+        <svg
+          viewBox="0 0 48 48"
+          className="absolute inset-0 size-full"
+          style={{ transform: "translateZ(-10px)" }}
+          aria-hidden="true"
+        >
+          <polygon
+            points={HEX_POINTS}
+            fill="none"
+            stroke="var(--hud-gold)"
+            strokeWidth={1.5}
+            strokeLinejoin="round"
+            opacity={0.3}
+          />
+        </svg>
+
+        {/* reactor glow — mid depth */}
+        <motion.div
+          className="absolute inset-[6px] rounded-full"
+          style={{
+            background: "radial-gradient(circle, var(--hud-reactor) 0%, transparent 72%)",
+            transform: "translateZ(-2px)",
+          }}
+          animate={{ opacity: [0.12, 0.65, 0.12], scale: [0.85, 1.05, 0.85] }}
+          transition={{ duration: CYCLE, repeat: Infinity, delay, ease: "easeInOut" }}
+        />
+
+        {/* front rim — bright, pushed toward the viewer like a glass bezel */}
+        <svg
+          viewBox="0 0 48 48"
+          className="absolute inset-0 size-full"
+          style={{ transform: "translateZ(10px)" }}
+          aria-hidden="true"
+        >
+          <polygon
+            points={HEX_POINTS}
+            fill="none"
+            stroke="var(--hud-gold)"
+            strokeWidth={1.5}
+            strokeLinejoin="round"
+            opacity={0.8}
+          />
+        </svg>
+
+        {/* icon — furthest forward */}
+        <div
+          className="absolute inset-0 flex items-center justify-center"
+          style={{ transform: "translateZ(16px)" }}
+        >
+          <Icon className="size-6 text-primary" aria-hidden="true" />
+        </div>
+      </motion.div>
     </div>
   );
 }
@@ -97,6 +150,69 @@ function ParallaxStage({ depth, children }: { depth: number; children: ReactNode
   );
 }
 
+/**
+ * The HUD console panel itself: tilts in 3D toward the cursor (desktop
+ * only — no-op without a pointer), with a holographic sheen that slides
+ * across the glass following the tilt, like light catching an angled
+ * display.
+ */
+function TiltPanel({ children }: { children: ReactNode }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const reduceMotion = useReducedMotion();
+  const pointerX = useMotionValue(0);
+  const pointerY = useMotionValue(0);
+  const rotateX = useSpring(useTransform(pointerY, [-0.5, 0.5], [7, -7]), {
+    stiffness: 150,
+    damping: 18,
+  });
+  const rotateY = useSpring(useTransform(pointerX, [-0.5, 0.5], [-9, 9]), {
+    stiffness: 150,
+    damping: 18,
+  });
+  const sheenX = useTransform(pointerX, [-0.5, 0.5], ["10%", "90%"]);
+  const sheenY = useTransform(pointerY, [-0.5, 0.5], ["10%", "90%"]);
+  const sheenBackground = useTransform(
+    [sheenX, sheenY],
+    ([x, y]) => `radial-gradient(circle at ${x} ${y}, rgba(255,255,255,0.12), transparent 55%)`,
+  );
+
+  function handlePointerMove(event: ReactMouseEvent<HTMLDivElement>) {
+    if (reduceMotion || !ref.current) return;
+    const rect = ref.current.getBoundingClientRect();
+    pointerX.set((event.clientX - rect.left) / rect.width - 0.5);
+    pointerY.set((event.clientY - rect.top) / rect.height - 0.5);
+  }
+
+  function handlePointerLeave() {
+    pointerX.set(0);
+    pointerY.set(0);
+  }
+
+  return (
+    <div style={{ perspective: 1400 }}>
+      <motion.div
+        ref={ref}
+        onMouseMove={handlePointerMove}
+        onMouseLeave={handlePointerLeave}
+        style={{ rotateX: reduceMotion ? 0 : rotateX, rotateY: reduceMotion ? 0 : rotateY, transformStyle: "preserve-3d" }}
+        className="border-glow relative overflow-hidden rounded-2xl border border-border bg-background/40 px-6 py-10 backdrop-blur-sm sm:px-10"
+      >
+        {/* Holographic sheen that follows the tilt */}
+        <motion.div
+          className="pointer-events-none absolute inset-0"
+          style={{ background: sheenBackground }}
+          aria-hidden="true"
+        />
+        {/* Diagonal scanning glint, same keyframes as the KITT HUD skin */}
+        <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+          <div className="animate-kitt-scan absolute inset-y-0 w-1/3 skew-x-12 bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+        </div>
+        {children}
+      </motion.div>
+    </div>
+  );
+}
+
 export function HowItWorks() {
   const { t } = useTranslation();
   const stages = t("howItWorks.stages", { returnObjects: true }) as Stage[];
@@ -132,7 +248,7 @@ export function HowItWorks() {
       <Reveal delay={0.1}>
         <div className="relative mx-auto mt-16 max-w-5xl">
           <HudCorners />
-          <div className="border-glow rounded-2xl border border-border bg-background/40 px-6 py-10 backdrop-blur-sm sm:px-10">
+          <TiltPanel>
             <div className="flex flex-col items-stretch gap-6 lg:flex-row lg:items-center lg:gap-0">
               {stages.map((stage, i) => {
                 const Icon = howItWorksStageIcons[i];
@@ -159,7 +275,7 @@ export function HowItWorks() {
                 );
               })}
             </div>
-          </div>
+          </TiltPanel>
         </div>
       </Reveal>
 
