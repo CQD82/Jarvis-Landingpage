@@ -200,6 +200,11 @@
     transform: translateX(100%);
   }
 }
+@keyframes pipe-flow {
+  to {
+    stroke-dashoffset: -32;
+  }
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .animate-radar-sweep {
@@ -217,6 +222,10 @@
   }
   .animate-kitt-scan {
     animation: kitt-scan 1.6s ease-in-out infinite;
+  }
+  .animate-pipe-flow {
+    stroke-dasharray: 10 22;
+    animation: pipe-flow 1.1s linear infinite;
   }
   body::before {
     animation: orb-drift 22s ease-in-out infinite;

@@ -8,6 +8,8 @@ interface TiltPanelProps {
   /** Max rotation in degrees at the panel's edge. */
   maxTiltX?: number;
   maxTiltY?: number;
+  /** Holographic sheen + scanning glint overlay. Default on; some panels (e.g. a photo with its own glow treatment) turn it off. */
+  sheen?: boolean;
 }
 
 /**
@@ -17,7 +19,7 @@ interface TiltPanelProps {
  * glint (the same keyframes as the KITT HUD skin), like light catching an
  * angled display.
  */
-export function TiltPanel({ children, className, maxTiltX = 7, maxTiltY = 9 }: TiltPanelProps) {
+export function TiltPanel({ children, className, maxTiltX = 7, maxTiltY = 9, sheen = true }: TiltPanelProps) {
   const ref = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();
   const pointerX = useMotionValue(0);
@@ -68,16 +70,20 @@ export function TiltPanel({ children, className, maxTiltX = 7, maxTiltY = 9 }: T
         }}
         className={className}
       >
-        {/* Holographic sheen that follows the tilt */}
-        <motion.div
-          className="pointer-events-none absolute inset-0 z-10"
-          style={{ background: sheenBackground }}
-          aria-hidden="true"
-        />
-        {/* Diagonal scanning glint, same keyframes as the KITT HUD skin */}
-        <div className="pointer-events-none absolute inset-0 z-10 overflow-hidden" aria-hidden="true">
-          <div className="animate-kitt-scan absolute inset-y-0 w-1/3 skew-x-12 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-        </div>
+        {sheen && (
+          <>
+            {/* Holographic sheen that follows the tilt */}
+            <motion.div
+              className="pointer-events-none absolute inset-0 z-10"
+              style={{ background: sheenBackground }}
+              aria-hidden="true"
+            />
+            {/* Diagonal scanning glint, same keyframes as the KITT HUD skin */}
+            <div className="pointer-events-none absolute inset-0 z-10 overflow-hidden" aria-hidden="true">
+              <div className="animate-kitt-scan absolute inset-y-0 w-1/3 skew-x-12 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+            </div>
+          </>
+        )}
         {children}
       </motion.div>
     </div>

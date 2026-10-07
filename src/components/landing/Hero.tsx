@@ -62,16 +62,63 @@ export function Hero() {
             className="border-glow relative overflow-hidden rounded-2xl border border-border"
             maxTiltX={6}
             maxTiltY={8}
+            sheen={false}
           >
-            <img
-              src={clusterArt}
-              alt={t("hero.artAlt")}
-              className="aspect-[4/3] w-full object-cover"
-              style={{
-                maskImage: "radial-gradient(ellipse at center, black 65%, transparent 100%)",
-                WebkitMaskImage: "radial-gradient(ellipse at center, black 65%, transparent 100%)",
-              }}
-            />
+            <div className="relative aspect-[4/3] w-full">
+              <img
+                src={clusterArt}
+                alt={t("hero.artAlt")}
+                className="absolute inset-0 size-full object-cover"
+                style={{
+                  maskImage: "radial-gradient(ellipse at center, black 65%, transparent 100%)",
+                  WebkitMaskImage: "radial-gradient(ellipse at center, black 65%, transparent 100%)",
+                }}
+              />
+              {/* Glowing conduits traced over the artwork's cube-to-cube light
+                  pipes — the overlay shares the photo's object-cover crop via a
+                  matching viewBox (the asset's native 676×768px) + "slice". */}
+              <svg
+                viewBox="0 0 676 768"
+                preserveAspectRatio="xMidYMid slice"
+                className="pointer-events-none absolute inset-0 size-full mix-blend-screen"
+                aria-hidden="true"
+                style={{
+                  maskImage: "radial-gradient(ellipse at center, black 65%, transparent 100%)",
+                  WebkitMaskImage: "radial-gradient(ellipse at center, black 65%, transparent 100%)",
+                }}
+              >
+                <defs>
+                  <filter id="pipe-glow" x="-60%" y="-60%" width="220%" height="220%">
+                    <feGaussianBlur stdDeviation="4" result="blur" />
+                    <feMerge>
+                      <feMergeNode in="blur" />
+                      <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                  </filter>
+                </defs>
+                {[
+                  "M216,180 C216,230 210,260 205,290",
+                  "M260,300 C320,260 390,240 455,225",
+                  "M160,300 C100,270 55,250 30,235",
+                  "M140,400 C110,470 130,540 160,580 C190,615 215,630 235,645",
+                  "M260,645 C330,630 420,610 505,568",
+                ].map((d, i) => (
+                  <g key={d} filter="url(#pipe-glow)">
+                    <path d={d} fill="none" stroke="var(--hud-reactor)" strokeOpacity={0.35} strokeWidth={3} strokeLinecap="round" />
+                    <path
+                      d={d}
+                      fill="none"
+                      stroke="white"
+                      strokeOpacity={0.9}
+                      strokeWidth={1.5}
+                      strokeLinecap="round"
+                      className="animate-pipe-flow"
+                      style={{ animationDelay: `${i * 0.25}s` }}
+                    />
+                  </g>
+                ))}
+              </svg>
+            </div>
           </TiltPanel>
         </motion.div>
       </motion.div>
