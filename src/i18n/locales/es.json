@@ -150,12 +150,12 @@
       "assembly": "Preensamblaje de la flota de nodos antes de instalarla en el rack.",
       "odroid": "El ODROID-H5 — soporte del nivel de inferencia por CPU.",
       "aiHat": "Raspberry Pi AI HAT+ con NPU Hailo para inferencia en el borde.",
-      "heatsinks": "Módulos de cómputo Raspberry Pi 5 con refrigeración pasiva.",
+      "heatsinks": "Raspberry Pi 5 de 16 GB con refrigeración activa.",
       "piZero": "El Raspberry Pi Zero 2 W — el nodo más pequeño del clúster, en funciones de nodo sensor/watchdog.",
       "workbench": "La mesa de trabajo durante el montaje.",
       "rackWithZ840": "Vista general del rack: bahías de nodos, switch y la estación GPU (Z840) en la ranura inferior.",
       "odroidAssembly": "Montaje del ODROID-H5 con su disipador pasivo.",
-      "aiHatBoxes": "Dos Raspberry Pi AI HAT+ 2 con NPU Hailo, listos para enviar.",
+      "aiHatBoxes": "Dos Raspberry Pi AI HAT+ 2 con NPU Hailo, para el Raspberry Pi 5 de 16 GB.",
       "chipMacro": "Primer plano: el SoC de un módulo de cómputo.",
       "backupDrive": "Disco duro WD Elements de 22 TB para las copias de seguridad de Velero."
     }

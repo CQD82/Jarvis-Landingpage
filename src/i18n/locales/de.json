@@ -150,12 +150,12 @@
       "assembly": "Vormontage der Node-Flotte, bevor sie ins Rack wandert.",
       "odroid": "Der ODROID-H5 — Träger des CPU-Inferenz-Tiers.",
       "aiHat": "Raspberry Pi AI HAT+ mit Hailo-NPU für Edge-Inferenz.",
-      "heatsinks": "Raspberry Pi 5 Compute-Module mit passiver Kühlung.",
+      "heatsinks": "Raspberry Pi 5 16GB mit aktiver Kühlung.",
       "piZero": "Der Raspberry Pi Zero 2W — der kleinste Node im Cluster, als Sensor-/Watchdog-Node im Einsatz.",
       "workbench": "Die Werkbank während des Aufbaus.",
       "rackWithZ840": "Rack-Übersicht: Node-Bays, Switch und die GPU-Workstation (Z840) im untersten Slot.",
       "odroidAssembly": "Montage des ODROID-H5 mit passivem Kühlkörper.",
-      "aiHatBoxes": "Zwei Raspberry Pi AI HAT+ 2 mit Hailo-NPU, versandfertig verpackt.",
+      "aiHatBoxes": "Zwei Raspberry Pi AI HAT+ 2 mit Hailo-NPU für den Raspberry Pi 5 16GB.",
       "chipMacro": "Nahaufnahme: der SoC eines Compute-Moduls.",
       "backupDrive": "WD Elements 22-TB-Festplatte für die Velero-Backups."
     }

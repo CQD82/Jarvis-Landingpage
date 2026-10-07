@@ -150,12 +150,12 @@
       "assembly": "Pré-assemblage de la flotte de nœuds avant son installation en baie.",
       "odroid": "L'ODROID-H5 — support du niveau d'inférence CPU.",
       "aiHat": "Raspberry Pi AI HAT+ avec NPU Hailo pour l'inférence en périphérie.",
-      "heatsinks": "Modules de calcul Raspberry Pi 5 à refroidissement passif.",
+      "heatsinks": "Raspberry Pi 5 16 Go avec refroidissement actif.",
       "piZero": "Le Raspberry Pi Zero 2 W — le plus petit nœud du cluster, utilisé comme nœud capteur/watchdog.",
       "workbench": "L'établi en pleine construction.",
       "rackWithZ840": "Vue d'ensemble de la baie : baies de nœuds, switch et la station GPU (Z840) dans l'emplacement du bas.",
       "odroidAssembly": "Assemblage de l'ODROID-H5 avec son dissipateur passif.",
-      "aiHatBoxes": "Deux Raspberry Pi AI HAT+ 2 avec NPU Hailo, prêts à l'expédition.",
+      "aiHatBoxes": "Deux Raspberry Pi AI HAT+ 2 avec NPU Hailo, pour le Raspberry Pi 5 16 Go.",
       "chipMacro": "Gros plan : le SoC d'un module de calcul.",
       "backupDrive": "Disque dur WD Elements de 22 To pour les sauvegardes Velero."
     }

@@ -150,12 +150,12 @@
       "assembly": "Προσυναρμολόγηση του στόλου κόμβων πριν μπει στο rack.",
       "odroid": "Το ODROID-H5 — φορέας του επιπέδου inference CPU.",
       "aiHat": "Raspberry Pi AI HAT+ με Hailo NPU για edge inference.",
-      "heatsinks": "Μονάδες υπολογισμού Raspberry Pi 5 με παθητική ψύξη.",
+      "heatsinks": "Raspberry Pi 5 16GB με ενεργή ψύξη.",
       "piZero": "Το Raspberry Pi Zero 2 W — ο μικρότερος κόμβος του cluster, σε ρόλο κόμβου αισθητήρα/watchdog.",
       "workbench": "Ο πάγκος εργασίας κατά τη συναρμολόγηση.",
       "rackWithZ840": "Επισκόπηση του rack: θέσεις κόμβων, switch και ο σταθμός GPU (Z840) στην κάτω θέση.",
       "odroidAssembly": "Συναρμολόγηση του ODROID-H5 με την παθητική ψύκτρα του.",
-      "aiHatBoxes": "Δύο Raspberry Pi AI HAT+ 2 με Hailo NPU, έτοιμα για αποστολή.",
+      "aiHatBoxes": "Δύο Raspberry Pi AI HAT+ 2 με Hailo NPU, για το Raspberry Pi 5 16GB.",
       "chipMacro": "Close-up: το SoC μιας μονάδας υπολογισμού.",
       "backupDrive": "Σκληρός δίσκος WD Elements 22 TB για τα backups του Velero."
     }
