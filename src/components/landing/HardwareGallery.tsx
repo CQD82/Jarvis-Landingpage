@@ -3,21 +3,28 @@ import { Reveal } from "@/components/landing/Reveal";
 import { SectionHeading } from "@/components/landing/SectionHeading";
 import aiHatBoxes from "@/assets/hardware/ai-hat-boxes.jpg";
 import aiHatMounted from "@/assets/hardware/ai-hat-mounted.jpg";
+import apcUps from "@/assets/hardware/apc-ups.jpg";
 import backupDrive from "@/assets/hardware/wd-backup-drive.jpg";
 import chipMacro from "@/assets/hardware/pi-chip-macro.jpg";
 import nodeAssembly from "@/assets/hardware/node-assembly.jpg";
+import nodeBaysCabled from "@/assets/hardware/node-bays-cabled.jpg";
 import odroidAssembly from "@/assets/hardware/odroid-assembly.jpg";
 import odroidH5Case from "@/assets/hardware/odroid-h5-case.jpg";
 import pi5Heatsinks from "@/assets/hardware/pi5-heatsinks.jpg";
 import piZero2W from "@/assets/hardware/pi-zero-2w.jpg";
+import rackCabledFull from "@/assets/hardware/rack-cabled-full.jpg";
+import rackInteriorCabling from "@/assets/hardware/rack-interior-cabling.jpg";
 import rackNodeBays from "@/assets/hardware/rack-node-bays.jpg";
 import rackWithZ840 from "@/assets/hardware/rack-with-z840.jpg";
 import workbenchSetup from "@/assets/hardware/workbench-setup.jpg";
 
 const PHOTOS: { src: string; captionKey: string; span?: string }[] = [
   { src: rackWithZ840, captionKey: "rackWithZ840", span: "sm:row-span-2" },
+  { src: rackCabledFull, captionKey: "rackCabledFull" },
   { src: rackNodeBays, captionKey: "rackBays" },
   { src: nodeAssembly, captionKey: "assembly" },
+  { src: rackInteriorCabling, captionKey: "rackInteriorCabling" },
+  { src: nodeBaysCabled, captionKey: "nodeBaysCabled" },
   { src: odroidH5Case, captionKey: "odroid" },
   { src: odroidAssembly, captionKey: "odroidAssembly" },
   { src: aiHatMounted, captionKey: "aiHat" },
@@ -26,6 +33,7 @@ const PHOTOS: { src: string; captionKey: string; span?: string }[] = [
   { src: piZero2W, captionKey: "piZero" },
   { src: chipMacro, captionKey: "chipMacro" },
   { src: backupDrive, captionKey: "backupDrive" },
+  { src: apcUps, captionKey: "apcUps" },
   { src: workbenchSetup, captionKey: "workbench" },
 ];
 

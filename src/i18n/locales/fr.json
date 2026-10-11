@@ -160,7 +160,11 @@
       "odroidAssembly": "Assemblage de l'ODROID-H5 avec son dissipateur passif.",
       "aiHatBoxes": "Deux Raspberry Pi AI HAT+ 2 avec NPU Hailo, pour le Raspberry Pi 5 16 Go.",
       "chipMacro": "Gros plan : la puce RP3A0-AU (SoC) du Raspberry Pi Zero 2 W.",
-      "backupDrive": "Disque dur WD Elements de 22 To pour les sauvegardes Velero."
+      "backupDrive": "Disque dur WD Elements de 22 To pour les sauvegardes Velero.",
+      "rackCabledFull": "La baie entièrement câblée, moniteur en haut — tous les nœuds connectés.",
+      "rackInteriorCabling": "Vue intérieure de la baie : rails, câblage réseau et bandeau de brassage.",
+      "nodeBaysCabled": "Les nœuds de calcul, chacun raccordé au switch par un câble de brassage.",
+      "apcUps": "L'onduleur APC Back-UPS Pro 900 — protège la baie des coupures de courant."
     }
   },
   "howItWorks": {
@@ -215,14 +219,17 @@
       { "label": "Disque de sauvegarde (WD Elements 22 To)", "watts": "~6 W" },
       { "label": "Nœud capteur/watchdog (Pi Zero 2W)", "watts": "~1 W" },
       { "label": "i5-8500 (banc de test de restauration WoL, en veille la plupart du temps)", "watts": "~2 W" },
-      { "label": "Station GPU (moy. avec autosuspend)", "watts": "~20 W" }
+      { "label": "Station GPU (moy. avec autosuspend)", "watts": "~20 W" },
+      { "label": "Onduleur (APC Back-UPS Pro 900, consommation propre)", "watts": "~5 W" }
     ],
     "totalLabel": "Charge continue estimée",
-    "totalValue": "~194 W",
+    "totalValue": "~199 W",
     "monthlyLabel": "Projection mensuelle",
-    "monthlyValue": "~140 kWh",
+    "monthlyValue": "~145 kWh",
     "wolTitle": "Wake-on-LAN pour la station GPU",
-    "wolBody": "La station GPU (HP Z840), avec plus de 300 W en pointe, est de loin le plus gros consommateur individuel du cluster — mais elle n'est nécessaire que pour le niveau d'inférence le plus exigeant. Un mécanisme d'autosuspend la met en veille après une période sans requête ; un paquet magique Wake-on-LAN la réveille précisément quand une requête a besoin de ce niveau. Sa contribution à la consommation continue tombe ainsi à une petite fraction pondérée dans le temps, sans renoncer à la puissance GPU à la demande."
+    "wolBody": "La station GPU (HP Z840), avec plus de 300 W en pointe, est de loin le plus gros consommateur individuel du cluster — mais elle n'est nécessaire que pour le niveau d'inférence le plus exigeant. Un mécanisme d'autosuspend la met en veille après une période sans requête ; un paquet magique Wake-on-LAN la réveille précisément quand une requête a besoin de ce niveau. Sa contribution à la consommation continue tombe ainsi à une petite fraction pondérée dans le temps, sans renoncer à la puissance GPU à la demande.",
+    "upsTitle": "Alimentation sans interruption",
+    "upsBody": "Un onduleur APC Back-UPS Pro 900 absorbe les coupures brèves et les creux de tension pour permettre aux nœuds de s'arrêter proprement plutôt que de perdre le courant d'un coup. Sa propre consommation continue — veille de l'onduleur et charge d'entretien — reste faible, environ 5 W."
   },
   "hud": {
     "eyebrow": "Supervision",

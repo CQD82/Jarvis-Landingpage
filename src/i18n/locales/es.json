@@ -160,7 +160,11 @@
       "odroidAssembly": "Montaje del ODROID-H5 con su disipador pasivo.",
       "aiHatBoxes": "Dos Raspberry Pi AI HAT+ 2 con NPU Hailo, para el Raspberry Pi 5 de 16 GB.",
       "chipMacro": "Primer plano: el chip RP3A0-AU (SoC) del Raspberry Pi Zero 2 W.",
-      "backupDrive": "Disco duro WD Elements de 22 TB para las copias de seguridad de Velero."
+      "backupDrive": "Disco duro WD Elements de 22 TB para las copias de seguridad de Velero.",
+      "rackCabledFull": "El rack totalmente cableado con el monitor encima — todos los nodos conectados.",
+      "rackInteriorCabling": "Vista interior del rack: guías, cableado de red y el panel de parcheo.",
+      "nodeBaysCabled": "Los nodos de cómputo, cada uno conectado al switch mediante un cable de parcheo.",
+      "apcUps": "El SAI APC Back-UPS Pro 900 — protege el rack frente a cortes de energía."
     }
   },
   "howItWorks": {
@@ -215,14 +219,17 @@
       { "label": "Disco de backup (WD Elements 22 TB)", "watts": "~6 W" },
       { "label": "Nodo sensor/watchdog (Pi Zero 2W)", "watts": "~1 W" },
       { "label": "i5-8500 (banco de pruebas de restauración WoL, casi siempre en reposo)", "watts": "~2 W" },
-      { "label": "Estación GPU (prom. con autosuspend)", "watts": "~20 W" }
+      { "label": "Estación GPU (prom. con autosuspend)", "watts": "~20 W" },
+      { "label": "SAI (APC Back-UPS Pro 900, consumo propio)", "watts": "~5 W" }
     ],
     "totalLabel": "Carga continua estimada",
-    "totalValue": "~194 W",
+    "totalValue": "~199 W",
     "monthlyLabel": "Proyección mensual",
-    "monthlyValue": "~140 kWh",
+    "monthlyValue": "~145 kWh",
     "wolTitle": "Wake-on-LAN para la estación GPU",
-    "wolBody": "La estación GPU (HP Z840), con más de 300 W de pico, es con diferencia el mayor consumidor individual del clúster — pero solo se necesita para el nivel de inferencia más exigente. Un mecanismo de autosuspend la pone a dormir tras un periodo sin solicitudes; un paquete mágico Wake-on-LAN la despierta específicamente cuando una solicitud necesita ese nivel. Así, su contribución al consumo continuo se reduce a una pequeña fracción ponderada en el tiempo, sin renunciar a la potencia de GPU bajo demanda."
+    "wolBody": "La estación GPU (HP Z840), con más de 300 W de pico, es con diferencia el mayor consumidor individual del clúster — pero solo se necesita para el nivel de inferencia más exigente. Un mecanismo de autosuspend la pone a dormir tras un periodo sin solicitudes; un paquete mágico Wake-on-LAN la despierta específicamente cuando una solicitud necesita ese nivel. Así, su contribución al consumo continuo se reduce a una pequeña fracción ponderada en el tiempo, sin renunciar a la potencia de GPU bajo demanda.",
+    "upsTitle": "Sistema de alimentación ininterrumpida",
+    "upsBody": "Un SAI APC Back-UPS Pro 900 amortigua cortes breves y caídas de tensión para que los nodos puedan apagarse de forma limpia en lugar de perder la energía de golpe. Su propio consumo continuo — reposo del inversor y carga de mantenimiento — es pequeño, unos 5 W."
   },
   "hud": {
     "eyebrow": "Monitorización",
