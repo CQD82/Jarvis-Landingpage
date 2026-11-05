@@ -141,6 +141,7 @@
       "Ejecuciones de CI en runners endurecidos y aislados, sin acciones de terceros; los agentes de IA solo pueden abrir pull requests, nunca ejecutar comandos directamente",
       "Los agentes se ejecutan aislados en un sandbox gVisor, sin token de cuenta de servicio ni acceso al host",
       "Tráfico de red cifrado de nodo a nodo",
+      "Todos los nodos Raspberry Pi del clúster son exclusivamente cableados — el Wi-Fi está desactivado a nivel de firmware",
       "Acceso de mínimo privilegio para toda la automatización",
       "Una prueba de restauración automatizada mensual verifica la recuperabilidad de las copias de seguridad en un banco de pruebas propio, aislado del clúster de producción"
     ],

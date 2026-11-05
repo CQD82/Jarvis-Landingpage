@@ -141,6 +141,7 @@
       "CI runs in hardened, isolated runners with no third-party actions; AI agents may only open pull requests, never run commands directly",
       "Agents run isolated in a gVisor sandbox, with no service-account token and no host access",
       "Encrypted node-to-node network traffic",
+      "All Raspberry Pi cluster nodes are wired-only — Wi-Fi is disabled at the firmware level",
       "Least-privilege access for all automation",
       "A monthly automated restore test verifies backup restorability on a dedicated test-bed isolated from the production cluster"
     ],

@@ -141,6 +141,7 @@
       "Exécutions CI dans des runners durcis et isolés, sans actions tierces ; les agents IA ne peuvent qu'ouvrir des pull requests, jamais exécuter directement des commandes",
       "Les agents s'exécutent isolés dans un bac à sable gVisor, sans jeton de compte de service ni accès à l'hôte",
       "Trafic réseau chiffré de nœud à nœud",
+      "Tous les nœuds Raspberry Pi du cluster sont exclusivement filaires — le Wi-Fi est désactivé au niveau du firmware",
       "Accès selon le moindre privilège pour toute l'automatisation",
       "Un test de restauration automatisé mensuel vérifie la restaurabilité des sauvegardes sur un banc de test dédié, isolé du cluster de production"
     ],

@@ -141,6 +141,7 @@
       "CI-Läufe in gehärteten, isolierten Runnern ohne Fremd-Actions; KI-Agenten dürfen nur Pull-Requests öffnen, nie direkt Befehle ausführen",
       "Agenten laufen isoliert in einer gVisor-Sandbox, ohne Service-Account-Token und ohne Zugriff auf den Host",
       "Verschlüsselter Node-zu-Node-Netzwerkverkehr",
+      "Alle Raspberry-Pi-Cluster-Nodes ausschließlich kabelgebunden — WLAN ist auf Firmware-Ebene deaktiviert",
       "Least-Privilege-Zugriff für sämtliche Automatisierung",
       "Monatlicher automatisierter Restore-Test verifiziert die Wiederherstellbarkeit der Backups auf einem eigenen, vom Produktivcluster isolierten Prüfstand"
     ],
