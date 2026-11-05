@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import { BatteryCharging, PowerOff, Zap } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { HudCorners } from "@/components/landing/HudCorners";
@@ -66,7 +67,7 @@ export function PowerConsumption() {
         <div className="flex flex-col gap-6">
           <Reveal delay={0.2}>
             <div className="flex h-full flex-col rounded-xl border border-border bg-card p-6">
-              <div className="inline-flex size-10 items-center justify-center self-start rounded-lg border border-primary/30 bg-primary/10 text-primary">
+              <div className="inline-flex size-10 items-center justify-center self-start rounded-lg border border-primary/30 bg-primary/10 text-primary hud-icon" style={{ "--i": 0 } as CSSProperties}>
                 <PowerOff className="size-5" aria-hidden="true" />
               </div>
               <h3 className="mt-4 flex items-center gap-2 font-display text-base font-semibold tracking-tight">
@@ -81,7 +82,7 @@ export function PowerConsumption() {
 
           <Reveal delay={0.3}>
             <div className="flex h-full flex-col rounded-xl border border-border bg-card p-6">
-              <div className="inline-flex size-10 items-center justify-center self-start rounded-lg border border-primary/30 bg-primary/10 text-primary">
+              <div className="inline-flex size-10 items-center justify-center self-start rounded-lg border border-primary/30 bg-primary/10 text-primary hud-icon" style={{ "--i": 3 } as CSSProperties}>
                 <BatteryCharging className="size-5" aria-hidden="true" />
               </div>
               <h3 className="mt-4 font-display text-base font-semibold tracking-tight">

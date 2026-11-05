@@ -13,6 +13,17 @@ npm run dev
 
 `npm run lint` runs oxlint, `npm run build` type-checks and builds to `dist/`.
 
+## Deployment
+
+Cloudflare Workers Builds is connected to this repository:
+
+| Trigger | Command | Result |
+| --- | --- | --- |
+| Push to `main` (production branch) | `npx wrangler deploy` | Goes live on the production domain |
+| Push to any other branch / pull request | `npx wrangler versions upload` | Preview version only, with its own preview URL |
+
+Because `main` is protected by the ruleset below, every production deploy has passed CI first.
+
 ## Security
 
 - **Strict HTTP security headers** in `public/_headers` (served by Cloudflare with every response): a Content-Security-Policy that allows only same-origin scripts, styles, fonts and images, plus HSTS, `X-Content-Type-Options`, `X-Frame-Options: DENY`, `Referrer-Policy`, `Permissions-Policy` and `Cross-Origin-Opener/Resource-Policy`.

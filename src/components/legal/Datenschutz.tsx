@@ -73,6 +73,17 @@ export function DatenschutzPage() {
           Analytics, Matomo), kein Tracking, keine Marketing-Pixel und keine
           Social-Media-Plugins.
         </p>
+        <p>
+          Im Seitenfuß befinden sich einfache Links zu meinen Profilen auf
+          LinkedIn und XING. Dabei handelt es sich nicht um eingebettete
+          Plugins: Beim Aufruf dieser Website werden keine Daten an LinkedIn
+          oder XING übertragen. Erst wenn Sie einen dieser Links anklicken,
+          öffnet sich die Seite des jeweiligen Anbieters in einem neuen Tab;
+          die Adresse dieser Website wird dabei nicht als Referrer übermittelt.
+          Für die Verarbeitung Ihrer Daten auf diesen Seiten gelten
+          ausschließlich die Datenschutzbestimmungen von LinkedIn (LinkedIn
+          Ireland Unlimited Company) bzw. XING (New Work SE).
+        </p>
       </LegalSection>
 
       <LegalSection title="7. Kontaktaufnahme">
@@ -113,7 +124,7 @@ export function DatenschutzPage() {
           Ich behalte mir vor, diese Datenschutzerklärung anzupassen, damit
           sie stets den aktuellen rechtlichen Anforderungen entspricht.
         </p>
-        <p className="text-xs text-muted-foreground/70">Stand: August 2026</p>
+        <p className="text-xs text-muted-foreground/70">Stand: November 2026</p>
       </LegalSection>
     </LegalLayout>
   );

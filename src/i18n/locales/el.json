@@ -248,6 +248,7 @@
     "tabs": { "kitt": "K.I.T.T.", "matrix": "Matrix", "jarvis": "JARVIS" }
   },
   "footer": {
+    "profileLink": "Προφίλ {{name}} του Marcus Kollosch-Psyllou (ανοίγει σε νέα καρτέλα)",
     "tagline": "Ιδιωτικό project homelab",
     "impressum": "Νομικές πληροφορίες",
     "datenschutz": "Απόρρητο"
