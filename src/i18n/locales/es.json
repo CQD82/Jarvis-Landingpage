@@ -29,7 +29,7 @@
   ],
   "stats": [
     { "value": "18", "label": "Nodos en el clúster" },
-    { "value": "7", "label": "Niveles de inferencia de IA" },
+    { "value": "6", "label": "Niveles de inferencia de IA" },
     { "value": "6", "label": "Namespaces, denegación por defecto" },
     { "value": "100%", "label": "Declarativo vía GitOps" }
   ],
@@ -130,6 +130,7 @@
     "eyebrow": "Seguridad y cumplimiento",
     "title": "Alineado con ISO 27001, NIS-2 y CIS",
     "description": "Incluso como proyecto privado, operado como un sistema de producción — con controles documentados en vez de confianza de palabra.",
+    "groupTitles": ["Datos y acceso", "Red", "Cadena de suministro", "Ejecución y resiliencia"],
     "highlights": [
       "Cifrado de datos sensibles del clúster en reposo",
       "Registro de auditoría API completo con trazabilidad RBAC",
