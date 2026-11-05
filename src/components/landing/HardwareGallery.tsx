@@ -69,12 +69,14 @@ export function HardwareGallery() {
             delay={Math.min((i % INITIAL_COUNT) * 0.04, 0.28)}
             className={photo.span}
           >
-            {/* Tile "boots up": a top-down scan wipe as it enters view. */}
+            {/* Tile "boots up" as it enters view: a cover with a glowing
+                scan edge retracts downward. The observed element is the
+                tile itself, never clipped — observing a clip-path'd element
+                left the large tiles stuck invisible on mobile Chrome. */}
             <motion.div
-              initial={reduceMotion ? false : { clipPath: "inset(0 0 100% 0)" }}
-              whileInView={{ clipPath: "inset(0 0 0% 0)" }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: Math.min((i % INITIAL_COUNT) * 0.05, 0.3) }}
+              initial={reduceMotion ? false : "covered"}
+              whileInView="revealed"
+              viewport={{ once: true, amount: 0.1 }}
               className="group relative h-full overflow-hidden rounded-xl border border-border"
             >
               {/* Featured tiles drift slowly like a camera feed. */}
@@ -107,6 +109,16 @@ export function HardwareGallery() {
                 </p>
               </div>
               <div className="pointer-events-none absolute inset-0 rounded-xl border border-primary/0 transition-colors group-hover:border-primary/40" />
+              {!reduceMotion ? (
+                <motion.div
+                  aria-hidden="true"
+                  variants={{ covered: { scaleY: 1 }, revealed: { scaleY: 0 } }}
+                  transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1], delay: Math.min((i % INITIAL_COUNT) * 0.05, 0.3) }}
+                  className="pointer-events-none absolute inset-0 z-10 origin-bottom bg-background"
+                >
+                  <span className="absolute inset-x-0 top-0 h-px bg-[var(--hud-reactor)] shadow-[0_0_12px_2px_color-mix(in_oklab,var(--hud-reactor)_60%,transparent)]" />
+                </motion.div>
+              ) : null}
             </motion.div>
           </Reveal>
         ))}
