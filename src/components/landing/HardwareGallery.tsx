@@ -3,22 +3,22 @@ import { ChevronDown } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { Reveal } from "@/components/landing/Reveal";
 import { SectionHeading } from "@/components/landing/SectionHeading";
-import aiHatBoxes from "@/assets/hardware/ai-hat-boxes.jpg";
-import aiHatMounted from "@/assets/hardware/ai-hat-mounted.jpg";
-import apcUps from "@/assets/hardware/apc-ups.jpg";
-import backupDrive from "@/assets/hardware/wd-backup-drive.jpg";
-import chipMacro from "@/assets/hardware/pi-chip-macro.jpg";
-import nodeAssembly from "@/assets/hardware/node-assembly.jpg";
-import nodeBaysCabled from "@/assets/hardware/node-bays-cabled.jpg";
-import odroidAssembly from "@/assets/hardware/odroid-assembly.jpg";
-import odroidH5Case from "@/assets/hardware/odroid-h5-case.jpg";
-import pi5Heatsinks from "@/assets/hardware/pi5-heatsinks.jpg";
-import piZero2W from "@/assets/hardware/pi-zero-2w.jpg";
-import rackCabledFull from "@/assets/hardware/rack-cabled-full.jpg";
-import rackInteriorCabling from "@/assets/hardware/rack-interior-cabling.jpg";
-import rackNodeBays from "@/assets/hardware/rack-node-bays.jpg";
-import rackWithZ840 from "@/assets/hardware/rack-with-z840.jpg";
-import workbenchSetup from "@/assets/hardware/workbench-setup.jpg";
+import aiHatBoxes from "@/assets/hardware/ai-hat-boxes.webp";
+import aiHatMounted from "@/assets/hardware/ai-hat-mounted.webp";
+import apcUps from "@/assets/hardware/apc-ups.webp";
+import backupDrive from "@/assets/hardware/wd-backup-drive.webp";
+import chipMacro from "@/assets/hardware/pi-chip-macro.webp";
+import nodeAssembly from "@/assets/hardware/node-assembly.webp";
+import nodeBaysCabled from "@/assets/hardware/node-bays-cabled.webp";
+import odroidAssembly from "@/assets/hardware/odroid-assembly.webp";
+import odroidH5Case from "@/assets/hardware/odroid-h5-case.webp";
+import pi5Heatsinks from "@/assets/hardware/pi5-heatsinks.webp";
+import piZero2W from "@/assets/hardware/pi-zero-2w.webp";
+import rackCabledFull from "@/assets/hardware/rack-cabled-full.webp";
+import rackInteriorCabling from "@/assets/hardware/rack-interior-cabling.webp";
+import rackNodeBays from "@/assets/hardware/rack-node-bays.webp";
+import rackWithZ840 from "@/assets/hardware/rack-with-z840.webp";
+import workbenchSetup from "@/assets/hardware/workbench-setup.webp";
 
 const PHOTOS: { src: string; captionKey: string; span?: string }[] = [
   { src: rackWithZ840, captionKey: "rackWithZ840", span: "col-span-2 row-span-2" },

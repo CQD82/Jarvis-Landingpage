@@ -1,7 +1,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, Radar } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import clusterArt from "@/assets/hero/cluster-art.jpg";
+import clusterArt from "@/assets/hero/cluster-art.webp";
 import { GradientShimmer } from "@/components/ui/gradient-shimmer";
 import { CountUpStat } from "@/components/landing/CountUpStat";
 import { HudCorners } from "@/components/landing/HudCorners";

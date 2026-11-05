@@ -29,7 +29,7 @@
   ],
   "stats": [
     { "value": "18", "label": "Nodes im Cluster" },
-    { "value": "7", "label": "KI-Inferenz-Tiers" },
+    { "value": "6", "label": "KI-Inferenz-Tiers" },
     { "value": "6", "label": "Namespaces, Default-Deny" },
     { "value": "100%", "label": "Deklarativ via GitOps" }
   ],
@@ -130,6 +130,7 @@
     "eyebrow": "Sicherheit & Compliance",
     "title": "An ISO 27001, NIS-2 und CIS orientiert",
     "description": "Auch als privates Projekt betrieben wie ein produktives System — mit dokumentierten Kontrollen statt Vertrauen auf Zuruf.",
+    "groupTitles": ["Daten & Zugriff", "Netzwerk", "Supply Chain", "Laufzeit & Resilienz"],
     "highlights": [
       "Verschlüsselung sensibler Cluster-Daten im Ruhezustand",
       "Vollständiges API-Audit-Logging mit RBAC-Nachvollziehbarkeit",

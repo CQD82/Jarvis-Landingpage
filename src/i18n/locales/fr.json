@@ -29,7 +29,7 @@
   ],
   "stats": [
     { "value": "18", "label": "Nœuds dans le cluster" },
-    { "value": "7", "label": "Niveaux d'inférence IA" },
+    { "value": "6", "label": "Niveaux d'inférence IA" },
     { "value": "6", "label": "Namespaces, refus par défaut" },
     { "value": "100%", "label": "Déclaratif via GitOps" }
   ],
@@ -130,6 +130,7 @@
     "eyebrow": "Sécurité & conformité",
     "title": "Aligné sur ISO 27001, NIS-2 et CIS",
     "description": "Même en tant que projet privé, exploité comme un système de production — avec des contrôles documentés plutôt qu'une confiance de circonstance.",
+    "groupTitles": ["Données & accès", "Réseau", "Chaîne d'approvisionnement", "Exécution & résilience"],
     "highlights": [
       "Chiffrement des données sensibles du cluster au repos",
       "Journalisation d'audit API complète avec traçabilité RBAC",

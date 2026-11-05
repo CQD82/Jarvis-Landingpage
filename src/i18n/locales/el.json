@@ -29,7 +29,7 @@
   ],
   "stats": [
     { "value": "18", "label": "Κόμβοι στο cluster" },
-    { "value": "7", "label": "Επίπεδα AI inference" },
+    { "value": "6", "label": "Επίπεδα AI inference" },
     { "value": "6", "label": "Namespaces, Default-Deny" },
     { "value": "100%", "label": "Δηλωτικό μέσω GitOps" }
   ],
@@ -130,6 +130,7 @@
     "eyebrow": "Ασφάλεια & Συμμόρφωση",
     "title": "Ευθυγραμμισμένο με ISO 27001, NIS-2 και CIS",
     "description": "Ακόμη και ως ιδιωτικό project, λειτουργεί όπως ένα παραγωγικό σύστημα — με τεκμηριωμένους ελέγχους αντί για εμπιστοσύνη στα λόγια.",
+    "groupTitles": ["Δεδομένα & πρόσβαση", "Δίκτυο", "Supply Chain", "Runtime & ανθεκτικότητα"],
     "highlights": [
       "Κρυπτογράφηση ευαίσθητων δεδομένων του cluster σε κατάσταση ηρεμίας",
       "Πλήρες API audit logging με ιχνηλασιμότητα RBAC",
