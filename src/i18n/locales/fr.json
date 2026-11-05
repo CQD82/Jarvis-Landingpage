@@ -248,6 +248,7 @@
     "tabs": { "kitt": "K.I.T.T.", "matrix": "Matrix", "jarvis": "JARVIS" }
   },
   "footer": {
+    "profileLink": "Profil {{name}} de Marcus Kollosch-Psyllou (s'ouvre dans un nouvel onglet)",
     "tagline": "Projet homelab privé",
     "impressum": "Mentions légales",
     "datenschutz": "Confidentialité"
