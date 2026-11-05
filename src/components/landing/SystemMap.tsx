@@ -112,7 +112,7 @@ export function SystemMap() {
                   transition={{ duration: 0.5, delay: 0.15 + i * 0.08 }}
                   className="rounded-lg border border-border bg-card/90 p-3 text-center backdrop-blur-sm"
                 >
-                  <div className="mx-auto inline-flex size-8 items-center justify-center rounded-md border border-primary/30 bg-primary/10 text-primary">
+                  <div className="mx-auto inline-flex size-8 items-center justify-center rounded-md border border-primary/30 bg-primary/10 text-primary hud-icon" style={{ "--i": i } as CSSProperties}>
                     <Icon className="size-4" aria-hidden="true" />
                   </div>
                   <p className="mt-2 font-display text-xs font-semibold tracking-wide">
@@ -142,7 +142,7 @@ export function SystemMap() {
           return (
             <Reveal key={i} delay={Math.min(i * 0.05, 0.3)}>
               <div className="rounded-lg border border-border bg-card p-4">
-                <div className="inline-flex size-9 items-center justify-center rounded-md border border-primary/30 bg-primary/10 text-primary">
+                <div className="inline-flex size-9 items-center justify-center rounded-md border border-primary/30 bg-primary/10 text-primary hud-icon" style={{ "--i": i } as CSSProperties}>
                   <Icon className="size-4" aria-hidden="true" />
                 </div>
                 <p className="mt-3 font-display text-sm font-semibold tracking-wide">

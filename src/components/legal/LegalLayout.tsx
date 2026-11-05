@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { ArrowLeft } from "lucide-react";
 import { Logo } from "@/components/landing/Logo";
+import { SocialLinks } from "@/components/landing/SocialLinks";
 
 interface LegalLayoutProps {
   title: string;
@@ -43,12 +44,13 @@ export function LegalLayout({ title, children }: LegalLayoutProps) {
       </main>
 
       <footer className="border-t border-border/60 px-6 py-10">
-        <div className="mx-auto flex max-w-3xl flex-col items-center justify-between gap-4 text-sm text-muted-foreground sm:flex-row">
+        <div className="mx-auto flex max-w-3xl flex-col items-center justify-between gap-4 text-sm text-muted-foreground sm:flex-row sm:flex-wrap">
           <div className="flex items-center gap-2">
             <Logo size={18} animated={false} />
             <span className="font-display tracking-widest">JARVIS</span>
             <span className="font-mono text-xs">v5.5</span>
           </div>
+          <SocialLinks />
           <nav className="flex items-center gap-5 font-mono text-xs">
             <a href="/" className="transition-colors hover:text-foreground">
               Home
