@@ -25,7 +25,7 @@ See [SECURITY.md](SECURITY.md) for reporting vulnerabilities.
 
 ## Branch protection
 
-The default branch is protected by the ruleset in `.github/rulesets/protect-main.json`, imported under **Settings → Rules → Rulesets → New ruleset → Import a ruleset**. The file is the source of truth: change it by pull request, then re-import it.
+The default branch is protected by the ruleset in `.github/rulesets/protect-main.json`, imported under **Settings → Rules → Rulesets → New ruleset → Import a ruleset** (active since 2026-11-05). The file is the source of truth: change it by pull request, then re-import it.
 
 | Rule | Effect |
 | --- | --- |

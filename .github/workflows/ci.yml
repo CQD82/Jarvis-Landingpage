@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [claude/install-ui-ux-pro-max-skill-myzosb, main]
+    branches: [main]
   pull_request:
 
 # Least privilege: the workflow can only read the repository.
