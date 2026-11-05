@@ -5,7 +5,7 @@ import { HudCorners } from "@/components/landing/HudCorners";
 import { Reveal } from "@/components/landing/Reveal";
 import { SectionHeading } from "@/components/landing/SectionHeading";
 
-const GO_LIVE = new Date("2026-12-01T00:00:00");
+const GO_LIVE = new Date("2026-11-20T00:00:00");
 
 interface TimeParts {
   days: number;

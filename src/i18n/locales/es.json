@@ -14,7 +14,7 @@
     "security": "Seguridad"
   },
   "hero": {
-    "badge": "PROYECTO HOMELAB PRIVADO · v5.2 LISTO PARA PRODUCCIÓN",
+    "badge": "PROYECTO HOMELAB PRIVADO · v5.5 LISTO PARA PRODUCCIÓN",
     "description": "Un homelab Kubernetes de 18 nodos que piensa, ve y escucha en casa — gestionado de forma totalmente declarativa, con inferencia de IA local en varios niveles y segmentación de red de confianza cero.",
     "ctaPrimary": "Ver funciones",
     "artAlt": "Visualización 3D estilizada del clúster JARVIS — una representación artística, no una foto real del hardware.",
@@ -37,7 +37,7 @@
     "eyebrow": "Cronograma",
     "title": "Cuenta atrás para el lanzamiento",
     "description": "Inicio de producción planificado para todo el clúster — desde el arranque bare-metal hasta el asistente de voz.",
-    "target": "Objetivo · 1 de diciembre de 2026",
+    "target": "Objetivo · 20 de noviembre de 2026",
     "units": { "days": "Días", "hours": "Hrs", "minutes": "Min", "seconds": "Seg" }
   },
   "systemMap": {
@@ -64,7 +64,7 @@
       },
       {
         "title": "Clúster bare-metal de 18 nodos",
-        "description": "Varios modelos de Raspberry Pi, un ODROID-H5 y una estación de trabajo GPU combinados en un clúster K3s — desde el dispositivo perimetral hasta el hardware de inferencia, todo autoalojado, sin VMs en la nube."
+        "description": "Varios modelos de Raspberry Pi, un ODROID-H5 y dos hosts GPU combinados en un clúster K3s — desde el dispositivo perimetral hasta el hardware de inferencia, todo autoalojado, sin VMs en la nube."
       },
       {
         "title": "Inferencia de IA local en varios niveles",
@@ -88,7 +88,7 @@
       },
       {
         "title": "Gobernanza automatizada de versiones",
-        "description": "Las dependencias y versiones de charts se revisan continuamente y se proponen como pull requests revisables — nunca un 'latest' silencioso, cada cambio visible y trazable."
+        "description": "Las dependencias y versiones de charts se revisan continuamente y se proponen como pull requests revisables; una CI propia dentro del servidor Git comprueba cada pull request antes del merge — nunca un 'latest' silencioso, cada cambio visible y trazable."
       },
       {
         "title": "Backup, recuperación ante desastres y observabilidad",
@@ -108,7 +108,7 @@
       { "title": "Scripts de host", "description": "Capa de nodos: preparación de SO, almacenamiento, GPU y dispositivos." },
       { "title": "Helmfile", "description": "Bootstrap mínimo previo a Flux para los servicios centrales del clúster." },
       { "title": "FluxCD", "description": "Despliega todas las cargas de trabajo del clúster de forma declarativa y reconcilia la desviación automáticamente." },
-      { "title": "Renovate", "description": "Abre automáticamente pull requests para cada actualización de versión." }
+      { "title": "Renovate", "description": "Abre automáticamente pull requests para cada actualización de versión — comprobadas por Forgejo Actions antes del merge." }
     ],
     "footerNote": "git commit → git push → Flux reconcilia automáticamente el estado del clúster con el estado de Git"
   },
@@ -121,8 +121,8 @@
       { "tier": "Edge / NPU", "hardware": "Acelerador de IA perimetral", "role": "Reconocimiento de intención, respuestas instantáneas" },
       { "tier": "Nivel CPU", "hardware": "Placa compacta, inferencia por CPU", "role": "Modelo grande de mixture-of-experts para razonamiento" },
       { "tier": "Nivel Worker", "hardware": "Nodos de clúster compactos", "role": "Inferencia cotidiana distribuida" },
-      { "tier": "Nivel GPU", "hardware": "Estación de trabajo con GPU dedicada", "role": "Inferencia en tiempo real en producción" },
-      { "tier": "Nivel GPU (ampliación)", "hardware": "GPU de nueva generación", "role": "Más contexto y margen de VRAM para los mismos modelos de chat" },
+      { "tier": "Nivel GPU", "hardware": "Estación de trabajo con GPU actual de 16 GB", "role": "Inferencia en tiempo real en producción, ventana de contexto amplia" },
+      { "tier": "Nivel de código", "hardware": "Segundo host GPU eficiente, siempre encendido", "role": "Autocompletado de código las 24 horas" },
       { "tier": "Respaldo en la nube", "hardware": "Externo, con límite de tasa estricto", "role": "Solo como último recurso, la única salida permitida" }
     ]
   },
@@ -135,11 +135,14 @@
       "Registro de auditoría API completo con trazabilidad RBAC",
       "Secretos almacenados solo cifrados en el repositorio (nunca en texto plano)",
       "Aplicación de políticas, detección de amenazas en tiempo de ejecución y escaneo de imágenes",
+      "Aplicación de reglas en tiempo de ejecución en el kernel (Tetragon): los arranques de procesos y conexiones no autorizados de los servicios de IA se terminan al instante",
     "Las imágenes de contenedor propias se firman (cosign) y solo se admiten con una firma válida",
+      "Los componentes upstream comprometidos se bloquean y se sustituyen — la puerta de enlace de IA se reemplazó por completo tras un incidente en la cadena de suministro",
+      "Ejecuciones de CI en runners endurecidos y aislados, sin acciones de terceros; los agentes de IA solo pueden abrir pull requests, nunca ejecutar comandos directamente",
       "Los agentes se ejecutan aislados en un sandbox gVisor, sin token de cuenta de servicio ni acceso al host",
       "Tráfico de red cifrado de nodo a nodo",
       "Acceso de mínimo privilegio para toda la automatización",
-      "Una prueba de restauración automatizada mensual verifica la recuperabilidad de las copias de seguridad en un nodo despertado por Wake-on-LAN solo para este fin"
+      "Una prueba de restauración automatizada mensual verifica la recuperabilidad de las copias de seguridad en un banco de pruebas propio, aislado del clúster de producción"
     ],
     "footerNote": "Los detalles de infraestructura, direcciones de red internas y scripts operativos se mantienen privados y deliberadamente no se publican en este sitio."
   },
@@ -173,7 +176,7 @@
     "description": "Desde la primera señal hasta la respuesta — una representación simplificada e ilustrativa del flujo de datos.",
     "stages": [
       { "title": "Entrada", "items": ["Voz (palabra de activación)", "Vision-Tracker (cámara)", "Chat / IDE"] },
-      { "title": "Enrutamiento y modelos de IA", "items": ["Puerta de enlace LiteLLM", "Edge → CPU → Worker → GPU", "Selección automática de nivel"] },
+      { "title": "Enrutamiento y modelos de IA", "items": ["Puerta de enlace Bifrost", "Edge → CPU → Worker → GPU", "Selección automática de nivel"] },
       { "title": "Agentes", "items": ["ZeroClaw (tool-calling, aislado)", "Hermes (memoria, Telegram/CLI)"] },
       { "title": "Salida", "items": ["Respuesta de voz", "Pantalla HUD", "Automatización (n8n)"] }
     ],
@@ -202,7 +205,7 @@
       },
       {
         "title": "Hermes Agent — la capa de memoria",
-        "body": "A diferencia de ZeroClaw, que lanza un sandbox aislado por tarea, Hermes Agent (Nous Research, licencia MIT) funciona como un interlocutor siempre activo por Telegram y línea de comandos, con memoria compartida entre canales. La ejecución directa de terminal y código está desactivada en el propio agente — toda ejecución real de herramientas pasa exclusivamente por la instancia de ZeroClaw ya aislada. La memoria reside en la base de datos propia del clúster (Qdrant), no en un servicio en la nube externo, y el enrutamiento de modelos está fijado a los niveles de IA locales, sin repliegue automático a un proveedor externo. Antes de pasar a producción, la configuración pasa por una prueba de aceptación de varios días con verificaciones específicas de casos negativos."
+        "body": "A diferencia de ZeroClaw, que inicia un sandbox aislado por tarea, Hermes Agent (Nous Research, licencia MIT) funciona como interlocutor siempre activo a través de Telegram y la línea de comandos, con memoria compartida entre canales. La ejecución directa de terminal y código está desactivada en el propio agente — toda ejecución real de herramientas pasa exclusivamente por la instancia de ZeroClaw ya aislada. La memoria es un almacén de hechos local en su propio volumen del clúster, sin ninguna llamada a modelos ni a la red, y la elección de modelo está fijada a los niveles de IA locales, sin recurrir automáticamente a un proveedor externo. Además, un control de ejecución en el kernel vigila al agente y corta de inmediato cualquier intento de conexión fuera de los destinos permitidos. Antes de entrar en producción, la configuración pasa una prueba de aceptación de varios días con comprobaciones negativas específicas."
       }
     ]
   },
@@ -218,16 +221,16 @@
       { "label": "Switch de red", "watts": "~15 W" },
       { "label": "Disco de backup (WD Elements 22 TB)", "watts": "~6 W" },
       { "label": "Nodo sensor/watchdog (Pi Zero 2W)", "watts": "~1 W" },
-      { "label": "i5-8500 (banco de pruebas de restauración WoL, casi siempre en reposo)", "watts": "~2 W" },
+      { "label": "i5-8500 (segundo host GPU: nivel de código, banco de pruebas de restauración)", "watts": "~30 W" },
       { "label": "Estación GPU (prom. con autosuspend)", "watts": "~20 W" },
       { "label": "SAI (APC Back-UPS Pro 900, consumo propio)", "watts": "~5 W" }
     ],
     "totalLabel": "Carga continua estimada",
-    "totalValue": "~199 W",
+    "totalValue": "~227 W",
     "monthlyLabel": "Proyección mensual",
-    "monthlyValue": "~145 kWh",
+    "monthlyValue": "~166 kWh",
     "wolTitle": "Wake-on-LAN para la estación GPU",
-    "wolBody": "La estación GPU (HP Z840), con más de 300 W de pico, es con diferencia el mayor consumidor individual del clúster — pero solo se necesita para el nivel de inferencia más exigente. Un mecanismo de autosuspend la pone a dormir tras un periodo sin solicitudes; un paquete mágico Wake-on-LAN la despierta específicamente cuando una solicitud necesita ese nivel. Así, su contribución al consumo continuo se reduce a una pequeña fracción ponderada en el tiempo, sin renunciar a la potencia de GPU bajo demanda.",
+    "wolBody": "La estación GPU (HP Z840), con más de 300 W de pico, es con diferencia el mayor consumidor individual del clúster — pero solo se necesita para el nivel de inferencia más exigente. Por eso solo funciona en una franja horaria fija los días laborables y se despierta de forma específica con un paquete mágico Wake-on-LAN; mientras duerme, las solicitudes de chat pasan automáticamente al nivel CPU. El autocompletado de código funciona las 24 horas de todos modos, en el segundo host GPU, mucho más eficiente. Así, la contribución de la estación al consumo continuo se mantiene en una pequeña fracción ponderada en el tiempo.",
     "upsTitle": "Sistema de alimentación ininterrumpida",
     "upsBody": "Un SAI APC Back-UPS Pro 900 amortigua cortes breves y caídas de tensión para que los nodos puedan apagarse de forma limpia en lugar de perder la energía de golpe. Su propio consumo continuo — reposo del inversor y carga de mantenimiento — es pequeño, unos 5 W."
   },

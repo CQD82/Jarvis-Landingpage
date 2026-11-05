@@ -14,7 +14,7 @@
     "security": "Security"
   },
   "hero": {
-    "badge": "PRIVATE HOMELAB PROJECT · v5.2 PRODUCTION-READY",
+    "badge": "PRIVATE HOMELAB PROJECT · v5.5 PRODUCTION-READY",
     "description": "An 18-node Kubernetes homelab that thinks, sees, and listens at home — run entirely declaratively, with multi-tier local AI inference and zero-trust network segmentation.",
     "ctaPrimary": "View Capabilities",
     "artAlt": "Stylized 3D visualization of the JARVIS cluster — an artistic rendering, not an actual photo of the hardware.",
@@ -37,7 +37,7 @@
     "eyebrow": "Timeline",
     "title": "Go-Live Countdown",
     "description": "Planned production start of the entire cluster — from bare-metal bootstrap to the speaking assistant.",
-    "target": "Target · December 1, 2026",
+    "target": "Target · November 20, 2026",
     "units": { "days": "Days", "hours": "Hrs", "minutes": "Min", "seconds": "Sec" }
   },
   "systemMap": {
@@ -64,7 +64,7 @@
       },
       {
         "title": "18-Node Bare-Metal Cluster",
-        "description": "Various Raspberry Pi models, an ODROID-H5, and a GPU workstation combined into a K3s cluster — from edge device to inference hardware, all self-hosted, no cloud VMs."
+        "description": "Various Raspberry Pi models, an ODROID-H5, and two GPU hosts combined into a K3s cluster — from edge device to inference hardware, all self-hosted, no cloud VMs."
       },
       {
         "title": "Multi-Tier Local AI Inference",
@@ -88,7 +88,7 @@
       },
       {
         "title": "Automated Version Governance",
-        "description": "Dependencies and chart versions are continuously checked and proposed as reviewable pull requests — no silent 'latest', every change visible and traceable."
+        "description": "Dependencies and chart versions are continuously checked and proposed as reviewable pull requests; a dedicated CI inside the Git server checks every pull request before merge — no silent 'latest', every change visible and traceable."
       },
       {
         "title": "Backup, DR & Observability",
@@ -108,7 +108,7 @@
       { "title": "Host Scripts", "description": "Node layer: OS, storage, GPU, and device preparation." },
       { "title": "Helmfile", "description": "Minimal pre-Flux bootstrap for the core cluster services." },
       { "title": "FluxCD", "description": "Rolls out all cluster workloads declaratively and reconciles drift automatically." },
-      { "title": "Renovate", "description": "Automatically opens pull requests for every version update." }
+      { "title": "Renovate", "description": "Automatically opens pull requests for every version update — checked by Forgejo Actions before merge." }
     ],
     "footerNote": "git commit → git push → Flux reconciles cluster state back to the Git source automatically"
   },
@@ -121,8 +121,8 @@
       { "tier": "Edge / NPU", "hardware": "Edge AI accelerator", "role": "Intent recognition, instant answers" },
       { "tier": "CPU Tier", "hardware": "Compact board, CPU inference", "role": "Large mixture-of-experts model for reasoning" },
       { "tier": "Worker Tier", "hardware": "Compact cluster nodes", "role": "Distributed everyday inference" },
-      { "tier": "GPU Tier", "hardware": "Workstation with dedicated GPU", "role": "Production real-time inference" },
-      { "tier": "GPU Tier (Expansion)", "hardware": "Next-gen GPU", "role": "More context & VRAM headroom for the same chat models" },
+      { "tier": "GPU Tier", "hardware": "Workstation with a current 16 GB GPU", "role": "Production real-time inference, large context window" },
+      { "tier": "Code Tier", "hardware": "Second, power-efficient GPU host, always on", "role": "Round-the-clock code autocompletion" },
       { "tier": "Cloud Fallback", "hardware": "External, tightly rate-limited", "role": "Last resort only, the single permitted egress" }
     ]
   },
@@ -135,11 +135,14 @@
       "Full API audit logging with RBAC traceability",
       "Secrets stored encrypted only in the repository (never in plaintext)",
       "Policy enforcement, runtime threat detection, and image scanning",
+      "In-kernel runtime enforcement (Tetragon): unauthorized process starts and connections by the AI services are killed instantly",
     "Own container images are signed (cosign) and admitted only with a valid signature",
+      "Compromised upstream components are blocked and replaced — the AI gateway was swapped out entirely after a supply-chain incident",
+      "CI runs in hardened, isolated runners with no third-party actions; AI agents may only open pull requests, never run commands directly",
       "Agents run isolated in a gVisor sandbox, with no service-account token and no host access",
       "Encrypted node-to-node network traffic",
       "Least-privilege access for all automation",
-      "A monthly automated restore test verifies backup restorability on a node woken via Wake-on-LAN just for this purpose"
+      "A monthly automated restore test verifies backup restorability on a dedicated test-bed isolated from the production cluster"
     ],
     "footerNote": "Infrastructure details, internal network addresses, and operational scripts stay private and are deliberately not published on this site."
   },
@@ -173,7 +176,7 @@
     "description": "From the first signal to the response — a simplified, illustrative view of the data flow.",
     "stages": [
       { "title": "Input", "items": ["Voice (wake word)", "Vision Tracker (camera)", "Chat / IDE"] },
-      { "title": "Routing & AI Models", "items": ["LiteLLM gateway", "Edge → CPU → Worker → GPU", "Automatic tier selection"] },
+      { "title": "Routing & AI Models", "items": ["Bifrost gateway", "Edge → CPU → Worker → GPU", "Automatic tier selection"] },
       { "title": "Agents", "items": ["ZeroClaw (tool-calling, sandboxed)", "Hermes (memory, Telegram/CLI)"] },
       { "title": "Output", "items": ["Voice reply", "Heads-up display", "Automation (n8n)"] }
     ],
@@ -202,7 +205,7 @@
       },
       {
         "title": "Hermes Agent — the Memory Layer",
-        "body": "Unlike ZeroClaw, which spins up an isolated sandbox per task, Hermes Agent (Nous Research, MIT-licensed) runs as an always-on conversational partner over Telegram and the command line, with shared memory across channels. Direct terminal and code execution are disabled in the agent itself — any actual tool execution runs exclusively through the already-sandboxed ZeroClaw instance. Memory lives in the cluster’s own database (Qdrant), not an external cloud service, and model routing is hard-wired to the local AI tiers with no automatic fallback to an outside provider. Before going live, the configuration goes through a multi-day acceptance test with targeted negative-path checks."
+        "body": "Unlike ZeroClaw, which spins up an isolated sandbox per task, Hermes Agent (Nous Research, MIT-licensed) runs as an always-on conversational partner over Telegram and the command line, with shared memory across channels. Direct terminal and code execution are disabled in the agent itself — any actual tool execution runs exclusively through the already-sandboxed ZeroClaw instance. Memory is a local fact store on its own cluster volume, with no model or network calls at all, and model routing is hard-wired to the local AI tiers with no automatic fallback to an outside provider. On top of that, an in-kernel runtime control watches the agent and immediately kills any connection attempt outside the permitted destinations. Before going live, the configuration goes through a multi-day acceptance test with targeted negative-path checks."
       }
     ]
   },
@@ -218,16 +221,16 @@
       { "label": "Network switch", "watts": "~15 W" },
       { "label": "Backup drive (WD Elements 22 TB)", "watts": "~6 W" },
       { "label": "Sensor/watchdog node (Pi Zero 2W)", "watts": "~1 W" },
-      { "label": "i5-8500 (WoL restore test-bed, mostly asleep)", "watts": "~2 W" },
+      { "label": "i5-8500 (second GPU host: code tier, restore test-bed)", "watts": "~30 W" },
       { "label": "GPU workstation (avg. with autosuspend)", "watts": "~20 W" },
       { "label": "UPS (APC Back-UPS Pro 900, standby draw)", "watts": "~5 W" }
     ],
     "totalLabel": "Estimated continuous load",
-    "totalValue": "~199 W",
+    "totalValue": "~227 W",
     "monthlyLabel": "Projected per month",
-    "monthlyValue": "~145 kWh",
+    "monthlyValue": "~166 kWh",
     "wolTitle": "Wake-on-LAN for the GPU Workstation",
-    "wolBody": "The GPU workstation (HP Z840), at 300+ W peak, is by far the single biggest consumer in the cluster — but it's only needed for the more demanding inference tier. An autosuspend mechanism puts it to sleep after a period without requests; a Wake-on-LAN magic packet wakes it specifically when a request needs that tier. That cuts its contribution to continuous consumption down to a small time-weighted fraction, without giving up on-demand GPU power.",
+    "wolBody": "The GPU workstation (HP Z840), at 300+ W peak, is by far the single biggest consumer in the cluster — but it's only needed for the more demanding inference tier. It therefore only runs during a fixed weekday time window and is woken on purpose with a Wake-on-LAN magic packet; while it sleeps, chat requests automatically fall back to the CPU tier. Code autocompletion runs around the clock regardless, on the second, far more power-efficient GPU host. That keeps the workstation's contribution to continuous consumption down to a small time-weighted fraction.",
     "upsTitle": "Uninterruptible Power Supply",
     "upsBody": "An APC Back-UPS Pro 900 rides out brief outages and voltage dips so the nodes can shut down cleanly instead of losing power abruptly. Its own continuous draw — inverter standby plus trickle charging — is small, around 5 W."
   },

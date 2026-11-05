@@ -63,7 +63,7 @@ export function Nav() {
             JARVIS
           </span>
           <span className="hidden font-mono text-xs text-muted-foreground sm:inline">
-            v5.2
+            v5.5
           </span>
         </a>
         <nav className="hidden items-center gap-5 lg:flex xl:gap-7">
