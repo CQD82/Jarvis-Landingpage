@@ -121,8 +121,8 @@
       { "tier": "Edge / NPU", "hardware": "Edge AI accelerator", "role": "Intent recognition, instant answers" },
       { "tier": "CPU Tier", "hardware": "Compact board, CPU inference", "role": "Large mixture-of-experts model for reasoning" },
       { "tier": "Worker Tier", "hardware": "Compact cluster nodes", "role": "Distributed everyday inference" },
-      { "tier": "GPU Tier", "hardware": "Workstation with a current 16 GB GPU", "role": "Production real-time inference, large context window" },
-      { "tier": "Code Tier", "hardware": "Second, power-efficient GPU host, always on", "role": "Round-the-clock code autocompletion" },
+      { "tier": "GPU Tier", "hardware": "HP Z840 with RTX 5060 Ti 16 GB (replaces the Quadro P4000)", "role": "Production real-time inference, large context window" },
+      { "tier": "Code Tier", "hardware": "i5-8500 with the Quadro P4000 from the Z840, always on", "role": "Round-the-clock code autocompletion" },
       { "tier": "Cloud Fallback", "hardware": "External, tightly rate-limited", "role": "Last resort only, the single permitted egress" }
     ]
   },
@@ -223,7 +223,7 @@
       { "label": "Backup drive (WD Elements 22 TB)", "watts": "~6 W" },
       { "label": "Sensor/watchdog node (Pi Zero 2W)", "watts": "~1 W" },
       { "label": "i5-8500 (second GPU host: code tier, restore test-bed)", "watts": "~30 W" },
-      { "label": "GPU workstation (avg. with autosuspend)", "watts": "~20 W" },
+      { "label": "GPU workstation HP Z840 + RTX 5060 Ti (avg. with autosuspend)", "watts": "~20 W" },
       { "label": "UPS (APC Back-UPS Pro 900, standby draw)", "watts": "~5 W" }
     ],
     "totalLabel": "Estimated continuous load",

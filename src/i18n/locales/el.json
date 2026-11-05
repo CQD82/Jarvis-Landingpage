@@ -121,8 +121,8 @@
       { "tier": "Edge / NPU", "hardware": "Επιταχυντής AI στο edge", "role": "Αναγνώριση πρόθεσης, άμεσες απαντήσεις" },
       { "tier": "Επίπεδο CPU", "hardware": "Συμπαγές board, inference σε CPU", "role": "Μεγάλο μοντέλο mixture-of-experts για reasoning" },
       { "tier": "Επίπεδο Worker", "hardware": "Συμπαγείς κόμβοι cluster", "role": "Κατανεμημένη καθημερινή inference" },
-      { "tier": "Επίπεδο GPU", "hardware": "Workstation με σύγχρονη GPU 16 GB", "role": "Παραγωγικό inference σε πραγματικό χρόνο, μεγάλο context window" },
-      { "tier": "Επίπεδο κώδικα", "hardware": "Δεύτερος, οικονομικός GPU host σε συνεχή λειτουργία", "role": "Αυτόματη συμπλήρωση κώδικα όλο το 24ωρο" },
+      { "tier": "Επίπεδο GPU", "hardware": "HP Z840 με RTX 5060 Ti 16 GB (αντικαθιστά την Quadro P4000)", "role": "Παραγωγικό inference σε πραγματικό χρόνο, μεγάλο context window" },
+      { "tier": "Επίπεδο κώδικα", "hardware": "i5-8500 με την Quadro P4000 από το Z840, σε συνεχή λειτουργία", "role": "Αυτόματη συμπλήρωση κώδικα όλο το 24ωρο" },
       { "tier": "Cloud Fallback", "hardware": "Εξωτερικό, αυστηρά rate-limited", "role": "Μόνο ως έσχατη λύση, το μοναδικό επιτρεπόμενο egress" }
     ]
   },
@@ -223,7 +223,7 @@
       { "label": "Δίσκος backup (WD Elements 22 TB)", "watts": "~6 W" },
       { "label": "Κόμβος αισθητήρα/watchdog (Pi Zero 2W)", "watts": "~1 W" },
       { "label": "i5-8500 (δεύτερος GPU host: επίπεδο κώδικα, δοκιμαστικό restore)", "watts": "~30 W" },
-      { "label": "Σταθμός GPU (μ.ο. με autosuspend)", "watts": "~20 W" },
+      { "label": "Σταθμός GPU HP Z840 + RTX 5060 Ti (μ.ο. με autosuspend)", "watts": "~20 W" },
       { "label": "UPS (APC Back-UPS Pro 900, ιδία κατανάλωση)", "watts": "~5 W" }
     ],
     "totalLabel": "Εκτιμώμενο συνεχές φορτίο",
