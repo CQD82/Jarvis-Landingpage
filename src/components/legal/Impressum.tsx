@@ -35,11 +35,13 @@ export function ImpressumPage() {
 
       <LegalSection title="Haftung für Links">
         <p>
-          Diese Website enthält keine Links zu externen Inhalten Dritter, auf
-          deren Inhalte ich Einfluss nehmen könnte. Sollte künftig auf fremde
-          Inhalte verlinkt werden: Für die Inhalte der verlinkten Seiten ist
-          ausschließlich deren Betreiber verantwortlich. Bei Bekanntwerden von
-          Rechtsverletzungen würde ein entsprechender Link umgehend entfernt.
+          Diese Website enthält Links zu meinen Profilen auf LinkedIn und
+          XING, also zu externen Websites Dritter, auf deren Inhalte ich
+          keinen Einfluss habe. Für die Inhalte der verlinkten Seiten ist
+          stets der jeweilige Anbieter oder Betreiber verantwortlich. Zum
+          Zeitpunkt der Verlinkung waren keine Rechtsverstöße erkennbar. Bei
+          Bekanntwerden von Rechtsverletzungen werde ich derartige Links
+          umgehend entfernen.
         </p>
       </LegalSection>
 
