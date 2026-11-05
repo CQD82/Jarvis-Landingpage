@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import { useTranslation } from "react-i18next";
 import { Reveal } from "@/components/landing/Reveal";
 import { SectionHeading } from "@/components/landing/SectionHeading";
@@ -52,7 +53,7 @@ export function Features() {
                 <span aria-hidden="true" className="absolute top-6 right-6 font-mono text-[0.65rem] tracking-widest text-primary/40">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <div className="inline-flex size-10 items-center justify-center rounded-lg border border-primary/30 bg-primary/10 text-primary transition-shadow group-hover:shadow-[0_0_16px_color-mix(in_oklab,var(--hud-gold)_40%,transparent)]">
+                <div className="inline-flex size-10 items-center justify-center rounded-lg border border-primary/30 bg-primary/10 text-primary hud-icon transition-shadow group-hover:shadow-[0_0_16px_color-mix(in_oklab,var(--hud-gold)_40%,transparent)]" style={{ "--i": i } as CSSProperties}>
                   <Icon className="size-5" aria-hidden="true" />
                 </div>
                 <h3 className="mt-4 font-display text-base font-semibold tracking-tight">
