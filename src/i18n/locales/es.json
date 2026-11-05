@@ -151,6 +151,8 @@
     "eyebrow": "In situ",
     "title": "La instalación real",
     "description": "Sin renders, sin fotos de banco de imágenes — el hardware real, tal como está en el rack y en la mesa de trabajo.",
+    "showAll": "Ver las {{count}} fotos",
+    "showLess": "Ver menos",
     "captions": {
       "rackFull": "El rack de servidores: 18 nodos, switch y SAI en un armario de 19″.",
       "rackBays": "Bahías de los nodos de cómputo sobre el switch de red.",
