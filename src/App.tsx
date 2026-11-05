@@ -1,5 +1,7 @@
 import { lazy, Suspense, useEffect } from "react"
 import type { ComponentType } from "react"
+import { BootSequence } from "@/components/landing/BootSequence"
+import { HudDivider } from "@/components/landing/HudDivider"
 import { CursorGlow } from "@/components/landing/CursorGlow"
 import { DocumentMeta } from "@/components/landing/DocumentMeta"
 import { Features } from "@/components/landing/Features"
@@ -43,6 +45,7 @@ function ScrollToHashOnMount() {
 function Landing() {
   return (
     <div className="min-h-screen">
+      <BootSequence />
       <DocumentMeta />
       <NeuralBackground />
       <CursorGlow />
@@ -53,14 +56,23 @@ function Landing() {
         <GoLiveCountdown />
         <HardwareGallery />
         <Suspense fallback={<div className="min-h-screen" aria-hidden="true" />}>
+        <HudDivider label="SEC-03" />
         <SystemMap />
+        <HudDivider label="SEC-04" />
         <Features />
+        <HudDivider label="SEC-05" />
         <HowItWorks />
+        <HudDivider label="SEC-06" />
         <DeepDive />
+        <HudDivider label="SEC-07" />
         <Pipeline />
+        <HudDivider label="SEC-08" />
         <ModelTiers />
+        <HudDivider label="SEC-09" />
         <PowerConsumption />
+        <HudDivider label="SEC-10" />
         <LiveHud />
+        <HudDivider label="SEC-11" />
         <Security />
         <ScrollToHashOnMount />
         </Suspense>

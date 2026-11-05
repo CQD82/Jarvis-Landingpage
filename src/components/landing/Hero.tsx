@@ -141,9 +141,11 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="font-display text-6xl font-bold tracking-tight sm:text-8xl xl:text-9xl"
         >
-          <GradientShimmer gradient={TITLE_GRADIENT} duration={2.2} spread={4}>
-            JARVIS
-          </GradientShimmer>
+          <span className="glitch" data-text="JARVIS">
+            <GradientShimmer gradient={TITLE_GRADIENT} duration={2.2} spread={4}>
+              JARVIS
+            </GradientShimmer>
+          </span>
         </motion.h1>
 
         <motion.p

@@ -1,5 +1,6 @@
 import type { CSSProperties } from "react";
 import { useTranslation } from "react-i18next";
+import { trackPointer } from "@/lib/pointer";
 import { Reveal } from "@/components/landing/Reveal";
 import { SectionHeading } from "@/components/landing/SectionHeading";
 import { featureIcons } from "@/data/jarvis";
@@ -45,7 +46,7 @@ export function Features() {
           const Icon = featureIcons[i];
           return (
             <Reveal key={i} delay={Math.min(i * 0.05, 0.3)} className={BENTO_SPANS[i]}>
-              <div className="group relative h-full overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-card via-card to-accent/60 p-6 transition-[border-color,transform,box-shadow] duration-300 hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-[0_12px_40px_-12px_color-mix(in_oklab,var(--hud-gold)_30%,transparent)] sm:p-7">
+              <div onPointerMove={trackPointer} className="holo-card group relative h-full overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-card via-card to-accent/60 p-6 transition-[border-color,transform,box-shadow] duration-300 hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-[0_12px_40px_-12px_color-mix(in_oklab,var(--hud-gold)_30%,transparent)] sm:p-7">
                 <div
                   aria-hidden="true"
                   className="pointer-events-none absolute -top-24 -right-24 size-56 rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--hud-gold)_14%,transparent),transparent_70%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100"

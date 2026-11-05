@@ -2,6 +2,7 @@ import type { CSSProperties } from "react";
 import type { LucideIcon } from "lucide-react";
 import { Cpu, KeyRound, Network, PackageCheck, ShieldCheck } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { trackPointer } from "@/lib/pointer";
 import { Reveal } from "@/components/landing/Reveal";
 import { SectionHeading } from "@/components/landing/SectionHeading";
 
@@ -36,7 +37,7 @@ export function Security() {
           const Icon = group.icon;
           return (
             <Reveal key={gi} delay={gi * 0.08} className="h-full">
-              <div className="group h-full rounded-2xl border border-border bg-gradient-to-br from-card via-card to-accent/60 p-6 transition-colors duration-300 hover:border-primary/40 sm:p-7">
+              <div onPointerMove={trackPointer} className="holo-card group h-full rounded-2xl border border-border bg-gradient-to-br from-card via-card to-accent/60 p-6 transition-colors duration-300 hover:border-primary/40 sm:p-7">
                 <div className="flex items-center gap-3">
                   <span className="inline-flex size-10 items-center justify-center rounded-lg border border-primary/30 bg-primary/10 text-primary hud-icon" style={{ "--i": gi } as CSSProperties}>
                     <Icon className="size-5" aria-hidden="true" />
