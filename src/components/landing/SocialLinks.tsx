@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 /** Public professional profiles, as listed in the CV. */
 const PROFILES = [
   { name: "LinkedIn", href: "https://www.linkedin.com/in/marcus-kollosch" },
-  { name: "XING", href: "https://www.xing.com/profile/Marcus_Kollosch" },
+  { name: "XING", href: "https://www.xing.com/profile/Marcus_KolloschPsyllou" },
 ];
 
 /**
