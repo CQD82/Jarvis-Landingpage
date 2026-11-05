@@ -247,6 +247,73 @@
     "nodeSuspended": "SUSPENDIERT",
     "tabs": { "kitt": "K.I.T.T.", "matrix": "Matrix", "jarvis": "JARVIS" }
   },
+  "liveTerminal": {
+    "title": "cluster-journal --follow",
+    "badge": "Simulation",
+    "label": "Simuliertes Cluster-Journal, keine Live-Verbindung"
+  },
+  "topology": {
+    "eyebrow": "Topologie",
+    "title": "Das Cluster als Netz",
+    "description": "18 Nodes, sieben Rollen. Tippe auf eine Gruppe, um zu sehen, was sie im Verbund übernimmt.",
+    "hint": "Gruppe antippen für Details",
+    "disclaimer": "Schematische Darstellung der Rollen — keine echte Netzwerktopologie, keine Adressen.",
+    "groups": [
+      {
+        "name": "Control Plane",
+        "role": "Drei Raspberry Pi 5 halten den Cluster-Zustand hochverfügbar und verteilen die Workloads."
+      },
+      {
+        "name": "Storage-Worker",
+        "role": "Sieben Raspberry Pi 5 mit NVMe tragen den replizierten Speicher und die Alltagsdienste."
+      },
+      {
+        "name": "Edge / NPU",
+        "role": "Vier Raspberry Pi 5 mit Hailo-NPU für Spracherkennung, Vision-Vorstufe und Intent-Routing."
+      },
+      {
+        "name": "GPU-Tier",
+        "role": "HP Z840 mit RTX 5060 Ti — große Sprachmodelle in Echtzeit, schläft außerhalb des Zeitfensters."
+      },
+      {
+        "name": "CPU-Tier",
+        "role": "ODROID-H5 — Embeddings, Sandbox-Agenten und der Rückfall, wenn die GPU schläft."
+      },
+      {
+        "name": "Utility",
+        "role": "Raspberry Pi 4 für Hilfsdienste im Cluster."
+      },
+      {
+        "name": "Watchdog",
+        "role": "Raspberry Pi Zero 2 W außerhalb von Kubernetes — Out-of-Band-Zugriff und Stromsteuerung."
+      }
+    ]
+  },
+  "askJarvis": {
+    "eyebrow": "Sprachassistenz",
+    "title": "Frag JARVIS",
+    "description": "Eine vorbereitete Demo, wie ein Dialog mit der Sprachassistenz abläuft.",
+    "start": "Demo starten",
+    "again": "Nächste Frage",
+    "listening": "Hört zu …",
+    "thinking": "Denkt nach …",
+    "you": "Du",
+    "disclaimer": "Vorgefertigte Demo: kein Mikrofon, keine echte KI, nichts verlässt den Browser. Die Stimme kommt — falls verfügbar — von der lokalen Sprachausgabe deines Geräts.",
+    "qa": [
+      {
+        "q": "JARVIS, wie ist der Status des Clusters?",
+        "a": "Alle 18 Nodes sind online. Flux meldet keinen Drift, die Netzwerk-Policies sind aktiv."
+      },
+      {
+        "q": "Wer ist gerade zu Hause?",
+        "a": "Der Vision-Tracker erkennt eine bekannte Person im Wohnzimmer. Ich habe das Licht angepasst."
+      },
+      {
+        "q": "Wie viel Strom verbraucht das Rack?",
+        "a": "Aktuell rund zweihundert Watt. Die GPU-Workstation schläft, das spart den größten Teil."
+      }
+    ]
+  },
   "footer": {
     "profileLink": "{{name}}-Profil von Marcus Kollosch-Psyllou (öffnet in neuem Tab)",
     "tagline": "Privates Homelab-Projekt",

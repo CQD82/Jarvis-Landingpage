@@ -3,7 +3,9 @@ import { ArrowRight, Radar } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import clusterArt from "@/assets/hero/cluster-art.webp";
 import { GradientShimmer } from "@/components/ui/gradient-shimmer";
-import { CountUpStat } from "@/components/landing/CountUpStat";
+import { LiveTerminal } from "@/components/landing/LiveTerminal";
+import { ScrambleText } from "@/components/landing/ScrambleText";
+import { useDeviceTilt } from "@/lib/useDeviceTilt";
 import { HudCorners } from "@/components/landing/HudCorners";
 import { StatusTicker } from "@/components/landing/StatusTicker";
 import { TiltPanel } from "@/components/landing/TiltPanel";
@@ -24,6 +26,7 @@ export function Hero() {
   const { t } = useTranslation();
   const stats = t("stats", { returnObjects: true }) as Stat[];
   const reduceMotion = useReducedMotion();
+  const tiltRef = useDeviceTilt<HTMLDivElement>();
 
   return (
     <section id="top" className="relative overflow-hidden px-6 pt-16 pb-24 sm:pt-24 lg:pt-20">
@@ -59,6 +62,7 @@ export function Hero() {
           animate={reduceMotion ? undefined : { y: [0, -6, 0] }}
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
         >
+          <div ref={tiltRef} className="transition-transform duration-150 ease-out [transform-style:preserve-3d]">
           <TiltPanel
             className="border-glow relative overflow-hidden rounded-2xl border border-border"
             maxTiltX={6}
@@ -119,12 +123,18 @@ export function Hero() {
                   </g>
                 ))}
               </svg>
+              {/* Hologram treatment: fine projection lines, a scan plane
+                  sweeping down, and a cyan/red chromatic edge. */}
+              <div aria-hidden="true" className="holo-lines pointer-events-none absolute inset-0 opacity-60 mix-blend-screen" />
+              <div aria-hidden="true" className="animate-holo-scan pointer-events-none absolute inset-x-0 top-0 h-1/4 bg-gradient-to-b from-transparent via-[color-mix(in_oklab,var(--hud-reactor)_22%,transparent)] to-transparent opacity-0 mix-blend-screen" />
+              <div aria-hidden="true" className="pointer-events-none absolute inset-0 rounded-2xl shadow-[inset_2px_0_0_color-mix(in_oklab,var(--hud-reactor)_35%,transparent),inset_-2px_0_0_color-mix(in_oklab,var(--hud-red)_30%,transparent)]" />
             </div>
           </TiltPanel>
+          </div>
         </motion.div>
       </motion.div>
 
-      <div className="mx-auto max-w-4xl text-center lg:mx-0 lg:text-left">
+      <div className="mx-auto w-full min-w-0 max-w-4xl text-center lg:mx-0 lg:text-left">
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
@@ -186,6 +196,15 @@ export function Hero() {
         >
           <StatusTicker />
         </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="mx-auto mt-6 w-full min-w-0 max-w-xl lg:mx-0"
+        >
+          <LiveTerminal />
+        </motion.div>
       </div>
       </div>
 
@@ -200,7 +219,7 @@ export function Hero() {
           {stats.map((stat, i) => (
             <div key={i} className="bg-card px-4 py-6 text-center">
               <dt className="font-display text-3xl font-semibold text-primary text-glow">
-                <CountUpStat value={stat.value} />
+                <ScrambleText text={stat.value} duration={1100} />
               </dt>
               <dd className="mt-1 font-mono text-[0.7rem] tracking-wide text-muted-foreground uppercase">
                 {stat.label}

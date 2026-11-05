@@ -247,6 +247,73 @@
     "nodeSuspended": "SUSPENDED",
     "tabs": { "kitt": "K.I.T.T.", "matrix": "Matrix", "jarvis": "JARVIS" }
   },
+  "liveTerminal": {
+    "title": "cluster-journal --follow",
+    "badge": "Simulation",
+    "label": "Simulated cluster journal, no live connection"
+  },
+  "topology": {
+    "eyebrow": "Topology",
+    "title": "The Cluster as a Mesh",
+    "description": "18 nodes, seven roles. Tap a group to see what it does within the cluster.",
+    "hint": "Tap a group for details",
+    "disclaimer": "Schematic view of the roles — not the real network topology, no addresses.",
+    "groups": [
+      {
+        "name": "Control Plane",
+        "role": "Three Raspberry Pi 5 keep the cluster state highly available and schedule the workloads."
+      },
+      {
+        "name": "Storage Workers",
+        "role": "Seven Raspberry Pi 5 with NVMe carry the replicated storage and everyday services."
+      },
+      {
+        "name": "Edge / NPU",
+        "role": "Four Raspberry Pi 5 with Hailo NPU for speech, vision pre-processing and intent routing."
+      },
+      {
+        "name": "GPU Tier",
+        "role": "HP Z840 with RTX 5060 Ti — large language models in real time, asleep outside its time window."
+      },
+      {
+        "name": "CPU Tier",
+        "role": "ODROID-H5 — embeddings, sandboxed agents and the fallback while the GPU sleeps."
+      },
+      {
+        "name": "Utility",
+        "role": "Raspberry Pi 4 for helper services in the cluster."
+      },
+      {
+        "name": "Watchdog",
+        "role": "Raspberry Pi Zero 2 W outside Kubernetes — out-of-band access and power control."
+      }
+    ]
+  },
+  "askJarvis": {
+    "eyebrow": "Voice Assistant",
+    "title": "Ask JARVIS",
+    "description": "A prepared demo of how a conversation with the voice assistant plays out.",
+    "start": "Start demo",
+    "again": "Next question",
+    "listening": "Listening …",
+    "thinking": "Thinking …",
+    "you": "You",
+    "disclaimer": "Pre-scripted demo: no microphone, no real AI, nothing leaves your browser. The voice — if available — comes from your device's local speech synthesis.",
+    "qa": [
+      {
+        "q": "JARVIS, what's the cluster status?",
+        "a": "All 18 nodes are online. Flux reports no drift, and the network policies are active."
+      },
+      {
+        "q": "Who's home right now?",
+        "a": "The vision tracker sees a known person in the living room. I've adjusted the lights."
+      },
+      {
+        "q": "How much power is the rack drawing?",
+        "a": "About two hundred watts right now. The GPU workstation is asleep, which saves most of it."
+      }
+    ]
+  },
   "footer": {
     "profileLink": "Marcus Kollosch-Psyllou on {{name}} (opens in a new tab)",
     "tagline": "Private Homelab Project",

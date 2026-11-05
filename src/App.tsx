@@ -27,6 +27,8 @@ const Pipeline = named(() => import("@/components/landing/Pipeline"), "Pipeline"
 const ModelTiers = named(() => import("@/components/landing/ModelTiers"), "ModelTiers")
 const PowerConsumption = named(() => import("@/components/landing/PowerConsumption"), "PowerConsumption")
 const LiveHud = named(() => import("@/components/landing/LiveHud"), "LiveHud")
+const ClusterTopology = named(() => import("@/components/landing/ClusterTopology"), "ClusterTopology")
+const AskJarvis = named(() => import("@/components/landing/AskJarvis"), "AskJarvis")
 const Security = named(() => import("@/components/landing/Security"), "Security")
 
 /**
@@ -59,20 +61,24 @@ function Landing() {
         <HudDivider label="SEC-03" />
         <SystemMap />
         <HudDivider label="SEC-04" />
-        <Features />
+        <ClusterTopology />
         <HudDivider label="SEC-05" />
-        <HowItWorks />
+        <Features />
         <HudDivider label="SEC-06" />
-        <DeepDive />
+        <HowItWorks />
         <HudDivider label="SEC-07" />
-        <Pipeline />
+        <AskJarvis />
         <HudDivider label="SEC-08" />
-        <ModelTiers />
+        <DeepDive />
         <HudDivider label="SEC-09" />
-        <PowerConsumption />
+        <Pipeline />
         <HudDivider label="SEC-10" />
-        <LiveHud />
+        <ModelTiers />
         <HudDivider label="SEC-11" />
+        <PowerConsumption />
+        <HudDivider label="SEC-12" />
+        <LiveHud />
+        <HudDivider label="SEC-13" />
         <Security />
         <ScrollToHashOnMount />
         </Suspense>
