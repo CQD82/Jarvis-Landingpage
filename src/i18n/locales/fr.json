@@ -151,6 +151,8 @@
     "eyebrow": "Sur place",
     "title": "L'installation réelle",
     "description": "Pas de rendus, pas de photos de banque d'images — le matériel réel, tel qu'il se trouve dans la baie et sur l'établi.",
+    "showAll": "Afficher les {{count}} photos",
+    "showLess": "Afficher moins",
     "captions": {
       "rackFull": "La baie serveur : 18 nœuds, switch et onduleur dans un rack 19″.",
       "rackBays": "Baies des nœuds de calcul au-dessus du commutateur réseau.",

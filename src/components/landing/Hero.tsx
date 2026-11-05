@@ -26,7 +26,7 @@ export function Hero() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section id="top" className="relative overflow-hidden px-6 pt-20 pb-24 sm:pt-28">
+    <section id="top" className="relative overflow-hidden px-6 pt-16 pb-24 sm:pt-24 lg:pt-20">
       {/* Ambient glow — layered gold + red for depth, armor-plate style */}
       <div
         aria-hidden="true"
@@ -39,19 +39,20 @@ export function Hero() {
       {/* Thin rotating targeting ring behind the title */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute top-24 left-1/2 -z-10 size-[420px] -translate-x-1/2 rounded-full border border-primary/10 sm:size-[520px]"
+        className="pointer-events-none absolute top-24 left-1/2 -z-10 size-[420px] -translate-x-1/2 rounded-full border border-primary/10 sm:size-[520px] lg:top-16 lg:left-[72%]"
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute top-24 left-1/2 -z-10 size-[420px] -translate-x-1/2 animate-radar-sweep rounded-full border-t border-primary/25 sm:size-[520px]"
+        className="pointer-events-none absolute top-24 left-1/2 -z-10 size-[420px] -translate-x-1/2 animate-radar-sweep rounded-full border-t border-primary/25 sm:size-[520px] lg:top-16 lg:left-[72%]"
         style={{ animationDuration: "14s" }}
       />
 
+      <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[1.05fr_1fr] lg:gap-16">
       <motion.div
         initial={{ opacity: 0, scale: 0.92, y: -12 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="relative mx-auto mb-10 max-w-sm sm:max-w-md lg:max-w-lg"
+        className="relative mx-auto w-full max-w-sm sm:max-w-md lg:order-2 lg:max-w-none"
       >
         <HudCorners />
         <motion.div
@@ -123,7 +124,7 @@ export function Hero() {
         </motion.div>
       </motion.div>
 
-      <div className="mx-auto max-w-4xl text-center">
+      <div className="mx-auto max-w-4xl text-center lg:mx-0 lg:text-left">
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
@@ -138,7 +139,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="font-display text-6xl font-bold tracking-tight sm:text-8xl"
+          className="font-display text-6xl font-bold tracking-tight sm:text-8xl xl:text-9xl"
         >
           <GradientShimmer gradient={TITLE_GRADIENT} duration={2.2} spread={4}>
             JARVIS
@@ -149,7 +150,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mx-auto mt-6 max-w-2xl text-balance text-lg text-muted-foreground sm:text-xl"
+          className="mx-auto mt-6 max-w-2xl text-balance text-lg text-muted-foreground sm:text-xl lg:mx-0"
         >
           {t("hero.description")}
         </motion.p>
@@ -158,7 +159,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-10 flex flex-wrap items-center justify-center gap-4"
+          className="mt-10 flex flex-wrap items-center justify-center gap-4 lg:justify-start"
         >
           <a
             href="#features"
@@ -184,12 +185,13 @@ export function Hero() {
           <StatusTicker />
         </motion.div>
       </div>
+      </div>
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.4 }}
-        className="relative mx-auto mt-20 max-w-3xl"
+        className="relative mx-auto mt-16 max-w-5xl lg:mt-20"
       >
         <HudCorners />
         <dl className="grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-border bg-border sm:grid-cols-4">

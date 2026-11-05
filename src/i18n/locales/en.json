@@ -151,6 +151,8 @@
     "eyebrow": "On Site",
     "title": "The Real Setup",
     "description": "No renders, no stock photos — the actual hardware, as it stands in the rack and on the workbench.",
+    "showAll": "Show all {{count}} photos",
+    "showLess": "Show less",
     "captions": {
       "rackFull": "The server rack: 18 nodes, switch, and UPS in a 19″ enclosure.",
       "rackBays": "Compute-node bays above the network switch.",

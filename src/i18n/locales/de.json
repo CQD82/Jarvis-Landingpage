@@ -151,6 +151,8 @@
     "eyebrow": "Vor Ort",
     "title": "Das echte Setup",
     "description": "Kein Render, keine Stockfotos — die tatsächliche Hardware, wie sie im Rack und auf der Werkbank steht.",
+    "showAll": "Alle {{count}} Fotos anzeigen",
+    "showLess": "Weniger anzeigen",
     "captions": {
       "rackFull": "Der Serverschrank: 18 Nodes, Switch und USV in einem 19″-Rack.",
       "rackBays": "Steckplätze für die Compute-Nodes über dem Netzwerk-Switch.",
