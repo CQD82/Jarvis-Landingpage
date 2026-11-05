@@ -42,6 +42,7 @@ The default branch is protected by the ruleset in `.github/rulesets/protect-main
 | --- | --- |
 | Pull request required | No direct pushes to the default branch. Review threads must be resolved before merging. |
 | Required status check `build` | CI (lint, build, dependency audit) must pass on a branch that is up to date with the default branch. |
+| Required CodeQL results | A pull request cannot merge while CodeQL reports a security alert rated high or higher, or a code error. |
 | Block force pushes | History on the default branch cannot be rewritten. |
 | Block deletion | The default branch cannot be deleted. |
 

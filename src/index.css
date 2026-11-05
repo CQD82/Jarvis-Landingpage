@@ -557,3 +557,35 @@
     animation: boot-bar 1.1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   }
 }
+
+/* ------------------------------------------------------------------ */
+/* Ask JARVIS waveform + holographic hero scan plane                   */
+/* ------------------------------------------------------------------ */
+@keyframes voice-bar {
+  0%, 100% { transform: scaleY(0.18); }
+  50% { transform: scaleY(1); }
+}
+@keyframes holo-scan {
+  0% { transform: translateY(-30%); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(330%); opacity: 0; }
+}
+.holo-lines {
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0,
+    transparent 3px,
+    color-mix(in oklab, var(--hud-reactor) 7%, transparent) 4px
+  );
+}
+@media (prefers-reduced-motion: no-preference) {
+  .animate-voice-bar {
+    animation-name: voice-bar;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+  }
+  .animate-holo-scan {
+    animation: holo-scan 4.2s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  }
+}
