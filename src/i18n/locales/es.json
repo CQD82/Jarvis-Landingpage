@@ -64,7 +64,7 @@
       },
       {
         "title": "Clúster bare-metal de 18 nodos",
-        "description": "Varios modelos de Raspberry Pi, un ODROID-H5 y dos hosts GPU combinados en un clúster K3s — desde el dispositivo perimetral hasta el hardware de inferencia, todo autoalojado, sin VMs en la nube."
+        "description": "Varios modelos de Raspberry Pi, un ODROID-H5 y una estación de trabajo GPU combinados en un clúster K3s — desde el dispositivo perimetral hasta el hardware de inferencia, todo autoalojado, sin VMs en la nube."
       },
       {
         "title": "Inferencia de IA local en varios niveles",
@@ -122,7 +122,7 @@
       { "tier": "Nivel CPU", "hardware": "Placa compacta, inferencia por CPU", "role": "Modelo grande de mixture-of-experts para razonamiento" },
       { "tier": "Nivel Worker", "hardware": "Nodos de clúster compactos", "role": "Inferencia cotidiana distribuida" },
       { "tier": "Nivel GPU", "hardware": "HP Z840 con RTX 5060 Ti 16 GB (sustituye a la Quadro P4000)", "role": "Inferencia en tiempo real en producción, ventana de contexto amplia" },
-      { "tier": "Nivel de código", "hardware": "i5-8500 con la Quadro P4000 de la Z840, siempre encendido", "role": "Autocompletado de código las 24 horas" },
+      { "tier": "Nivel de código", "hardware": "HP Z840 (RTX 5060 Ti), modelo de código compacto", "role": "Autocompletado de código en el editor" },
       { "tier": "Respaldo en la nube", "hardware": "Externo, con límite de tasa estricto", "role": "Solo como último recurso, la única salida permitida" }
     ]
   },
@@ -143,7 +143,7 @@
       "Tráfico de red cifrado de nodo a nodo",
       "Todos los nodos Raspberry Pi del clúster son exclusivamente cableados — el Wi-Fi está desactivado a nivel de firmware",
       "Acceso de mínimo privilegio para toda la automatización",
-      "Una prueba de restauración automatizada mensual verifica la recuperabilidad de las copias de seguridad en un banco de pruebas propio, aislado del clúster de producción"
+      "Pruebas de restauración periódicas verifican que las copias de seguridad sean realmente recuperables"
     ],
     "footerNote": "Los detalles de infraestructura, direcciones de red internas y scripts operativos se mantienen privados y deliberadamente no se publican en este sitio."
   },
@@ -222,16 +222,15 @@
       { "label": "Switch de red", "watts": "~15 W" },
       { "label": "Disco de backup (WD Elements 22 TB)", "watts": "~6 W" },
       { "label": "Nodo sensor/watchdog (Pi Zero 2W)", "watts": "~1 W" },
-      { "label": "i5-8500 (segundo host GPU: nivel de código, banco de pruebas de restauración)", "watts": "~30 W" },
       { "label": "Estación GPU HP Z840 + RTX 5060 Ti (prom. con autosuspend)", "watts": "~20 W" },
       { "label": "SAI (APC Back-UPS Pro 900, consumo propio)", "watts": "~5 W" }
     ],
     "totalLabel": "Carga continua estimada",
-    "totalValue": "~227 W",
+    "totalValue": "~197 W",
     "monthlyLabel": "Proyección mensual",
-    "monthlyValue": "~166 kWh",
+    "monthlyValue": "~144 kWh",
     "wolTitle": "Wake-on-LAN para la estación GPU",
-    "wolBody": "La estación GPU (HP Z840), con más de 300 W de pico, es con diferencia el mayor consumidor individual del clúster — pero solo se necesita para el nivel de inferencia más exigente. Por eso solo funciona en una franja horaria fija los días laborables y se despierta de forma específica con un paquete mágico Wake-on-LAN; mientras duerme, las solicitudes de chat pasan automáticamente al nivel CPU. El autocompletado de código funciona las 24 horas de todos modos, en el segundo host GPU, mucho más eficiente. Así, la contribución de la estación al consumo continuo se mantiene en una pequeña fracción ponderada en el tiempo.",
+    "wolBody": "La estación GPU (HP Z840), con más de 300 W de pico, es con diferencia el mayor consumidor individual del clúster — pero solo se necesita para el nivel de inferencia más exigente. Por eso solo funciona en una franja horaria fija los días laborables y se despierta de forma específica con un paquete mágico Wake-on-LAN; mientras duerme, las solicitudes de chat pasan automáticamente al nivel CPU. Así, la contribución de la estación al consumo continuo se mantiene en una pequeña fracción ponderada en el tiempo.",
     "upsTitle": "Sistema de alimentación ininterrumpida",
     "upsBody": "Un SAI APC Back-UPS Pro 900 amortigua cortes breves y caídas de tensión para que los nodos puedan apagarse de forma limpia en lugar de perder la energía de golpe. Su propio consumo continuo — reposo del inversor y carga de mantenimiento — es pequeño, unos 5 W."
   },

@@ -64,7 +64,7 @@
       },
       {
         "title": "18-Node Bare-Metal-Cluster",
-        "description": "Verschiedene Raspberry-Pi-Modelle, ein ODROID-H5 und zwei GPU-Hosts im Verbund als K3s-Cluster — vom Edge-Gerät bis zur Inferenz-Hardware alles selbst betrieben, keine Cloud-VMs."
+        "description": "Verschiedene Raspberry-Pi-Modelle, ein ODROID-H5 und eine GPU-Workstation im Verbund als K3s-Cluster — vom Edge-Gerät bis zur Inferenz-Hardware alles selbst betrieben, keine Cloud-VMs."
       },
       {
         "title": "Mehrstufige lokale KI-Inferenz",
@@ -122,7 +122,7 @@
       { "tier": "CPU-Tier", "hardware": "Kompaktes Board, CPU-Inferenz", "role": "Großes Mixture-of-Experts-Modell für Reasoning" },
       { "tier": "Worker-Tier", "hardware": "Kompakte Cluster-Nodes", "role": "Verteilte Alltagsinferenz" },
       { "tier": "GPU-Tier", "hardware": "HP Z840 mit RTX 5060 Ti 16 GB (ersetzt die Quadro P4000)", "role": "Produktive Echtzeit-Inferenz, großes Kontextfenster" },
-      { "tier": "Code-Tier", "hardware": "i5-8500 mit der Quadro P4000 aus der Z840, Dauerbetrieb", "role": "Code-Autovervollständigung rund um die Uhr" },
+      { "tier": "Code-Tier", "hardware": "HP Z840 (RTX 5060 Ti), kompaktes Code-Modell", "role": "Code-Autovervollständigung im Editor" },
       { "tier": "Cloud-Fallback", "hardware": "Extern, streng ratenbegrenzt", "role": "Nur als letzter Ausweg, ein einziger erlaubter Egress" }
     ]
   },
@@ -143,7 +143,7 @@
       "Verschlüsselter Node-zu-Node-Netzwerkverkehr",
       "Alle Raspberry-Pi-Cluster-Nodes ausschließlich kabelgebunden — WLAN ist auf Firmware-Ebene deaktiviert",
       "Least-Privilege-Zugriff für sämtliche Automatisierung",
-      "Monatlicher automatisierter Restore-Test verifiziert die Wiederherstellbarkeit der Backups auf einem eigenen, vom Produktivcluster isolierten Prüfstand"
+      "Regelmäßige Restore-Tests verifizieren, dass die Backups tatsächlich wiederherstellbar sind"
     ],
     "footerNote": "Infrastruktur-Details, interne Netzwerkadressen und Betriebs-Skripte bleiben privat und werden auf dieser Seite bewusst nicht veröffentlicht."
   },
@@ -222,16 +222,15 @@
       { "label": "Netzwerk-Switch", "watts": "~15 W" },
       { "label": "Backup-Festplatte (WD Elements 22 TB)", "watts": "~6 W" },
       { "label": "Sensor-/Watchdog-Node (Pi Zero 2W)", "watts": "~1 W" },
-      { "label": "i5-8500 (zweiter GPU-Host: Code-Tier, Restore-Prüfstand)", "watts": "~30 W" },
       { "label": "GPU-Workstation HP Z840 + RTX 5060 Ti (Ø mit Autosuspend)", "watts": "~20 W" },
       { "label": "USV (APC Back-UPS Pro 900, Eigenverbrauch)", "watts": "~5 W" }
     ],
     "totalLabel": "Geschätzte Dauerlast",
-    "totalValue": "~227 W",
+    "totalValue": "~197 W",
     "monthlyLabel": "Hochgerechnet pro Monat",
-    "monthlyValue": "~166 kWh",
+    "monthlyValue": "~144 kWh",
     "wolTitle": "Wake-on-LAN für die GPU-Workstation",
-    "wolBody": "Die GPU-Workstation (HP Z840) hat mit über 300 W Spitzenlast den größten Einzelverbrauch im Cluster — wird aber nur für die anspruchsvollere Inferenz-Stufe gebraucht. Sie läuft daher nur in einem festen Zeitfenster an Werktagen und wird per Wake-on-LAN-Magic-Packet gezielt geweckt; schläft sie, weichen Chat-Anfragen automatisch auf das CPU-Tier aus. Die Code-Autovervollständigung läuft unabhängig davon rund um die Uhr auf dem zweiten, deutlich sparsameren GPU-Host. So bleibt der Beitrag der Workstation zum Dauerverbrauch ein kleiner zeitgewichteter Bruchteil.",
+    "wolBody": "Die GPU-Workstation (HP Z840) hat mit über 300 W Spitzenlast den größten Einzelverbrauch im Cluster — wird aber nur für die anspruchsvollere Inferenz-Stufe gebraucht. Sie läuft daher nur in einem festen Zeitfenster an Werktagen und wird per Wake-on-LAN-Magic-Packet gezielt geweckt; schläft sie, weichen Chat-Anfragen automatisch auf das CPU-Tier aus. So bleibt der Beitrag der Workstation zum Dauerverbrauch ein kleiner zeitgewichteter Bruchteil.",
     "upsTitle": "Unterbrechungsfreie Stromversorgung",
     "upsBody": "Eine APC Back-UPS Pro 900 puffert kurze Stromausfälle und Spannungsschwankungen ab, sodass die Nodes sauber herunterfahren können, statt abrupt den Strom zu verlieren. Ihr eigener Dauerverbrauch — Inverter-Standby plus Erhaltungsladung — ist mit rund 5 W sehr gering."
   },

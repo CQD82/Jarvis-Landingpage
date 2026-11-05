@@ -64,7 +64,7 @@
       },
       {
         "title": "18-Node Bare-Metal Cluster",
-        "description": "Various Raspberry Pi models, an ODROID-H5, and two GPU hosts combined into a K3s cluster — from edge device to inference hardware, all self-hosted, no cloud VMs."
+        "description": "Various Raspberry Pi models, an ODROID-H5, and a GPU workstation combined into a K3s cluster — from edge device to inference hardware, all self-hosted, no cloud VMs."
       },
       {
         "title": "Multi-Tier Local AI Inference",
@@ -122,7 +122,7 @@
       { "tier": "CPU Tier", "hardware": "Compact board, CPU inference", "role": "Large mixture-of-experts model for reasoning" },
       { "tier": "Worker Tier", "hardware": "Compact cluster nodes", "role": "Distributed everyday inference" },
       { "tier": "GPU Tier", "hardware": "HP Z840 with RTX 5060 Ti 16 GB (replaces the Quadro P4000)", "role": "Production real-time inference, large context window" },
-      { "tier": "Code Tier", "hardware": "i5-8500 with the Quadro P4000 from the Z840, always on", "role": "Round-the-clock code autocompletion" },
+      { "tier": "Code Tier", "hardware": "HP Z840 (RTX 5060 Ti), compact code model", "role": "In-editor code autocompletion" },
       { "tier": "Cloud Fallback", "hardware": "External, tightly rate-limited", "role": "Last resort only, the single permitted egress" }
     ]
   },
@@ -143,7 +143,7 @@
       "Encrypted node-to-node network traffic",
       "All Raspberry Pi cluster nodes are wired-only — Wi-Fi is disabled at the firmware level",
       "Least-privilege access for all automation",
-      "A monthly automated restore test verifies backup restorability on a dedicated test-bed isolated from the production cluster"
+      "Regular restore tests verify that the backups are actually restorable"
     ],
     "footerNote": "Infrastructure details, internal network addresses, and operational scripts stay private and are deliberately not published on this site."
   },
@@ -222,16 +222,15 @@
       { "label": "Network switch", "watts": "~15 W" },
       { "label": "Backup drive (WD Elements 22 TB)", "watts": "~6 W" },
       { "label": "Sensor/watchdog node (Pi Zero 2W)", "watts": "~1 W" },
-      { "label": "i5-8500 (second GPU host: code tier, restore test-bed)", "watts": "~30 W" },
       { "label": "GPU workstation HP Z840 + RTX 5060 Ti (avg. with autosuspend)", "watts": "~20 W" },
       { "label": "UPS (APC Back-UPS Pro 900, standby draw)", "watts": "~5 W" }
     ],
     "totalLabel": "Estimated continuous load",
-    "totalValue": "~227 W",
+    "totalValue": "~197 W",
     "monthlyLabel": "Projected per month",
-    "monthlyValue": "~166 kWh",
+    "monthlyValue": "~144 kWh",
     "wolTitle": "Wake-on-LAN for the GPU Workstation",
-    "wolBody": "The GPU workstation (HP Z840), at 300+ W peak, is by far the single biggest consumer in the cluster — but it's only needed for the more demanding inference tier. It therefore only runs during a fixed weekday time window and is woken on purpose with a Wake-on-LAN magic packet; while it sleeps, chat requests automatically fall back to the CPU tier. Code autocompletion runs around the clock regardless, on the second, far more power-efficient GPU host. That keeps the workstation's contribution to continuous consumption down to a small time-weighted fraction.",
+    "wolBody": "The GPU workstation (HP Z840), at 300+ W peak, is by far the single biggest consumer in the cluster — but it's only needed for the more demanding inference tier. It therefore only runs during a fixed weekday time window and is woken on purpose with a Wake-on-LAN magic packet; while it sleeps, chat requests automatically fall back to the CPU tier. That keeps the workstation's contribution to continuous consumption down to a small time-weighted fraction.",
     "upsTitle": "Uninterruptible Power Supply",
     "upsBody": "An APC Back-UPS Pro 900 rides out brief outages and voltage dips so the nodes can shut down cleanly instead of losing power abruptly. Its own continuous draw — inverter standby plus trickle charging — is small, around 5 W."
   },

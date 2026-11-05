@@ -64,7 +64,7 @@
       },
       {
         "title": "Cluster bare-metal à 18 nœuds",
-        "description": "Différents modèles de Raspberry Pi, un ODROID-H5 et deux hôtes GPU réunis en cluster K3s — du périphérique en périphérie au matériel d'inférence, tout est auto-hébergé, sans VM cloud."
+        "description": "Différents modèles de Raspberry Pi, un ODROID-H5 et une station de travail GPU réunis en cluster K3s — du périphérique en périphérie au matériel d'inférence, tout est auto-hébergé, sans VM cloud."
       },
       {
         "title": "Inférence IA locale à plusieurs niveaux",
@@ -122,7 +122,7 @@
       { "tier": "Niveau CPU", "hardware": "Carte compacte, inférence CPU", "role": "Grand modèle mixture-of-experts pour le raisonnement" },
       { "tier": "Niveau Worker", "hardware": "Nœuds de cluster compacts", "role": "Inférence quotidienne distribuée" },
       { "tier": "Niveau GPU", "hardware": "HP Z840 avec RTX 5060 Ti 16 Go (remplace la Quadro P4000)", "role": "Inférence temps réel en production, grande fenêtre de contexte" },
-      { "tier": "Niveau code", "hardware": "i5-8500 avec la Quadro P4000 issue de la Z840, en service permanent", "role": "Autocomplétion de code 24 h/24" },
+      { "tier": "Niveau code", "hardware": "HP Z840 (RTX 5060 Ti), modèle de code compact", "role": "Autocomplétion de code dans l'éditeur" },
       { "tier": "Recours cloud", "hardware": "Externe, strictement limité en débit", "role": "Uniquement en dernier recours, seul egress autorisé" }
     ]
   },
@@ -143,7 +143,7 @@
       "Trafic réseau chiffré de nœud à nœud",
       "Tous les nœuds Raspberry Pi du cluster sont exclusivement filaires — le Wi-Fi est désactivé au niveau du firmware",
       "Accès selon le moindre privilège pour toute l'automatisation",
-      "Un test de restauration automatisé mensuel vérifie la restaurabilité des sauvegardes sur un banc de test dédié, isolé du cluster de production"
+      "Des tests de restauration réguliers vérifient que les sauvegardes sont réellement restaurables"
     ],
     "footerNote": "Les détails d'infrastructure, les adresses réseau internes et les scripts opérationnels restent privés et ne sont volontairement pas publiés sur ce site."
   },
@@ -222,16 +222,15 @@
       { "label": "Commutateur réseau", "watts": "~15 W" },
       { "label": "Disque de sauvegarde (WD Elements 22 To)", "watts": "~6 W" },
       { "label": "Nœud capteur/watchdog (Pi Zero 2W)", "watts": "~1 W" },
-      { "label": "i5-8500 (second hôte GPU : niveau code, banc de test de restauration)", "watts": "~30 W" },
       { "label": "Station GPU HP Z840 + RTX 5060 Ti (moy. avec autosuspend)", "watts": "~20 W" },
       { "label": "Onduleur (APC Back-UPS Pro 900, consommation propre)", "watts": "~5 W" }
     ],
     "totalLabel": "Charge continue estimée",
-    "totalValue": "~227 W",
+    "totalValue": "~197 W",
     "monthlyLabel": "Projection mensuelle",
-    "monthlyValue": "~166 kWh",
+    "monthlyValue": "~144 kWh",
     "wolTitle": "Wake-on-LAN pour la station GPU",
-    "wolBody": "La station GPU (HP Z840), avec plus de 300 W en pointe, est de loin le plus gros consommateur individuel du cluster — mais elle n'est nécessaire que pour le niveau d'inférence le plus exigeant. Elle ne fonctionne donc que pendant une plage horaire fixe en semaine et est réveillée de façon ciblée par un paquet magique Wake-on-LAN ; pendant sa veille, les requêtes de chat basculent automatiquement vers le niveau CPU. L'autocomplétion de code tourne quant à elle 24 h/24 sur le second hôte GPU, bien plus économe. La contribution de la station à la consommation continue reste ainsi une petite fraction pondérée dans le temps.",
+    "wolBody": "La station GPU (HP Z840), avec plus de 300 W en pointe, est de loin le plus gros consommateur individuel du cluster — mais elle n'est nécessaire que pour le niveau d'inférence le plus exigeant. Elle ne fonctionne donc que pendant une plage horaire fixe en semaine et est réveillée de façon ciblée par un paquet magique Wake-on-LAN ; pendant sa veille, les requêtes de chat basculent automatiquement vers le niveau CPU. La contribution de la station à la consommation continue reste ainsi une petite fraction pondérée dans le temps.",
     "upsTitle": "Alimentation sans interruption",
     "upsBody": "Un onduleur APC Back-UPS Pro 900 absorbe les coupures brèves et les creux de tension pour permettre aux nœuds de s'arrêter proprement plutôt que de perdre le courant d'un coup. Sa propre consommation continue — veille de l'onduleur et charge d'entretien — reste faible, environ 5 W."
   },
