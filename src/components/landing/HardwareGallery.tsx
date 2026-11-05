@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { Reveal } from "@/components/landing/Reveal";
@@ -45,6 +46,7 @@ const INITIAL_COUNT = 9;
 export function HardwareGallery() {
   const { t } = useTranslation();
   const [expanded, setExpanded] = useState(false);
+  const reduceMotion = useReducedMotion();
   const visible = expanded ? PHOTOS : PHOTOS.slice(0, INITIAL_COUNT);
 
   return (
@@ -67,20 +69,45 @@ export function HardwareGallery() {
             delay={Math.min((i % INITIAL_COUNT) * 0.04, 0.28)}
             className={photo.span}
           >
-            <div className="group relative h-full overflow-hidden rounded-xl border border-border">
-              <img
-                src={photo.src}
-                alt={t(`gallery.captions.${photo.captionKey}`)}
-                loading="lazy"
-                className="size-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06]"
-              />
+            {/* Tile "boots up": a top-down scan wipe as it enters view. */}
+            <motion.div
+              initial={reduceMotion ? false : { clipPath: "inset(0 0 100% 0)" }}
+              whileInView={{ clipPath: "inset(0 0 0% 0)" }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: Math.min((i % INITIAL_COUNT) * 0.05, 0.3) }}
+              className="group relative h-full overflow-hidden rounded-xl border border-border"
+            >
+              {/* Featured tiles drift slowly like a camera feed. */}
+              <div className={`size-full ${photo.span ? "animate-ken-burns" : ""}`}>
+                <img
+                  src={photo.src}
+                  alt={t(`gallery.captions.${photo.captionKey}`)}
+                  loading="lazy"
+                  className="size-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06]"
+                />
+              </div>
+              {/* Scan beam + HUD frame on hover */}
+              <div aria-hidden="true" className="photo-scan pointer-events-none absolute inset-0" />
+              <div aria-hidden="true" className="pointer-events-none absolute inset-2">
+                <span className="photo-bracket absolute top-0 left-0 size-4 border-t-2 border-l-2 border-primary" />
+                <span className="photo-bracket absolute top-0 right-0 size-4 border-t-2 border-r-2 border-primary" />
+                <span className="photo-bracket absolute bottom-0 left-0 size-4 border-b-2 border-l-2 border-primary" />
+                <span className="photo-bracket absolute right-0 bottom-0 size-4 border-r-2 border-b-2 border-primary" />
+              </div>
+              <div
+                aria-hidden="true"
+                className="photo-bracket pointer-events-none absolute top-3 left-3 flex items-center gap-1.5 rounded-sm bg-background/70 px-1.5 py-0.5 font-mono text-[0.6rem] tracking-widest text-primary backdrop-blur-sm"
+              >
+                <span className="animate-rec-blink size-1.5 rounded-full bg-[var(--hud-red)]" />
+                CAM-{String(i + 1).padStart(2, "0")}
+              </div>
               <div className="absolute inset-x-0 bottom-0 translate-y-1 bg-gradient-to-t from-background/95 via-background/60 to-transparent p-3 pt-10 opacity-90 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 sm:p-4 sm:pt-12">
                 <p className="line-clamp-3 text-[0.7rem] leading-snug text-foreground/90 sm:text-xs">
                   {t(`gallery.captions.${photo.captionKey}`)}
                 </p>
               </div>
-              <div className="pointer-events-none absolute inset-0 border border-primary/0 transition-colors group-hover:border-primary/40" />
-            </div>
+              <div className="pointer-events-none absolute inset-0 rounded-xl border border-primary/0 transition-colors group-hover:border-primary/40" />
+            </motion.div>
           </Reveal>
         ))}
       </div>

@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import { ArrowRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { Reveal } from "@/components/landing/Reveal";
@@ -29,7 +30,7 @@ export function Pipeline() {
           return (
             <Reveal key={i} delay={i * 0.08} className="flex flex-1 items-center gap-4">
               <div className="w-full rounded-xl border border-border bg-card p-6 text-center">
-                <div className="mx-auto inline-flex size-11 items-center justify-center rounded-lg border border-primary/30 bg-primary/10 text-primary">
+                <div className="mx-auto inline-flex size-11 items-center justify-center rounded-lg border border-primary/30 bg-primary/10 text-primary hud-icon" style={{ "--i": i } as CSSProperties}>
                   <Icon className="size-5" aria-hidden="true" />
                 </div>
                 <h3 className="mt-4 font-display text-sm font-semibold tracking-wide">

@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Bot, ChevronDown, Cpu, Sparkles, Users, Workflow } from "lucide-react";
 import { useState } from "react";
@@ -39,7 +40,7 @@ export function DeepDive() {
                 aria-expanded={isOpen}
                 className="flex w-full items-center gap-4 px-5 py-4 text-left"
               >
-                <span className="inline-flex size-9 shrink-0 items-center justify-center rounded-lg border border-primary/30 bg-primary/10 text-primary">
+                <span className="inline-flex size-9 shrink-0 items-center justify-center rounded-lg border border-primary/30 bg-primary/10 text-primary hud-icon" style={{ "--i": i } as CSSProperties}>
                   <Icon className="size-4" aria-hidden="true" />
                 </span>
                 <span className="flex-1 font-display text-sm font-semibold tracking-tight sm:text-base">
