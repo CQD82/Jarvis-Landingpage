@@ -135,7 +135,7 @@
       "Journalisation d'audit API complète avec traçabilité RBAC",
       "Secrets stockés uniquement chiffrés dans le dépôt (jamais en clair)",
       "Application de politiques, détection des menaces à l'exécution et scan d'images",
-      "Application des règles d'exécution dans le noyau (Tetragon) : les lancements de processus et connexions non autorisés des services d'IA sont immédiatement stoppés",
+      "Application des règles d'exécution dans le noyau (Tetragon) : les lancements de processus et connexions non autorisés des services d'IA sont immédiatement stoppés — y compris sur les nœuds Raspberry Pi, grâce à un noyau compilé sur mesure à partir de sources vérifiées par signature",
     "Les images de conteneurs maison sont signées (cosign) et admises uniquement avec une signature valide",
       "Les composants amont compromis sont bloqués et remplacés — la passerelle IA a été entièrement remplacée après un incident de chaîne d'approvisionnement",
       "Exécutions CI dans des runners durcis et isolés, sans actions tierces ; les agents IA ne peuvent qu'ouvrir des pull requests, jamais exécuter directement des commandes",

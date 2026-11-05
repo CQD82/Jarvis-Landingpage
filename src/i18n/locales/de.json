@@ -135,7 +135,7 @@
       "Vollständiges API-Audit-Logging mit RBAC-Nachvollziehbarkeit",
       "Secrets ausschließlich verschlüsselt im Repository (nie im Klartext)",
       "Policy-Enforcement, Laufzeit-Bedrohungserkennung und Image-Scanning",
-      "Laufzeit-Durchsetzung im Kernel (Tetragon): unerlaubte Programmstarts und Verbindungen der KI-Dienste werden sofort beendet",
+      "Laufzeit-Durchsetzung im Kernel (Tetragon): unerlaubte Programmstarts und Verbindungen der KI-Dienste werden sofort beendet — auch auf den Raspberry-Pi-Nodes, dank eines eigens gebauten Kernels aus signaturgeprüften Quellen",
     "Eigene Container-Images werden signiert (cosign) und nur mit gültiger Signatur zugelassen",
       "Kompromittierte Upstream-Komponenten werden gesperrt und ersetzt — das KI-Gateway wurde nach einem Supply-Chain-Vorfall vollständig ausgetauscht",
       "CI-Läufe in gehärteten, isolierten Runnern ohne Fremd-Actions; KI-Agenten dürfen nur Pull-Requests öffnen, nie direkt Befehle ausführen",

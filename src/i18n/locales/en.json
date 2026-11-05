@@ -135,7 +135,7 @@
       "Full API audit logging with RBAC traceability",
       "Secrets stored encrypted only in the repository (never in plaintext)",
       "Policy enforcement, runtime threat detection, and image scanning",
-      "In-kernel runtime enforcement (Tetragon): unauthorized process starts and connections by the AI services are killed instantly",
+      "In-kernel runtime enforcement (Tetragon): unauthorized process starts and connections by the AI services are killed instantly — on the Raspberry Pi nodes too, thanks to a purpose-built kernel compiled from signature-verified sources",
     "Own container images are signed (cosign) and admitted only with a valid signature",
       "Compromised upstream components are blocked and replaced — the AI gateway was swapped out entirely after a supply-chain incident",
       "CI runs in hardened, isolated runners with no third-party actions; AI agents may only open pull requests, never run commands directly",

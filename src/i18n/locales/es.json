@@ -135,7 +135,7 @@
       "Registro de auditoría API completo con trazabilidad RBAC",
       "Secretos almacenados solo cifrados en el repositorio (nunca en texto plano)",
       "Aplicación de políticas, detección de amenazas en tiempo de ejecución y escaneo de imágenes",
-      "Aplicación de reglas en tiempo de ejecución en el kernel (Tetragon): los arranques de procesos y conexiones no autorizados de los servicios de IA se terminan al instante",
+      "Aplicación de reglas en tiempo de ejecución en el kernel (Tetragon): los arranques de procesos y conexiones no autorizados de los servicios de IA se terminan al instante — también en los nodos Raspberry Pi, gracias a un kernel compilado a medida a partir de fuentes con firma verificada",
     "Las imágenes de contenedor propias se firman (cosign) y solo se admiten con una firma válida",
       "Los componentes upstream comprometidos se bloquean y se sustituyen — la puerta de enlace de IA se reemplazó por completo tras un incidente en la cadena de suministro",
       "Ejecuciones de CI en runners endurecidos y aislados, sin acciones de terceros; los agentes de IA solo pueden abrir pull requests, nunca ejecutar comandos directamente",
