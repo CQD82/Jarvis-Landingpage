@@ -121,8 +121,8 @@
       { "tier": "Edge / NPU", "hardware": "Acelerador de IA perimetral", "role": "Reconocimiento de intención, respuestas instantáneas" },
       { "tier": "Nivel CPU", "hardware": "Placa compacta, inferencia por CPU", "role": "Modelo grande de mixture-of-experts para razonamiento" },
       { "tier": "Nivel Worker", "hardware": "Nodos de clúster compactos", "role": "Inferencia cotidiana distribuida" },
-      { "tier": "Nivel GPU", "hardware": "Estación de trabajo con GPU actual de 16 GB", "role": "Inferencia en tiempo real en producción, ventana de contexto amplia" },
-      { "tier": "Nivel de código", "hardware": "Segundo host GPU eficiente, siempre encendido", "role": "Autocompletado de código las 24 horas" },
+      { "tier": "Nivel GPU", "hardware": "HP Z840 con RTX 5060 Ti 16 GB (sustituye a la Quadro P4000)", "role": "Inferencia en tiempo real en producción, ventana de contexto amplia" },
+      { "tier": "Nivel de código", "hardware": "i5-8500 con la Quadro P4000 de la Z840, siempre encendido", "role": "Autocompletado de código las 24 horas" },
       { "tier": "Respaldo en la nube", "hardware": "Externo, con límite de tasa estricto", "role": "Solo como último recurso, la única salida permitida" }
     ]
   },
@@ -223,7 +223,7 @@
       { "label": "Disco de backup (WD Elements 22 TB)", "watts": "~6 W" },
       { "label": "Nodo sensor/watchdog (Pi Zero 2W)", "watts": "~1 W" },
       { "label": "i5-8500 (segundo host GPU: nivel de código, banco de pruebas de restauración)", "watts": "~30 W" },
-      { "label": "Estación GPU (prom. con autosuspend)", "watts": "~20 W" },
+      { "label": "Estación GPU HP Z840 + RTX 5060 Ti (prom. con autosuspend)", "watts": "~20 W" },
       { "label": "SAI (APC Back-UPS Pro 900, consumo propio)", "watts": "~5 W" }
     ],
     "totalLabel": "Carga continua estimada",
