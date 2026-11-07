@@ -20,19 +20,15 @@ import rackInteriorCabling from "@/assets/hardware/rack-interior-cabling.webp";
 import rackNodeBays from "@/assets/hardware/rack-node-bays.webp";
 import rackWithZ840 from "@/assets/hardware/rack-with-z840.webp";
 import workbenchSetup from "@/assets/hardware/workbench-setup.webp";
-import jarvisHud from "@/assets/hardware/jarvis-hud.webp";
-import grafanaDashboard from "@/assets/hardware/grafana-dashboard.webp";
 
 const PHOTOS: { src: string; captionKey: string; span?: string }[] = [
   { src: rackWithZ840, captionKey: "rackWithZ840", span: "col-span-2 row-span-2" },
   { src: rackCabledFull, captionKey: "rackCabledFull", span: "row-span-2" },
-  { src: jarvisHud, captionKey: "jarvisHud", span: "col-span-2" },
   { src: rackNodeBays, captionKey: "rackBays", span: "col-span-2" },
   { src: nodeAssembly, captionKey: "assembly" },
   { src: rackInteriorCabling, captionKey: "rackInteriorCabling" },
   { src: nodeBaysCabled, captionKey: "nodeBaysCabled", span: "col-span-2" },
   { src: odroidH5Case, captionKey: "odroid", span: "col-span-2" },
-  { src: grafanaDashboard, captionKey: "grafana", span: "col-span-2" },
   { src: odroidAssembly, captionKey: "odroidAssembly" },
   { src: aiHatMounted, captionKey: "aiHat" },
   { src: aiHatBoxes, captionKey: "aiHatBoxes", span: "row-span-2" },
@@ -45,7 +41,7 @@ const PHOTOS: { src: string; captionKey: string; span?: string }[] = [
 ];
 
 /** Tiles shown before "show all" — the first bento block fills cleanly. */
-const INITIAL_COUNT = 11;
+const INITIAL_COUNT = 9;
 
 export function HardwareGallery() {
   const { t } = useTranslation();

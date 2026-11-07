@@ -5,6 +5,7 @@
   },
   "nav": {
     "countdown": "Cuenta atrás",
+    "progress": "Estado",
     "hardware": "Hardware",
     "overview": "Resumen",
     "features": "Funciones",
@@ -155,8 +156,6 @@
     "showAll": "Ver las {{count}} fotos",
     "showLess": "Ver menos",
     "captions": {
-      "jarvisHud": "El HUD real de JARVIS en reposo: estado de cada nodo, tiempo, alertas y copias de seguridad — con el orbe de reactor esperando «Hey Jarvis».",
-      "grafana": "El panel de Grafana «JARVIS Übersicht»: estado, temperaturas y carga de cada nodo, alimentado por VictoriaMetrics.",
       "rackFull": "El rack de servidores: 18 nodos, switch y SAI en un armario de 19″.",
       "rackBays": "Bahías de los nodos de cómputo sobre el switch de red.",
       "assembly": "Preensamblaje de la flota de nodos antes de instalarla en el rack.",
@@ -344,6 +343,67 @@
       {
         "q": "¿Cuánta energía consume el rack?",
         "a": "Unos doscientos vatios ahora mismo. La estación GPU está en reposo, lo que ahorra la mayor parte."
+      }
+    ]
+  },
+  "progress": {
+    "eyebrow": "Estado del proyecto",
+    "title": "Lo que ya funciona",
+    "description": "El clúster no es solo un plan — la mayor parte ya está en marcha. Un vistazo al HUD real y a la monitorización, y el estado actual hasta la puesta en marcha.",
+    "hudCaption": "El HUD de JARVIS en la pared: estado en directo de cada nodo, alertas y copias de seguridad — el asistente de voz espera «Hey Jarvis».",
+    "grafanaCaption": "El panel de monitorización: estado, temperaturas y carga de cada nodo en las últimas 24 horas.",
+    "liveLabel": "En marcha",
+    "wipLabel": "En curso",
+    "live": [
+      {
+        "title": "Clúster Kubernetes",
+        "desc": "Todos los nodos están listos y se gestionan de forma totalmente declarativa desde Git."
+      },
+      {
+        "title": "Almacenamiento replicado",
+        "desc": "Los datos se replican en varios nodos; todos los volúmenes están sanos."
+      },
+      {
+        "title": "Copias de seguridad",
+        "desc": "Copias diarias de todo el clúster; las bases de datos se respaldan de forma continua."
+      },
+      {
+        "title": "Monitorización y alertas",
+        "desc": "Temperatura, carga y memoria de cada nodo en paneles — alertas activas, ninguna abierta ahora."
+      },
+      {
+        "title": "Puerta de enlace de IA",
+        "desc": "Una puerta de enlace central recibe las peticiones de IA y las reparte entre los modelos adecuados."
+      },
+      {
+        "title": "IA en el borde",
+        "desc": "Los cuatro nodos NPU están activos y responden localmente peticiones sencillas con un modelo de lenguaje pequeño."
+      },
+      {
+        "title": "HUD de JARVIS y voz",
+        "desc": "La pantalla de pared muestra el clúster en directo, además del tiempo y noticias; el asistente de voz está listo."
+      },
+      {
+        "title": "Endurecimiento de red",
+        "desc": "Todos los nodos Raspberry Pi funcionan solo por cable; el Wi-Fi está apagado."
+      }
+    ],
+    "wip": [
+      {
+        "title": "Nivel GPU",
+        "desc": "La estación de trabajo con la nueva tarjeta gráfica de 16 GB asume los grandes modelos de lenguaje."
+      },
+      {
+        "title": "Protección en tiempo de ejecución en el kernel",
+        "desc": "Un kernel compilado a medida lleva el control en tiempo de ejecución también a los nodos Raspberry Pi."
+      },
+      {
+        "title": "Prueba de restauración automática",
+        "desc": "Las copias de seguridad comprobarán periódicamente por sí solas que se pueden restaurar."
+      },
+      {
+        "title": "Puesta en marcha",
+        "desc": "Revisión final de todos los componentes antes del inicio previsto el 20 de noviembre."
       }
     ]
   },

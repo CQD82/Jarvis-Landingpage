@@ -5,6 +5,7 @@ import { Logo } from "@/components/landing/Logo";
 
 const HREFS = [
   "#go-live",
+  "#progress",
   "#hardware",
   "#system-map",
   "#features",
@@ -15,6 +16,7 @@ const HREFS = [
 ];
 const NAV_KEYS = [
   "countdown",
+  "progress",
   "hardware",
   "overview",
   "features",
@@ -56,7 +58,7 @@ export function Nav() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-md">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-6">
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-6">
         <a href="#top" className="flex shrink-0 items-center gap-2.5">
           <Logo size={26} />
           <span className="font-display text-lg font-semibold tracking-widest">
@@ -66,7 +68,7 @@ export function Nav() {
             v5.5
           </span>
         </a>
-        <nav className="hidden items-center gap-5 lg:flex xl:gap-7">
+        <nav className="hidden min-w-0 items-center gap-3.5 lg:flex xl:gap-6">
           {NAV_KEYS.map((key, i) => {
             const href = HREFS[i];
             const isActive = active === href.slice(1);
@@ -74,7 +76,7 @@ export function Nav() {
               <a
                 key={href}
                 href={href}
-                className={`text-sm transition-colors ${
+                className={`whitespace-nowrap text-[0.8rem] transition-colors xl:text-sm ${
                   isActive
                     ? "text-primary text-glow"
                     : "text-muted-foreground hover:text-foreground"

@@ -5,6 +5,7 @@
   },
   "nav": {
     "countdown": "Compte à rebours",
+    "progress": "Avancement",
     "hardware": "Matériel",
     "overview": "Vue d'ensemble",
     "features": "Fonctionnalités",
@@ -155,8 +156,6 @@
     "showAll": "Afficher les {{count}} photos",
     "showLess": "Afficher moins",
     "captions": {
-      "jarvisHud": "Le véritable HUD JARVIS en veille : état de chaque nœud, météo, alertes et sauvegardes — avec l'orbe arc-réacteur qui attend « Hey Jarvis ».",
-      "grafana": "Le tableau de bord Grafana « JARVIS Übersicht » : état, températures et charge de chaque nœud, alimenté par VictoriaMetrics.",
       "rackFull": "La baie serveur : 18 nœuds, switch et onduleur dans un rack 19″.",
       "rackBays": "Baies des nœuds de calcul au-dessus du commutateur réseau.",
       "assembly": "Pré-assemblage de la flotte de nœuds avant son installation en baie.",
@@ -344,6 +343,67 @@
       {
         "q": "Combien consomme la baie ?",
         "a": "Environ deux cents watts en ce moment. La station GPU est en veille, c'est là l'essentiel de l'économie."
+      }
+    ]
+  },
+  "progress": {
+    "eyebrow": "État du projet",
+    "title": "Ce qui tourne déjà",
+    "description": "Le cluster n'est pas qu'un projet — l'essentiel fonctionne déjà. Un aperçu du vrai HUD et de la supervision, et l'état d'avancement jusqu'à la mise en service.",
+    "hudCaption": "Le HUD JARVIS au mur : état en direct de chaque nœud, alertes et sauvegardes — l'assistant vocal attend « Hey Jarvis ».",
+    "grafanaCaption": "Le tableau de bord de supervision : état, températures et charge de chaque nœud sur les dernières 24 heures.",
+    "liveLabel": "En service",
+    "wipLabel": "En cours",
+    "live": [
+      {
+        "title": "Cluster Kubernetes",
+        "desc": "Tous les nœuds sont prêts et entièrement gérés de façon déclarative depuis Git."
+      },
+      {
+        "title": "Stockage répliqué",
+        "desc": "Les données sont dupliquées sur plusieurs nœuds ; tous les volumes sont sains."
+      },
+      {
+        "title": "Sauvegardes",
+        "desc": "Sauvegardes quotidiennes de tout le cluster ; les bases de données sont sauvegardées en continu."
+      },
+      {
+        "title": "Supervision & alertes",
+        "desc": "Température, charge et mémoire de chaque nœud sur des tableaux de bord — alertes actives, aucune ouverte."
+      },
+      {
+        "title": "Passerelle IA",
+        "desc": "Une passerelle centrale reçoit les requêtes IA et les répartit vers les bons modèles."
+      },
+      {
+        "title": "IA en périphérie",
+        "desc": "Les quatre nœuds NPU sont actifs et répondent localement aux requêtes simples avec un petit modèle de langage."
+      },
+      {
+        "title": "HUD JARVIS & voix",
+        "desc": "L'écran mural affiche le cluster en direct, avec météo et actualités ; l'assistant vocal est prêt."
+      },
+      {
+        "title": "Durcissement réseau",
+        "desc": "Tous les nœuds Raspberry Pi sont désormais uniquement filaires ; le Wi-Fi est coupé."
+      }
+    ],
+    "wip": [
+      {
+        "title": "Niveau GPU",
+        "desc": "La station de travail avec la nouvelle carte graphique de 16 Go prend en charge les grands modèles de langage."
+      },
+      {
+        "title": "Protection d'exécution dans le noyau",
+        "desc": "Un noyau compilé sur mesure étend le contrôle d'exécution aux nœuds Raspberry Pi."
+      },
+      {
+        "title": "Test de restauration automatisé",
+        "desc": "Les sauvegardes vérifieront régulièrement d'elles-mêmes qu'elles sont restaurables."
+      },
+      {
+        "title": "Mise en service",
+        "desc": "Contrôle final de tous les composants avant le lancement prévu le 20 novembre."
       }
     ]
   },

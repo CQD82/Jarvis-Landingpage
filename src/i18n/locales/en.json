@@ -5,6 +5,7 @@
   },
   "nav": {
     "countdown": "Countdown",
+    "progress": "Status",
     "hardware": "Hardware",
     "overview": "Overview",
     "features": "Capabilities",
@@ -155,8 +156,6 @@
     "showAll": "Show all {{count}} photos",
     "showLess": "Show less",
     "captions": {
-      "jarvisHud": "The real JARVIS HUD on standby: status of every node, weather, alerts and backups — with the arc-reactor orb waiting for “Hey Jarvis”.",
-      "grafana": "The “JARVIS Overview” Grafana dashboard: status, temperatures and load of every node, fed by VictoriaMetrics.",
       "rackFull": "The server rack: 18 nodes, switch, and UPS in a 19″ enclosure.",
       "rackBays": "Compute-node bays above the network switch.",
       "assembly": "Pre-assembling the node fleet before it moves into the rack.",
@@ -344,6 +343,67 @@
       {
         "q": "How much power is the rack drawing?",
         "a": "About two hundred watts right now. The GPU workstation is asleep, which saves most of it."
+      }
+    ]
+  },
+  "progress": {
+    "eyebrow": "Project Status",
+    "title": "What's Already Running",
+    "description": "The cluster isn't just a plan — most of it is already live. A look at the real HUD and the monitoring, plus where things stand on the way to go-live.",
+    "hudCaption": "The JARVIS HUD on the wall: live status of every node, alerts and backups — the voice assistant is waiting for “Hey Jarvis”.",
+    "grafanaCaption": "The monitoring dashboard: status, temperatures and load of every node over the last 24 hours.",
+    "liveLabel": "Running",
+    "wipLabel": "In progress",
+    "live": [
+      {
+        "title": "Kubernetes cluster",
+        "desc": "All nodes are ready and managed fully declaratively from Git."
+      },
+      {
+        "title": "Replicated storage",
+        "desc": "Data is mirrored across several nodes; every volume reports healthy."
+      },
+      {
+        "title": "Backups",
+        "desc": "Daily backups of the whole cluster; databases are backed up continuously."
+      },
+      {
+        "title": "Monitoring & alerting",
+        "desc": "Temperature, load and memory of every node on dashboards — alerts are armed, none open right now."
+      },
+      {
+        "title": "AI gateway",
+        "desc": "A central gateway takes the AI requests and routes them to the right models."
+      },
+      {
+        "title": "Edge AI",
+        "desc": "All four NPU nodes are active and answer simple requests locally with a small language model."
+      },
+      {
+        "title": "JARVIS HUD & voice",
+        "desc": "The wall display shows the cluster live, plus weather and news; the voice assistant is ready."
+      },
+      {
+        "title": "Network hardening",
+        "desc": "All Raspberry Pi nodes are wired-only now; Wi-Fi is switched off."
+      }
+    ],
+    "wip": [
+      {
+        "title": "GPU tier",
+        "desc": "The workstation with the new 16 GB graphics card takes over the large language models."
+      },
+      {
+        "title": "In-kernel runtime protection",
+        "desc": "A purpose-built kernel brings runtime enforcement to the Raspberry Pi nodes too."
+      },
+      {
+        "title": "Automated restore test",
+        "desc": "Backups will regularly verify on their own that they can actually be restored."
+      },
+      {
+        "title": "Go-live",
+        "desc": "Final check of every component ahead of the planned start on November 20."
       }
     ]
   },

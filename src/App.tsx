@@ -9,6 +9,7 @@ import { Footer } from "@/components/landing/Footer"
 import { GoLiveCountdown } from "@/components/landing/GoLiveCountdown"
 import { HardwareGallery } from "@/components/landing/HardwareGallery"
 import { Hero } from "@/components/landing/Hero"
+import { ProgressShowcase } from "@/components/landing/ProgressShowcase"
 import { Nav } from "@/components/landing/Nav"
 import { NeuralBackground } from "@/components/landing/NeuralBackground"
 import { ScrollProgress } from "@/components/landing/ScrollProgress"
@@ -56,6 +57,7 @@ function Landing() {
       <main>
         <Hero />
         <GoLiveCountdown />
+        <ProgressShowcase />
         <HardwareGallery />
         <Suspense fallback={<div className="min-h-screen" aria-hidden="true" />}>
         <HudDivider label="SEC-03" />
