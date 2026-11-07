@@ -155,6 +155,8 @@
     "showAll": "Ver las {{count}} fotos",
     "showLess": "Ver menos",
     "captions": {
+      "jarvisHud": "El HUD real de JARVIS en reposo: estado de cada nodo, tiempo, alertas y copias de seguridad — con el orbe de reactor esperando «Hey Jarvis».",
+      "grafana": "El panel de Grafana «JARVIS Übersicht»: estado, temperaturas y carga de cada nodo, alimentado por VictoriaMetrics.",
       "rackFull": "El rack de servidores: 18 nodos, switch y SAI en un armario de 19″.",
       "rackBays": "Bahías de los nodos de cómputo sobre el switch de red.",
       "assembly": "Preensamblaje de la flota de nodos antes de instalarla en el rack.",
@@ -245,6 +247,37 @@
     "powerLabel": "CONSUMO ACTUAL",
     "nodeOnline": "EN LÍNEA",
     "nodeSuspended": "SUSPENDIDO",
+    "console": {
+      "nominal": "Sistemas nominales",
+      "voiceReady": "Voz lista",
+      "cluster": "Clúster",
+      "alarms": "Alertas",
+      "noAlarms": "Sin alertas activas",
+      "backup": "Copias de seguridad",
+      "velero": "Velero (diario)",
+      "cnpg": "Bases de datos (CNPG)",
+      "active": "activo",
+      "hoursAgo": "hace {{h}} h",
+      "tiers": "Niveles de IA",
+      "gpu": "GPU (Z840)",
+      "cpu": "CPU (ODROID)",
+      "edge": "Edge (Hailo)",
+      "asleep": "en reposo",
+      "awake": "activo",
+      "ready": "listo",
+      "standby": "En espera",
+      "wake": "Diga «Hey Jarvis».",
+      "kpis": [
+        "Consultas IA / h",
+        "Tokens / s",
+        "Pis Hailo activos",
+        "CPU clúster",
+        "RAM clúster",
+        "Nodo más caliente",
+        "Volúmenes sanos",
+        "Red MB/s"
+      ]
+    },
     "tabs": { "kitt": "K.I.T.T.", "matrix": "Matrix", "jarvis": "JARVIS" }
   },
   "liveTerminal": {

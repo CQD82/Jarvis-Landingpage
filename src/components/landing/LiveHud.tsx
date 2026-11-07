@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { JarvisConsole } from "@/components/landing/JarvisConsole";
 import { MatrixRain } from "@/components/landing/MatrixRain";
 import { Reveal } from "@/components/landing/Reveal";
 import { SectionHeading } from "@/components/landing/SectionHeading";
@@ -16,7 +17,7 @@ interface HudTheme {
 
 const THEMES: Record<HudKey, HudTheme> = {
   jarvis: {
-    panelBg: "#0c0705",
+    panelBg: "#0a0d14",
     color: "#f2b545",
     borderIdle: "rgba(242, 181, 69, 0.15)",
     borderOn: "rgba(242, 181, 69, 0.55)",
@@ -40,7 +41,7 @@ const HUD_KEYS: HudKey[] = ["jarvis", "kitt", "matrix"];
 export function LiveHud() {
   const { t } = useTranslation();
   const [active, setActive] = useState<HudKey>("jarvis");
-  const { nodes, powerW } = useSimulatedTelemetry();
+  const { nodes, powerW, gpuOnline } = useSimulatedTelemetry();
   const theme = THEMES[active];
 
   return (
@@ -74,7 +75,7 @@ export function LiveHud() {
 
       <Reveal delay={0.15}>
         <div
-          className="relative mx-auto mt-8 max-w-3xl overflow-hidden rounded-xl border p-6 transition-colors duration-500"
+          className={`relative mx-auto mt-8 overflow-hidden rounded-xl border transition-colors duration-500 ${active === "jarvis" ? "max-w-6xl p-4 sm:p-6" : "max-w-3xl p-6"}`}
           style={{ background: theme.panelBg, borderColor: theme.borderOn }}
         >
           {active === "matrix" ? (
@@ -91,6 +92,10 @@ export function LiveHud() {
             </div>
           ) : null}
 
+          {active === "jarvis" ? (
+            <JarvisConsole gpuOnline={gpuOnline} />
+          ) : (
+          <>
           <div className="relative flex flex-col items-center gap-1 text-center">
             <span
               className="font-mono text-[0.7rem] tracking-[0.3em] uppercase"
@@ -127,6 +132,8 @@ export function LiveHud() {
               );
             })}
           </div>
+          </>
+          )}
         </div>
       </Reveal>
 
