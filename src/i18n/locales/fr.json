@@ -155,6 +155,8 @@
     "showAll": "Afficher les {{count}} photos",
     "showLess": "Afficher moins",
     "captions": {
+      "jarvisHud": "Le véritable HUD JARVIS en veille : état de chaque nœud, météo, alertes et sauvegardes — avec l'orbe arc-réacteur qui attend « Hey Jarvis ».",
+      "grafana": "Le tableau de bord Grafana « JARVIS Übersicht » : état, températures et charge de chaque nœud, alimenté par VictoriaMetrics.",
       "rackFull": "La baie serveur : 18 nœuds, switch et onduleur dans un rack 19″.",
       "rackBays": "Baies des nœuds de calcul au-dessus du commutateur réseau.",
       "assembly": "Pré-assemblage de la flotte de nœuds avant son installation en baie.",
@@ -245,6 +247,37 @@
     "powerLabel": "CONSOMMATION ACTUELLE",
     "nodeOnline": "EN LIGNE",
     "nodeSuspended": "SUSPENDU",
+    "console": {
+      "nominal": "Systèmes nominaux",
+      "voiceReady": "Voix prête",
+      "cluster": "Cluster",
+      "alarms": "Alertes",
+      "noAlarms": "Aucune alerte active",
+      "backup": "Sauvegardes",
+      "velero": "Velero (quotidien)",
+      "cnpg": "Bases de données (CNPG)",
+      "active": "actif",
+      "hoursAgo": "il y a {{h}} h",
+      "tiers": "Niveaux IA",
+      "gpu": "GPU (Z840)",
+      "cpu": "CPU (ODROID)",
+      "edge": "Edge (Hailo)",
+      "asleep": "en veille",
+      "awake": "actif",
+      "ready": "prêt",
+      "standby": "Veille",
+      "wake": "Dites « Hey Jarvis ».",
+      "kpis": [
+        "Requêtes IA / h",
+        "Tokens / s",
+        "Pis Hailo actifs",
+        "CPU cluster",
+        "RAM cluster",
+        "Nœud le plus chaud",
+        "Volumes sains",
+        "Réseau Mo/s"
+      ]
+    },
     "tabs": { "kitt": "K.I.T.T.", "matrix": "Matrix", "jarvis": "JARVIS" }
   },
   "liveTerminal": {

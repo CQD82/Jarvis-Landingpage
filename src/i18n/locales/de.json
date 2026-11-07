@@ -155,6 +155,8 @@
     "showAll": "Alle {{count}} Fotos anzeigen",
     "showLess": "Weniger anzeigen",
     "captions": {
+      "jarvisHud": "Das echte JARVIS-HUD im Standby: Cluster-Status aller Nodes, Wetter, Alarme und Datensicherung — mit dem Arc-Reactor-Orb, der auf „Hey Jarvis“ wartet.",
+      "grafana": "Das Grafana-Dashboard „JARVIS Übersicht“: Status, Temperaturen und Auslastung aller Nodes, gespeist aus VictoriaMetrics.",
       "rackFull": "Der Serverschrank: 18 Nodes, Switch und USV in einem 19″-Rack.",
       "rackBays": "Steckplätze für die Compute-Nodes über dem Netzwerk-Switch.",
       "assembly": "Vormontage der Node-Flotte, bevor sie ins Rack wandert.",
@@ -245,6 +247,37 @@
     "powerLabel": "AKTUELLER VERBRAUCH",
     "nodeOnline": "ONLINE",
     "nodeSuspended": "SUSPENDIERT",
+    "console": {
+      "nominal": "Systeme nominal",
+      "voiceReady": "Sprache bereit",
+      "cluster": "Cluster",
+      "alarms": "Alarme",
+      "noAlarms": "Keine aktiven Alarme",
+      "backup": "Datensicherung",
+      "velero": "Velero (täglich)",
+      "cnpg": "Datenbanken (CNPG)",
+      "active": "aktiv",
+      "hoursAgo": "vor {{h}} h",
+      "tiers": "KI-Tiers",
+      "gpu": "GPU (Z840)",
+      "cpu": "CPU (ODROID)",
+      "edge": "Edge (Hailo)",
+      "asleep": "schläft",
+      "awake": "aktiv",
+      "ready": "bereit",
+      "standby": "Standby",
+      "wake": "Sagen Sie „Hey Jarvis“.",
+      "kpis": [
+        "KI-Anfragen / h",
+        "Tokens / s",
+        "Hailo-Pis aktiv",
+        "CPU Cluster",
+        "RAM Cluster",
+        "Wärmster Node",
+        "Volumes gesund",
+        "Netz MB/s"
+      ]
+    },
     "tabs": { "kitt": "K.I.T.T.", "matrix": "Matrix", "jarvis": "JARVIS" }
   },
   "liveTerminal": {

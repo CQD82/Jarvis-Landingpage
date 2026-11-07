@@ -155,6 +155,8 @@
     "showAll": "Εμφάνιση και των {{count}} φωτογραφιών",
     "showLess": "Λιγότερα",
     "captions": {
+      "jarvisHud": "Το πραγματικό HUD του JARVIS σε αναμονή: κατάσταση κάθε κόμβου, καιρός, ειδοποιήσεις και backups — με τη σφαίρα arc-reactor να περιμένει το «Hey Jarvis».",
+      "grafana": "Το dashboard Grafana «JARVIS Übersicht»: κατάσταση, θερμοκρασίες και φόρτος κάθε κόμβου, από το VictoriaMetrics.",
       "rackFull": "Το rack διακομιστών: 18 κόμβοι, switch και UPS σε ερμάριο 19″.",
       "rackBays": "Θέσεις των κόμβων υπολογισμού πάνω από το δικτυακό switch.",
       "assembly": "Προσυναρμολόγηση του στόλου κόμβων πριν μπει στο rack.",
@@ -245,6 +247,37 @@
     "powerLabel": "ΤΡΕΧΟΥΣΑ ΚΑΤΑΝΑΛΩΣΗ",
     "nodeOnline": "ONLINE",
     "nodeSuspended": "ΑΝΑΣΤΟΛΗ",
+    "console": {
+      "nominal": "Συστήματα κανονικά",
+      "voiceReady": "Φωνή έτοιμη",
+      "cluster": "Cluster",
+      "alarms": "Ειδοποιήσεις",
+      "noAlarms": "Καμία ενεργή ειδοποίηση",
+      "backup": "Αντίγραφα ασφαλείας",
+      "velero": "Velero (ημερήσιο)",
+      "cnpg": "Βάσεις δεδομένων (CNPG)",
+      "active": "ενεργό",
+      "hoursAgo": "πριν {{h}} ώ",
+      "tiers": "Επίπεδα AI",
+      "gpu": "GPU (Z840)",
+      "cpu": "CPU (ODROID)",
+      "edge": "Edge (Hailo)",
+      "asleep": "σε αδράνεια",
+      "awake": "ενεργό",
+      "ready": "έτοιμο",
+      "standby": "Αναμονή",
+      "wake": "Πείτε «Hey Jarvis».",
+      "kpis": [
+        "Αιτήματα AI / ώ",
+        "Tokens / s",
+        "Ενεργά Hailo Pis",
+        "CPU cluster",
+        "RAM cluster",
+        "Θερμότερος κόμβος",
+        "Υγιή volumes",
+        "Δίκτυο MB/s"
+      ]
+    },
     "tabs": { "kitt": "K.I.T.T.", "matrix": "Matrix", "jarvis": "JARVIS" }
   },
   "liveTerminal": {
