@@ -5,6 +5,7 @@
   },
   "nav": {
     "countdown": "Countdown",
+    "progress": "Projektstand",
     "hardware": "Hardware",
     "overview": "Übersicht",
     "features": "Fähigkeiten",
@@ -155,8 +156,6 @@
     "showAll": "Alle {{count}} Fotos anzeigen",
     "showLess": "Weniger anzeigen",
     "captions": {
-      "jarvisHud": "Das echte JARVIS-HUD im Standby: Cluster-Status aller Nodes, Wetter, Alarme und Datensicherung — mit dem Arc-Reactor-Orb, der auf „Hey Jarvis“ wartet.",
-      "grafana": "Das Grafana-Dashboard „JARVIS Übersicht“: Status, Temperaturen und Auslastung aller Nodes, gespeist aus VictoriaMetrics.",
       "rackFull": "Der Serverschrank: 18 Nodes, Switch und USV in einem 19″-Rack.",
       "rackBays": "Steckplätze für die Compute-Nodes über dem Netzwerk-Switch.",
       "assembly": "Vormontage der Node-Flotte, bevor sie ins Rack wandert.",
@@ -344,6 +343,67 @@
       {
         "q": "Wie viel Strom verbraucht das Rack?",
         "a": "Aktuell rund zweihundert Watt. Die GPU-Workstation schläft, das spart den größten Teil."
+      }
+    ]
+  },
+  "progress": {
+    "eyebrow": "Projektstand",
+    "title": "Was bereits läuft",
+    "description": "Der Cluster ist nicht nur geplant — der Großteil läuft schon. Ein Blick auf das echte HUD und das Monitoring, dazu der aktuelle Stand bis zum Go-Live.",
+    "hudCaption": "Das JARVIS-HUD an der Wand: Live-Status aller Nodes, Alarme und Datensicherung — der Sprachassistent wartet auf „Hey Jarvis“.",
+    "grafanaCaption": "Das Monitoring-Dashboard: Status, Temperaturen und Auslastung jedes Nodes über die letzten 24 Stunden.",
+    "liveLabel": "Läuft bereits",
+    "wipLabel": "In Arbeit",
+    "live": [
+      {
+        "title": "Kubernetes-Cluster",
+        "desc": "Alle Nodes sind bereit und werden vollständig deklarativ aus Git verwaltet."
+      },
+      {
+        "title": "Replizierter Speicher",
+        "desc": "Die Daten liegen gespiegelt auf mehreren Nodes, alle Volumes melden sich gesund."
+      },
+      {
+        "title": "Datensicherung",
+        "desc": "Tägliche Backups des gesamten Clusters, Datenbanken werden laufend gesichert."
+      },
+      {
+        "title": "Monitoring & Alarmierung",
+        "desc": "Temperatur, Last und Speicher jedes Nodes in Dashboards — Alarme sind scharf, aktuell keiner offen."
+      },
+      {
+        "title": "KI-Gateway",
+        "desc": "Ein zentrales Gateway nimmt die KI-Anfragen an und verteilt sie auf die passenden Modelle."
+      },
+      {
+        "title": "Edge-KI",
+        "desc": "Alle vier NPU-Nodes sind aktiv und beantworten einfache Anfragen lokal mit einem kleinen Sprachmodell."
+      },
+      {
+        "title": "JARVIS-HUD & Sprache",
+        "desc": "Das Wanddisplay zeigt den Cluster live, dazu Wetter und Nachrichten; die Sprachassistenz ist bereit."
+      },
+      {
+        "title": "Netzwerk-Härtung",
+        "desc": "Alle Raspberry-Pi-Nodes laufen nur noch über Kabel, Funk ist abgeschaltet."
+      }
+    ],
+    "wip": [
+      {
+        "title": "GPU-Tier",
+        "desc": "Die Workstation mit der neuen 16-GB-Grafikkarte übernimmt die großen Sprachmodelle."
+      },
+      {
+        "title": "Laufzeitschutz im Kernel",
+        "desc": "Ein eigener Kernel bringt die Laufzeitkontrolle auch auf die Raspberry-Pi-Nodes."
+      },
+      {
+        "title": "Automatischer Restore-Test",
+        "desc": "Die Backups sollen sich künftig regelmäßig selbst auf Wiederherstellbarkeit prüfen."
+      },
+      {
+        "title": "Go-Live",
+        "desc": "Abschlussprüfung aller Komponenten bis zum geplanten Start am 20. November."
       }
     ]
   },
