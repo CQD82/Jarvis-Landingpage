@@ -531,6 +531,22 @@
         "desc": "«Hey Jarvis» responde en uno o dos segundos — preguntas de conocimiento solo con fuentes verificadas."
       },
       {
+        "title": "Prueba de calidad nocturna",
+        "desc": "Cada noche JARVIS responde automáticamente a un conjunto fijo de preguntas: hechos, honestidad y tiempo de respuesta. Las desviaciones generan una alerta."
+      },
+      {
+        "title": "Conocimiento sin conexión",
+        "desc": "Una copia local de Wikipedia ofrece respuestas con fuente incluso sin internet; las cifras se comprueban con la fuente antes de decirlas."
+      },
+      {
+        "title": "Avisos proactivos",
+        "desc": "JARVIS habla por iniciativa propia, por ejemplo antes de que llegue la lluvia o ante una nueva alerta del clúster, pero solo de día y si hay alguien en la sala."
+      },
+      {
+        "title": "Mantenimiento y revisión de seguridad",
+        "desc": "Revisión mensual con mantenimiento de la base de datos, prueba de restauración de una aplicación real, control de políticas y certificados y supervisión en tiempo de ejecución ajustada."
+      },
+      {
         "title": "HUD y chat de IA",
         "desc": "La pantalla de la sala muestra el clúster en directo; el chat solo es accesible mediante el inicio de sesión central."
       },

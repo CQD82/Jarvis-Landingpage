@@ -531,6 +531,22 @@
         "desc": "« Hey Jarvis » répond en une à deux secondes — questions de connaissance uniquement à partir de sources vérifiées."
       },
       {
+        "title": "Test qualité nocturne",
+        "desc": "Chaque nuit, JARVIS répond automatiquement à un jeu de questions fixe — faits, honnêteté, temps de réponse. Tout écart déclenche une alerte."
+      },
+      {
+        "title": "Savoir hors ligne",
+        "desc": "Une copie locale de Wikipédia fournit des réponses sourcées même sans Internet ; les chiffres sont vérifiés par rapport à la source avant d’être prononcés."
+      },
+      {
+        "title": "Annonces proactives",
+        "desc": "JARVIS prend la parole de lui-même — par exemple avant l’arrivée de la pluie ou lors d’une nouvelle alerte du cluster, mais seulement en journée et si quelqu’un est dans la pièce."
+      },
+      {
+        "title": "Maintenance & contrôle de sécurité",
+        "desc": "Bilan de santé mensuel avec entretien de la base de données, test de restauration d’une vraie application, contrôle des règles et certificats et surveillance d’exécution affinée."
+      },
+      {
         "title": "HUD & chat IA",
         "desc": "L’écran de la pièce affiche le cluster en direct ; le chat n’est accessible que via la connexion centrale."
       },

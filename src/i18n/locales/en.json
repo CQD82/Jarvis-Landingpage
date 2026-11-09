@@ -531,6 +531,22 @@
         "desc": "“Hey Jarvis” answers in one to two seconds — knowledge questions only from cited sources."
       },
       {
+        "title": "Nightly quality test",
+        "desc": "Every night JARVIS automatically answers a fixed question set — facts, honesty, response time. Deviations raise an alert."
+      },
+      {
+        "title": "Offline knowledge",
+        "desc": "A local copy of Wikipedia provides sourced answers even without internet; numbers are checked against the source before they are spoken."
+      },
+      {
+        "title": "Proactive announcements",
+        "desc": "JARVIS speaks up on its own — for example before rain arrives or on a new cluster alert, but only during the day and when someone is in the room."
+      },
+      {
+        "title": "Maintenance & security review",
+        "desc": "Monthly health check with database upkeep, a restore test of a real application, policy and certificate checks and fine-tuned runtime monitoring."
+      },
+      {
         "title": "HUD & AI chat",
         "desc": "The room display shows the cluster live; the chat is reachable only through central sign-on."
       },

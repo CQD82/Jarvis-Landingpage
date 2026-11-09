@@ -531,6 +531,22 @@
         "desc": "„Hey Jarvis“ antwortet in ein bis zwei Sekunden — Wissensfragen nur aus belegten Quellen."
       },
       {
+        "title": "Nächtlicher Qualitätstest",
+        "desc": "Jede Nacht beantwortet JARVIS automatisch einen festen Fragenkatalog — Fakten, Ehrlichkeit, Antwortzeit. Abweichungen lösen einen Alarm aus."
+      },
+      {
+        "title": "Offline-Wissen",
+        "desc": "Eine lokale Wikipedia-Kopie liefert belegte Antworten auch ohne Internet; Zahlen werden vor der Ausgabe gegen die Quelle geprüft."
+      },
+      {
+        "title": "Proaktive Ansagen",
+        "desc": "JARVIS meldet sich von selbst — etwa vor aufziehendem Regen oder bei einem neuen Cluster-Alarm, aber nur tagsüber und wenn jemand im Raum ist."
+      },
+      {
+        "title": "Wartung & Sicherheitsprüfung",
+        "desc": "Monatlicher Gesundheitscheck mit Datenbankpflege, Wiederherstellungstest einer echten Anwendung, Richtlinien- und Zertifikatsprüfung sowie feinjustierter Laufzeitüberwachung."
+      },
+      {
         "title": "HUD & KI-Chat",
         "desc": "Das Raumdisplay zeigt den Cluster live; der Chat ist nur über die zentrale Anmeldung erreichbar."
       },
