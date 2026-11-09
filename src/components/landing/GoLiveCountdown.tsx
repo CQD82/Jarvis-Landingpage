@@ -5,7 +5,8 @@ import { HudCorners } from "@/components/landing/HudCorners";
 import { Reveal } from "@/components/landing/Reveal";
 import { SectionHeading } from "@/components/landing/SectionHeading";
 
-const GO_LIVE = new Date("2026-11-20T00:00:00");
+/** Go-live reached on 8 Nov 2026 — the counter now shows uptime since then. */
+const GO_LIVE = new Date("2026-11-08T00:00:00");
 
 interface TimeParts {
   days: number;
@@ -15,7 +16,7 @@ interface TimeParts {
 }
 
 function getTimeParts(): TimeParts {
-  const diff = Math.max(0, GO_LIVE.getTime() - Date.now());
+  const diff = Math.abs(Date.now() - GO_LIVE.getTime());
   const totalSeconds = Math.floor(diff / 1000);
   return {
     days: Math.floor(totalSeconds / 86400),
@@ -27,7 +28,7 @@ function getTimeParts(): TimeParts {
 
 const UNIT_KEYS: (keyof TimeParts)[] = ["days", "hours", "minutes", "seconds"];
 
-/** HUD-style countdown to go-live, ticking every second with a GSAP flip pulse per digit change. */
+/** HUD-style uptime counter since go-live, ticking every second with a GSAP flip pulse per digit change. */
 export function GoLiveCountdown() {
   const { t } = useTranslation();
   const unitLabels = t("goLive.units", { returnObjects: true }) as Record<

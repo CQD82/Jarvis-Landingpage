@@ -2,7 +2,8 @@ import { useReducedMotion } from "framer-motion";
 import { CheckCircle2, LoaderCircle } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import grafanaDashboard from "@/assets/hardware/grafana-dashboard.webp";
-import jarvisHud from "@/assets/hardware/jarvis-hud.webp";
+import chatLogin from "@/assets/screens/chat-login.webp";
+import hudKiosk from "@/assets/screens/hud-kiosk.webp";
 import { HudCorners } from "@/components/landing/HudCorners";
 import { Reveal } from "@/components/landing/Reveal";
 import { SectionHeading } from "@/components/landing/SectionHeading";
@@ -29,9 +30,12 @@ export function ProgressShowcase() {
   const total = live.length + wip.length;
   const pct = Math.round((done / total) * 100);
 
+  // The HUD screenshot leads full width; dashboard photo and chat sign-in
+  // sit side by side below it.
   const photos = [
-    { src: jarvisHud, caption: t("progress.hudCaption"), tag: "LIVE · HUD" },
-    { src: grafanaDashboard, caption: t("progress.grafanaCaption"), tag: "LIVE · MONITORING" },
+    { src: hudKiosk, caption: t("progress.hudCaption"), tag: "LIVE · HUD", w: 1600, h: 1000, wide: true },
+    { src: grafanaDashboard, caption: t("progress.grafanaCaption"), tag: "LIVE · MONITORING", w: 1600, h: 909, wide: false },
+    { src: chatLogin, caption: t("progress.chatCaption"), tag: "LIVE · CHAT", w: 1600, h: 1000, wide: false },
   ];
 
   return (
@@ -47,7 +51,7 @@ export function ProgressShowcase() {
       {/* Real screens, front and centre */}
       <div className="mx-auto mt-14 grid max-w-6xl gap-6 lg:grid-cols-2">
         {photos.map((photo, i) => (
-          <Reveal key={photo.tag} delay={i * 0.1}>
+          <Reveal key={photo.tag} delay={i * 0.1} className={photo.wide ? "lg:col-span-2" : undefined}>
             <figure className="relative">
               <HudCorners />
               <TiltPanel className="border-glow relative overflow-hidden rounded-2xl border border-border" maxTiltX={4} maxTiltY={5}>
@@ -55,9 +59,9 @@ export function ProgressShowcase() {
                   src={photo.src}
                   alt={photo.caption}
                   loading="lazy"
-                  width={1600}
-                  height={i === 0 ? 876 : 909}
-                  className="block aspect-[16/9] h-auto w-full object-cover"
+                  width={photo.w}
+                  height={photo.h}
+                  className="block aspect-[16/10] h-auto w-full object-cover"
                 />
                 <span className="absolute top-3 left-3 flex items-center gap-1.5 rounded-sm bg-background/75 px-2 py-1 font-mono text-[0.6rem] tracking-widest text-primary backdrop-blur-sm">
                   <span className="animate-rec-blink size-1.5 rounded-full bg-[var(--hud-red)]" />
@@ -69,6 +73,8 @@ export function ProgressShowcase() {
           </Reveal>
         ))}
       </div>
+
+      <p className="mx-auto mt-6 max-w-2xl text-center text-xs text-muted-foreground/80">{t("progress.note")}</p>
 
       {/* Overall progress */}
       <Reveal delay={0.1}>

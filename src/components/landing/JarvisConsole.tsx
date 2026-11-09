@@ -55,7 +55,7 @@ export function JarvisConsole({ gpuOnline }: JarvisConsoleProps) {
     return () => window.clearInterval(id);
   }, [reduceMotion]);
 
-  const all = gpuOnline ? [...nodes, { name: "z840", temp: 52, cpu: 64 }] : nodes;
+  const all = gpuOnline ? [...nodes, { name: "z840-01", temp: 31, cpu: 3 }] : nodes;
   const online = all.length;
   const total = nodes.length + 1;
   const avgCpu = Math.round(all.reduce((s, n) => s + n.cpu, 0) / all.length);
@@ -131,7 +131,7 @@ export function JarvisConsole({ gpuOnline }: JarvisConsoleProps) {
             {all.map((n) => (
               <li key={n.name} className="grid grid-cols-[4.6rem_1fr_2.6rem_2.4rem] items-center gap-2">
                 <span className="flex items-center gap-1.5 truncate">
-                  <span className={`size-1.5 shrink-0 rounded-full ${n.name === "z840" ? "bg-[#f2b545] shadow-[0_0_6px_#f2b545]" : "bg-[#5ce1e6]"}`} />
+                  <span className={`size-1.5 shrink-0 rounded-full ${n.name === "z840-01" ? "bg-[#f2b545] shadow-[0_0_6px_#f2b545]" : "bg-[#5ce1e6]"}`} />
                   {n.name}
                 </span>
                 <span className="h-1 overflow-hidden rounded-full bg-[#e8dcc8]/10">

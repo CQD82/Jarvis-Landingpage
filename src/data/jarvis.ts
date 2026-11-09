@@ -43,9 +43,9 @@ export const pipelineIcons: LucideIcon[] = [Workflow, Server, GitBranch, Refresh
 export const techCategoryTools: string[][] = [
   ["FluxCD", "Helmfile", "Renovate", "Forgejo", "Forgejo Actions", "Ansible"],
   ["K3s", "Longhorn", "Cilium LB-IPAM + L2", "Traefik", "cert-manager", "Garage"],
-  ["Bifrost", "llama.cpp", "llama-swap", "Qdrant", "NVIDIA NIM"],
+  ["Bifrost", "llama.cpp", "llama-swap", "Qdrant", "Open WebUI"],
   ["Cilium", "Kyverno", "Falco", "Tetragon", "Trivy", "gVisor", "cosign", "Authentik", "SOPS + Age"],
-  ["Wyoming", "Wake-Agent", "Vision-Tracker", "Kokoro TTS", "HUD"],
+  ["Wyoming", "Whisper", "Kokoro TTS", "Home Assistant", "Wake-Word", "HUD"],
   ["VictoriaMetrics", "VictoriaLogs", "Grafana", "Alertmanager", "Velero", "kured", "system-upgrade-controller", "n8n", "Shelly-Exporter"],
 ];
 
