@@ -563,6 +563,14 @@
         "desc": "Ninguna llamada a un modelo sale de casa."
       },
       {
+        "title": "Protección en tiempo de ejecución en el kernel",
+        "desc": "Todas las Raspberry Pi usan un kernel compilado a medida; el control en tiempo de ejecución y la detección de amenazas están activos en los 17 nodos del clúster."
+      },
+      {
+        "title": "Detección de presencia",
+        "desc": "La detección local de personas en una NPU solo indica «hay alguien / no hay nadie»; no se guarda ninguna imagen. El saludo, el apagado de la pantalla y los avisos proactivos se basan en ella."
+      },
+      {
         "title": "Puesta en marcha",
         "desc": "En producción desde el 8 de noviembre de 2026."
       }
@@ -570,11 +578,7 @@
     "wip": [
       {
         "title": "Rastreador visual",
-        "desc": "Detección de personas con seguimiento por cámara — totalmente local, sin guardar imágenes."
-      },
-      {
-        "title": "Protección en tiempo de ejecución en el kernel",
-        "desc": "Un kernel compilado a medida lleva el control en tiempo de ejecución también a las Raspberry Pi."
+        "desc": "Detección de presencia activa, seguimiento por cámara en camino: la cámara seguirá a la persona con giro, inclinación y zoom, siempre en local y sin guardar imágenes."
       },
       {
         "title": "Ahorro de energía con Wake-on-LAN",
