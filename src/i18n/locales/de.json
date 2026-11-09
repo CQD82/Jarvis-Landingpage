@@ -563,6 +563,14 @@
         "desc": "Kein einziger Modellaufruf verlässt das Haus."
       },
       {
+        "title": "Laufzeitschutz im Kernel",
+        "desc": "Alle Raspberry Pis laufen mit einem eigens gebauten Kernel; Laufzeit-Durchsetzung und Bedrohungserkennung sind auf allen 17 Cluster-Nodes aktiv."
+      },
+      {
+        "title": "Anwesenheitserkennung",
+        "desc": "Lokale Personenerkennung auf einer NPU meldet nur „jemand da / niemand da“ — kein Bild wird gespeichert. Darauf bauen Begrüßung, Display-Abschaltung und proaktive Ansagen auf."
+      },
+      {
         "title": "Go-Live",
         "desc": "Produktivbetrieb seit dem 8. November 2026."
       }
@@ -570,11 +578,7 @@
     "wip": [
       {
         "title": "Vision-Tracker",
-        "desc": "Personenerkennung mit Kameraverfolgung — vollständig lokal, ohne gespeicherte Rohbilder."
-      },
-      {
-        "title": "Laufzeitschutz im Kernel",
-        "desc": "Ein eigener Kernel bringt die Laufzeitkontrolle auch auf die Raspberry-Pi-Nodes."
+        "desc": "Anwesenheitserkennung aktiv, Kameraverfolgung folgt: Die Kamera soll der Person per Schwenken, Neigen und Zoom folgen — weiterhin vollständig lokal, ohne gespeicherte Bilder."
       },
       {
         "title": "Energiesparen per Wake-on-LAN",

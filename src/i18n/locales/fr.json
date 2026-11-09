@@ -563,6 +563,14 @@
         "desc": "Aucun appel de modèle ne quitte la maison."
       },
       {
+        "title": "Protection d’exécution dans le noyau",
+        "desc": "Tous les Raspberry Pi tournent avec un noyau compilé sur mesure ; le contrôle d’exécution et la détection des menaces sont actifs sur les 17 nœuds du cluster."
+      },
+      {
+        "title": "Détection de présence",
+        "desc": "Une détection de personnes locale sur NPU ne signale que « quelqu’un / personne » — aucune image n’est enregistrée. L’accueil, l’extinction de l’écran et les annonces proactives s’appuient dessus."
+      },
+      {
         "title": "Mise en service",
         "desc": "En production depuis le 8 novembre 2026."
       }
@@ -570,11 +578,7 @@
     "wip": [
       {
         "title": "Suivi visuel",
-        "desc": "Détection de personnes avec suivi caméra — entièrement local, sans images brutes enregistrées."
-      },
-      {
-        "title": "Protection d’exécution dans le noyau",
-        "desc": "Un noyau compilé sur mesure étend le contrôle d’exécution aux nœuds Raspberry Pi."
+        "desc": "Détection de présence active, suivi caméra à venir : la caméra suivra la personne par panoramique, inclinaison et zoom — toujours entièrement local, sans images enregistrées."
       },
       {
         "title": "Économie d’énergie par Wake-on-LAN",

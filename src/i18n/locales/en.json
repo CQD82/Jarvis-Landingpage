@@ -563,6 +563,14 @@
         "desc": "Not a single model call leaves the house."
       },
       {
+        "title": "In-kernel runtime protection",
+        "desc": "Every Raspberry Pi runs a purpose-built kernel; runtime enforcement and threat detection are active on all 17 cluster nodes."
+      },
+      {
+        "title": "Presence detection",
+        "desc": "Local person detection on an NPU reports only “someone there / nobody there” — no image is stored. Greeting, display power-off and proactive announcements build on it."
+      },
+      {
         "title": "Go-live",
         "desc": "In production since November 8, 2026."
       }
@@ -570,11 +578,7 @@
     "wip": [
       {
         "title": "Vision tracker",
-        "desc": "Person detection with camera tracking — fully local, no raw images stored."
-      },
-      {
-        "title": "In-kernel runtime protection",
-        "desc": "A purpose-built kernel brings runtime enforcement to the Raspberry Pi nodes too."
+        "desc": "Presence detection is live, camera tracking comes next: the camera will follow the person with pan, tilt and zoom — still fully local, no images stored."
       },
       {
         "title": "Wake-on-LAN power saving",
