@@ -315,62 +315,81 @@
   "power": {
     "eyebrow": "Énergie & efficacité",
     "title": "Consommation électrique estimée",
-    "description": "Une approximation basée sur la puissance nominale du matériel utilisé — pas des valeurs mesurées, mais un ordre de grandeur.",
+    "description": "Estimation réaliste par appareil en fonctionnement typique (repos à charge légère) — pas des mesures, mais un ordre de grandeur.",
     "rows": [
       {
-        "label": "Nœuds edge (Pi 5 + NPU Hailo) ×4",
-        "watts": "~40 W"
+        "label": "Nœuds edge (Pi 5 16 Go + Hailo-10H + SSD) ×4",
+        "w": 36
       },
       {
-        "label": "Nœuds Pi 5 ×10",
-        "watts": "~75 W"
+        "label": "Pi 5 + NVMe (plan de contrôle & workers) ×10",
+        "w": 65
       },
       {
-        "label": "Nœud utilitaire Pi 4",
-        "watts": "~5 W"
+        "label": "Nœud utilitaire (Pi 4 8 Go + SSD)",
+        "w": 5
       },
       {
-        "label": "Réserve CPU (ODROID-H5)",
-        "watts": "~15 W"
+        "label": "Réserve CPU (ODROID-H5 + 3× NVMe)",
+        "w": 15
       },
       {
-        "label": "Switch réseau",
-        "watts": "~15 W"
+        "label": "Station GPU HP Z840 + RTX 5060 Ti (en continu, au repos)",
+        "w": 110
       },
       {
-        "label": "Station GPU (toujours allumée, au repos)",
-        "watts": "~110 W"
+        "label": "Switch réseau (24 ports)",
+        "w": 12
       },
       {
         "label": "Disque de sauvegarde (WD Elements 22 To)",
-        "watts": "~6 W"
+        "w": 6
       },
       {
-        "label": "Nœud capteur/watchdog (Pi Zero 2W)",
-        "watts": "~1 W"
+        "label": "Watchdog (Pi Zero 2 W + relais connecté)",
+        "w": 2
       },
       {
-        "label": "Onduleur (APC Back-UPS Pro 900, autoconsommation)",
-        "watts": "~5 W"
+        "label": "Écran HUD de la pièce",
+        "w": 10
+      },
+      {
+        "label": "Onduleur (APC Back-UPS Pro 900, consommation propre)",
+        "w": 5
       }
     ],
     "totalLabel": "Charge continue estimée",
-    "totalValue": "~272 W",
     "monthlyLabel": "Projection mensuelle",
-    "monthlyValue": "~200 kWh",
     "wolTitle": "Wake-on-LAN pour la station GPU",
     "wolBody": "La station GPU (HP Z840) est le plus gros consommateur du cluster, avec plus de 300 W en pointe. Pour des réponses vocales rapides, elle garde actuellement le modèle de langage chargé en permanence. Le Wake-on-LAN est préparé : à l’avenir, elle pourra dormir pendant les périodes calmes et être réveillée à la demande, une réserve CPU prenant brièvement le relais.",
     "upsTitle": "Alimentation sans interruption",
-    "upsBody": "Un onduleur APC Back-UPS Pro 900 absorbe les coupures brèves et les creux de tension pour permettre aux nœuds de s'arrêter proprement plutôt que de perdre le courant d'un coup. Sa propre consommation continue — veille de l'onduleur et charge d'entretien — reste faible, environ 5 W."
+    "upsBody": "Un onduleur APC Back-UPS Pro 900 absorbe les coupures brèves et les creux de tension pour permettre aux nœuds de s'arrêter proprement plutôt que de perdre le courant d'un coup. Sa propre consommation continue — veille de l'onduleur et charge d'entretien — reste faible, environ 5 W.",
+    "shareLabel": "Part",
+    "yearlyLabel": "Extrapolé par an",
+    "costLabel": "Coût à 0,30 €/kWh",
+    "perMonth": "/ mois",
+    "savingsTitle": "Potentiel d’optimisation",
+    "savingsResult": "Moyenne atteignable",
+    "savings": [
+      {
+        "label": "Mettre la station GPU en veille la nuit et aux heures creuses via Wake-on-LAN",
+        "w": 65
+      },
+      {
+        "label": "Mettre le disque de sauvegarde en veille entre deux sauvegardes",
+        "w": 5
+      },
+      {
+        "label": "Éteindre automatiquement l’écran HUD en cas d’absence",
+        "w": 7
+      }
+    ]
   },
   "hud": {
     "eyebrow": "Supervision",
     "title": "État du système en direct",
-    "description": "Trois vues HUD du même état du cluster.",
+    "description": "Réplique de l’écran mural tel qu’il fonctionne actuellement dans le cluster : nœuds, assistant vocal, alertes, sauvegardes et station GPU en un coup d’œil.",
     "disclaimer": "Simulation illustrative pour cette page — pas de connexion en direct au cluster privé.",
-    "powerLabel": "CONSOMMATION ACTUELLE",
-    "nodeOnline": "EN LIGNE",
-    "nodeSuspended": "SUSPENDU",
     "console": {
       "nominal": "Systèmes nominaux",
       "voiceReady": "Voix prête",
@@ -378,34 +397,31 @@
       "alarms": "Alertes",
       "noAlarms": "Aucune alerte active",
       "backup": "Sauvegardes",
-      "velero": "Velero (quotidien)",
+      "velero": "Velero (toutes les 6 h)",
       "cnpg": "Bases de données (CNPG)",
       "active": "actif",
       "hoursAgo": "il y a {{h}} h",
-      "tiers": "Niveaux IA",
-      "gpu": "GPU (Z840)",
-      "cpu": "CPU (ODROID)",
-      "edge": "Edge (Hailo)",
-      "asleep": "en veille",
-      "awake": "actif",
-      "ready": "prêt",
       "standby": "Veille",
       "wake": "Dites « Hey Jarvis ».",
       "kpis": [
         "Requêtes IA / h",
         "Tokens / s",
         "Pis Hailo actifs",
+        "Pods actifs",
+        "Redémarrages 1 h",
+        "Volumes sains",
         "CPU cluster",
         "RAM cluster",
         "Nœud le plus chaud",
-        "Volumes sains",
+        "NVMe la plus chaude",
+        "Stockage utilisé",
         "Réseau Mo/s"
-      ]
-    },
-    "tabs": {
-      "kitt": "K.I.T.T.",
-      "matrix": "Matrix",
-      "jarvis": "JARVIS"
+      ],
+      "stand": "Mis à jour",
+      "restore": "Test de restauration",
+      "metrics": "Sauvegarde des métriques",
+      "gpuTemp": "Température GPU",
+      "gpuPower": "Puissance"
     }
   },
   "liveTerminal": {
@@ -513,6 +529,22 @@
       {
         "title": "Assistant vocal fondé sur des sources",
         "desc": "« Hey Jarvis » répond en une à deux secondes — questions de connaissance uniquement à partir de sources vérifiées."
+      },
+      {
+        "title": "Test qualité nocturne",
+        "desc": "Chaque nuit, JARVIS répond automatiquement à un jeu de questions fixe — faits, honnêteté, temps de réponse. Tout écart déclenche une alerte."
+      },
+      {
+        "title": "Savoir hors ligne",
+        "desc": "Une copie locale de Wikipédia fournit des réponses sourcées même sans Internet ; les chiffres sont vérifiés par rapport à la source avant d’être prononcés."
+      },
+      {
+        "title": "Annonces proactives",
+        "desc": "JARVIS prend la parole de lui-même — par exemple avant l’arrivée de la pluie ou lors d’une nouvelle alerte du cluster, mais seulement en journée et si quelqu’un est dans la pièce."
+      },
+      {
+        "title": "Maintenance & contrôle de sécurité",
+        "desc": "Bilan de santé mensuel avec entretien de la base de données, test de restauration d’une vraie application, contrôle des règles et certificats et surveillance d’exécution affinée."
       },
       {
         "title": "HUD & chat IA",

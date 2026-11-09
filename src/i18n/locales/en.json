@@ -5,7 +5,7 @@
   },
   "nav": {
     "countdown": "Status",
-    "progress": "Status",
+    "progress": "Progress",
     "hardware": "Hardware",
     "overview": "Overview",
     "features": "Capabilities",
@@ -315,62 +315,81 @@
   "power": {
     "eyebrow": "Power & Efficiency",
     "title": "Estimated Power Consumption",
-    "description": "An approximation based on the rated power draw of the hardware in use — not measured values, but a sense of the order of magnitude.",
+    "description": "Realistic estimate per device in typical operation (idle to light load) — not measured values, but an indication of the order of magnitude.",
     "rows": [
       {
-        "label": "Edge nodes (Pi 5 + Hailo NPU) ×4",
-        "watts": "~40 W"
+        "label": "Edge nodes (Pi 5 16 GB + Hailo-10H + SSD) ×4",
+        "w": 36
       },
       {
-        "label": "Pi 5 nodes ×10",
-        "watts": "~75 W"
+        "label": "Pi 5 + NVMe (control plane & workers) ×10",
+        "w": 65
       },
       {
-        "label": "Pi 4 utility node",
-        "watts": "~5 W"
+        "label": "Utility node (Pi 4 8 GB + SSD)",
+        "w": 5
       },
       {
-        "label": "CPU reserve (ODROID-H5)",
-        "watts": "~15 W"
+        "label": "CPU reserve (ODROID-H5 + 3× NVMe)",
+        "w": 15
       },
       {
-        "label": "Network switch",
-        "watts": "~15 W"
+        "label": "GPU workstation HP Z840 + RTX 5060 Ti (always on, idle)",
+        "w": 110
       },
       {
-        "label": "GPU workstation (always on, idle)",
-        "watts": "~110 W"
+        "label": "Network switch (24 port)",
+        "w": 12
       },
       {
         "label": "Backup drive (WD Elements 22 TB)",
-        "watts": "~6 W"
+        "w": 6
       },
       {
-        "label": "Sensor/watchdog node (Pi Zero 2W)",
-        "watts": "~1 W"
+        "label": "Watchdog (Pi Zero 2 W + smart relay)",
+        "w": 2
+      },
+      {
+        "label": "HUD room display",
+        "w": 10
       },
       {
         "label": "UPS (APC Back-UPS Pro 900, self-consumption)",
-        "watts": "~5 W"
+        "w": 5
       }
     ],
     "totalLabel": "Estimated continuous load",
-    "totalValue": "~272 W",
     "monthlyLabel": "Projected per month",
-    "monthlyValue": "~200 kWh",
     "wolTitle": "Wake-on-LAN for the GPU Workstation",
     "wolBody": "The GPU workstation (HP Z840) has the largest single draw in the cluster at over 300 W peak. For fast voice answers it currently keeps the language model loaded permanently. Wake-on-LAN is prepared: in future it can sleep during quiet periods and be woken on demand, while a CPU reserve steps in briefly.",
     "upsTitle": "Uninterruptible Power Supply",
-    "upsBody": "An APC Back-UPS Pro 900 rides out brief outages and voltage dips so the nodes can shut down cleanly instead of losing power abruptly. Its own continuous draw — inverter standby plus trickle charging — is small, around 5 W."
+    "upsBody": "An APC Back-UPS Pro 900 rides out brief outages and voltage dips so the nodes can shut down cleanly instead of losing power abruptly. Its own continuous draw — inverter standby plus trickle charging — is small, around 5 W.",
+    "shareLabel": "Share",
+    "yearlyLabel": "Extrapolated per year",
+    "costLabel": "Cost at €0.30/kWh",
+    "perMonth": "/ month",
+    "savingsTitle": "Optimisation potential",
+    "savingsResult": "Achievable average",
+    "savings": [
+      {
+        "label": "Let the GPU workstation sleep at night and in quiet phases via Wake-on-LAN",
+        "w": 65
+      },
+      {
+        "label": "Spin down the backup drive between backup runs",
+        "w": 5
+      },
+      {
+        "label": "Switch the HUD display off automatically when nobody is home",
+        "w": 7
+      }
+    ]
   },
   "hud": {
     "eyebrow": "Monitoring",
     "title": "Live System Status",
-    "description": "Three HUD views of the same cluster state.",
+    "description": "A replica of the room display as it currently runs in the cluster: nodes, voice assistant, alerts, backups and the GPU workstation at a glance.",
     "disclaimer": "An illustrative simulation for this page — not a live connection to the private cluster.",
-    "powerLabel": "CURRENT DRAW",
-    "nodeOnline": "ONLINE",
-    "nodeSuspended": "SUSPENDED",
     "console": {
       "nominal": "Systems nominal",
       "voiceReady": "Voice ready",
@@ -378,34 +397,31 @@
       "alarms": "Alerts",
       "noAlarms": "No active alerts",
       "backup": "Backups",
-      "velero": "Velero (daily)",
+      "velero": "Velero (every 6 h)",
       "cnpg": "Databases (CNPG)",
       "active": "active",
       "hoursAgo": "{{h}} h ago",
-      "tiers": "AI tiers",
-      "gpu": "GPU (Z840)",
-      "cpu": "CPU (ODROID)",
-      "edge": "Edge (Hailo)",
-      "asleep": "asleep",
-      "awake": "active",
-      "ready": "ready",
       "standby": "Standby",
       "wake": "Say “Hey Jarvis”.",
       "kpis": [
         "AI requests / h",
         "Tokens / s",
         "Hailo Pis active",
+        "Pods running",
+        "Pod restarts 1 h",
+        "Volumes healthy",
         "Cluster CPU",
         "Cluster RAM",
         "Warmest node",
-        "Healthy volumes",
+        "Warmest NVMe",
+        "Storage used",
         "Network MB/s"
-      ]
-    },
-    "tabs": {
-      "kitt": "K.I.T.T.",
-      "matrix": "Matrix",
-      "jarvis": "JARVIS"
+      ],
+      "stand": "As of",
+      "restore": "Restore test",
+      "metrics": "Metrics backup",
+      "gpuTemp": "GPU temperature",
+      "gpuPower": "Power"
     }
   },
   "liveTerminal": {
@@ -513,6 +529,22 @@
       {
         "title": "Fact-grounded voice assistant",
         "desc": "“Hey Jarvis” answers in one to two seconds — knowledge questions only from cited sources."
+      },
+      {
+        "title": "Nightly quality test",
+        "desc": "Every night JARVIS automatically answers a fixed question set — facts, honesty, response time. Deviations raise an alert."
+      },
+      {
+        "title": "Offline knowledge",
+        "desc": "A local copy of Wikipedia provides sourced answers even without internet; numbers are checked against the source before they are spoken."
+      },
+      {
+        "title": "Proactive announcements",
+        "desc": "JARVIS speaks up on its own — for example before rain arrives or on a new cluster alert, but only during the day and when someone is in the room."
+      },
+      {
+        "title": "Maintenance & security review",
+        "desc": "Monthly health check with database upkeep, a restore test of a real application, policy and certificate checks and fine-tuned runtime monitoring."
       },
       {
         "title": "HUD & AI chat",
