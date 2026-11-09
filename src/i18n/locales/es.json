@@ -5,7 +5,7 @@
   },
   "nav": {
     "countdown": "Estado",
-    "progress": "Estado",
+    "progress": "Progreso",
     "hardware": "Hardware",
     "overview": "Resumen",
     "features": "Funciones",
@@ -315,62 +315,81 @@
   "power": {
     "eyebrow": "Energía y eficiencia",
     "title": "Consumo eléctrico estimado",
-    "description": "Una aproximación basada en la potencia nominal del hardware utilizado — no son valores medidos, sino una idea del orden de magnitud.",
+    "description": "Estimación realista por dispositivo en funcionamiento típico (reposo a carga ligera): no son mediciones, sino un orden de magnitud.",
     "rows": [
       {
-        "label": "Nodos edge (Pi 5 + NPU Hailo) ×4",
-        "watts": "~40 W"
+        "label": "Nodos edge (Pi 5 16 GB + Hailo-10H + SSD) ×4",
+        "w": 36
       },
       {
-        "label": "Nodos Pi 5 ×10",
-        "watts": "~75 W"
+        "label": "Pi 5 + NVMe (plano de control y workers) ×10",
+        "w": 65
       },
       {
-        "label": "Nodo auxiliar Pi 4",
-        "watts": "~5 W"
+        "label": "Nodo utilitario (Pi 4 8 GB + SSD)",
+        "w": 5
       },
       {
-        "label": "Reserva CPU (ODROID-H5)",
-        "watts": "~15 W"
+        "label": "Reserva CPU (ODROID-H5 + 3× NVMe)",
+        "w": 15
       },
       {
-        "label": "Switch de red",
-        "watts": "~15 W"
+        "label": "Estación GPU HP Z840 + RTX 5060 Ti (siempre encendida, en reposo)",
+        "w": 110
       },
       {
-        "label": "Estación GPU (siempre encendida, en reposo)",
-        "watts": "~110 W"
+        "label": "Switch de red (24 puertos)",
+        "w": 12
       },
       {
-        "label": "Disco de copias (WD Elements 22 TB)",
-        "watts": "~6 W"
+        "label": "Disco de copia (WD Elements 22 TB)",
+        "w": 6
       },
       {
-        "label": "Nodo sensor/watchdog (Pi Zero 2W)",
-        "watts": "~1 W"
+        "label": "Watchdog (Pi Zero 2 W + relé inteligente)",
+        "w": 2
+      },
+      {
+        "label": "Pantalla HUD de la sala",
+        "w": 10
       },
       {
         "label": "SAI (APC Back-UPS Pro 900, autoconsumo)",
-        "watts": "~5 W"
+        "w": 5
       }
     ],
     "totalLabel": "Carga continua estimada",
-    "totalValue": "~272 W",
     "monthlyLabel": "Proyección mensual",
-    "monthlyValue": "~200 kWh",
     "wolTitle": "Wake-on-LAN para la estación GPU",
     "wolBody": "La estación GPU (HP Z840) es el mayor consumidor del clúster, con más de 300 W en pico. Para respuestas de voz rápidas mantiene ahora el modelo de lenguaje cargado de forma permanente. Wake-on-LAN está preparado: en el futuro podrá dormir en periodos tranquilos y despertarse bajo demanda, mientras una reserva de CPU toma el relevo brevemente.",
     "upsTitle": "Sistema de alimentación ininterrumpida",
-    "upsBody": "Un SAI APC Back-UPS Pro 900 amortigua cortes breves y caídas de tensión para que los nodos puedan apagarse de forma limpia en lugar de perder la energía de golpe. Su propio consumo continuo — reposo del inversor y carga de mantenimiento — es pequeño, unos 5 W."
+    "upsBody": "Un SAI APC Back-UPS Pro 900 amortigua cortes breves y caídas de tensión para que los nodos puedan apagarse de forma limpia en lugar de perder la energía de golpe. Su propio consumo continuo — reposo del inversor y carga de mantenimiento — es pequeño, unos 5 W.",
+    "shareLabel": "Cuota",
+    "yearlyLabel": "Extrapolado por año",
+    "costLabel": "Coste a 0,30 €/kWh",
+    "perMonth": "/ mes",
+    "savingsTitle": "Potencial de optimización",
+    "savingsResult": "Media alcanzable",
+    "savings": [
+      {
+        "label": "Suspender la estación GPU de noche y en fases tranquilas mediante Wake-on-LAN",
+        "w": 65
+      },
+      {
+        "label": "Poner el disco de copia en reposo entre copias",
+        "w": 5
+      },
+      {
+        "label": "Apagar automáticamente la pantalla HUD en ausencia",
+        "w": 7
+      }
+    ]
   },
   "hud": {
     "eyebrow": "Monitorización",
     "title": "Estado del sistema en vivo",
-    "description": "Tres vistas HUD del mismo estado del clúster.",
+    "description": "Réplica de la pantalla de la sala tal y como funciona hoy en el clúster: nodos, asistente de voz, alertas, copias de seguridad y la estación GPU de un vistazo.",
     "disclaimer": "Simulación ilustrativa para esta página — sin conexión en vivo al clúster privado.",
-    "powerLabel": "CONSUMO ACTUAL",
-    "nodeOnline": "EN LÍNEA",
-    "nodeSuspended": "SUSPENDIDO",
     "console": {
       "nominal": "Sistemas nominales",
       "voiceReady": "Voz lista",
@@ -378,34 +397,31 @@
       "alarms": "Alertas",
       "noAlarms": "Sin alertas activas",
       "backup": "Copias de seguridad",
-      "velero": "Velero (diario)",
+      "velero": "Velero (cada 6 h)",
       "cnpg": "Bases de datos (CNPG)",
       "active": "activo",
       "hoursAgo": "hace {{h}} h",
-      "tiers": "Niveles de IA",
-      "gpu": "GPU (Z840)",
-      "cpu": "CPU (ODROID)",
-      "edge": "Edge (Hailo)",
-      "asleep": "en reposo",
-      "awake": "activo",
-      "ready": "listo",
       "standby": "En espera",
       "wake": "Diga «Hey Jarvis».",
       "kpis": [
         "Consultas IA / h",
         "Tokens / s",
         "Pis Hailo activos",
+        "Pods en ejecución",
+        "Reinicios 1 h",
+        "Volúmenes sanos",
         "CPU clúster",
         "RAM clúster",
         "Nodo más caliente",
-        "Volúmenes sanos",
+        "NVMe más caliente",
+        "Almacenamiento usado",
         "Red MB/s"
-      ]
-    },
-    "tabs": {
-      "kitt": "K.I.T.T.",
-      "matrix": "Matrix",
-      "jarvis": "JARVIS"
+      ],
+      "stand": "Actualizado",
+      "restore": "Prueba de restauración",
+      "metrics": "Copia de métricas",
+      "gpuTemp": "Temperatura GPU",
+      "gpuPower": "Potencia"
     }
   },
   "liveTerminal": {

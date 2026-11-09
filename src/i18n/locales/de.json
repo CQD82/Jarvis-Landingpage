@@ -315,62 +315,81 @@
   "power": {
     "eyebrow": "Energie & Effizienz",
     "title": "Geschätzter Stromverbrauch",
-    "description": "Näherung nach Typenschild-Werten der eingesetzten Hardware — keine gemessenen Werte, sondern eine Einordnung der Größenordnung.",
+    "description": "Realistische Schätzung je Gerät im typischen Betrieb (Leerlauf bis leichte Last) — keine Messwerte, sondern eine Einordnung der Größenordnung.",
     "rows": [
       {
-        "label": "Edge-Nodes (Pi 5 + Hailo-NPU) ×4",
-        "watts": "~40 W"
+        "label": "Edge-Nodes (Pi 5 16 GB + Hailo-10H + SSD) ×4",
+        "w": 36
       },
       {
-        "label": "Pi 5 Nodes ×10",
-        "watts": "~75 W"
+        "label": "Pi 5 + NVMe (Control Plane & Worker) ×10",
+        "w": 65
       },
       {
-        "label": "Pi 4 Utility-Node",
-        "watts": "~5 W"
+        "label": "Utility-Node (Pi 4 8 GB + SSD)",
+        "w": 5
       },
       {
-        "label": "CPU-Reserve (ODROID-H5)",
-        "watts": "~15 W"
+        "label": "CPU-Reserve (ODROID-H5 + 3× NVMe)",
+        "w": 15
       },
       {
-        "label": "Netzwerk-Switch",
-        "watts": "~15 W"
+        "label": "GPU-Workstation HP Z840 + RTX 5060 Ti (Dauerbetrieb, Leerlauf)",
+        "w": 110
       },
       {
-        "label": "GPU-Workstation (Dauerbetrieb, Leerlauf)",
-        "watts": "~110 W"
+        "label": "Netzwerk-Switch (24 Port)",
+        "w": 12
       },
       {
         "label": "Backup-Festplatte (WD Elements 22 TB)",
-        "watts": "~6 W"
+        "w": 6
       },
       {
-        "label": "Sensor-/Watchdog-Node (Pi Zero 2W)",
-        "watts": "~1 W"
+        "label": "Watchdog (Pi Zero 2 W + Smart-Relais)",
+        "w": 2
+      },
+      {
+        "label": "HUD-Raumdisplay",
+        "w": 10
       },
       {
         "label": "USV (APC Back-UPS Pro 900, Eigenverbrauch)",
-        "watts": "~5 W"
+        "w": 5
       }
     ],
     "totalLabel": "Geschätzte Dauerlast",
-    "totalValue": "~272 W",
     "monthlyLabel": "Hochgerechnet pro Monat",
-    "monthlyValue": "~200 kWh",
     "wolTitle": "Wake-on-LAN für die GPU-Workstation",
     "wolBody": "Die GPU-Workstation (HP Z840) hat mit über 300 W Spitzenlast den größten Einzelverbrauch im Cluster. Für schnelle Sprachantworten hält sie das Sprachmodell derzeit dauerhaft geladen. Wake-on-LAN ist vorbereitet: Künftig kann sie in ruhigen Phasen schlafen und bei Bedarf gezielt geweckt werden, während eine CPU-Reserve kurzfristig übernimmt.",
     "upsTitle": "Unterbrechungsfreie Stromversorgung",
-    "upsBody": "Eine APC Back-UPS Pro 900 puffert kurze Stromausfälle und Spannungsschwankungen ab, sodass die Nodes sauber herunterfahren können, statt abrupt den Strom zu verlieren. Ihr eigener Dauerverbrauch — Inverter-Standby plus Erhaltungsladung — ist mit rund 5 W sehr gering."
+    "upsBody": "Eine APC Back-UPS Pro 900 puffert kurze Stromausfälle und Spannungsschwankungen ab, sodass die Nodes sauber herunterfahren können, statt abrupt den Strom zu verlieren. Ihr eigener Dauerverbrauch — Inverter-Standby plus Erhaltungsladung — ist mit rund 5 W sehr gering.",
+    "shareLabel": "Anteil",
+    "yearlyLabel": "Hochgerechnet pro Jahr",
+    "costLabel": "Kosten bei 0,30 €/kWh",
+    "perMonth": "/ Monat",
+    "savingsTitle": "Optimierungspotenzial",
+    "savingsResult": "Möglicher Durchschnitt",
+    "savings": [
+      {
+        "label": "GPU-Workstation per Wake-on-LAN nachts und in ruhigen Phasen schlafen lassen",
+        "w": 65
+      },
+      {
+        "label": "Backup-Festplatte zwischen den Sicherungen in den Ruhezustand",
+        "w": 5
+      },
+      {
+        "label": "HUD-Display bei Abwesenheit automatisch abschalten",
+        "w": 7
+      }
+    ]
   },
   "hud": {
     "eyebrow": "Monitoring",
     "title": "Live-Systemstatus",
-    "description": "Drei HUD-Ansichten auf denselben Cluster-Zustand.",
+    "description": "Nachbau des Raumdisplays, wie es aktuell im Cluster läuft: Nodes, Sprachassistent, Alarme, Datensicherung und GPU-Workstation auf einen Blick.",
     "disclaimer": "Illustrative Simulation für diese Seite — keine Live-Verbindung zum privaten Cluster.",
-    "powerLabel": "AKTUELLER VERBRAUCH",
-    "nodeOnline": "ONLINE",
-    "nodeSuspended": "SUSPENDIERT",
     "console": {
       "nominal": "Systeme nominal",
       "voiceReady": "Sprache bereit",
@@ -378,34 +397,31 @@
       "alarms": "Alarme",
       "noAlarms": "Keine aktiven Alarme",
       "backup": "Datensicherung",
-      "velero": "Velero (täglich)",
+      "velero": "Velero (alle 6 h)",
       "cnpg": "Datenbanken (CNPG)",
       "active": "aktiv",
       "hoursAgo": "vor {{h}} h",
-      "tiers": "KI-Tiers",
-      "gpu": "GPU (Z840)",
-      "cpu": "CPU (ODROID)",
-      "edge": "Edge (Hailo)",
-      "asleep": "schläft",
-      "awake": "aktiv",
-      "ready": "bereit",
       "standby": "Standby",
       "wake": "Sagen Sie „Hey Jarvis“.",
       "kpis": [
         "KI-Anfragen / h",
         "Tokens / s",
         "Hailo-Pis aktiv",
+        "Pods laufend",
+        "Pod-Neustarts 1 h",
+        "Volumes gesund",
         "CPU Cluster",
         "RAM Cluster",
         "Wärmster Node",
-        "Volumes gesund",
+        "Wärmste NVMe",
+        "Speicher belegt",
         "Netz MB/s"
-      ]
-    },
-    "tabs": {
-      "kitt": "K.I.T.T.",
-      "matrix": "Matrix",
-      "jarvis": "JARVIS"
+      ],
+      "stand": "Stand",
+      "restore": "Restore-Test",
+      "metrics": "Metrik-Backup",
+      "gpuTemp": "GPU-Temperatur",
+      "gpuPower": "Leistung"
     }
   },
   "liveTerminal": {
