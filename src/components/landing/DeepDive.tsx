@@ -1,12 +1,12 @@
 import type { CSSProperties } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Bot, ChevronDown, Cpu, Sparkles, Users, Workflow } from "lucide-react";
+import { ChevronDown, Cpu, Mic, ShieldCheck, Workflow } from "lucide-react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Reveal } from "@/components/landing/Reveal";
 import { SectionHeading } from "@/components/landing/SectionHeading";
 
-const ICONS = [Users, Sparkles, Workflow, Cpu, Bot];
+const ICONS = [Mic, ShieldCheck, Workflow, Cpu];
 
 interface DeepDiveItem {
   title: string;

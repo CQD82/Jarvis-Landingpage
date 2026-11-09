@@ -1,10 +1,10 @@
 {
   "meta": {
     "title": "JARVIS — Homelab AI Cluster",
-    "description": "JARVIS — ein privates 18-Node Kubernetes-Homelab: deklarative GitOps-Infrastruktur, mehrstufige lokale KI-Inferenz, Vision-Tracking und Zero-Trust-Netzwerksegmentierung."
+    "description": "JARVIS — ein privates 18-Node Kubernetes-Homelab im Produktivbetrieb: GitOps-Infrastruktur, vollständig lokale KI-Inferenz, faktentreuer Sprachassistent und Zero-Trust-Netzwerk."
   },
   "nav": {
-    "countdown": "Countdown",
+    "countdown": "Betrieb",
     "progress": "Projektstand",
     "hardware": "Hardware",
     "overview": "Übersicht",
@@ -15,8 +15,8 @@
     "security": "Sicherheit"
   },
   "hero": {
-    "badge": "PRIVATES HOMELAB PROJEKT · v5.5 PRODUCTION-READY",
-    "description": "Ein 18-Node Kubernetes-Homelab, das zuhause denkt, sieht und zuhört — vollständig deklarativ betrieben, mit mehrstufiger lokaler KI-Inferenz und Zero-Trust-Netzwerksegmentierung.",
+    "badge": "PRIVATES HOMELAB PROJEKT · v5.5 IN BETRIEB",
+    "description": "Ein 18-Node Kubernetes-Homelab, das zuhause denkt und zuhört — vollständig deklarativ betrieben, mit rein lokaler KI-Inferenz, faktentreuem Sprachassistenten und Zero-Trust-Netzwerk.",
     "ctaPrimary": "Fähigkeiten ansehen",
     "artAlt": "Stilisierte 3D-Visualisierung des JARVIS-Clusters — künstlerische Darstellung, kein echtes Foto der Hardware.",
     "ctaSecondary": "Architektur"
@@ -24,34 +24,64 @@
   "statusTicker": [
     "NEURAL LINK: STABIL",
     "18/18 NODES ONLINE",
-    "INFERENZ-LATENZ: NOMINAL",
-    "NETZWERK-SEGMENTIERUNG: AKTIV",
-    "GITOPS: SYNCHRONISIERT"
+    "SPRACHANTWORT: ~1–2 S",
+    "WIREGUARD STRICT MODE: AKTIV",
+    "GITOPS: SYNCHRONISIERT",
+    "CLOUD-KI: KEINE"
   ],
   "stats": [
-    { "value": "18", "label": "Nodes im Cluster" },
-    { "value": "6", "label": "KI-Inferenz-Tiers" },
-    { "value": "6", "label": "Namespaces, Default-Deny" },
-    { "value": "100%", "label": "Deklarativ via GitOps" }
+    {
+      "value": "18",
+      "label": "Nodes im Cluster"
+    },
+    {
+      "value": "~270",
+      "label": "Pods im Betrieb"
+    },
+    {
+      "value": "100%",
+      "label": "Lokale KI, keine Cloud"
+    },
+    {
+      "value": "100%",
+      "label": "Deklarativ via GitOps"
+    }
   ],
   "goLive": {
-    "eyebrow": "Zeitplan",
-    "title": "Go-Live Countdown",
-    "description": "Geplanter produktiver Start des gesamten Clusters — vom Bare-Metal-Bootstrap bis zur sprechenden Assistenz.",
-    "target": "Zielsetzung · 20. November 2026",
-    "units": { "days": "Tage", "hours": "Std", "minutes": "Min", "seconds": "Sek" }
+    "eyebrow": "Status",
+    "title": "Im Produktivbetrieb",
+    "description": "Go-Live erreicht: Alle Nodes verbunden, GPU-Stufe abgenommen, Sprachassistent im Alltag. Der Zähler zeigt die Zeit seit dem Go-Live.",
+    "target": "Go-Live · 08. November 2026",
+    "units": {
+      "days": "Tage",
+      "hours": "Std",
+      "minutes": "Min",
+      "seconds": "Sek"
+    }
   },
   "systemMap": {
     "eyebrow": "System-Übersicht",
     "title": "Die gesamte Werkzeugkette auf einen Blick",
-    "description": "JARVIS als Knotenpunkt aus sechs Domänen — von GitOps über KI-Inferenz bis Sicherheit, Voice & Vision und Observability.",
+    "description": "JARVIS als Knotenpunkt aus sechs Domänen — von GitOps über lokale KI-Inferenz bis Sicherheit, Sprache und Observability.",
     "categories": [
-      { "title": "GitOps & Automatisierung" },
-      { "title": "Cluster & Storage" },
-      { "title": "KI-Inferenz" },
-      { "title": "Sicherheit & Netzwerk" },
-      { "title": "Voice & Vision" },
-      { "title": "Observability & Ops" }
+      {
+        "title": "GitOps & Automatisierung"
+      },
+      {
+        "title": "Cluster & Storage"
+      },
+      {
+        "title": "KI-Inferenz"
+      },
+      {
+        "title": "Sicherheit & Netzwerk"
+      },
+      {
+        "title": "Voice & Vision"
+      },
+      {
+        "title": "Observability & Ops"
+      }
     ]
   },
   "features": {
@@ -61,84 +91,129 @@
     "items": [
       {
         "title": "GitOps-Infrastruktur",
-        "description": "Ein Git-Monorepo als Single Source of Truth. Idempotente Bash-Skripte für die Host-Ebene, FluxCD für den Cluster-Zustand — jede Änderung ein reviewbarer Commit, jeder Drift wird automatisch zurückreconciled."
+        "description": "Ein Git-Monorepo als Single Source of Truth. Nummerierte, idempotente Bootstrap-Skripte für die Node-Ebene, FluxCD für den Cluster-Zustand — jede Änderung ein reviewbarer Commit, jeder Drift wird automatisch zurückreconciled."
       },
       {
         "title": "18-Node Bare-Metal-Cluster",
-        "description": "Verschiedene Raspberry-Pi-Modelle, ein ODROID-H5 und eine GPU-Workstation im Verbund als K3s-Cluster — vom Edge-Gerät bis zur Inferenz-Hardware alles selbst betrieben, keine Cloud-VMs."
+        "description": "14 Raspberry Pi 5, ein Raspberry Pi 4, ein ODROID-H5 und eine GPU-Workstation im Verbund als K3s-Cluster mit hochverfügbarer Kontrollebene — alles selbst betrieben, keine Cloud-VMs. Dazu ein Raspberry Pi Zero 2 W als Watchdog außerhalb von Kubernetes."
       },
       {
-        "title": "Mehrstufige lokale KI-Inferenz",
-        "description": "Anfragen laufen über gestaffelte Hardware-Tiers — vom NPU-Edge-Gerät für sofortige Kurzantworten bis zur GPU-Workstation für komplexes Reasoning. Cloud dient nur als eng limitierter Fallback."
+        "title": "Vollständig lokale KI-Inferenz",
+        "description": "Anfragen laufen über gestaffelte Hardware-Stufen — von Hailo-NPUs an den Pis über eine CPU-Reserve bis zur RTX-5060-Ti-Workstation. Kein Modellaufruf verlässt das Haus."
       },
       {
-        "title": "Vision-Tracker",
-        "description": "Aktive Personenerkennung mit Kameraverfolgung (Pan/Tilt/Zoom). Verarbeitung vollständig lokal im Cluster, gespeichert werden ausschließlich Embeddings enrollter Personen — nie Rohbilder, kein Cloud-Pfad."
+        "title": "Vision-Tracker (in Vorbereitung)",
+        "description": "Geplant: Personenerkennung mit Kameraverfolgung über die Konferenzkamera. Verarbeitung vollständig lokal, gespeichert werden ausschließlich Embeddings enrollter Personen — nie Rohbilder."
       },
       {
-        "title": "Sprachassistent & HUD",
-        "description": "Wake-Word-Erkennung, Sprachausgabe und ein Head-up-Display, das Identität und Status in Echtzeit anzeigt — inklusive namentlicher Begrüßung und präsenzgesteuerten Automationen."
+        "title": "Faktentreuer Sprachassistent & HUD",
+        "description": "„Hey Jarvis“: Weckwort auf dem Gerät, Spracherkennung und Sprachmodell auf der GPU, britische Stimme. Wissensfragen beantwortet er nur aus belegten Quellen (Offline-Wikipedia, Nachrichten) mit automatischer Gegenprüfung — in etwa ein bis zwei Sekunden. Ein holografisches HUD zeigt Suchergebnisse, Wetter, Medien und Systemstatus."
       },
       {
         "title": "Zero-Trust-Netzwerksegmentierung",
-        "description": "Default-Deny-Netzwerkrichtlinien je Workload-Namespace, verschlüsselter Node-zu-Node-Traffic und ein explizites, versioniertes Allow-Set statt impliziter Erreichbarkeit."
+        "description": "Default-Deny-Netzwerkrichtlinien je Workload, WireGuard-verschlüsselter Node-zu-Node-Traffic im Strict Mode, ein eigener DNS-Filter und ein explizites, versioniertes Allow-Set statt impliziter Erreichbarkeit."
       },
       {
         "title": "Sicherheit & Compliance",
-        "description": "An ISO 27001, NIS-2 und CIS orientierte Kontrollen: Secrets ausschließlich verschlüsselt, vollständiges API-Audit-Logging, Laufzeit-Bedrohungserkennung und automatisches Image-Scanning."
+        "description": "An ISO 27001, NIS-2 und CIS orientierte Kontrollen: Secrets ausschließlich verschlüsselt, signierte und per Digest gepinnte Images, Laufzeit-Überwachung auf Kernel-Ebene und automatisches Image-Scanning."
       },
       {
         "title": "Automatisierte Versions-Governance",
-        "description": "Abhängigkeiten und Chart-Versionen werden laufend geprüft und als reviewbare Pull-Requests vorgeschlagen; eine eigene CI im Git-Server prüft jeden Pull-Request vor dem Merge — kein stilles „latest“, jede Änderung sichtbar und nachvollziehbar."
+        "description": "Abhängigkeiten werden laufend geprüft und als reviewbare Pull-Requests vorgeschlagen — mit Schonfrist für neue Releases, kein stilles „latest“."
       },
       {
         "title": "Backup, DR & Observability",
-        "description": "Getestete Backup- und Restore-Pfade für den gesamten Cluster, durchgehendes Monitoring und Dashboards über Nodes, Workloads und Netzwerk hinweg."
+        "description": "Tägliche Cluster-Backups und etcd-Snapshots in einen eigenen S3-Speicher, getestete Restore-Pfade, durchgehendes Monitoring mit Alarmen über Nodes, Workloads, GPU und Netzwerk."
       },
       {
-        "title": "Heimautomation",
-        "description": "Anbindung an Smart-Home-Geräte im lokalen Netz und präsenzgesteuerte Automationen, orchestriert aus derselben Plattform wie die KI- und Voice-Dienste."
+        "title": "Heimautomation & Medien",
+        "description": "Home Assistant steuert Heizung und Geräte per Sprache, kennt das Wetter vor Ort und spielt Musik und Filme vom NAS auf Display, Fernseher oder Lautsprecher."
       }
     ]
   },
   "pipeline": {
     "eyebrow": "Architektur",
     "title": "Vollständig deklarative Ausrollung",
-    "description": "Kein imperatives Bash mehr: jede Ebene des Clusters wird von einem dedizierten Tool verwaltet, jede Änderung ist ein Commit.",
+    "description": "Jede Ebene des Clusters wird von einem dedizierten Werkzeug verwaltet, jede Änderung ist ein Commit.",
     "steps": [
-      { "title": "Host-Skripte", "description": "Node-Ebene: Betriebssystem, Storage, GPU- und Geräte-Vorbereitung." },
-      { "title": "Helmfile", "description": "Minimaler Pre-Flux-Bootstrap für die Kern-Cluster-Dienste." },
-      { "title": "FluxCD", "description": "Rollt alle Cluster-Workloads deklarativ aus und reconciled Drift automatisch." },
-      { "title": "Renovate", "description": "Öffnet automatisch Pull-Requests für jedes Versions-Update — vor dem Merge automatisch von Forgejo Actions geprüft." }
+      {
+        "title": "Bootstrap",
+        "description": "Node-Ebene: Betriebssystem, Storage, GPU- und Geräte-Vorbereitung per idempotenter Skripte."
+      },
+      {
+        "title": "Forgejo",
+        "description": "Selbst gehostetes Git als einzige Quelle der Wahrheit, Secrets verschlüsselt mit SOPS + age."
+      },
+      {
+        "title": "FluxCD",
+        "description": "Rollt alle Cluster-Workloads deklarativ aus und reconciled Drift automatisch."
+      },
+      {
+        "title": "Renovate",
+        "description": "Öffnet automatisch Pull-Requests für Versions-Updates — nach einer Schonfrist."
+      }
     ],
     "footerNote": "git commit → git push → Flux reconciled Cluster-Zustand automatisch zurück auf den Git-Stand"
   },
   "modelTiers": {
     "eyebrow": "KI-Modell-Layer",
     "title": "Die richtige Hardware für jede Anfrage",
-    "description": "Anfragen werden über gestaffelte Tiers geroutet — vom Edge-Beschleuniger bis zur GPU-Workstation. Cloud ist ein eng begrenzter Fallback, kein Regelfall.",
-    "headers": { "tier": "Tier", "hardware": "Hardware", "role": "Rolle" },
+    "description": "Anfragen werden über gestaffelte Stufen geroutet — vom Edge-Beschleuniger bis zur GPU-Workstation. Eine Cloud-KI gibt es nicht.",
+    "headers": {
+      "tier": "Tier",
+      "hardware": "Hardware",
+      "role": "Rolle"
+    },
     "rows": [
-      { "tier": "Edge / NPU", "hardware": "KI-Beschleuniger am Edge", "role": "Intent-Erkennung, Sofortantworten" },
-      { "tier": "CPU-Tier", "hardware": "Kompaktes Board, CPU-Inferenz", "role": "Großes Mixture-of-Experts-Modell für Reasoning" },
-      { "tier": "Worker-Tier", "hardware": "Kompakte Cluster-Nodes", "role": "Verteilte Alltagsinferenz" },
-      { "tier": "GPU-Tier", "hardware": "HP Z840 mit RTX 5060 Ti 16 GB (ersetzt die Quadro P4000)", "role": "Produktive Echtzeit-Inferenz, großes Kontextfenster" },
-      { "tier": "Code-Tier", "hardware": "HP Z840 (RTX 5060 Ti), kompaktes Code-Modell", "role": "Code-Autovervollständigung im Editor" },
-      { "tier": "Cloud-Fallback", "hardware": "Extern, streng ratenbegrenzt", "role": "Nur als letzter Ausweg, ein einziger erlaubter Egress" }
+      {
+        "tier": "Edge / NPU",
+        "hardware": "4× Raspberry Pi 5 mit Hailo-10H",
+        "role": "Kleine Sprachmodelle bis 4 B Parameter"
+      },
+      {
+        "tier": "CPU-Reserve",
+        "hardware": "ODROID-H5",
+        "role": "Kompaktes Modell als Ausweichstufe"
+      },
+      {
+        "tier": "GPU-Tier",
+        "hardware": "Workstation mit RTX 5060 Ti (16 GB)",
+        "role": "Sprachassistent (gpt-oss-20b) und Reasoning-Modell"
+      },
+      {
+        "tier": "Sprache",
+        "hardware": "GPU + CPU",
+        "role": "Whisper-Spracherkennung, Kokoro-Sprachausgabe"
+      },
+      {
+        "tier": "Wissen",
+        "hardware": "Lokaler Speicher",
+        "role": "Offline-Wikipedia (45 GB) und Metasuche als Belegquellen"
+      },
+      {
+        "tier": "Cloud",
+        "hardware": "—",
+        "role": "Keine: kein Modellaufruf verlässt das Haus"
+      }
     ]
   },
   "security": {
     "eyebrow": "Sicherheit & Compliance",
     "title": "An ISO 27001, NIS-2 und CIS orientiert",
     "description": "Auch als privates Projekt betrieben wie ein produktives System — mit dokumentierten Kontrollen statt Vertrauen auf Zuruf.",
-    "groupTitles": ["Daten & Zugriff", "Netzwerk", "Supply Chain", "Laufzeit & Resilienz"],
+    "groupTitles": [
+      "Daten & Zugriff",
+      "Netzwerk",
+      "Supply Chain",
+      "Laufzeit & Resilienz"
+    ],
     "highlights": [
       "Verschlüsselung sensibler Cluster-Daten im Ruhezustand",
       "Vollständiges API-Audit-Logging mit RBAC-Nachvollziehbarkeit",
       "Secrets ausschließlich verschlüsselt im Repository (nie im Klartext)",
       "Policy-Enforcement, Laufzeit-Bedrohungserkennung und Image-Scanning",
       "Laufzeit-Durchsetzung im Kernel (Tetragon): unerlaubte Programmstarts und Verbindungen der KI-Dienste werden sofort beendet — auch auf den Raspberry-Pi-Nodes, dank eines eigens gebauten Kernels aus signaturgeprüften Quellen",
-    "Eigene Container-Images werden signiert (cosign) und nur mit gültiger Signatur zugelassen",
+      "Eigene Container-Images werden signiert (cosign) und nur mit gültiger Signatur zugelassen",
       "Kompromittierte Upstream-Komponenten werden gesperrt und ersetzt — das KI-Gateway wurde nach einem Supply-Chain-Vorfall vollständig ausgetauscht",
       "CI-Läufe in gehärteten, isolierten Runnern ohne Fremd-Actions; KI-Agenten dürfen nur Pull-Requests öffnen, nie direkt Befehle ausführen",
       "Agenten laufen isoliert in einer gVisor-Sandbox, ohne Service-Account-Token und ohne Zugriff auf den Host",
@@ -159,7 +234,7 @@
       "rackFull": "Der Serverschrank: 18 Nodes, Switch und USV in einem 19″-Rack.",
       "rackBays": "Steckplätze für die Compute-Nodes über dem Netzwerk-Switch.",
       "assembly": "Vormontage der Node-Flotte, bevor sie ins Rack wandert.",
-      "odroid": "Der ODROID-H5 — Träger des CPU-Inferenz-Tiers.",
+      "odroid": "Der ODROID-H5 — Träger der CPU-Reservestufe.",
       "aiHat": "Raspberry Pi AI HAT+ mit Hailo-NPU für Edge-Inferenz.",
       "heatsinks": "Raspberry Pi 5 16GB mit aktiver Kühlung.",
       "piZero": "Der Raspberry Pi Zero 2W — der kleinste Node im Cluster, als Sensor-/Watchdog-Node im Einsatz.",
@@ -180,10 +255,37 @@
     "title": "So verarbeitet JARVIS eine Anfrage",
     "description": "Vom ersten Signal bis zur Antwort — eine vereinfachte, illustrative Darstellung des Datenflusses.",
     "stages": [
-      { "title": "Eingabe", "items": ["Sprache (Wake-Word)", "Vision-Tracker (Kamera)", "Chat / IDE"] },
-      { "title": "Routing & KI-Modelle", "items": ["Bifrost-Gateway", "Edge → CPU → Worker → GPU", "Automatische Tier-Wahl"] },
-      { "title": "Agenten", "items": ["ZeroClaw (Tool-Calling, Sandbox)", "Hermes (Gedächtnis, Telegram/CLI)"] },
-      { "title": "Ausgabe", "items": ["Sprachausgabe", "Head-up-Display", "Automatisierung (n8n)"] }
+      {
+        "title": "Eingabe",
+        "items": [
+          "Sprache (Wake-Word)",
+          "Vision-Tracker (Kamera)",
+          "Chat / IDE"
+        ]
+      },
+      {
+        "title": "Routing & KI-Modelle",
+        "items": [
+          "Bifrost-Gateway",
+          "Edge → CPU → Worker → GPU",
+          "Automatische Tier-Wahl"
+        ]
+      },
+      {
+        "title": "Agenten",
+        "items": [
+          "ZeroClaw (Tool-Calling, Sandbox)",
+          "Hermes (Gedächtnis, Telegram/CLI)"
+        ]
+      },
+      {
+        "title": "Ausgabe",
+        "items": [
+          "Sprachausgabe",
+          "Head-up-Display",
+          "Automatisierung (n8n)"
+        ]
+      }
     ],
     "footerNote": "Vereinfachte, illustrative Darstellung des Funktionsprinzips — keine exakte Netzwerktopologie, keine internen Adressen oder Konfigurationsdetails."
   },
@@ -193,24 +295,20 @@
     "description": "Vier Bausteine genauer erklärt — ohne Code, ohne interne Konfiguration, nur das Funktionsprinzip.",
     "items": [
       {
-        "title": "Vision-Tracker & Logitech MeetUp",
-        "body": "Die Logitech MeetUp ist eine Konferenzkamera mit motorisiertem Pan/Tilt/Zoom, angesteuert über den offenen UVC-Standard. Ein Pod im Cluster besitzt die Kamera exklusiv und übernimmt zwei Aufgaben zugleich: Gesichtserkennung in jedem Bild (YuNet, CPU-basiert) und, für enrollte Personen, ein Abgleich per Embedding (SFace) gegen eine Vektordatenbank (Qdrant). Erkennt das System eine bekannte Person, hält ein einfacher Regler mit Ruhezone und Geschwindigkeitsbegrenzung die Kamera auf sie ausgerichtet. Das Bild steht zusätzlich als Stream für das Head-up-Display bereit. Gespeichert werden ausschließlich Embeddings enrollter Personen — nie Rohbilder, nie ein Cloud-Aufruf; unbekannte Gesichter werden gezählt, aber nicht verfolgt."
+        "title": "Der Weg einer Sprachanfrage",
+        "body": "Das Weckwort „Hey Jarvis“ wird direkt am Sprachterminal erkannt. Die Aufnahme geht an Whisper auf der GPU (unter einer halben Sekunde), danach entscheidet Home Assistant: Einfache Befehle wie Licht, Heizung, Uhrzeit oder Wetter erledigt es sofort ohne Sprachmodell. Alles andere geht an das lokale Sprachmodell, das Werkzeuge nutzen kann — Websuche, Wikipedia, Wetter, Medien, Routen. Die Antwort spricht Kokoro satzweise aus: Der erste Satz klingt bereits, während der Rest noch berechnet wird."
       },
       {
-        "title": "ZeroClaw — das Agenten-Framework",
-        "body": "ZeroClaw orchestriert Anfragen über die KI-Modell-Tiers hinweg und stattet sie mit Werkzeugen aus (Tool-Calling) — etwa Zugriff auf Smart-Home-Geräte, Vision-Tracker-Daten oder n8n-Workflows. Anders als eine einzelne Modellantwort kann ein Agent mehrstufig planen: Status abfragen, entscheiden, handeln. Die Modellwahl für Tool-Calling wird laufend gegen Alternativen benchmarkt, bevor eine Version produktiv geht. Jeder Agenten-Pod läuft dabei isoliert in einer gVisor-Sandbox ohne Service-Account-Token und ohne Zugriff auf den Host-Kernel."
+        "title": "Faktentreue statt Halluzination",
+        "body": "Bei Wissens- und Nachrichtenfragen antwortet Jarvis nicht aus dem Gedächtnis. Er schlägt zuerst nach — in einer vollständigen Offline-Kopie der deutschen Wikipedia oder über eine selbst gehostete Metasuche — und formuliert die Antwort ausschließlich aus diesen Quellen. Jede Zahl und jedes Datum wird gegen die Quelle geprüft; fehlt ein Beleg, greift ein zweiter, strenger Prüfdurchgang. Findet sich nichts, sagt Jarvis das ehrlich."
       },
       {
-        "title": "n8n — Automatisierung ohne Code",
-        "body": "n8n verbindet die JARVIS-Dienste zu Automationen. Erkennt der Vision-Tracker eine anwesende Person, baut n8n daraus einen Kontext für die Sprachassistenz samt namentlicher Begrüßung und Lichtsteuerung. Ebenso laufen darüber die Auswertung der Stromverbrauchsdaten und wiederkehrende Prüfungen wie der Backup-Status. Workflows sind als JSON versioniert, im selben Git-Repository wie der Rest der Infrastruktur."
+        "title": "Heimautomation & n8n",
+        "body": "Home Assistant bündelt Heizkörperregler, Fernseher, Lautsprecher und Wetterdaten. Jarvis begrüßt beim Nachhausekommen mit Wetter und Regenvorschau und spielt Medien vom NAS auf dem passenden Gerät ab. n8n steht für weitere Automationen bereit; Workflows werden im selben Git-Repository versioniert wie die Infrastruktur."
       },
       {
         "title": "Das Kubernetes-Cluster (K3s)",
-        "body": "K3s ist eine schlanke Kubernetes-Distribution für Edge- und ARM-Hardware. Drei Nodes bilden die Kontrollebene, der Rest arbeitet als Worker. FluxCD gleicht den Cluster-Zustand alle 10 Minuten mit einem Git-Repository ab — manuelle Änderungen werden beim nächsten Durchlauf automatisch zurückgesetzt. Longhorn übernimmt replizierten Storage über die Nodes hinweg, Cilium das Netzwerk inklusive Verschlüsselung. Der gesamte Zustand ist damit jederzeit aus einem einzigen Repository reproduzierbar."
-      },
-      {
-        "title": "Hermes Agent — der Gedächtnis-Layer",
-        "body": "Anders als ZeroClaw, das pro Aufgabe eine isolierte Sandbox startet, läuft Hermes Agent (Nous Research, MIT-Lizenz) als dauerhaft aktiver Gesprächspartner über Telegram und Kommandozeile mit geteiltem Gedächtnis über mehrere Kanäle hinweg. Direkte Terminal- und Code-Ausführung sind im Agenten selbst deaktiviert — jede tatsächliche Werkzeugausführung läuft ausschließlich über die bereits sandboxte ZeroClaw-Instanz. Das Gedächtnis ist ein lokaler Fakten-Speicher auf eigenem Cluster-Volume, ganz ohne Modell- oder Netzaufrufe, und die Modellwahl ist fest auf die lokalen KI-Tiers verdrahtet, ohne automatisches Ausweichen zu einem fremden Anbieter. Zusätzlich überwacht eine Kernel-Laufzeitkontrolle den Agenten und beendet jeden Verbindungsversuch außerhalb der erlaubten Ziele sofort. Vor dem produktiven Einsatz durchläuft die Konfiguration einen mehrtägigen Abnahmetest mit gezielten Negativproben."
+        "body": "K3s ist eine schlanke Kubernetes-Distribution für Edge- und ARM-Hardware. Drei Nodes bilden die hochverfügbare Kontrollebene mit etcd, der Rest arbeitet als Worker. FluxCD gleicht den Cluster-Zustand laufend mit dem Git-Repository ab — manuelle Änderungen werden automatisch zurückgesetzt. Longhorn repliziert den Speicher über die Nodes, Cilium verschlüsselt den gesamten Verkehr zwischen ihnen per WireGuard. Der komplette Zustand ist aus einem einzigen Repository reproduzierbar."
       }
     ]
   },
@@ -219,22 +317,49 @@
     "title": "Geschätzter Stromverbrauch",
     "description": "Näherung nach Typenschild-Werten der eingesetzten Hardware — keine gemessenen Werte, sondern eine Einordnung der Größenordnung.",
     "rows": [
-      { "label": "Edge-Nodes (Pi 5 + NPU + SSD) ×4", "watts": "~44 W" },
-      { "label": "Worker-Nodes (Pi 5 + NVMe) ×10", "watts": "~78 W" },
-      { "label": "Pi 4 Node (8 GB + SSD)", "watts": "~8 W" },
-      { "label": "CPU-Tier (ODROID-H5 + 3× NVMe) ×1", "watts": "~20 W" },
-      { "label": "Netzwerk-Switch", "watts": "~15 W" },
-      { "label": "Backup-Festplatte (WD Elements 22 TB)", "watts": "~6 W" },
-      { "label": "Sensor-/Watchdog-Node (Pi Zero 2W)", "watts": "~1 W" },
-      { "label": "GPU-Workstation HP Z840 + RTX 5060 Ti (Ø mit Autosuspend)", "watts": "~20 W" },
-      { "label": "USV (APC Back-UPS Pro 900, Eigenverbrauch)", "watts": "~5 W" }
+      {
+        "label": "Edge-Nodes (Pi 5 + Hailo-NPU) ×4",
+        "watts": "~40 W"
+      },
+      {
+        "label": "Pi 5 Nodes ×10",
+        "watts": "~75 W"
+      },
+      {
+        "label": "Pi 4 Utility-Node",
+        "watts": "~5 W"
+      },
+      {
+        "label": "CPU-Reserve (ODROID-H5)",
+        "watts": "~15 W"
+      },
+      {
+        "label": "Netzwerk-Switch",
+        "watts": "~15 W"
+      },
+      {
+        "label": "GPU-Workstation (Dauerbetrieb, Leerlauf)",
+        "watts": "~110 W"
+      },
+      {
+        "label": "Backup-Festplatte (WD Elements 22 TB)",
+        "watts": "~6 W"
+      },
+      {
+        "label": "Sensor-/Watchdog-Node (Pi Zero 2W)",
+        "watts": "~1 W"
+      },
+      {
+        "label": "USV (APC Back-UPS Pro 900, Eigenverbrauch)",
+        "watts": "~5 W"
+      }
     ],
     "totalLabel": "Geschätzte Dauerlast",
-    "totalValue": "~197 W",
+    "totalValue": "~272 W",
     "monthlyLabel": "Hochgerechnet pro Monat",
-    "monthlyValue": "~144 kWh",
+    "monthlyValue": "~200 kWh",
     "wolTitle": "Wake-on-LAN für die GPU-Workstation",
-    "wolBody": "Die GPU-Workstation (HP Z840) hat mit über 300 W Spitzenlast den größten Einzelverbrauch im Cluster — wird aber nur für die anspruchsvollere Inferenz-Stufe gebraucht. Sie läuft daher nur in einem festen Zeitfenster an Werktagen und wird per Wake-on-LAN-Magic-Packet gezielt geweckt; schläft sie, weichen Chat-Anfragen automatisch auf das CPU-Tier aus. So bleibt der Beitrag der Workstation zum Dauerverbrauch ein kleiner zeitgewichteter Bruchteil.",
+    "wolBody": "Die GPU-Workstation (HP Z840) hat mit über 300 W Spitzenlast den größten Einzelverbrauch im Cluster. Für schnelle Sprachantworten hält sie das Sprachmodell derzeit dauerhaft geladen. Wake-on-LAN ist vorbereitet: Künftig kann sie in ruhigen Phasen schlafen und bei Bedarf gezielt geweckt werden, während eine CPU-Reserve kurzfristig übernimmt.",
     "upsTitle": "Unterbrechungsfreie Stromversorgung",
     "upsBody": "Eine APC Back-UPS Pro 900 puffert kurze Stromausfälle und Spannungsschwankungen ab, sodass die Nodes sauber herunterfahren können, statt abrupt den Strom zu verlieren. Ihr eigener Dauerverbrauch — Inverter-Standby plus Erhaltungsladung — ist mit rund 5 W sehr gering."
   },
@@ -277,7 +402,11 @@
         "Netz MB/s"
       ]
     },
-    "tabs": { "kitt": "K.I.T.T.", "matrix": "Matrix", "jarvis": "JARVIS" }
+    "tabs": {
+      "kitt": "K.I.T.T.",
+      "matrix": "Matrix",
+      "jarvis": "JARVIS"
+    }
   },
   "liveTerminal": {
     "title": "cluster-journal --follow",
@@ -305,11 +434,11 @@
       },
       {
         "name": "GPU-Tier",
-        "role": "HP Z840 mit RTX 5060 Ti — große Sprachmodelle in Echtzeit, schläft außerhalb des Zeitfensters."
+        "role": "HP Z840 mit RTX 5060 Ti — hält das Sprachmodell dauerhaft geladen und antwortet in ein bis zwei Sekunden."
       },
       {
         "name": "CPU-Tier",
-        "role": "ODROID-H5 — Embeddings, Sandbox-Agenten und der Rückfall, wenn die GPU schläft."
+        "role": "ODROID-H5 — Embeddings, Sandbox-Agenten und eine kompakte Reservestufe für Sprachmodelle."
       },
       {
         "name": "Utility",
@@ -334,82 +463,96 @@
     "qa": [
       {
         "q": "JARVIS, wie ist der Status des Clusters?",
-        "a": "Alle 18 Nodes sind online. Flux meldet keinen Drift, die Netzwerk-Policies sind aktiv."
+        "a": "Alle Nodes sind online. Flux meldet keinen Drift, die Netzwerk-Policies sind aktiv und es gibt keine offenen Alarme."
       },
       {
-        "q": "Wer ist gerade zu Hause?",
-        "a": "Der Vision-Tracker erkennt eine bekannte Person im Wohnzimmer. Ich habe das Licht angepasst."
+        "q": "Wie wird das Wetter morgen?",
+        "a": "Morgen wird es bewölkt bei bis zu zwölf Grad, am Nachmittag ist Regen wahrscheinlich. Ich würde einen Schirm mitnehmen."
       },
       {
         "q": "Wie viel Strom verbraucht das Rack?",
-        "a": "Aktuell rund zweihundert Watt. Die GPU-Workstation schläft, das spart den größten Teil."
+        "a": "Aktuell rund zweihundertsiebzig Watt. Die GPU-Workstation hält das Sprachmodell geladen, damit ich schnell antworten kann."
       }
     ]
   },
   "progress": {
     "eyebrow": "Projektstand",
-    "title": "Was bereits läuft",
-    "description": "Der Cluster ist nicht nur geplant — der Großteil läuft schon. Ein Blick auf das echte HUD und das Monitoring, dazu der aktuelle Stand bis zum Go-Live.",
-    "hudCaption": "Das JARVIS-HUD an der Wand: Live-Status aller Nodes, Alarme und Datensicherung — der Sprachassistent wartet auf „Hey Jarvis“.",
+    "title": "Was im Betrieb läuft",
+    "description": "Seit dem 8. November ist JARVIS im Produktivbetrieb. Echte Bildschirmfotos aus dem laufenden System und der aktuelle Stand des Ausbaus.",
+    "hudCaption": "Das HUD am Raumdisplay: Zustand aller Nodes, Wetter, Alarme, Datensicherung und GPU-Auslastung — in der Mitte der Sprachkern, der auf „Hey Jarvis“ wartet.",
     "grafanaCaption": "Das Monitoring-Dashboard: Status, Temperaturen und Auslastung jedes Nodes über die letzten 24 Stunden.",
-    "liveLabel": "Läuft bereits",
-    "wipLabel": "In Arbeit",
+    "chatCaption": "Anmeldung zum lokalen KI-Chat — Zugang nur über das zentrale Single Sign-on.",
+    "note": "Raumdetails, Anwesenheit und Nachrichten sind unkenntlich gemacht; interne Adressen sind nicht zu sehen.",
+    "liveLabel": "Im Betrieb",
+    "wipLabel": "Im Ausbau",
     "live": [
       {
         "title": "Kubernetes-Cluster",
-        "desc": "Alle Nodes sind bereit und werden vollständig deklarativ aus Git verwaltet."
+        "desc": "Alle Nodes sind verbunden und werden vollständig deklarativ aus Git verwaltet."
       },
       {
         "title": "Replizierter Speicher",
-        "desc": "Die Daten liegen gespiegelt auf mehreren Nodes, alle Volumes melden sich gesund."
+        "desc": "Daten liegen gespiegelt auf mehreren Nodes, alle Volumes melden sich gesund."
       },
       {
-        "title": "Datensicherung",
-        "desc": "Tägliche Backups des gesamten Clusters, Datenbanken werden laufend gesichert."
+        "title": "Datensicherung & Restore-Test",
+        "desc": "Tägliche Backups, laufend gesicherte Datenbanken und ein regelmäßiger, automatischer Wiederherstellungstest."
       },
       {
         "title": "Monitoring & Alarmierung",
-        "desc": "Temperatur, Last und Speicher jedes Nodes in Dashboards — Alarme sind scharf, aktuell keiner offen."
+        "desc": "Temperatur, Last und Speicher jedes Nodes in Dashboards — Alarme sind scharf."
       },
       {
-        "title": "KI-Gateway",
-        "desc": "Ein zentrales Gateway nimmt die KI-Anfragen an und verteilt sie auf die passenden Modelle."
+        "title": "GPU-Stufe",
+        "desc": "Die Workstation mit der 16-GB-Grafikkarte ist abgenommen und hält das Sprachmodell für schnelle Antworten geladen."
       },
       {
         "title": "Edge-KI",
-        "desc": "Alle vier NPU-Nodes sind aktiv und beantworten einfache Anfragen lokal mit einem kleinen Sprachmodell."
+        "desc": "Alle vier NPU-Nodes sind aktiv und beantworten einfache Anfragen lokal."
       },
       {
-        "title": "JARVIS-HUD & Sprache",
-        "desc": "Das Wanddisplay zeigt den Cluster live, dazu Wetter und Nachrichten; die Sprachassistenz ist bereit."
+        "title": "Faktentreuer Sprachassistent",
+        "desc": "„Hey Jarvis“ antwortet in ein bis zwei Sekunden — Wissensfragen nur aus belegten Quellen."
+      },
+      {
+        "title": "HUD & KI-Chat",
+        "desc": "Das Raumdisplay zeigt den Cluster live; der Chat ist nur über die zentrale Anmeldung erreichbar."
+      },
+      {
+        "title": "Heimautomation & Medien",
+        "desc": "Heizung und Geräte per Sprache, Musik und Filme vom NAS auf Display, Fernseher oder Lautsprecher."
       },
       {
         "title": "Netzwerk-Härtung",
-        "desc": "Alle Raspberry-Pi-Nodes laufen nur noch über Kabel, Funk ist abgeschaltet."
+        "desc": "Verschlüsselter Verkehr zwischen allen Nodes, Default-Deny-Regeln, alle Pis nur noch per Kabel."
+      },
+      {
+        "title": "Keine Cloud-KI",
+        "desc": "Kein einziger Modellaufruf verlässt das Haus."
+      },
+      {
+        "title": "Go-Live",
+        "desc": "Produktivbetrieb seit dem 8. November 2026."
       }
     ],
     "wip": [
       {
-        "title": "GPU-Tier",
-        "desc": "Die Workstation mit der neuen 16-GB-Grafikkarte übernimmt die großen Sprachmodelle."
+        "title": "Vision-Tracker",
+        "desc": "Personenerkennung mit Kameraverfolgung — vollständig lokal, ohne gespeicherte Rohbilder."
       },
       {
         "title": "Laufzeitschutz im Kernel",
         "desc": "Ein eigener Kernel bringt die Laufzeitkontrolle auch auf die Raspberry-Pi-Nodes."
       },
       {
-        "title": "Automatischer Restore-Test",
-        "desc": "Die Backups sollen sich künftig regelmäßig selbst auf Wiederherstellbarkeit prüfen."
-      },
-      {
-        "title": "Go-Live",
-        "desc": "Abschlussprüfung aller Komponenten bis zum geplanten Start am 20. November."
+        "title": "Energiesparen per Wake-on-LAN",
+        "desc": "Vorbereitet: Die GPU-Workstation soll in ruhigen Phasen schlafen und bei Bedarf geweckt werden."
       }
     ]
   },
   "footer": {
     "profileLink": "{{name}}-Profil von Marcus Kollosch-Psyllou (öffnet in neuem Tab)",
-    "tagline": "Privates Homelab-Projekt",
+    "tagline": "Privates Homelab-Projekt · in Betrieb seit November 2026",
     "impressum": "Impressum",
     "datenschutz": "Datenschutz"
   }
