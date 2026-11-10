@@ -361,7 +361,7 @@
     "totalLabel": "Geschätzte Dauerlast",
     "monthlyLabel": "Hochgerechnet pro Monat",
     "wolTitle": "Wake-on-LAN für die GPU-Workstation",
-    "wolBody": "Die GPU-Workstation (HP Z840) hat mit über 300 W Spitzenlast den größten Einzelverbrauch im Cluster. Für schnelle Sprachantworten hält sie das Sprachmodell derzeit dauerhaft geladen. Wake-on-LAN ist vorbereitet: Künftig kann sie in ruhigen Phasen schlafen und bei Bedarf gezielt geweckt werden, während eine CPU-Reserve kurzfristig übernimmt.",
+    "wolBody": "Die GPU-Workstation (HP Z840) hat mit über 300 W Spitzenlast den größten Einzelverbrauch im Cluster. Für schnelle Sprachantworten hält sie das Sprachmodell derzeit dauerhaft geladen. Wake-on-LAN ist eingerichtet: Betritt jemand den Raum, wird sie automatisch geweckt — bis sie bereit ist, antwortet JARVIS im Notbetrieb über CPU-Reserve und Edge-NPU. So kann sie künftig in ruhigen Phasen schlafen.",
     "upsTitle": "Unterbrechungsfreie Stromversorgung",
     "upsBody": "Eine APC Back-UPS Pro 900 puffert kurze Stromausfälle und Spannungsschwankungen ab, sodass die Nodes sauber herunterfahren können, statt abrupt den Strom zu verlieren. Ihr eigener Dauerverbrauch — Inverter-Standby plus Erhaltungsladung — ist mit rund 5 W sehr gering.",
     "shareLabel": "Anteil",
@@ -532,7 +532,11 @@
       },
       {
         "title": "Nächtlicher Qualitätstest",
-        "desc": "Jede Nacht beantwortet JARVIS automatisch einen festen Fragenkatalog — Fakten, Ehrlichkeit, Antwortzeit. Abweichungen lösen einen Alarm aus."
+        "desc": "Jede Nacht beantwortet JARVIS automatisch einen festen Fragenkatalog — Fakten, Ehrlichkeit, Antwortzeit — und übt zusätzlich den Notbetrieb ohne GPU. Abweichungen lösen einen Alarm aus."
+      },
+      {
+        "title": "Notbetrieb ohne GPU",
+        "desc": "Ist die GPU-Workstation aus oder schläft sie, antwortet JARVIS weiter — kürzer und etwas langsamer über CPU-Reserve und Edge-NPU, ohne erfundene Aktionen. Sobald die GPU zurück ist, schaltet er automatisch um."
       },
       {
         "title": "Offline-Wissen",
@@ -582,7 +586,7 @@
       },
       {
         "title": "Energiesparen per Wake-on-LAN",
-        "desc": "Vorbereitet: Die GPU-Workstation soll in ruhigen Phasen schlafen und bei Bedarf geweckt werden."
+        "desc": "Eingerichtet: Betritt jemand den Raum, wird die schlafende GPU-Workstation automatisch geweckt; bis sie bereit ist, überbrückt der Notbetrieb. Der Praxistest am Gerät steht noch aus."
       }
     ]
   },

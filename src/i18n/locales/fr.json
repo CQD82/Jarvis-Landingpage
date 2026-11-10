@@ -361,7 +361,7 @@
     "totalLabel": "Charge continue estimée",
     "monthlyLabel": "Projection mensuelle",
     "wolTitle": "Wake-on-LAN pour la station GPU",
-    "wolBody": "La station GPU (HP Z840) est le plus gros consommateur du cluster, avec plus de 300 W en pointe. Pour des réponses vocales rapides, elle garde actuellement le modèle de langage chargé en permanence. Le Wake-on-LAN est préparé : à l’avenir, elle pourra dormir pendant les périodes calmes et être réveillée à la demande, une réserve CPU prenant brièvement le relais.",
+    "wolBody": "La station GPU (HP Z840) est le plus gros consommateur du cluster avec plus de 300 W en pointe. Pour des réponses vocales rapides, elle garde actuellement le modèle de langage chargé en permanence. Le Wake-on-LAN est en place : quand quelqu’un entre dans la pièce, elle est réveillée automatiquement — en attendant, JARVIS répond en mode secours via la réserve CPU et le NPU edge. Elle pourra ainsi dormir aux heures creuses.",
     "upsTitle": "Alimentation sans interruption",
     "upsBody": "Un onduleur APC Back-UPS Pro 900 absorbe les coupures brèves et les creux de tension pour permettre aux nœuds de s'arrêter proprement plutôt que de perdre le courant d'un coup. Sa propre consommation continue — veille de l'onduleur et charge d'entretien — reste faible, environ 5 W.",
     "shareLabel": "Part",
@@ -532,7 +532,11 @@
       },
       {
         "title": "Test qualité nocturne",
-        "desc": "Chaque nuit, JARVIS répond automatiquement à un jeu de questions fixe — faits, honnêteté, temps de réponse. Tout écart déclenche une alerte."
+        "desc": "Chaque nuit, JARVIS répond automatiquement à un jeu de questions fixe — faits, honnêteté, temps de réponse — et s’entraîne aussi au mode secours sans GPU. Tout écart déclenche une alerte."
+      },
+      {
+        "title": "Mode secours sans GPU",
+        "desc": "Si la station GPU est éteinte ou en veille, JARVIS continue de répondre — plus brièvement et un peu plus lentement via la réserve CPU et le NPU edge, sans inventer d’actions. Dès que le GPU revient, il rebascule automatiquement."
       },
       {
         "title": "Savoir hors ligne",
@@ -582,7 +586,7 @@
       },
       {
         "title": "Économie d’énergie par Wake-on-LAN",
-        "desc": "Préparé : la station GPU dormira en période calme et sera réveillée à la demande."
+        "desc": "En place : quand quelqu’un entre dans la pièce, la station GPU en veille est réveillée automatiquement ; le mode secours couvre le temps de démarrage. Le test sur la machine reste à faire."
       }
     ]
   },

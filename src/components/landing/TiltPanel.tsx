@@ -8,15 +8,14 @@ interface TiltPanelProps {
   /** Max rotation in degrees at the panel's edge. */
   maxTiltX?: number;
   maxTiltY?: number;
-  /** Holographic sheen + scanning glint overlay. Default on; some panels (e.g. a photo with its own glow treatment) turn it off. */
+  /** Holographic sheen overlay that follows the tilt. Default on; some panels (e.g. a photo with its own glow treatment) turn it off. */
   sheen?: boolean;
 }
 
 /**
  * Any panel (HUD console, hero image, …) tilted in 3D toward the cursor —
  * desktop only, a no-op without a pointer — with a holographic sheen that
- * slides across the glass following the tilt, plus a diagonal scanning
- * glint (the same keyframes as the KITT HUD skin), like light catching an
+ * slides across the glass following the tilt, like light catching an
  * angled display.
  */
 export function TiltPanel({ children, className, maxTiltX = 7, maxTiltY = 9, sheen = true }: TiltPanelProps) {
@@ -78,10 +77,6 @@ export function TiltPanel({ children, className, maxTiltX = 7, maxTiltY = 9, she
               style={{ background: sheenBackground }}
               aria-hidden="true"
             />
-            {/* Diagonal scanning glint, same keyframes as the KITT HUD skin */}
-            <div className="pointer-events-none absolute inset-0 z-10 overflow-hidden" aria-hidden="true">
-              <div className="animate-kitt-scan absolute inset-y-0 w-1/3 skew-x-12 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-            </div>
           </>
         )}
         {children}
