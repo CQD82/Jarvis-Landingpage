@@ -361,7 +361,7 @@
     "totalLabel": "Carga continua estimada",
     "monthlyLabel": "Proyección mensual",
     "wolTitle": "Wake-on-LAN para la estación GPU",
-    "wolBody": "La estación GPU (HP Z840) es el mayor consumidor del clúster, con más de 300 W en pico. Para respuestas de voz rápidas mantiene ahora el modelo de lenguaje cargado de forma permanente. Wake-on-LAN está preparado: en el futuro podrá dormir en periodos tranquilos y despertarse bajo demanda, mientras una reserva de CPU toma el relevo brevemente.",
+    "wolBody": "La estación GPU (HP Z840) es el mayor consumidor individual del clúster, con más de 300 W en pico. Para respuestas de voz rápidas mantiene ahora el modelo de lenguaje cargado de forma permanente. Wake-on-LAN está configurado: cuando alguien entra en la sala se despierta automáticamente; mientras tanto, JARVIS responde en modo de emergencia mediante la reserva CPU y la NPU edge. Así podrá dormir en las fases tranquilas.",
     "upsTitle": "Sistema de alimentación ininterrumpida",
     "upsBody": "Un SAI APC Back-UPS Pro 900 amortigua cortes breves y caídas de tensión para que los nodos puedan apagarse de forma limpia en lugar de perder la energía de golpe. Su propio consumo continuo — reposo del inversor y carga de mantenimiento — es pequeño, unos 5 W.",
     "shareLabel": "Cuota",
@@ -532,7 +532,11 @@
       },
       {
         "title": "Prueba de calidad nocturna",
-        "desc": "Cada noche JARVIS responde automáticamente a un conjunto fijo de preguntas: hechos, honestidad y tiempo de respuesta. Las desviaciones generan una alerta."
+        "desc": "Cada noche JARVIS responde automáticamente a un conjunto fijo de preguntas (hechos, honestidad, tiempo de respuesta) y además ensaya el modo de emergencia sin GPU. Las desviaciones generan una alerta."
+      },
+      {
+        "title": "Modo de emergencia sin GPU",
+        "desc": "Si la estación GPU está apagada o en reposo, JARVIS sigue respondiendo: de forma más breve y algo más lenta mediante la reserva CPU y la NPU edge, sin inventar acciones. En cuanto vuelve la GPU, cambia automáticamente."
       },
       {
         "title": "Conocimiento sin conexión",
@@ -582,7 +586,7 @@
       },
       {
         "title": "Ahorro de energía con Wake-on-LAN",
-        "desc": "Preparado: la estación GPU dormirá en fases tranquilas y se despertará cuando haga falta."
+        "desc": "Configurado: cuando alguien entra en la sala, la estación GPU en reposo se despierta automáticamente; el modo de emergencia cubre el arranque. Falta la prueba práctica en el equipo."
       }
     ]
   },

@@ -361,7 +361,7 @@
     "totalLabel": "Estimated continuous load",
     "monthlyLabel": "Projected per month",
     "wolTitle": "Wake-on-LAN for the GPU Workstation",
-    "wolBody": "The GPU workstation (HP Z840) has the largest single draw in the cluster at over 300 W peak. For fast voice answers it currently keeps the language model loaded permanently. Wake-on-LAN is prepared: in future it can sleep during quiet periods and be woken on demand, while a CPU reserve steps in briefly.",
+    "wolBody": "The GPU workstation (HP Z840) has the largest single draw in the cluster at over 300 W peak. For fast voice answers it currently keeps the language model loaded permanently. Wake-on-LAN is set up: when someone enters the room it is woken automatically — until it is ready, JARVIS answers in fallback mode via the CPU reserve and edge NPU. That lets it sleep during quiet periods in future.",
     "upsTitle": "Uninterruptible Power Supply",
     "upsBody": "An APC Back-UPS Pro 900 rides out brief outages and voltage dips so the nodes can shut down cleanly instead of losing power abruptly. Its own continuous draw — inverter standby plus trickle charging — is small, around 5 W.",
     "shareLabel": "Share",
@@ -532,7 +532,11 @@
       },
       {
         "title": "Nightly quality test",
-        "desc": "Every night JARVIS automatically answers a fixed question set — facts, honesty, response time. Deviations raise an alert."
+        "desc": "Every night JARVIS automatically answers a fixed question set — facts, honesty, response time — and also rehearses fallback mode without the GPU. Deviations raise an alert."
+      },
+      {
+        "title": "Fallback mode without GPU",
+        "desc": "If the GPU workstation is off or asleep, JARVIS keeps answering — shorter and a little slower via the CPU reserve and edge NPU, without making up actions. As soon as the GPU is back, it switches over automatically."
       },
       {
         "title": "Offline knowledge",
@@ -582,7 +586,7 @@
       },
       {
         "title": "Wake-on-LAN power saving",
-        "desc": "Prepared: the GPU workstation will sleep in quiet periods and wake on demand."
+        "desc": "Set up: when someone enters the room, the sleeping GPU workstation is woken automatically; fallback mode bridges the start-up time. The hands-on test at the machine is still pending."
       }
     ]
   },
