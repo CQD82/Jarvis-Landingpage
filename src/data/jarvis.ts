@@ -43,10 +43,10 @@ export const pipelineIcons: LucideIcon[] = [Workflow, Server, GitBranch, Refresh
 export const techCategoryTools: string[][] = [
   ["FluxCD", "Helmfile", "Renovate", "Forgejo", "Forgejo Actions", "Ansible"],
   ["K3s", "Longhorn", "Cilium LB-IPAM + L2", "Traefik", "cert-manager", "Garage"],
-  ["Bifrost", "llama.cpp", "llama-swap", "Qdrant", "Open WebUI", "Kiwix"],
-  ["Cilium", "Kyverno", "Falco", "Tetragon", "Trivy", "gVisor", "cosign", "Authentik", "SOPS + Age"],
-  ["Wyoming", "Whisper", "Kokoro TTS", "Home Assistant", "Wake-Word", "HUD"],
-  ["VictoriaMetrics", "VictoriaLogs", "Grafana", "Alertmanager", "Velero", "kured", "system-upgrade-controller", "n8n", "Shelly-Exporter"],
+  ["Bifrost", "llama.cpp", "llama-swap", "Qdrant", "Open WebUI", "Kiwix", "ComfyUI", "Promptfoo", "Langfuse", "Docling", "JupyterLab", "MLflow", "Unsloth", "Label Studio"],
+  ["Cilium", "Kyverno", "Falco", "Tetragon", "Trivy", "gVisor", "cosign", "Authentik", "SOPS + Age", "Vaultwarden"],
+  ["Wyoming", "Whisper", "Kokoro TTS", "Home Assistant", "Wake-Word", "HUD", "Frigate"],
+  ["VictoriaMetrics", "VictoriaLogs", "Grafana", "Alertmanager", "Velero", "kured", "system-upgrade-controller", "n8n", "Shelly-Exporter", "ntfy", "Paperless-ngx", "Immich"],
 ];
 
 export const techCategoryIcons: LucideIcon[] = [

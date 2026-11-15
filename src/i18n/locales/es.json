@@ -36,7 +36,7 @@
       "label": "Nodos en el clúster"
     },
     {
-      "value": "~270",
+      "value": "~300",
       "label": "Pods en marcha"
     },
     {
@@ -100,11 +100,11 @@
       },
       {
         "title": "Inferencia de IA totalmente local",
-        "description": "Las peticiones recorren niveles de hardware escalonados — desde NPU Hailo en las Pi y una reserva de CPU hasta una estación con RTX 5060 Ti. Ninguna llamada a un modelo sale de casa."
+        "description": "Las peticiones recorren niveles de hardware escalonados — desde NPU Hailo en las Pi y una reserva de CPU hasta una estación con RTX 5060 Ti. Ninguna llamada a un modelo sale de casa. Si la GPU está en reposo, un modo de emergencia con modelos más pequeños toma el relevo automáticamente."
       },
       {
-        "title": "Vision tracker (en preparación)",
-        "description": "Previsto: detección de personas con seguimiento mediante la cámara de conferencias. Procesamiento totalmente local; solo se guardan embeddings de personas registradas, nunca imágenes en bruto."
+        "title": "Rastreador visual (en parte activo)",
+        "description": "La detección de presencia ya funciona: una cámara con NPU local solo indica «hay alguien / no hay nadie» y no se guarda ninguna imagen. El siguiente paso es que la cámara siga a la persona con giro, inclinación y zoom, siempre en local."
       },
       {
         "title": "Asistente de voz basado en fuentes y HUD",
@@ -124,7 +124,7 @@
       },
       {
         "title": "Copias de seguridad, DR y observabilidad",
-        "description": "Copias diarias del clúster y snapshots de etcd en almacenamiento S3 propio, restauraciones probadas, monitorización y alertas de extremo a extremo sobre nodos, cargas, GPU y red."
+        "description": "Copias diarias del clúster y snapshots de etcd en almacenamiento S3 propio, restauraciones probadas, monitorización y alertas de extremo a extremo sobre nodos, cargas, GPU y red. Un vigilante externo comprueba además el clúster desde fuera, y cada lunes un informe semanal resume copias, alertas, seguridad y energía."
       },
       {
         "title": "Domótica y medios",
@@ -169,17 +169,17 @@
       {
         "tier": "Edge / NPU",
         "hardware": "4× Raspberry Pi 5 con Hailo-10H",
-        "role": "Modelos pequeños de hasta 4 B parámetros"
+        "role": "Modelos de lenguaje pequeños de hasta 4 B parámetros; modelo de diálogo de reserva en modo de emergencia"
       },
       {
         "tier": "Reserva CPU",
         "hardware": "ODROID-H5",
-        "role": "Modelo compacto como respaldo"
+        "role": "Modelo de reserva de emergencia y reconocimiento y síntesis de voz mientras la GPU duerme"
       },
       {
         "tier": "Nivel GPU",
         "hardware": "Estación con RTX 5060 Ti (16 GB)",
-        "role": "Asistente de voz (gpt-oss-20b) y modelo de razonamiento"
+        "role": "Asistente de voz (gpt-oss-20b), asistentes de código (Devstral Small 2, Qwen2.5-Coder), Qwen3 14B, modo de razonamiento a fondo y generación de imágenes (SDXL)"
       },
       {
         "tier": "Voz",
@@ -453,7 +453,7 @@
       },
       {
         "name": "Nivel GPU",
-        "role": "HP Z840 con RTX 5060 Ti — mantiene el modelo de voz siempre cargado y responde en uno o dos segundos."
+        "role": "HP Z840 con RTX 5060 Ti: mantiene el modelo de lenguaje cargado durante el día y responde en uno o dos segundos; por la noche duerme y se despierta por Wake-on-LAN."
       },
       {
         "name": "Nivel CPU",
@@ -490,7 +490,7 @@
       },
       {
         "q": "¿Cuánta energía consume el rack?",
-        "a": "Unos doscientos setenta vatios ahora mismo. La estación GPU mantiene cargado el modelo de voz para que pueda responder rápido."
+        "a": "Ahora mismo unos ciento noventa y seis vatios, medidos: unos cuarenta euros al mes. Por la noche la estación GPU se apaga si no hay nadie en la sala."
       }
     ]
   },

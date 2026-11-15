@@ -36,7 +36,7 @@
       "label": "Nodes in the cluster"
     },
     {
-      "value": "~270",
+      "value": "~300",
       "label": "Pods running"
     },
     {
@@ -100,11 +100,11 @@
       },
       {
         "title": "Fully local AI inference",
-        "description": "Requests run across tiered hardware — from Hailo NPUs on the Pis and a CPU reserve up to an RTX 5060 Ti workstation. No model call ever leaves the house."
+        "description": "Requests run across tiered hardware — from Hailo NPUs on the Pis and a CPU reserve up to an RTX 5060 Ti workstation. No model call ever leaves the house. If the GPU is asleep, a fallback mode with smaller models takes over automatically."
       },
       {
-        "title": "Vision tracker (in preparation)",
-        "description": "Planned: person detection with camera tracking via the conference camera. Processing fully local, storing only embeddings of enrolled people — never raw images."
+        "title": "Vision tracker (partly live)",
+        "description": "Presence detection is already running: a camera with a local NPU reports only “someone there / nobody there”, and no image is stored. Next, the camera will follow the person with pan, tilt and zoom — still fully local."
       },
       {
         "title": "Fact-grounded voice assistant & HUD",
@@ -124,7 +124,7 @@
       },
       {
         "title": "Backup, DR & observability",
-        "description": "Daily cluster backups and etcd snapshots to self-hosted S3 storage, tested restore paths, end-to-end monitoring and alerting across nodes, workloads, GPU and network."
+        "description": "Daily cluster backups and etcd snapshots to self-hosted S3 storage, tested restore paths, end-to-end monitoring and alerting across nodes, workloads, GPU and network. An external watchdog also checks the cluster from outside, and every Monday a weekly report sums up backups, alerts, security and energy."
       },
       {
         "title": "Home automation & media",
@@ -169,17 +169,17 @@
       {
         "tier": "Edge / NPU",
         "hardware": "4× Raspberry Pi 5 with Hailo-10H",
-        "role": "Small language models up to 4 B parameters"
+        "role": "Small language models up to 4 B parameters; the fallback dialogue model in fallback mode"
       },
       {
         "tier": "CPU reserve",
         "hardware": "ODROID-H5",
-        "role": "Compact model as a fallback tier"
+        "role": "Emergency reserve model plus speech recognition and synthesis while the GPU sleeps"
       },
       {
         "tier": "GPU tier",
         "hardware": "Workstation with RTX 5060 Ti (16 GB)",
-        "role": "Voice assistant (gpt-oss-20b) and reasoning model"
+        "role": "Voice assistant (gpt-oss-20b), coding assistants (Devstral Small 2, Qwen2.5-Coder), Qwen3 14B, a thorough reasoning mode and image generation (SDXL)"
       },
       {
         "tier": "Speech",
@@ -453,7 +453,7 @@
       },
       {
         "name": "GPU Tier",
-        "role": "HP Z840 with RTX 5060 Ti — keeps the voice model loaded at all times and answers in one to two seconds."
+        "role": "HP Z840 with RTX 5060 Ti — keeps the language model loaded during the day and answers in one to two seconds; at night it sleeps and is woken via Wake-on-LAN."
       },
       {
         "name": "CPU Tier",
@@ -490,7 +490,7 @@
       },
       {
         "q": "How much power is the rack drawing?",
-        "a": "About two hundred and seventy watts right now. The GPU workstation keeps the voice model loaded so I can answer quickly."
+        "a": "Right now about one hundred and ninety-six watts, measured — roughly forty euros a month. At night the GPU workstation switches off when nobody is in the room."
       }
     ]
   },
