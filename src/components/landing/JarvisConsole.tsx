@@ -15,13 +15,16 @@ interface NodeDef {
   nvme: boolean;
 }
 
-/** 17 Kubernetes nodes as on the real HUD; the Pi Zero watchdog sits outside. */
-const NODES: NodeDef[] = [
-  { name: "pi4-util", nvme: false },
-  { name: "odroid", nvme: true },
-  ...Array.from({ length: 14 }, (_, i) => ({ name: `pi5-${String(i + 1).padStart(2, "0")}`, nvme: i < 10 })),
-  { name: "z840-01", nvme: false },
-];
+/**
+ * 17 Kubernetes nodes as on the real HUD (the Pi Zero watchdog sits
+ * outside). Labels are neutral on purpose: real hostnames stay private,
+ * just as they are pixelated in the screenshots. Order and NVMe layout
+ * mirror the real cluster: utility node, CPU reserve, 14 Pi 5, GPU last.
+ */
+const NODES: NodeDef[] = Array.from({ length: 17 }, (_, i) => ({
+  name: `N${String(i + 1).padStart(2, "0")}`,
+  nvme: i === 1 || (i >= 2 && i < 12),
+}));
 
 interface Sample {
   temp: number;
@@ -211,10 +214,11 @@ export function JarvisConsole() {
             <div className={heading} style={{ color: GOLD }}>◇ {t("hud.console.backup")}</div>
             <dl className="mt-2 space-y-1 text-xs">
               {[
-                [t("hud.console.velero"), t("hud.console.hoursAgo", { h: 6 })],
+                // Status only: tool names, intervals and timestamps stay private.
+                [t("hud.console.velero"), t("hud.console.ok")],
                 [t("hud.console.cnpg"), t("hud.console.active")],
-                [t("hud.console.restore"), t("hud.console.hoursAgo", { h: 86 })],
-                [t("hud.console.metrics"), t("hud.console.hoursAgo", { h: 16 })],
+                [t("hud.console.restore"), t("hud.console.ok")],
+                [t("hud.console.metrics"), t("hud.console.ok")],
               ].map(([k, v]) => (
                 <div key={k} className="flex justify-between gap-2">
                   <dt>{k}</dt>

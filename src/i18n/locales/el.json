@@ -400,10 +400,9 @@
       "alarms": "Ειδοποιήσεις",
       "noAlarms": "Καμία ενεργή ειδοποίηση",
       "backup": "Αντίγραφα ασφαλείας",
-      "velero": "Velero (ανά 6 ώρες)",
-      "cnpg": "Βάσεις δεδομένων (CNPG)",
+      "velero": "Αντίγραφο cluster",
+      "cnpg": "Βάσεις δεδομένων",
       "active": "ενεργό",
-      "hoursAgo": "πριν {{h}} ώ",
       "standby": "Αναμονή",
       "wake": "Πείτε «Hey Jarvis».",
       "kpis": [
@@ -424,7 +423,8 @@
       "restore": "Δοκιμή επαναφοράς",
       "metrics": "Αντίγραφο μετρικών",
       "gpuTemp": "Θερμοκρασία GPU",
-      "gpuPower": "Ισχύς"
+      "gpuPower": "Ισχύς",
+      "ok": "OK"
     }
   },
   "liveTerminal": {

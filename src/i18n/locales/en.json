@@ -400,10 +400,9 @@
       "alarms": "Alerts",
       "noAlarms": "No active alerts",
       "backup": "Backups",
-      "velero": "Velero (every 6 h)",
-      "cnpg": "Databases (CNPG)",
+      "velero": "Cluster backup",
+      "cnpg": "Databases",
       "active": "active",
-      "hoursAgo": "{{h}} h ago",
       "standby": "Standby",
       "wake": "Say “Hey Jarvis”.",
       "kpis": [
@@ -424,7 +423,8 @@
       "restore": "Restore test",
       "metrics": "Metrics backup",
       "gpuTemp": "GPU temperature",
-      "gpuPower": "Power"
+      "gpuPower": "Power",
+      "ok": "OK"
     }
   },
   "liveTerminal": {

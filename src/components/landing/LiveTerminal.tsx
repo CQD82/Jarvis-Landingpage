@@ -22,7 +22,7 @@ const EVENTS: { tag: string; msg: string }[] = [
   { tag: "kured", msg: "no reboot required · kernel current" },
   { tag: "promptfoo", msg: "weekly model eval · 32/32 passed" },
   { tag: "power", msg: "cluster draw 196 W (measured)" },
-  { tag: "z840", msg: "room empty · gpu idle → night shutdown, wol armed" },
+  { tag: "gpu-tier", msg: "room empty · gpu idle → night shutdown, wol armed" },
 ];
 
 const MAX_LINES = 6;

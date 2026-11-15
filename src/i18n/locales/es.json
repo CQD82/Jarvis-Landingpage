@@ -400,10 +400,9 @@
       "alarms": "Alertas",
       "noAlarms": "Sin alertas activas",
       "backup": "Copias de seguridad",
-      "velero": "Velero (cada 6 h)",
-      "cnpg": "Bases de datos (CNPG)",
+      "velero": "Copia del clúster",
+      "cnpg": "Bases de datos",
       "active": "activo",
-      "hoursAgo": "hace {{h}} h",
       "standby": "En espera",
       "wake": "Diga «Hey Jarvis».",
       "kpis": [
@@ -424,7 +423,8 @@
       "restore": "Prueba de restauración",
       "metrics": "Copia de métricas",
       "gpuTemp": "Temperatura GPU",
-      "gpuPower": "Potencia"
+      "gpuPower": "Potencia",
+      "ok": "OK"
     }
   },
   "liveTerminal": {
