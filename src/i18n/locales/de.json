@@ -400,10 +400,9 @@
       "alarms": "Alarme",
       "noAlarms": "Keine aktiven Alarme",
       "backup": "Datensicherung",
-      "velero": "Velero (alle 6 h)",
-      "cnpg": "Datenbanken (CNPG)",
+      "velero": "Cluster-Sicherung",
+      "cnpg": "Datenbanken",
       "active": "aktiv",
-      "hoursAgo": "vor {{h}} h",
       "standby": "Standby",
       "wake": "Sagen Sie „Hey Jarvis“.",
       "kpis": [
@@ -422,9 +421,10 @@
       ],
       "stand": "Stand",
       "restore": "Restore-Test",
-      "metrics": "Metrik-Backup",
+      "metrics": "Metrik-Sicherung",
       "gpuTemp": "GPU-Temperatur",
-      "gpuPower": "Leistung"
+      "gpuPower": "Leistung",
+      "ok": "OK"
     }
   },
   "liveTerminal": {

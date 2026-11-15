@@ -214,10 +214,11 @@ export function JarvisConsole() {
             <div className={heading} style={{ color: GOLD }}>◇ {t("hud.console.backup")}</div>
             <dl className="mt-2 space-y-1 text-xs">
               {[
-                [t("hud.console.velero"), t("hud.console.hoursAgo", { h: 6 })],
+                // Status only: tool names, intervals and timestamps stay private.
+                [t("hud.console.velero"), t("hud.console.ok")],
                 [t("hud.console.cnpg"), t("hud.console.active")],
-                [t("hud.console.restore"), t("hud.console.hoursAgo", { h: 86 })],
-                [t("hud.console.metrics"), t("hud.console.hoursAgo", { h: 16 })],
+                [t("hud.console.restore"), t("hud.console.ok")],
+                [t("hud.console.metrics"), t("hud.console.ok")],
               ].map(([k, v]) => (
                 <div key={k} className="flex justify-between gap-2">
                   <dt>{k}</dt>
