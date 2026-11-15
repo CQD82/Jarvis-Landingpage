@@ -597,7 +597,12 @@
       }
     ],
     "counter": "Core functions in production: {{done}} / {{total}}",
-    "counterNote": "This counts the permanent core of the cluster. Features added since go-live are listed separately further down."
+    "counterNote": "This counts the permanent core of the cluster. Features added since go-live are listed separately further down.",
+    "alt": {
+      "hud": "Screenshot of the room-display HUD with details pixelated",
+      "grafana": "Photo of the monitoring dashboard with node names pixelated",
+      "chat": "Screenshot of the local AI chat sign-in page"
+    }
   },
   "footer": {
     "profileLink": "Marcus Kollosch-Psyllou on {{name}} (opens in a new tab)",
@@ -782,6 +787,12 @@
           }
         ]
       }
-    ]
+    ],
+    "alt": {
+      "hud": "Screenshot of the new kiosk HUD with details pixelated",
+      "comfy": "Locally generated test image: a futuristic control room"
+    },
+    "expandAll": "Expand all",
+    "collapseAll": "Collapse all"
   }
 }

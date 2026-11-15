@@ -597,7 +597,12 @@
       }
     ],
     "counter": "Funciones básicas en marcha: {{done}} / {{total}}",
-    "counterNote": "Se cuenta el núcleo permanente del clúster. Las novedades desde la puesta en marcha aparecen por separado más abajo."
+    "counterNote": "Se cuenta el núcleo permanente del clúster. Las novedades desde la puesta en marcha aparecen por separado más abajo.",
+    "alt": {
+      "hud": "Captura del HUD de la pantalla de la sala con detalles pixelados",
+      "grafana": "Foto del panel de monitorización con los nombres de nodos pixelados",
+      "chat": "Captura de la página de acceso al chat de IA local"
+    }
   },
   "footer": {
     "profileLink": "Perfil de {{name}} de Marcus Kollosch-Psyllou (se abre en una pestaña nueva)",
@@ -782,6 +787,12 @@
           }
         ]
       }
-    ]
+    ],
+    "alt": {
+      "hud": "Captura del nuevo HUD de quiosco con detalles pixelados",
+      "comfy": "Imagen de prueba generada en local: una sala de control futurista"
+    },
+    "expandAll": "Desplegar todo",
+    "collapseAll": "Plegar todo"
   }
 }

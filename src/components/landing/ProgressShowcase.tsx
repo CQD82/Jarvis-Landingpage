@@ -33,9 +33,9 @@ export function ProgressShowcase() {
   // The HUD screenshot leads full width; dashboard photo and chat sign-in
   // sit side by side below it.
   const photos = [
-    { src: hudKiosk, caption: t("progress.hudCaption"), tag: "LIVE · HUD", w: 1600, h: 1000, wide: true },
-    { src: grafanaDashboard, caption: t("progress.grafanaCaption"), tag: "LIVE · MONITORING", w: 1600, h: 909, wide: false },
-    { src: chatLogin, caption: t("progress.chatCaption"), tag: "LIVE · CHAT", w: 1600, h: 1000, wide: false },
+    { src: hudKiosk, caption: t("progress.hudCaption"), alt: t("progress.alt.hud"), tag: "LIVE · HUD", w: 1600, h: 1000, wide: true },
+    { src: grafanaDashboard, caption: t("progress.grafanaCaption"), alt: t("progress.alt.grafana"), tag: "LIVE · MONITORING", w: 1600, h: 909, wide: false },
+    { src: chatLogin, caption: t("progress.chatCaption"), alt: t("progress.alt.chat"), tag: "LIVE · CHAT", w: 1600, h: 1000, wide: false },
   ];
 
   return (
@@ -57,13 +57,13 @@ export function ProgressShowcase() {
               <TiltPanel className="border-glow relative overflow-hidden rounded-2xl border border-border" maxTiltX={4} maxTiltY={5}>
                 <img
                   src={photo.src}
-                  alt={photo.caption}
+                  alt={photo.alt}
                   loading="lazy"
                   width={photo.w}
                   height={photo.h}
                   className="block aspect-[16/10] h-auto w-full object-cover"
                 />
-                <span className="absolute top-3 left-3 flex items-center gap-1.5 rounded-sm bg-background/75 px-2 py-1 font-mono text-[0.6rem] tracking-widest text-primary backdrop-blur-sm">
+                <span aria-hidden="true" className="absolute top-3 left-3 flex items-center gap-1.5 rounded-sm bg-background/75 px-2 py-1 font-mono text-[0.6rem] tracking-widest text-primary backdrop-blur-sm">
                   <span className="animate-rec-blink size-1.5 rounded-full bg-[var(--hud-red)]" />
                   {photo.tag}
                 </span>

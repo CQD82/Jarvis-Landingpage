@@ -597,7 +597,12 @@
       }
     ],
     "counter": "Fonctions de base en service : {{done}} / {{total}}",
-    "counterNote": "Ce compteur porte sur le socle permanent du cluster. Les nouveautés depuis la mise en service sont listées séparément plus bas."
+    "counterNote": "Ce compteur porte sur le socle permanent du cluster. Les nouveautés depuis la mise en service sont listées séparément plus bas.",
+    "alt": {
+      "hud": "Capture de l’HUD de l’écran mural, détails pixelisés",
+      "grafana": "Photo du tableau de supervision, noms des nœuds pixelisés",
+      "chat": "Capture de la page de connexion du chat IA local"
+    }
   },
   "footer": {
     "profileLink": "Profil {{name}} de Marcus Kollosch-Psyllou (s'ouvre dans un nouvel onglet)",
@@ -782,6 +787,12 @@
           }
         ]
       }
-    ]
+    ],
+    "alt": {
+      "hud": "Capture du nouvel HUD kiosque, détails pixelisés",
+      "comfy": "Image de test générée localement : une salle de contrôle futuriste"
+    },
+    "expandAll": "Tout déplier",
+    "collapseAll": "Tout replier"
   }
 }

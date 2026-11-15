@@ -597,7 +597,12 @@
       }
     ],
     "counter": "Kernfunktionen im Betrieb: {{done}} / {{total}}",
-    "counterNote": "Gezählt wird der dauerhafte Kern des Clusters. Die Neuerungen seit dem Go-Live sind weiter unten separat aufgeführt."
+    "counterNote": "Gezählt wird der dauerhafte Kern des Clusters. Die Neuerungen seit dem Go-Live sind weiter unten separat aufgeführt.",
+    "alt": {
+      "hud": "Screenshot des Raumdisplay-HUD mit verpixelten Details",
+      "grafana": "Foto des Monitoring-Dashboards mit verpixelten Node-Namen",
+      "chat": "Screenshot der Anmeldeseite des lokalen KI-Chats"
+    }
   },
   "footer": {
     "profileLink": "{{name}}-Profil von Marcus Kollosch-Psyllou (öffnet in neuem Tab)",
@@ -782,6 +787,12 @@
           }
         ]
       }
-    ]
+    ],
+    "alt": {
+      "hud": "Screenshot des neuen Kiosk-HUD mit verpixelten Details",
+      "comfy": "Lokal erzeugtes Testbild: futuristischer Kontrollraum"
+    },
+    "expandAll": "Alle aufklappen",
+    "collapseAll": "Alle zuklappen"
   }
 }

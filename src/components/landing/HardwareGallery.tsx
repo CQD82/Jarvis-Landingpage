@@ -104,7 +104,7 @@ export function HardwareGallery() {
                 CAM-{String(i + 1).padStart(2, "0")}
               </div>
               <div className="absolute inset-x-0 bottom-0 translate-y-1 bg-gradient-to-t from-background/95 via-background/60 to-transparent p-3 pt-10 opacity-90 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 sm:p-4 sm:pt-12">
-                <p className="line-clamp-3 text-[0.7rem] leading-snug text-foreground/90 sm:text-xs">
+                <p aria-hidden="true" className="line-clamp-3 text-[0.7rem] leading-snug text-foreground/90 sm:text-xs">
                   {t(`gallery.captions.${photo.captionKey}`)}
                 </p>
               </div>
