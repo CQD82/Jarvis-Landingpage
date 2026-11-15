@@ -10,16 +10,19 @@ import { useTranslation } from "react-i18next";
 const EVENTS: { tag: string; msg: string }[] = [
   { tag: "flux", msg: "reconciled kustomization apps-ai · 0 drift" },
   { tag: "tetragon", msg: "policy bifrost-runtime enforced · 0 violations" },
-  { tag: "cilium", msg: "wireguard mesh healthy · 18/18 peers" },
+  { tag: "cilium", msg: "wireguard mesh healthy · 17/17 peers" },
   { tag: "kyverno", msg: "admission: image signature verified (cosign)" },
   { tag: "bifrost", msg: "route jarvis-chat → gpu tier · 42 ms" },
   { tag: "llama-swap", msg: "model warm · context 64k" },
-  { tag: "vision", msg: "known face tracked · ptz locked" },
+  { tag: "vision", msg: "presence: someone in room · no image stored" },
   { tag: "velero", msg: "nightly backup verified · restore test ok" },
   { tag: "falco", msg: "runtime scan clean · 0 alerts" },
   { tag: "renovate", msg: "opened PR: chore(deps) minor updates" },
   { tag: "hailo", msg: "edge intent classified in 9 ms" },
   { tag: "kured", msg: "no reboot required · kernel current" },
+  { tag: "promptfoo", msg: "weekly model eval · 32/32 passed" },
+  { tag: "power", msg: "cluster draw 196 W (measured)" },
+  { tag: "z840", msg: "room empty · gpu idle → night shutdown, wol armed" },
 ];
 
 const MAX_LINES = 6;

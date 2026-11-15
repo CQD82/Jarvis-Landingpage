@@ -36,7 +36,7 @@
       "label": "Nodes im Cluster"
     },
     {
-      "value": "~270",
+      "value": "~300",
       "label": "Pods im Betrieb"
     },
     {
@@ -100,11 +100,11 @@
       },
       {
         "title": "Vollständig lokale KI-Inferenz",
-        "description": "Anfragen laufen über gestaffelte Hardware-Stufen — von Hailo-NPUs an den Pis über eine CPU-Reserve bis zur RTX-5060-Ti-Workstation. Kein Modellaufruf verlässt das Haus."
+        "description": "Anfragen laufen über gestaffelte Hardware-Stufen — von Hailo-NPUs an den Pis über eine CPU-Reserve bis zur RTX-5060-Ti-Workstation. Kein Modellaufruf verlässt das Haus. Schläft die GPU, übernimmt automatisch ein Notbetrieb mit kleineren Modellen."
       },
       {
-        "title": "Vision-Tracker (in Vorbereitung)",
-        "description": "Geplant: Personenerkennung mit Kameraverfolgung über die Konferenzkamera. Verarbeitung vollständig lokal, gespeichert werden ausschließlich Embeddings enrollter Personen — nie Rohbilder."
+        "title": "Vision-Tracker (teilweise in Betrieb)",
+        "description": "Die Anwesenheitserkennung läuft bereits: Eine Kamera mit lokaler NPU meldet nur „jemand da / niemand da“, gespeichert wird kein Bild. Als Nächstes soll die Kamera der Person per Schwenken, Neigen und Zoom folgen — weiterhin vollständig lokal."
       },
       {
         "title": "Faktentreuer Sprachassistent & HUD",
@@ -124,7 +124,7 @@
       },
       {
         "title": "Backup, DR & Observability",
-        "description": "Tägliche Cluster-Backups und etcd-Snapshots in einen eigenen S3-Speicher, getestete Restore-Pfade, durchgehendes Monitoring mit Alarmen über Nodes, Workloads, GPU und Netzwerk."
+        "description": "Tägliche Cluster-Backups und etcd-Snapshots in einen eigenen S3-Speicher, getestete Restore-Pfade, durchgehendes Monitoring mit Alarmen über Nodes, Workloads, GPU und Netzwerk. Ein externer Wächter prüft den Cluster zusätzlich von außen, und jeden Montag fasst ein Wochenbericht Backups, Alarme, Sicherheit und Energie zusammen."
       },
       {
         "title": "Heimautomation & Medien",
@@ -169,17 +169,17 @@
       {
         "tier": "Edge / NPU",
         "hardware": "4× Raspberry Pi 5 mit Hailo-10H",
-        "role": "Kleine Sprachmodelle bis 4 B Parameter"
+        "role": "Kleine Sprachmodelle bis 4 B Parameter; im Notbetrieb das Reservemodell für den Dialog"
       },
       {
         "tier": "CPU-Reserve",
         "hardware": "ODROID-H5",
-        "role": "Kompaktes Modell als Ausweichstufe"
+        "role": "Notreserve-Modell sowie Spracherkennung und -ausgabe, wenn die GPU schläft"
       },
       {
         "tier": "GPU-Tier",
         "hardware": "Workstation mit RTX 5060 Ti (16 GB)",
-        "role": "Sprachassistent (gpt-oss-20b) und Reasoning-Modell"
+        "role": "Sprachassistent (gpt-oss-20b), Code-Assistenten (Devstral Small 2, Qwen2.5-Coder), Qwen3 14B, gründlicher Denk-Modus und Bildgenerierung (SDXL)"
       },
       {
         "tier": "Sprache",
@@ -453,7 +453,7 @@
       },
       {
         "name": "GPU-Tier",
-        "role": "HP Z840 mit RTX 5060 Ti — hält das Sprachmodell dauerhaft geladen und antwortet in ein bis zwei Sekunden."
+        "role": "HP Z840 mit RTX 5060 Ti — hält tagsüber das Sprachmodell geladen und antwortet in ein bis zwei Sekunden; nachts schläft sie und wird per Wake-on-LAN geweckt."
       },
       {
         "name": "CPU-Tier",
@@ -490,7 +490,7 @@
       },
       {
         "q": "Wie viel Strom verbraucht das Rack?",
-        "a": "Aktuell rund zweihundertsiebzig Watt. Die GPU-Workstation hält das Sprachmodell geladen, damit ich schnell antworten kann."
+        "a": "Gerade rund hundertsechsundneunzig Watt, gemessen — etwa vierzig Euro im Monat. Nachts schaltet sich die GPU-Workstation ab, wenn niemand im Raum ist."
       }
     ]
   },
