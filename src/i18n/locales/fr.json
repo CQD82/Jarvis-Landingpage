@@ -25,7 +25,7 @@
   "statusTicker": [
     "LIAISON NEURONALE : STABLE",
     "18/18 NŒUDS EN LIGNE",
-    "RÉPONSE VOCALE : ~1–2 S",
+    "PREMIÈRE PHRASE : ~0,7 S",
     "WIREGUARD STRICT : ACTIF",
     "GITOPS : SYNCHRONISÉ",
     "IA CLOUD : AUCUNE"
@@ -108,7 +108,7 @@
       },
       {
         "title": "Assistant vocal fondé sur des sources & HUD",
-        "description": "« Hey Jarvis » : mot d’éveil sur l’appareil, reconnaissance vocale et modèle de langage sur le GPU, voix britannique. Les questions de connaissance ne reçoivent que des réponses tirées de sources (Wikipédia hors ligne, actualités) avec vérification automatique — en une à deux secondes environ. Un HUD holographique affiche résultats, météo, médias et état du système."
+        "description": "« Hey Jarvis » : mot d’éveil sur l’appareil, reconnaissance vocale et modèle de langage sur le GPU, voix britannique. La première phrase est prononcée en 0,7 seconde environ en moyenne. Les questions de connaissance ne reçoivent que des réponses tirées de sources — 21 ouvrages de référence hors ligne et l’actualité — avec vérification automatique, et les questions de suivi sont comprises dans leur contexte. Un HUD holographique affiche résultats, météo, médias et état du système."
       },
       {
         "title": "Segmentation réseau zero trust",
@@ -189,7 +189,7 @@
       {
         "tier": "Connaissances",
         "hardware": "Stockage local",
-        "role": "Wikipédia hors ligne (45 Go) et métamoteur comme sources"
+        "role": "21 ouvrages de référence hors ligne (dont la Wikipédia allemande), une base de connaissances apprenante et un métamoteur comme sources"
       },
       {
         "tier": "Cloud",
@@ -297,11 +297,11 @@
     "items": [
       {
         "title": "Le parcours d’une requête vocale",
-        "body": "Le mot d’éveil « Hey Jarvis » est détecté directement sur le terminal vocal. L’enregistrement part vers Whisper sur le GPU (moins d’une demi-seconde), puis Home Assistant décide : les commandes simples — lumière, chauffage, heure, météo — sont traitées immédiatement sans modèle de langage. Le reste va au modèle local, qui peut utiliser des outils : recherche web, Wikipédia, météo, médias, itinéraires. Kokoro prononce la réponse phrase par phrase : la première est déjà audible pendant que la suite est calculée."
+        "body": "Le mot d’éveil « Hey Jarvis » est détecté directement sur le terminal vocal. L’enregistrement part vers Whisper sur le GPU (moins d’une demi-seconde), puis Home Assistant décide : les commandes simples — lumière, chauffage, heure, météo — sont traitées immédiatement sans modèle de langage. Le reste va au modèle local, qui peut utiliser des outils : recherche web, Wikipédia, météo, médias, itinéraires. Kokoro prononce la réponse phrase par phrase : la première est déjà audible pendant que la suite est calculée. En moyenne, la première phrase se fait entendre après 0,7 seconde environ."
       },
       {
         "title": "Des faits vérifiés plutôt que des hallucinations",
-        "body": "Pour les questions de connaissance et d’actualité, Jarvis ne répond pas de mémoire. Il consulte d’abord une copie hors ligne complète de Wikipédia en allemand ou un métamoteur auto-hébergé, puis formule la réponse uniquement à partir de ces sources. Chaque nombre et chaque date sont vérifiés ; s’il manque une preuve, une seconde vérification plus stricte s’exécute. Sans résultat, Jarvis le dit franchement."
+        "body": "Pour les questions de connaissance et d’actualité, Jarvis ne répond pas de mémoire. Il cherche d’abord — dans 21 ouvrages de référence hors ligne, de la Wikipédia allemande à la documentation technique, dans sa propre base de connaissances ou via un métamoteur auto-hébergé — et formule la réponse uniquement à partir de ces sources. Chiffres, dates et noms sont vérifiés ; les questions difficiles en plusieurs étapes passent par une boucle de recherche dédiée. Sans preuve, Jarvis le dit honnêtement. Ce qui lui manquait est approfondi chaque jour par un service d’apprentissage — seul ce qui est sourcé est retenu."
       },
       {
         "title": "Domotique & n8n",
@@ -453,7 +453,7 @@
       },
       {
         "name": "Niveau GPU",
-        "role": "HP Z840 avec RTX 5060 Ti — garde le modèle de langage chargé en journée et répond en une à deux secondes ; la nuit, elle dort et se réveille par Wake-on-LAN."
+        "role": "HP Z840 avec RTX 5060 Ti — garde le modèle de langage chargé en journée, première phrase en 0,7 seconde environ ; la nuit, elle dort et se réveille par Wake-on-LAN."
       },
       {
         "name": "Niveau CPU",
@@ -531,7 +531,7 @@
       },
       {
         "title": "Assistant vocal fondé sur des sources",
-        "desc": "« Hey Jarvis » répond en une à deux secondes — questions de connaissance uniquement à partir de sources vérifiées."
+        "desc": "« Hey Jarvis » prononce sa première phrase en 0,7 seconde environ — réponses de savoir uniquement sourcées."
       },
       {
         "title": "Assurance qualité automatique",
@@ -593,7 +593,7 @@
       },
       {
         "title": "Génération d’images avec FLUX.1",
-        "desc": "Stable Diffusion XL tourne déjà en local ; le modèle FLUX.1, plus grand, est la prochaine étape."
+        "desc": "Stable Diffusion XL tourne en local ; FLUX.1 est préparé en variante quantifiée pour 16 Go — il manque encore une dernière pièce."
       }
     ],
     "counter": "Fonctions de base en service : {{done}} / {{total}}",
@@ -613,16 +613,18 @@
   "updates": {
     "eyebrow": "Nouveau depuis la mise en service",
     "title": "Ce qui a été ajouté depuis le 10 novembre",
-    "description": "Une semaine en production, une trentaine de nouvelles fonctions — tout en local, sans IA cloud. Voici l’état des lieux.",
+    "description": "Une semaine en production, près de 50 nouveautés — tout en local, sans IA cloud. Voici l’état au 15 novembre.",
     "counter": "{{live}} nouveautés sur {{total}} déjà en service — un décompte distinct, en plus des fonctions de base ci-dessus",
     "hudCaption": "Le nouvel HUD kiosque : état du cluster, mesure réelle de la consommation avec coût, météo, sauvegardes et GPU en un coup d’œil. Noms des nœuds et des pièces, station météo et présence sont pixelisés.",
-    "comfyCaption": "Généré entièrement en local : image de test de la nouvelle génération d’images — Stable Diffusion XL sur notre propre GPU, environ 36 secondes.",
+    "comfyCaption": "Généré entièrement en local : image de test de la génération d’images — Stable Diffusion XL sur notre propre GPU, désormais en 16 secondes environ.",
     "note": "Les autres interfaces sont protégées par une connexion à deux facteurs et ne sont volontairement pas montrées ici.",
     "status": {
       "live": "actif",
       "ready": "prêt",
       "wip": "en cours",
-      "planned": "prévu"
+      "planned": "prévu",
+      "done": "terminé",
+      "fixed": "corrigé"
     },
     "groups": [
       {
@@ -631,7 +633,32 @@
           {
             "title": "Mode secours sans serveur GPU",
             "status": "live",
-            "desc": "Nouveau : sans GPU, de petits modèles de réserve prennent le relais (Qwen3 4B sur la réserve CPU, Qwen3 1.7B sur le NPU edge) ; arrêt, lecture et blagues se passent de modèle, les réponses de savoir restent sourcées."
+            "desc": "Si le serveur GPU est éteint, de plus petits modèles de réserve continuent de répondre — sur la réserve CPU et, en dernier recours, chargé en permanence sur le NPU edge. Arrêt, lecture et blagues se passent de modèle."
+          },
+          {
+            "title": "Questions de suivi",
+            "status": "live",
+            "desc": "« Qui était Einstein ? » – « Où est-il mort ? » JARVIS résout les références comme « il » ou « cette ville » à partir de la conversation avant de chercher."
+          },
+          {
+            "title": "Boucle de recherche pour les questions difficiles",
+            "status": "live",
+            "desc": "Pour les questions en plusieurs étapes, les comparaisons ou les explications, JARVIS planifie lui-même ses recherches et vérifie le résultat — en 2 à 4 secondes. Par exemple : quel fleuve traverse la ville natale de Mozart ?"
+          },
+          {
+            "title": "Calcul exact",
+            "status": "live",
+            "desc": "Les calculs et conversions sont effectués exactement, pas estimés."
+          },
+          {
+            "title": "Mémoire",
+            "status": "live",
+            "desc": "« Retiens que … », « oublie … », « que sais-tu de moi ? » — ce qui est retenu alimente les réponses pertinentes, même en mode secours."
+          },
+          {
+            "title": "Fidélité aux faits renforcée",
+            "status": "live",
+            "desc": "Chiffres, dates et noms doivent figurer dans les sources, les années exactement. Sans preuve, JARVIS dit honnêtement qu’il n’a pas de source fiable — les personnes inventées restent inventées."
           },
           {
             "title": "Mode silencieux",
@@ -641,52 +668,73 @@
           {
             "title": "Bilan vocal",
             "status": "live",
-            "desc": "« Comment va le cluster ? » ou « Quelle est la situation de sécurité ? » — avec consommation, températures des disques et alertes ouvertes."
-          },
-          {
-            "title": "Test qualité automatique",
-            "status": "live",
-            "desc": "Nouveau : 31 cas de test dont un exercice de mode secours sans GPU, résultats en métriques avec alerte — dernier passage : 31 sur 31."
+            "desc": "Cluster, consommation, températures des disques et alertes de sécurité ouvertes sur demande."
           }
         ]
+      },
+      {
+        "title": "Savoir & apprentissage",
+        "items": [
+          {
+            "title": "21 ouvrages de référence hors ligne",
+            "status": "live",
+            "desc": "Outre la Wikipédia allemande : dictionnaire, guides de voyage, citations, manuels, guides de réparation, documentation Linux et développeur ainsi que des archives questions-réponses. JARVIS choisit lui-même l’ouvrage adapté."
+          },
+          {
+            "title": "Recherche plus rapide",
+            "status": "live",
+            "desc": "Nouveaux sujets en 0,12 s en moyenne au lieu de jusqu’à 2 s ; les fiches (superficie, population, altitude) sont lues aussi."
+          },
+          {
+            "title": "Boucle d’apprentissage sans entraînement manuel",
+            "status": "live",
+            "desc": "S’il manque une source ou si l’utilisateur corrige JARVIS, un service d’apprentissage approfondit le cas chaque jour. Seules les réponses sourcées aux chiffres vérifiés entrent dans la base de connaissances — les corrections sont vérifiées, pas reprises aveuglément."
+          },
+          {
+            "title": "Rien n’est oublié",
+            "status": "live",
+            "desc": "Tout ce qui est appris est revérifié par le test qualité nocturne ; le rapport hebdomadaire montre problèmes, acquis et points ouverts."
+          }
+        ],
+        "note": "Volontairement pas d’entraînement des poids : le fine-tuning enseigne le style, pas des faits fiables, et peut effacer l’acquis. Un savoir sourcé et consultable est plus sûr — les données pour un futur fine-tuning sont tout de même collectées."
       },
       {
         "title": "IA & modèles",
         "items": [
           {
-            "title": "Nouveaux modèles locaux",
+            "title": "Comparaison chiffrée des modèles",
+            "status": "done",
+            "desc": "Des modèles plus récents (Qwen3.8 27B, Gemma 4 26B, Qwen3.6 35B) ont été testés face au gpt-oss 20B en service. Résultat : le modèle actuel reste — le plus rapide et avec le plus de réponses réussies."
+          },
+          {
+            "title": "Test qualité de 90 questions",
             "status": "live",
-            "desc": "Assistant de code (Devstral Small 2), Qwen2.5-Coder, Qwen3 14B et un mode de réflexion approfondie — tout sur notre RTX 5060 Ti."
+            "desc": "Chaque nuit, 90 questions dans huit catégories — du savoir et des questions difficiles au mode secours et aux acquis ; dernier passage : 89 sur 90."
           },
           {
             "title": "Comparaison de modèles (Promptfoo)",
             "status": "live",
-            "desc": "Compare chaque semaine tous les modèles JARVIS sur des questions en allemand — actuellement 32 tests sur 32 réussis."
+            "desc": "Comparaison hebdomadaire et automatique de tous les modèles sur des questions en allemand."
           },
           {
             "title": "Traçage LLM (Langfuse)",
             "status": "live",
-            "desc": "Enregistre chaque requête IA avec temps de réponse et tokens consommés pour mesurer les progrès."
+            "desc": "Chaque requête IA avec temps de réponse et tokens consommés — pour mesurer les progrès."
           },
           {
-            "title": "Labo IA (JupyterLab + MLflow)",
+            "title": "Labo IA (JupyterLab, MLflow, Unsloth)",
             "status": "live",
-            "desc": "Environnement d’expérimentation avec GPU ; entraînements et versions de modèles sont journalisés."
-          },
-          {
-            "title": "Fine-tuning (Unsloth)",
-            "status": "ready",
-            "desc": "Réentraîner de petits modèles sur nos propres exemples (LoRA, 4 bits) et les fournir directement à JARVIS."
+            "desc": "Environnement d’expérimentation GPU avec fine-tuning ; un service d’entretien vide les caches et signale l’inutilisé dans le rapport hebdomadaire au lieu de le supprimer."
           },
           {
             "title": "Génération d’images (ComfyUI)",
             "status": "live",
-            "desc": "Génération d’images locale sur GPU : Stable Diffusion XL en 36 secondes environ par image ; FLUX.1 suit."
+            "desc": "SDXL en 16 secondes environ au lieu de 36. Modèle de langage et génération d’images se partagent le GPU automatiquement — la première réponse après une image arrive en 1 seconde au lieu de 6."
           },
           {
             "title": "Conversion de documents (Docling)",
             "status": "live",
-            "desc": "Transforme PDF, fichiers Office et images, tableaux compris, en texte structuré pour la recherche documentaire."
+            "desc": "PDF, fichiers Office et images, tableaux compris, deviennent du texte structuré — désormais aussi directement dans le chat pour les fichiers envoyés."
           },
           {
             "title": "Annotation (Label Studio)",
@@ -696,7 +744,7 @@
           {
             "title": "Analyse caméra (Frigate)",
             "status": "live",
-            "desc": "Détecte personnes et animaux dans l’image et n’enregistre que des événements — entièrement local, réseau domestique uniquement."
+            "desc": "Détecte personnes et animaux et n’enregistre que des événements — entièrement local, réseau domestique uniquement."
           }
         ]
       },
@@ -706,22 +754,22 @@
           {
             "title": "Extinction nocturne du serveur GPU",
             "status": "live",
-            "desc": "Nouveau : extinction dès que personne n’est dans la pièce et que le GPU est inactif ; réveil à l’entrée dans la pièce ou à la voix, le mode secours couvre le démarrage."
+            "desc": "Extinction dès que personne n’est dans la pièce et que le GPU est inactif ; réveil à l’entrée dans la pièce ou à la voix, le mode secours couvre le démarrage."
           },
           {
             "title": "Mesure réelle de la consommation",
             "status": "live",
-            "desc": "Consommation mesurée par appareil au lieu d’être estimée, avec kWh totaux et coût dans les tableaux de bord et sur l’HUD kiosque."
+            "desc": "Consommation par appareil mesurée au lieu d’être estimée, avec kWh totaux et coût dans les tableaux de bord et sur l’HUD kiosque."
           },
           {
             "title": "Santé des disques",
             "status": "live",
-            "desc": "Température, usure et bridage de tous les SSD et NVMe contrôlés chaque minute, avec seuils et alertes."
+            "desc": "Température, usure et bridage de tous les SSD et NVMe chaque minute, avec seuils et alertes."
           },
           {
             "title": "Rapport hebdomadaire",
             "status": "live",
-            "desc": "Chaque lundi, un résumé automatique : sauvegardes, alertes, sécurité, énergie et disques."
+            "desc": "Chaque lundi : sauvegardes, alertes, sécurité, énergie, disques — désormais avec les sections « Labo IA » et « Apprentissage »."
           },
           {
             "title": "Veilleur externe avec homme mort",
@@ -732,6 +780,36 @@
             "title": "Correctifs automatiques",
             "status": "live",
             "desc": "Tous les nœuds sont mis à jour et redémarrés l’un après l’autre — sans interruption."
+          },
+          {
+            "title": "Sauvegarde aussi pour le serveur GPU",
+            "status": "live",
+            "desc": "Les données locales du serveur GPU sont sauvegardées automatiquement dès qu’il fonctionne."
+          },
+          {
+            "title": "Seconde sauvegarde sur un disque séparé",
+            "desc": "Toutes les sauvegardes et les données locales du serveur GPU sont en plus copiées sur un disque dédié et vérifiées par somme de contrôle ; une restauration de test a réussi.",
+            "status": "live"
+          },
+          {
+            "title": "Exploitation plus propre",
+            "status": "live",
+            "desc": "Les tâches terminées disparaissent après trois jours, la maintenance des sauvegardes ne garde que le dernier passage."
+          },
+          {
+            "title": "Tableau de bord « Services »",
+            "status": "live",
+            "desc": "Mail, caméra et requêtes IA en un coup d’œil."
+          },
+          {
+            "title": "Maintenance automatisée",
+            "desc": "Une tâche hebdomadaire vérifie les nouvelles versions des ouvrages de référence — avec somme de contrôle et 14 jours d’attente — et signale les étapes de maintenance dues ; les résultats figurent dans le rapport hebdomadaire.",
+            "status": "live"
+          },
+          {
+            "title": "Plus de stockage dans le cluster",
+            "status": "live",
+            "desc": "Un disque jusqu’ici inutilisé sert désormais de stockage au cluster ; les ouvrages de référence y sont stockés localement."
           }
         ]
       },
@@ -741,17 +819,22 @@
           {
             "title": "Veille des vulnérabilités",
             "status": "live",
-            "desc": "Compare plusieurs fois par jour toutes les versions logicielles avec les failles connues — actuellement un seul constat de faible gravité."
+            "desc": "Compare plusieurs fois par jour tous les services avec les failles connues, avec des alertes dédiées pour mail, caméra et stockage."
+          },
+          {
+            "title": "Authentification unique à deux facteurs",
+            "status": "live",
+            "desc": "Documents, photos et traçage LLM ne sont accessibles que via la connexion centrale avec second facteur."
           },
           {
             "title": "Gestionnaire de mots de passe (Vaultwarden)",
             "status": "live",
-            "desc": "Notre propre gestionnaire compatible Bitwarden ; tous les accès du cluster y sont chiffrés."
+            "desc": "Notre gestionnaire compatible Bitwarden ; tous les accès y sont chiffrés."
           },
           {
             "title": "Serveur mail + webmail",
             "status": "live",
-            "desc": "Messagerie sur notre propre domaine, indépendante des grands fournisseurs, avec antispam et DKIM/SPF/DMARC."
+            "desc": "Messagerie sur notre propre domaine avec antispam et DKIM/SPF/DMARC, désormais avec plusieurs boîtes."
           },
           {
             "title": "Second canal d’alerte (ntfy)",
@@ -771,10 +854,40 @@
         ]
       },
       {
+        "title": "Problèmes résolus",
+        "items": [
+          {
+            "title": "Blocages jusqu’à une minute",
+            "status": "fixed",
+            "desc": "Un format de réponse refusé par le serveur provoquait des boucles de nouvelles tentatives ; en interne, JARVIS utilise désormais un format simple ligne par ligne."
+          },
+          {
+            "title": "Recherche de lieux lente",
+            "status": "fixed",
+            "desc": "Jusqu’à 76 secondes à cause d’un service de cartes public surchargé — désormais environ 5 secondes grâce à un service de repli, un cache et un préchargement nocturne."
+          },
+          {
+            "title": "Faits obsolètes",
+            "status": "fixed",
+            "desc": "Les noms doivent désormais être sourcés comme les chiffres ; les fonctions sont recherchées via la fonction et non via une personne."
+          },
+          {
+            "title": "Démarrage lent",
+            "status": "fixed",
+            "desc": "Les premières commandes vocales après le démarrage prenaient jusqu’à 15 secondes ; reconnaissance vocale et modèle de langage sont désormais préchauffés."
+          }
+        ]
+      },
+      {
         "title": "Prochaines étapes",
         "items": [
           {
-            "title": "Sauvegarde externe chiffrée",
+            "title": "Finaliser FLUX.1",
+            "status": "wip",
+            "desc": "Préparé en variante quantifiée qui tient dans 16 Go — il manque encore une dernière pièce."
+          },
+          {
+            "title": "Externalisation de la sauvegarde hors site",
             "status": "planned"
           },
           {
@@ -793,6 +906,29 @@
       "comfy": "Image de test générée localement : une salle de contrôle futuriste"
     },
     "expandAll": "Tout déplier",
-    "collapseAll": "Tout replier"
+    "collapseAll": "Tout replier",
+    "metricsTitle": "Mesures",
+    "metrics": [
+      {
+        "value": "89/90",
+        "label": "Test qualité (90 questions)"
+      },
+      {
+        "value": "47/47",
+        "label": "Test comparatif exigeant"
+      },
+      {
+        "value": "~0,7 s",
+        "label": "Première phrase prononcée"
+      },
+      {
+        "value": "0,2 s",
+        "label": "Reconnaissance vocale"
+      },
+      {
+        "value": "0,12 s",
+        "label": "Recherche d’un nouveau sujet"
+      }
+    ]
   }
 }
