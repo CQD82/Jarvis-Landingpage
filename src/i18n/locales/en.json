@@ -534,12 +534,12 @@
         "desc": "“Hey Jarvis” answers in one to two seconds — knowledge questions only from cited sources."
       },
       {
-        "title": "Nightly quality test",
-        "desc": "Every night JARVIS automatically answers a fixed question set — facts, honesty, response time — and also rehearses fallback mode without the GPU. Deviations raise an alert."
+        "title": "Automated quality assurance",
+        "desc": "JARVIS is continuously checked against fixed test questions; deviations raise an alert."
       },
       {
-        "title": "Fallback mode without GPU",
-        "desc": "If the GPU workstation is off or asleep, JARVIS keeps answering — shorter and a little slower via the CPU reserve and edge NPU, without making up actions. As soon as the GPU is back, it switches over automatically."
+        "title": "Fail-safe voice",
+        "desc": "Even if the GPU tier fails or is asleep, JARVIS stays responsive."
       },
       {
         "title": "Offline knowledge",
@@ -578,8 +578,8 @@
         "desc": "Local person detection on an NPU reports only “someone there / nobody there” — no image is stored. Greeting, display power-off and proactive announcements build on it."
       },
       {
-        "title": "Night shutdown & Wake-on-LAN",
-        "desc": "The GPU workstation sleeps at night when nobody is around and is woken automatically when needed."
+        "title": "On-demand GPU tier",
+        "desc": "The GPU workstation only runs when it is needed and is woken automatically on demand."
       },
       {
         "title": "Go-live",
@@ -595,7 +595,14 @@
         "title": "Image generation with FLUX.1",
         "desc": "Stable Diffusion XL already runs locally; the larger FLUX.1 model is next."
       }
-    ]
+    ],
+    "counter": "Core functions in production: {{done}} / {{total}}",
+    "counterNote": "This counts the permanent core of the cluster. Features added since go-live are listed separately further down.",
+    "alt": {
+      "hud": "Screenshot of the room-display HUD with details pixelated",
+      "grafana": "Photo of the monitoring dashboard with node names pixelated",
+      "chat": "Screenshot of the local AI chat sign-in page"
+    }
   },
   "footer": {
     "profileLink": "Marcus Kollosch-Psyllou on {{name}} (opens in a new tab)",
@@ -607,7 +614,7 @@
     "eyebrow": "New since go-live",
     "title": "What has been added since 10 November",
     "description": "One week in production, around 30 new features — all local, no cloud AI. Here is where things stand.",
-    "counter": "{{live}} of {{total}} already running",
+    "counter": "{{live}} of {{total}} new features already running — a separate count, on top of the core functions above",
     "hudCaption": "The new kiosk HUD: cluster state, real power measurement with cost, weather, backups and GPU at a glance. Node and room names, the weather station and presence are pixelated.",
     "comfyCaption": "Generated entirely locally: a test image from the new image generation — Stable Diffusion XL on our own GPU, about 36 seconds.",
     "note": "Further interfaces sit behind a two-factor sign-in and are deliberately not shown here.",
@@ -624,7 +631,7 @@
           {
             "title": "Fallback mode without the GPU server",
             "status": "live",
-            "desc": "If the GPU server is off, JARVIS automatically keeps answering with a smaller model — voice and control stay available."
+            "desc": "New: without the GPU, small reserve models take over (Qwen3 4B on the CPU reserve, Qwen3 1.7B on the edge NPU); stop, playback and jokes need no model at all, and knowledge answers stay sourced."
           },
           {
             "title": "Mute mode",
@@ -639,7 +646,7 @@
           {
             "title": "Automatic quality test",
             "status": "live",
-            "desc": "Regularly checks answers against a fixed set of test questions and raises an alert on deviations."
+            "desc": "New: 31 test cases including a fallback drill without the GPU, results as metrics with alerting — most recently 31 of 31 passed."
           }
         ]
       },
@@ -699,7 +706,7 @@
           {
             "title": "Night shutdown of the GPU server",
             "status": "live",
-            "desc": "Switches it off automatically at night when nobody is in the room and the GPU is idle; it wakes via Wake-on-LAN, also by voice."
+            "desc": "New: switches off once nobody is in the room and the GPU is idle; wakes when someone enters or by voice, with fallback mode bridging the start-up."
           },
           {
             "title": "Real power measurement",
@@ -780,6 +787,12 @@
           }
         ]
       }
-    ]
+    ],
+    "alt": {
+      "hud": "Screenshot of the new kiosk HUD with details pixelated",
+      "comfy": "Locally generated test image: a futuristic control room"
+    },
+    "expandAll": "Expand all",
+    "collapseAll": "Collapse all"
   }
 }

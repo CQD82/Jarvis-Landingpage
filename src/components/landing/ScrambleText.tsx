@@ -13,7 +13,8 @@ interface ScrambleTextProps {
 /**
  * HUD-style "decoding" text: characters resolve left to right from random
  * glyphs once the element scrolls into view. Screen readers get the final
- * text immediately; the animated glyphs are aria-hidden. Static under
+ * text immediately; the animated glyphs are aria-hidden and unselectable,
+ * so copying the heading yields the text once. Static under
  * prefers-reduced-motion.
  */
 export function ScrambleText({ text, className, duration = 900 }: ScrambleTextProps) {
@@ -47,7 +48,7 @@ export function ScrambleText({ text, className, duration = 900 }: ScrambleTextPr
   return (
     <span ref={ref} className={className}>
       <span className="sr-only">{text}</span>
-      <span aria-hidden="true">{display}</span>
+      <span aria-hidden="true" className="select-none">{display}</span>
     </span>
   );
 }

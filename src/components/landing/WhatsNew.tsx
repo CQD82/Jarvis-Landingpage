@@ -1,6 +1,7 @@
 import type { CSSProperties } from "react";
+import { useState } from "react";
 import type { LucideIcon } from "lucide-react";
-import { Activity, BrainCircuit, CalendarClock, Mic, ShieldCheck } from "lucide-react";
+import { Activity, BrainCircuit, CalendarClock, ChevronDown, Mic, ShieldCheck } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import comfySample from "@/assets/screens/comfyui-sample.webp";
 import hudKiosk from "@/assets/screens/hud-kiosk-v2.webp";
@@ -25,23 +26,37 @@ interface Group {
 /** Matches updates.groups in the locale files. */
 const GROUP_ICONS: LucideIcon[] = [Mic, BrainCircuit, Activity, ShieldCheck, CalendarClock];
 
-const STATUS_STYLE: Record<Status, string> = {
+const STATUS_BADGE: Record<Status, string> = {
   live: "border-[var(--hud-reactor)]/50 bg-[var(--hud-reactor)]/10 text-[var(--hud-reactor)]",
   ready: "border-primary/50 bg-primary/10 text-primary",
   wip: "border-primary/40 bg-primary/5 text-primary/90",
   planned: "border-border bg-muted/40 text-muted-foreground",
 };
 
+const STATUS_DOT: Record<Status, string> = {
+  live: "bg-[var(--hud-reactor)] shadow-[0_0_6px_var(--hud-reactor)]",
+  ready: "bg-primary",
+  wip: "bg-primary/70",
+  planned: "bg-muted-foreground/50",
+};
+
 /**
- * "New since go-live": everything added after 10 Nov 2026, grouped, with a
- * status badge per item and two real screenshots (kiosk HUD with names and
- * presence pixelated, and a locally generated test image). High level only.
+ * "New since go-live": everything added after 10 Nov 2026. Each category is
+ * a native <details> card — collapsed it shows a compact, scannable list of
+ * names with a status dot; expanded it adds the one-line descriptions.
+ * Two real screenshots sit above (names, weather, backups and presence
+ * pixelated). High level only.
  */
 export function WhatsNew() {
   const { t } = useTranslation();
   const groups = t("updates.groups", { returnObjects: true }) as Group[];
   const all = groups.flatMap((g) => g.items);
   const liveCount = all.filter((i) => i.status === "live").length;
+  const [open, setOpen] = useState<boolean[]>(() => groups.map(() => false));
+  const allOpen = open.every(Boolean);
+
+  const setGroup = (gi: number, value: boolean) =>
+    setOpen((prev) => (prev[gi] === value ? prev : prev.map((v, i) => (i === gi ? value : v))));
 
   return (
     <section id="updates" className="border-t border-border/60 px-6 py-24">
@@ -50,7 +65,7 @@ export function WhatsNew() {
       </Reveal>
 
       <Reveal delay={0.05}>
-        <p className="mt-6 text-center font-mono text-xs tracking-widest text-muted-foreground uppercase">
+        <p className="mx-auto mt-6 max-w-2xl text-center font-mono text-xs tracking-widest text-muted-foreground uppercase">
           {t("updates.counter", { live: liveCount, total: all.length })}
         </p>
       </Reveal>
@@ -61,8 +76,8 @@ export function WhatsNew() {
           <figure className="relative">
             <HudCorners />
             <div className="border-glow relative overflow-hidden rounded-2xl border border-border">
-              <img src={hudKiosk} alt={t("updates.hudCaption")} loading="lazy" width={1920} height={1080} className="block h-auto w-full" />
-              <span className="absolute top-3 left-3 flex items-center gap-1.5 rounded-sm bg-background/75 px-2 py-1 font-mono text-[0.6rem] tracking-widest text-primary backdrop-blur-sm">
+              <img src={hudKiosk} alt={t("updates.alt.hud")} loading="lazy" width={1920} height={1080} className="block h-auto w-full" />
+              <span aria-hidden="true" className="absolute top-3 left-3 flex items-center gap-1.5 rounded-sm bg-background/75 px-2 py-1 font-mono text-[0.6rem] tracking-widest text-primary backdrop-blur-sm">
                 <span className="animate-rec-blink size-1.5 rounded-full bg-[var(--hud-red)]" />
                 LIVE · KIOSK-HUD
               </span>
@@ -74,8 +89,8 @@ export function WhatsNew() {
           <figure className="relative">
             <HudCorners />
             <div className="border-glow relative overflow-hidden rounded-2xl border border-border">
-              <img src={comfySample} alt={t("updates.comfyCaption")} loading="lazy" width={1024} height={1024} className="block aspect-square h-auto w-full object-cover" />
-              <span className="absolute top-3 left-3 rounded-sm bg-background/75 px-2 py-1 font-mono text-[0.6rem] tracking-widest text-primary backdrop-blur-sm">
+              <img src={comfySample} alt={t("updates.alt.comfy")} loading="lazy" width={1024} height={1024} className="block aspect-square h-auto w-full object-cover" />
+              <span aria-hidden="true" className="absolute top-3 left-3 rounded-sm bg-background/75 px-2 py-1 font-mono text-[0.6rem] tracking-widest text-primary backdrop-blur-sm">
                 LOCAL · SDXL
               </span>
             </div>
@@ -85,25 +100,74 @@ export function WhatsNew() {
       </div>
       <p className="mx-auto mt-6 max-w-2xl text-center text-xs text-muted-foreground/80">{t("updates.note")}</p>
 
-      {/* Feature groups */}
-      <div className="mx-auto mt-14 grid max-w-6xl gap-6 md:grid-cols-2 xl:grid-cols-3">
+      {/* Legend + expand all */}
+      <div className="mx-auto mt-14 flex max-w-6xl flex-wrap items-center justify-between gap-4">
+        <ul className="flex flex-wrap items-center gap-4 font-mono text-[0.65rem] tracking-wider text-muted-foreground uppercase">
+          {(["live", "ready", "planned"] as Status[]).map((s) => (
+            <li key={s} className="flex items-center gap-1.5">
+              <span className={`size-2 rounded-full ${STATUS_DOT[s]}`} aria-hidden="true" />
+              {t(`updates.status.${s}`)}
+            </li>
+          ))}
+        </ul>
+        <button
+          type="button"
+          onClick={() => setOpen(groups.map(() => !allOpen))}
+          className="rounded-md border border-border px-3 py-1.5 font-mono text-xs tracking-wide text-muted-foreground transition-colors hover:border-primary/50 hover:text-primary"
+        >
+          {allOpen ? t("updates.collapseAll") : t("updates.expandAll")}
+        </button>
+      </div>
+
+      {/* Collapsible categories */}
+      <div className="mx-auto mt-6 grid max-w-6xl items-start gap-6 md:grid-cols-2 xl:grid-cols-3">
         {groups.map((group, gi) => {
           const Icon = GROUP_ICONS[gi] ?? Activity;
+          const live = group.items.filter((i) => i.status === "live").length;
+          const isOpen = open[gi] ?? false;
           return (
             <Reveal key={group.title} delay={(gi % 3) * 0.08}>
-              <div onPointerMove={trackPointer} className="holo-card h-full rounded-2xl border border-border bg-gradient-to-br from-card via-card to-accent/60 p-6">
-                <h3 className="flex items-center gap-3 font-display text-base font-semibold tracking-tight">
-                  <span className="hud-icon inline-flex size-9 items-center justify-center rounded-lg border border-primary/30 bg-primary/10 text-primary" style={{ "--i": gi } as CSSProperties}>
+              <details
+                open={isOpen}
+                onToggle={(e) => setGroup(gi, e.currentTarget.open)}
+                onPointerMove={trackPointer}
+                className="holo-card group/cat rounded-2xl border border-border bg-gradient-to-br from-card via-card to-accent/60 open:border-primary/40"
+              >
+                <summary className="block cursor-pointer list-none p-5 [&::-webkit-details-marker]:hidden">
+                  <span className="flex items-center gap-3">
+                  <span className="hud-icon inline-flex size-9 shrink-0 items-center justify-center rounded-lg border border-primary/30 bg-primary/10 text-primary" style={{ "--i": gi } as CSSProperties}>
                     <Icon className="size-4.5" aria-hidden="true" />
                   </span>
-                  {group.title}
-                </h3>
-                <ul className="mt-5 space-y-4">
+                  <span className="min-w-0 flex-1">
+                    <span className="block font-display text-base font-semibold tracking-tight">{group.title}</span>
+                    <span className="mt-0.5 block font-mono text-[0.65rem] tracking-wider text-muted-foreground uppercase">
+                      {live > 0 ? `${live}/${group.items.length} ${t("updates.status.live")}` : `${group.items.length} ${t("updates.status.planned")}`}
+                    </span>
+                  </span>
+                  <ChevronDown className="size-4 shrink-0 text-muted-foreground transition-transform group-open/cat:rotate-180" aria-hidden="true" />
+                  </span>
+                  {/* Collapsed: compact names with a status dot (inside the
+                      summary, since <details> hides everything else) */}
+                  {!isOpen ? (
+                    <span className="mt-4 flex flex-wrap gap-1.5">
+                      {group.items.map((item) => (
+                        <span key={item.title} className="flex items-center gap-1.5 rounded-full border border-border/70 bg-background/40 px-2.5 py-1 text-[0.72rem] text-foreground/85">
+                          <span className={`size-1.5 shrink-0 rounded-full ${STATUS_DOT[item.status]}`} aria-hidden="true" />
+                          {item.title}
+                          <span className="sr-only"> — {t(`updates.status.${item.status}`)}</span>
+                        </span>
+                      ))}
+                    </span>
+                  ) : null}
+                </summary>
+
+                {/* Expanded: full list with descriptions */}
+                <ul className="space-y-4 border-t border-border/60 px-5 pt-4 pb-5">
                   {group.items.map((item) => (
                     <li key={item.title}>
                       <div className="flex items-start justify-between gap-3">
                         <p className="font-display text-sm font-semibold tracking-tight">{item.title}</p>
-                        <span className={`shrink-0 rounded-full border px-2 py-0.5 font-mono text-[0.58rem] tracking-wider whitespace-nowrap uppercase ${STATUS_STYLE[item.status]}`}>
+                        <span className={`shrink-0 rounded-full border px-2 py-0.5 font-mono text-[0.58rem] tracking-wider whitespace-nowrap uppercase ${STATUS_BADGE[item.status]}`}>
                           {t(`updates.status.${item.status}`)}
                         </span>
                       </div>
@@ -111,7 +175,7 @@ export function WhatsNew() {
                     </li>
                   ))}
                 </ul>
-              </div>
+              </details>
             </Reveal>
           );
         })}

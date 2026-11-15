@@ -33,9 +33,9 @@ export function ProgressShowcase() {
   // The HUD screenshot leads full width; dashboard photo and chat sign-in
   // sit side by side below it.
   const photos = [
-    { src: hudKiosk, caption: t("progress.hudCaption"), tag: "LIVE · HUD", w: 1600, h: 1000, wide: true },
-    { src: grafanaDashboard, caption: t("progress.grafanaCaption"), tag: "LIVE · MONITORING", w: 1600, h: 909, wide: false },
-    { src: chatLogin, caption: t("progress.chatCaption"), tag: "LIVE · CHAT", w: 1600, h: 1000, wide: false },
+    { src: hudKiosk, caption: t("progress.hudCaption"), alt: t("progress.alt.hud"), tag: "LIVE · HUD", w: 1600, h: 1000, wide: true },
+    { src: grafanaDashboard, caption: t("progress.grafanaCaption"), alt: t("progress.alt.grafana"), tag: "LIVE · MONITORING", w: 1600, h: 909, wide: false },
+    { src: chatLogin, caption: t("progress.chatCaption"), alt: t("progress.alt.chat"), tag: "LIVE · CHAT", w: 1600, h: 1000, wide: false },
   ];
 
   return (
@@ -57,13 +57,13 @@ export function ProgressShowcase() {
               <TiltPanel className="border-glow relative overflow-hidden rounded-2xl border border-border" maxTiltX={4} maxTiltY={5}>
                 <img
                   src={photo.src}
-                  alt={photo.caption}
+                  alt={photo.alt}
                   loading="lazy"
                   width={photo.w}
                   height={photo.h}
                   className="block aspect-[16/10] h-auto w-full object-cover"
                 />
-                <span className="absolute top-3 left-3 flex items-center gap-1.5 rounded-sm bg-background/75 px-2 py-1 font-mono text-[0.6rem] tracking-widest text-primary backdrop-blur-sm">
+                <span aria-hidden="true" className="absolute top-3 left-3 flex items-center gap-1.5 rounded-sm bg-background/75 px-2 py-1 font-mono text-[0.6rem] tracking-widest text-primary backdrop-blur-sm">
                   <span className="animate-rec-blink size-1.5 rounded-full bg-[var(--hud-red)]" />
                   {photo.tag}
                 </span>
@@ -80,9 +80,7 @@ export function ProgressShowcase() {
       <Reveal delay={0.1}>
         <div className="mx-auto mt-14 max-w-3xl">
           <div className="flex items-baseline justify-between font-mono text-xs tracking-widest text-muted-foreground uppercase">
-            <span>
-              {t("progress.liveLabel")} {done} / {total}
-            </span>
+            <span>{t("progress.counter", { done, total })}</span>
             <span className="font-display text-2xl text-primary text-glow">{pct}%</span>
           </div>
           <div className="mt-2 h-2 overflow-hidden rounded-full bg-primary/10" role="progressbar" aria-valuemin={0} aria-valuemax={100} aria-valuenow={pct} aria-label={t("progress.title")}>
@@ -90,6 +88,7 @@ export function ProgressShowcase() {
               {!reduceMotion ? <span className="animate-packet absolute top-0 left-0 h-full w-[18%] bg-gradient-to-r from-transparent via-white/70 to-transparent" /> : null}
             </div>
           </div>
+          <p className="mt-2 text-xs text-muted-foreground/80">{t("progress.counterNote")}</p>
         </div>
       </Reveal>
 
