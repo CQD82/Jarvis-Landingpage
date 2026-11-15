@@ -534,12 +534,12 @@
         "desc": "„Hey Jarvis“ antwortet in ein bis zwei Sekunden — Wissensfragen nur aus belegten Quellen."
       },
       {
-        "title": "Nächtlicher Qualitätstest",
-        "desc": "Jede Nacht beantwortet JARVIS automatisch einen festen Fragenkatalog — Fakten, Ehrlichkeit, Antwortzeit — und übt zusätzlich den Notbetrieb ohne GPU. Abweichungen lösen einen Alarm aus."
+        "title": "Automatische Qualitätssicherung",
+        "desc": "JARVIS wird laufend gegen feste Testfragen geprüft; Abweichungen lösen einen Alarm aus."
       },
       {
-        "title": "Notbetrieb ohne GPU",
-        "desc": "Ist die GPU-Workstation aus oder schläft sie, antwortet JARVIS weiter — kürzer und etwas langsamer über CPU-Reserve und Edge-NPU, ohne erfundene Aktionen. Sobald die GPU zurück ist, schaltet er automatisch um."
+        "title": "Ausfallsichere Sprache",
+        "desc": "Auch wenn die GPU-Stufe ausfällt oder schläft, bleibt JARVIS ansprechbar."
       },
       {
         "title": "Offline-Wissen",
@@ -578,8 +578,8 @@
         "desc": "Lokale Personenerkennung auf einer NPU meldet nur „jemand da / niemand da“ — kein Bild wird gespeichert. Darauf bauen Begrüßung, Display-Abschaltung und proaktive Ansagen auf."
       },
       {
-        "title": "Nachtabschaltung & Wake-on-LAN",
-        "desc": "Die GPU-Workstation schläft nachts, wenn niemand da ist, und wird bei Bedarf automatisch geweckt."
+        "title": "Bedarfsgesteuerte GPU-Stufe",
+        "desc": "Die GPU-Workstation läuft nur, wenn sie gebraucht wird, und wird bei Bedarf automatisch geweckt."
       },
       {
         "title": "Go-Live",
@@ -595,7 +595,9 @@
         "title": "Bildgenerierung mit FLUX.1",
         "desc": "Stable Diffusion XL läuft bereits lokal; das größere FLUX.1-Modell wird als Nächstes eingerichtet."
       }
-    ]
+    ],
+    "counter": "Kernfunktionen im Betrieb: {{done}} / {{total}}",
+    "counterNote": "Gezählt wird der dauerhafte Kern des Clusters. Die Neuerungen seit dem Go-Live sind weiter unten separat aufgeführt."
   },
   "footer": {
     "profileLink": "{{name}}-Profil von Marcus Kollosch-Psyllou (öffnet in neuem Tab)",
@@ -607,7 +609,7 @@
     "eyebrow": "Neu seit dem Go-Live",
     "title": "Was seit dem 10. November dazugekommen ist",
     "description": "Eine Woche Produktivbetrieb, rund 30 neue Funktionen — alles lokal, ohne Cloud-KI. Hier der Stand der Dinge.",
-    "counter": "{{live}} von {{total}} bereits im Betrieb",
+    "counter": "{{live}} von {{total}} Neuerungen bereits im Betrieb — eigene Zählung, zusätzlich zu den Kernfunktionen oben",
     "hudCaption": "Das neue Kiosk-HUD: Cluster-Zustand, echte Strommessung mit Kosten, Wetter, Datensicherung und GPU auf einen Blick. Node- und Raumnamen, Wetterstation und Anwesenheit sind verpixelt.",
     "comfyCaption": "Komplett lokal erzeugt: Testbild der neuen Bildgenerierung — Stable Diffusion XL auf der eigenen GPU, rund 36 Sekunden.",
     "note": "Weitere Oberflächen liegen hinter einer Anmeldung mit Zwei-Faktor und werden hier bewusst nicht gezeigt.",
@@ -624,7 +626,7 @@
           {
             "title": "Notbetrieb ohne GPU-Server",
             "status": "live",
-            "desc": "Ist der GPU-Server aus, antwortet JARVIS automatisch mit einem kleineren Modell weiter — Sprache und Steuerung bleiben verfügbar."
+            "desc": "Neu: Ohne GPU übernehmen kleine Reservemodelle (Qwen3 4B auf der CPU-Reserve, Qwen3 1.7B auf der Edge-NPU); Stopp, Wiedergabe und Witze laufen ganz ohne Modell, Wissensantworten bleiben belegt."
           },
           {
             "title": "Stumm-Modus",
@@ -639,7 +641,7 @@
           {
             "title": "Automatischer Qualitätstest",
             "status": "live",
-            "desc": "Prüft die Antworten regelmäßig gegen feste Testfragen und schlägt bei Abweichungen Alarm."
+            "desc": "Neu: 31 Testfälle inklusive Notbetriebs-Übung ohne GPU, Ergebnisse als Metriken mit Alarm — zuletzt 31 von 31 bestanden."
           }
         ]
       },
@@ -699,7 +701,7 @@
           {
             "title": "Nachtabschaltung des GPU-Servers",
             "status": "live",
-            "desc": "Schaltet ihn nachts automatisch ab, wenn niemand im Raum ist und die GPU ruht; geweckt wird per Wake-on-LAN, auch per Sprachbefehl."
+            "desc": "Neu: Abschaltung, sobald niemand im Raum ist und die GPU ruht; Wecken beim Betreten des Raums oder per Sprachbefehl, die Startzeit überbrückt der Notbetrieb."
           },
           {
             "title": "Echte Strommessung",

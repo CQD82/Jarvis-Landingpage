@@ -534,12 +534,12 @@
         "desc": "«Hey Jarvis» responde en uno o dos segundos — preguntas de conocimiento solo con fuentes verificadas."
       },
       {
-        "title": "Prueba de calidad nocturna",
-        "desc": "Cada noche JARVIS responde automáticamente a un conjunto fijo de preguntas (hechos, honestidad, tiempo de respuesta) y además ensaya el modo de emergencia sin GPU. Las desviaciones generan una alerta."
+        "title": "Control de calidad automático",
+        "desc": "JARVIS se comprueba continuamente con preguntas fijas; las desviaciones generan una alerta."
       },
       {
-        "title": "Modo de emergencia sin GPU",
-        "desc": "Si la estación GPU está apagada o en reposo, JARVIS sigue respondiendo: de forma más breve y algo más lenta mediante la reserva CPU y la NPU edge, sin inventar acciones. En cuanto vuelve la GPU, cambia automáticamente."
+        "title": "Voz a prueba de fallos",
+        "desc": "Aunque el nivel GPU falle o esté en reposo, JARVIS sigue disponible."
       },
       {
         "title": "Conocimiento sin conexión",
@@ -578,8 +578,8 @@
         "desc": "La detección local de personas en una NPU solo indica «hay alguien / no hay nadie»; no se guarda ninguna imagen. El saludo, el apagado de la pantalla y los avisos proactivos se basan en ella."
       },
       {
-        "title": "Apagado nocturno y Wake-on-LAN",
-        "desc": "La estación GPU duerme por la noche cuando no hay nadie y se despierta automáticamente cuando hace falta."
+        "title": "Nivel GPU bajo demanda",
+        "desc": "La estación GPU solo funciona cuando hace falta y se despierta automáticamente."
       },
       {
         "title": "Puesta en marcha",
@@ -595,7 +595,9 @@
         "title": "Generación de imágenes con FLUX.1",
         "desc": "Stable Diffusion XL ya funciona en local; el modelo FLUX.1, más grande, es el siguiente paso."
       }
-    ]
+    ],
+    "counter": "Funciones básicas en marcha: {{done}} / {{total}}",
+    "counterNote": "Se cuenta el núcleo permanente del clúster. Las novedades desde la puesta en marcha aparecen por separado más abajo."
   },
   "footer": {
     "profileLink": "Perfil de {{name}} de Marcus Kollosch-Psyllou (se abre en una pestaña nueva)",
@@ -607,7 +609,7 @@
     "eyebrow": "Novedades desde la puesta en marcha",
     "title": "Lo que se ha añadido desde el 10 de noviembre",
     "description": "Una semana en producción y unas 30 funciones nuevas, todo en local y sin IA en la nube. Este es el estado actual.",
-    "counter": "{{live}} de {{total}} ya en marcha",
+    "counter": "{{live}} de {{total}} novedades ya en marcha: un recuento aparte, además de las funciones básicas de arriba",
     "hudCaption": "El nuevo HUD de quiosco: estado del clúster, medición real del consumo con coste, tiempo, copias de seguridad y GPU de un vistazo. Los nombres de nodos y salas, la estación meteorológica y la presencia están pixelados.",
     "comfyCaption": "Generada completamente en local: imagen de prueba de la nueva generación de imágenes — Stable Diffusion XL en nuestra propia GPU, unos 36 segundos.",
     "note": "Otras interfaces están protegidas con inicio de sesión de doble factor y no se muestran aquí a propósito.",
@@ -624,7 +626,7 @@
           {
             "title": "Modo de emergencia sin servidor GPU",
             "status": "live",
-            "desc": "Si el servidor GPU está apagado, JARVIS sigue respondiendo automáticamente con un modelo más pequeño: voz y control siguen disponibles."
+            "desc": "Nuevo: sin GPU toman el relevo pequeños modelos de reserva (Qwen3 4B en la reserva CPU, Qwen3 1.7B en la NPU edge); parar, reproducir y los chistes no necesitan modelo y las respuestas de conocimiento siguen con fuente."
           },
           {
             "title": "Modo silencio",
@@ -639,7 +641,7 @@
           {
             "title": "Prueba de calidad automática",
             "status": "live",
-            "desc": "Comprueba las respuestas con preguntas fijas de forma periódica y avisa si hay desviaciones."
+            "desc": "Nuevo: 31 casos de prueba con un simulacro del modo de emergencia sin GPU, resultados como métricas con alertas; la última vez, 31 de 31 superados."
           }
         ]
       },
@@ -699,7 +701,7 @@
           {
             "title": "Apagado nocturno del servidor GPU",
             "status": "live",
-            "desc": "Se apaga automáticamente por la noche si no hay nadie en la sala y la GPU está en reposo; se despierta por Wake-on-LAN, también por voz."
+            "desc": "Nuevo: se apaga en cuanto no hay nadie en la sala y la GPU está en reposo; se despierta al entrar alguien o por voz, y el modo de emergencia cubre el arranque."
           },
           {
             "title": "Medición real del consumo",

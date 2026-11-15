@@ -80,9 +80,7 @@ export function ProgressShowcase() {
       <Reveal delay={0.1}>
         <div className="mx-auto mt-14 max-w-3xl">
           <div className="flex items-baseline justify-between font-mono text-xs tracking-widest text-muted-foreground uppercase">
-            <span>
-              {t("progress.liveLabel")} {done} / {total}
-            </span>
+            <span>{t("progress.counter", { done, total })}</span>
             <span className="font-display text-2xl text-primary text-glow">{pct}%</span>
           </div>
           <div className="mt-2 h-2 overflow-hidden rounded-full bg-primary/10" role="progressbar" aria-valuemin={0} aria-valuemax={100} aria-valuenow={pct} aria-label={t("progress.title")}>
@@ -90,6 +88,7 @@ export function ProgressShowcase() {
               {!reduceMotion ? <span className="animate-packet absolute top-0 left-0 h-full w-[18%] bg-gradient-to-r from-transparent via-white/70 to-transparent" /> : null}
             </div>
           </div>
+          <p className="mt-2 text-xs text-muted-foreground/80">{t("progress.counterNote")}</p>
         </div>
       </Reveal>
 
