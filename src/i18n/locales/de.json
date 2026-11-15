@@ -6,6 +6,7 @@
   "nav": {
     "countdown": "Betrieb",
     "progress": "Projektstand",
+    "updates": "Neu",
     "hardware": "Hardware",
     "overview": "Übersicht",
     "features": "Fähigkeiten",
@@ -315,7 +316,7 @@
   "power": {
     "eyebrow": "Energie & Effizienz",
     "title": "Geschätzter Stromverbrauch",
-    "description": "Realistische Schätzung je Gerät im typischen Betrieb (Leerlauf bis leichte Last) — keine Messwerte, sondern eine Einordnung der Größenordnung.",
+    "description": "Realistische Schätzung je Gerät im typischen Betrieb (Leerlauf bis leichte Last) als Einordnung der Größenordnung — inzwischen ergänzt durch eine echte Strommessung im Cluster.",
     "rows": [
       {
         "label": "Edge-Nodes (Pi 5 16 GB + Hailo-10H + SSD) ×4",
@@ -360,10 +361,10 @@
     ],
     "totalLabel": "Geschätzte Dauerlast",
     "monthlyLabel": "Hochgerechnet pro Monat",
-    "wolTitle": "Wake-on-LAN für die GPU-Workstation",
-    "wolBody": "Die GPU-Workstation (HP Z840) hat mit über 300 W Spitzenlast den größten Einzelverbrauch im Cluster. Für schnelle Sprachantworten hält sie das Sprachmodell derzeit dauerhaft geladen. Wake-on-LAN ist eingerichtet: Betritt jemand den Raum, wird sie automatisch geweckt — bis sie bereit ist, antwortet JARVIS im Notbetrieb über CPU-Reserve und Edge-NPU. So kann sie künftig in ruhigen Phasen schlafen.",
+    "wolTitle": "Nachtabschaltung & Wake-on-LAN",
+    "wolBody": "Die GPU-Workstation (HP Z840) hat mit über 300 W Spitzenlast den größten Einzelverbrauch im Cluster. Inzwischen schaltet sie sich nachts automatisch ab, sobald niemand im Raum ist und die GPU ruht. Geweckt wird sie per Wake-on-LAN — bei Anwesenheit oder per Sprachbefehl. Bis sie bereit ist, antwortet JARVIS im Notbetrieb.",
     "upsTitle": "Unterbrechungsfreie Stromversorgung",
-    "upsBody": "Eine APC Back-UPS Pro 900 puffert kurze Stromausfälle und Spannungsschwankungen ab, sodass die Nodes sauber herunterfahren können, statt abrupt den Strom zu verlieren. Ihr eigener Dauerverbrauch — Inverter-Standby plus Erhaltungsladung — ist mit rund 5 W sehr gering.",
+    "upsBody": "Eine APC Back-UPS Pro 900 puffert kurze Stromausfälle und Spannungsschwankungen ab. Ihr eigener Dauerverbrauch — Inverter-Standby plus Erhaltungsladung — liegt bei rund 5 W. Als Nächstes soll sie die Nodes bei längeren Ausfällen automatisch und kontrolliert herunterfahren.",
     "shareLabel": "Anteil",
     "yearlyLabel": "Hochgerechnet pro Jahr",
     "costLabel": "Kosten bei 0,30 €/kWh",
@@ -383,7 +384,9 @@
         "label": "HUD-Display bei Abwesenheit automatisch abschalten",
         "w": 7
       }
-    ]
+    ],
+    "measuredTitle": "Gemessen statt geschätzt",
+    "measuredBody": "Seit Kurzem misst der Cluster seinen Verbrauch selbst: Im Ruhebetrieb liegt er bei rund 196 W — umgerechnet etwa 40 € im Monat bei 28 ct/kWh. Die Nachtabschaltung des GPU-Servers drückt den Wert weiter."
   },
   "hud": {
     "eyebrow": "Monitoring",
@@ -575,6 +578,10 @@
         "desc": "Lokale Personenerkennung auf einer NPU meldet nur „jemand da / niemand da“ — kein Bild wird gespeichert. Darauf bauen Begrüßung, Display-Abschaltung und proaktive Ansagen auf."
       },
       {
+        "title": "Nachtabschaltung & Wake-on-LAN",
+        "desc": "Die GPU-Workstation schläft nachts, wenn niemand da ist, und wird bei Bedarf automatisch geweckt."
+      },
+      {
         "title": "Go-Live",
         "desc": "Produktivbetrieb seit dem 8. November 2026."
       }
@@ -585,8 +592,8 @@
         "desc": "Anwesenheitserkennung aktiv, Kameraverfolgung folgt: Die Kamera soll der Person per Schwenken, Neigen und Zoom folgen — weiterhin vollständig lokal, ohne gespeicherte Bilder."
       },
       {
-        "title": "Energiesparen per Wake-on-LAN",
-        "desc": "Eingerichtet: Betritt jemand den Raum, wird die schlafende GPU-Workstation automatisch geweckt; bis sie bereit ist, überbrückt der Notbetrieb. Der Praxistest am Gerät steht noch aus."
+        "title": "Bildgenerierung mit FLUX.1",
+        "desc": "Stable Diffusion XL läuft bereits lokal; das größere FLUX.1-Modell wird als Nächstes eingerichtet."
       }
     ]
   },
@@ -595,5 +602,184 @@
     "tagline": "Privates Homelab-Projekt · in Betrieb seit November 2026",
     "impressum": "Impressum",
     "datenschutz": "Datenschutz"
+  },
+  "updates": {
+    "eyebrow": "Neu seit dem Go-Live",
+    "title": "Was seit dem 10. November dazugekommen ist",
+    "description": "Eine Woche Produktivbetrieb, rund 30 neue Funktionen — alles lokal, ohne Cloud-KI. Hier der Stand der Dinge.",
+    "counter": "{{live}} von {{total}} bereits im Betrieb",
+    "hudCaption": "Das neue Kiosk-HUD: Cluster-Zustand, echte Strommessung mit Kosten, Wetter, Datensicherung und GPU auf einen Blick. Node- und Raumnamen, Wetterstation und Anwesenheit sind verpixelt.",
+    "comfyCaption": "Komplett lokal erzeugt: Testbild der neuen Bildgenerierung — Stable Diffusion XL auf der eigenen GPU, rund 36 Sekunden.",
+    "note": "Weitere Oberflächen liegen hinter einer Anmeldung mit Zwei-Faktor und werden hier bewusst nicht gezeigt.",
+    "status": {
+      "live": "läuft",
+      "ready": "bereit",
+      "wip": "im Ausbau",
+      "planned": "geplant"
+    },
+    "groups": [
+      {
+        "title": "Sprachassistent",
+        "items": [
+          {
+            "title": "Notbetrieb ohne GPU-Server",
+            "status": "live",
+            "desc": "Ist der GPU-Server aus, antwortet JARVIS automatisch mit einem kleineren Modell weiter — Sprache und Steuerung bleiben verfügbar."
+          },
+          {
+            "title": "Stumm-Modus",
+            "status": "live",
+            "desc": "„Sei still“ oder „stumm für 30 Minuten“: JARVIS schweigt, Ansagen werden unterdrückt, danach geht es automatisch weiter."
+          },
+          {
+            "title": "Lagebericht per Sprache",
+            "status": "live",
+            "desc": "„Wie geht es dem Cluster?“ oder „Wie ist die Sicherheitslage?“ — mit Stromverbrauch, Laufwerkstemperaturen und offenen Sicherheitsmeldungen."
+          },
+          {
+            "title": "Automatischer Qualitätstest",
+            "status": "live",
+            "desc": "Prüft die Antworten regelmäßig gegen feste Testfragen und schlägt bei Abweichungen Alarm."
+          }
+        ]
+      },
+      {
+        "title": "KI & Modelle",
+        "items": [
+          {
+            "title": "Neue lokale Modelle",
+            "status": "live",
+            "desc": "Code-Assistent (Devstral Small 2), Qwen2.5-Coder, Qwen3 14B und ein gründlicher Denk-Modus — alles auf der eigenen RTX 5060 Ti."
+          },
+          {
+            "title": "Modellvergleich (Promptfoo)",
+            "status": "live",
+            "desc": "Vergleicht wöchentlich alle JARVIS-Modelle auf deutschen Testfragen — aktuell 32 von 32 Tests bestanden."
+          },
+          {
+            "title": "LLM-Aufzeichnung (Langfuse)",
+            "status": "live",
+            "desc": "Zeichnet jede KI-Anfrage mit Antwortzeit und Token-Verbrauch auf, damit Verbesserungen messbar werden."
+          },
+          {
+            "title": "KI-Labor (JupyterLab + MLflow)",
+            "status": "live",
+            "desc": "Experimentierumgebung mit Grafikkarte; Trainingsläufe und Modellversionen werden protokolliert."
+          },
+          {
+            "title": "Feintuning (Unsloth)",
+            "status": "ready",
+            "desc": "Eigene kleine Modelle mit eigenen Beispielen nachtrainieren (LoRA, 4-Bit) und direkt für JARVIS bereitstellen."
+          },
+          {
+            "title": "Bildgenerierung (ComfyUI)",
+            "status": "live",
+            "desc": "Lokale Bilderzeugung auf der GPU: Stable Diffusion XL in rund 36 Sekunden pro Bild; FLUX.1 folgt."
+          },
+          {
+            "title": "Dokumenten-Umwandlung (Docling)",
+            "status": "live",
+            "desc": "Wandelt PDFs, Office-Dateien und Bilder samt Tabellen in strukturierten Text für die Dokumentensuche."
+          },
+          {
+            "title": "Annotation (Label Studio)",
+            "status": "live",
+            "desc": "Eigene Bilder und Texte für das Training beschriften."
+          },
+          {
+            "title": "Kamera-Auswertung (Frigate)",
+            "status": "live",
+            "desc": "Erkennt Personen und Tiere im Kamerabild und speichert nur Ereignisse — komplett lokal, nur im Heimnetz."
+          }
+        ]
+      },
+      {
+        "title": "Energie & Betrieb",
+        "items": [
+          {
+            "title": "Nachtabschaltung des GPU-Servers",
+            "status": "live",
+            "desc": "Schaltet ihn nachts automatisch ab, wenn niemand im Raum ist und die GPU ruht; geweckt wird per Wake-on-LAN, auch per Sprachbefehl."
+          },
+          {
+            "title": "Echte Strommessung",
+            "status": "live",
+            "desc": "Verbrauch je Gerät gemessen statt geschätzt, mit Gesamt-kWh und Kosten in den Dashboards und im Kiosk-HUD."
+          },
+          {
+            "title": "Laufwerksgesundheit",
+            "status": "live",
+            "desc": "Temperatur, Verschleiß und Drosselung aller SSDs und NVMe minütlich überwacht, mit Warnschwellen und Alarmen."
+          },
+          {
+            "title": "Wochenbericht",
+            "status": "live",
+            "desc": "Jeden Montag eine automatische Zusammenfassung: Backups, Alarme, Sicherheit, Energie und Laufwerke."
+          },
+          {
+            "title": "Externer Wächter mit Totmannschalter",
+            "status": "live",
+            "desc": "Ein separater Mini-Rechner prüft den Cluster von außen und schlägt Alarm, falls selbst das Monitoring ausfällt."
+          },
+          {
+            "title": "Automatisches Patchen",
+            "status": "live",
+            "desc": "Alle Nodes werden nacheinander aktualisiert und neu gestartet — ohne Ausfall."
+          }
+        ]
+      },
+      {
+        "title": "Sicherheit & Unabhängigkeit",
+        "items": [
+          {
+            "title": "Sicherheitslücken-Wächter",
+            "status": "live",
+            "desc": "Gleicht alle laufenden Softwareversionen mehrmals täglich mit bekannten Schwachstellen ab — derzeit nur ein niedriger Befund."
+          },
+          {
+            "title": "Passwort-Verwaltung (Vaultwarden)",
+            "status": "live",
+            "desc": "Eigener, Bitwarden-kompatibler Passwortmanager; alle Cluster-Zugänge liegen verschlüsselt darin."
+          },
+          {
+            "title": "Eigener Mailserver + Webmail",
+            "status": "live",
+            "desc": "E-Mail über die eigene Domain, unabhängig von großen Anbietern, mit Spamfilter und DKIM/SPF/DMARC."
+          },
+          {
+            "title": "Zweiter Alarmkanal (ntfy)",
+            "status": "live",
+            "desc": "Push-Benachrichtigungen aufs Handy zusätzlich zum bestehenden Messenger-Kanal."
+          },
+          {
+            "title": "Dokumentenverwaltung (Paperless-ngx)",
+            "status": "live",
+            "desc": "Scans und Rechnungen mit Texterkennung durchsuchbar ablegen."
+          },
+          {
+            "title": "Fotoverwaltung (Immich)",
+            "status": "live",
+            "desc": "Eigene Alternative zu Cloud-Fotodiensten mit Gesichtserkennung und Suche — alles lokal."
+          }
+        ]
+      },
+      {
+        "title": "Als Nächstes",
+        "items": [
+          {
+            "title": "Externe, verschlüsselte Datensicherung",
+            "status": "planned"
+          },
+          {
+            "title": "Kontrolliertes Herunterfahren über die USV",
+            "status": "planned"
+          },
+          {
+            "title": "Erweiterte Smart-Home-Steuerung für JARVIS (MCP)",
+            "status": "planned"
+          }
+        ]
+      }
+    ]
   }
 }

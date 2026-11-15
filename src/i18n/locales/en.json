@@ -6,6 +6,7 @@
   "nav": {
     "countdown": "Status",
     "progress": "Progress",
+    "updates": "New",
     "hardware": "Hardware",
     "overview": "Overview",
     "features": "Capabilities",
@@ -315,7 +316,7 @@
   "power": {
     "eyebrow": "Power & Efficiency",
     "title": "Estimated Power Consumption",
-    "description": "Realistic estimate per device in typical operation (idle to light load) — not measured values, but an indication of the order of magnitude.",
+    "description": "Realistic estimate per device in typical operation (idle to light load) as an indication of the order of magnitude — now complemented by real power measurement in the cluster.",
     "rows": [
       {
         "label": "Edge nodes (Pi 5 16 GB + Hailo-10H + SSD) ×4",
@@ -360,10 +361,10 @@
     ],
     "totalLabel": "Estimated continuous load",
     "monthlyLabel": "Projected per month",
-    "wolTitle": "Wake-on-LAN for the GPU Workstation",
-    "wolBody": "The GPU workstation (HP Z840) has the largest single draw in the cluster at over 300 W peak. For fast voice answers it currently keeps the language model loaded permanently. Wake-on-LAN is set up: when someone enters the room it is woken automatically — until it is ready, JARVIS answers in fallback mode via the CPU reserve and edge NPU. That lets it sleep during quiet periods in future.",
+    "wolTitle": "Night shutdown & Wake-on-LAN",
+    "wolBody": "The GPU workstation (HP Z840) has the largest single draw in the cluster at over 300 W peak. It now switches itself off at night once nobody is in the room and the GPU is idle, and wakes via Wake-on-LAN — on presence or by voice. Until it is ready, JARVIS answers in fallback mode.",
     "upsTitle": "Uninterruptible Power Supply",
-    "upsBody": "An APC Back-UPS Pro 900 rides out brief outages and voltage dips so the nodes can shut down cleanly instead of losing power abruptly. Its own continuous draw — inverter standby plus trickle charging — is small, around 5 W.",
+    "upsBody": "An APC Back-UPS Pro 900 rides out brief outages and voltage dips. Its own continuous draw — inverter standby plus trickle charging — is around 5 W. Next, it will shut the nodes down automatically and cleanly during longer outages.",
     "shareLabel": "Share",
     "yearlyLabel": "Extrapolated per year",
     "costLabel": "Cost at €0.30/kWh",
@@ -383,7 +384,9 @@
         "label": "Switch the HUD display off automatically when nobody is home",
         "w": 7
       }
-    ]
+    ],
+    "measuredTitle": "Measured, not estimated",
+    "measuredBody": "The cluster now measures its own consumption: at rest it draws about 196 W — roughly €40 a month at 28 ct/kWh. The GPU server's night shutdown pushes that further down."
   },
   "hud": {
     "eyebrow": "Monitoring",
@@ -575,6 +578,10 @@
         "desc": "Local person detection on an NPU reports only “someone there / nobody there” — no image is stored. Greeting, display power-off and proactive announcements build on it."
       },
       {
+        "title": "Night shutdown & Wake-on-LAN",
+        "desc": "The GPU workstation sleeps at night when nobody is around and is woken automatically when needed."
+      },
+      {
         "title": "Go-live",
         "desc": "In production since November 8, 2026."
       }
@@ -585,8 +592,8 @@
         "desc": "Presence detection is live, camera tracking comes next: the camera will follow the person with pan, tilt and zoom — still fully local, no images stored."
       },
       {
-        "title": "Wake-on-LAN power saving",
-        "desc": "Set up: when someone enters the room, the sleeping GPU workstation is woken automatically; fallback mode bridges the start-up time. The hands-on test at the machine is still pending."
+        "title": "Image generation with FLUX.1",
+        "desc": "Stable Diffusion XL already runs locally; the larger FLUX.1 model is next."
       }
     ]
   },
@@ -595,5 +602,184 @@
     "tagline": "Private homelab project · in production since November 2026",
     "impressum": "Legal Notice",
     "datenschutz": "Privacy Policy"
+  },
+  "updates": {
+    "eyebrow": "New since go-live",
+    "title": "What has been added since 10 November",
+    "description": "One week in production, around 30 new features — all local, no cloud AI. Here is where things stand.",
+    "counter": "{{live}} of {{total}} already running",
+    "hudCaption": "The new kiosk HUD: cluster state, real power measurement with cost, weather, backups and GPU at a glance. Node and room names, the weather station and presence are pixelated.",
+    "comfyCaption": "Generated entirely locally: a test image from the new image generation — Stable Diffusion XL on our own GPU, about 36 seconds.",
+    "note": "Further interfaces sit behind a two-factor sign-in and are deliberately not shown here.",
+    "status": {
+      "live": "live",
+      "ready": "ready",
+      "wip": "in progress",
+      "planned": "planned"
+    },
+    "groups": [
+      {
+        "title": "Voice assistant",
+        "items": [
+          {
+            "title": "Fallback mode without the GPU server",
+            "status": "live",
+            "desc": "If the GPU server is off, JARVIS automatically keeps answering with a smaller model — voice and control stay available."
+          },
+          {
+            "title": "Mute mode",
+            "status": "live",
+            "desc": "“Be quiet” or “mute for 30 minutes”: JARVIS stays silent and announcements are held back, then it resumes on its own."
+          },
+          {
+            "title": "Status report by voice",
+            "status": "live",
+            "desc": "“How is the cluster?” or “What is the security situation?” — with power draw, drive temperatures and open security findings."
+          },
+          {
+            "title": "Automatic quality test",
+            "status": "live",
+            "desc": "Regularly checks answers against a fixed set of test questions and raises an alert on deviations."
+          }
+        ]
+      },
+      {
+        "title": "AI & models",
+        "items": [
+          {
+            "title": "New local models",
+            "status": "live",
+            "desc": "Coding assistant (Devstral Small 2), Qwen2.5-Coder, Qwen3 14B and a thorough reasoning mode — all on our own RTX 5060 Ti."
+          },
+          {
+            "title": "Model comparison (Promptfoo)",
+            "status": "live",
+            "desc": "Compares all JARVIS models weekly on German test questions — currently 32 of 32 tests passed."
+          },
+          {
+            "title": "LLM tracing (Langfuse)",
+            "status": "live",
+            "desc": "Records every AI request with response time and token usage so improvements become measurable."
+          },
+          {
+            "title": "AI lab (JupyterLab + MLflow)",
+            "status": "live",
+            "desc": "A GPU-backed experimentation environment; training runs and model versions are tracked."
+          },
+          {
+            "title": "Fine-tuning (Unsloth)",
+            "status": "ready",
+            "desc": "Retrain small models on our own examples (LoRA, 4-bit) and hand them straight to JARVIS."
+          },
+          {
+            "title": "Image generation (ComfyUI)",
+            "status": "live",
+            "desc": "Local image generation on the GPU: Stable Diffusion XL in about 36 seconds per image; FLUX.1 comes next."
+          },
+          {
+            "title": "Document conversion (Docling)",
+            "status": "live",
+            "desc": "Turns PDFs, Office files and images — tables included — into structured text for document search."
+          },
+          {
+            "title": "Annotation (Label Studio)",
+            "status": "live",
+            "desc": "Label our own images and texts for training."
+          },
+          {
+            "title": "Camera analysis (Frigate)",
+            "status": "live",
+            "desc": "Detects people and animals in the camera feed and stores only events — fully local, home network only."
+          }
+        ]
+      },
+      {
+        "title": "Energy & operations",
+        "items": [
+          {
+            "title": "Night shutdown of the GPU server",
+            "status": "live",
+            "desc": "Switches it off automatically at night when nobody is in the room and the GPU is idle; it wakes via Wake-on-LAN, also by voice."
+          },
+          {
+            "title": "Real power measurement",
+            "status": "live",
+            "desc": "Consumption per device measured instead of estimated, with total kWh and cost in the dashboards and on the kiosk HUD."
+          },
+          {
+            "title": "Drive health",
+            "status": "live",
+            "desc": "Temperature, wear and throttling of every SSD and NVMe checked every minute, with thresholds and alerts."
+          },
+          {
+            "title": "Weekly report",
+            "status": "live",
+            "desc": "Every Monday an automatic summary: backups, alerts, security, energy and drives."
+          },
+          {
+            "title": "External watchdog with dead man's switch",
+            "status": "live",
+            "desc": "A separate mini computer checks the cluster from outside and raises the alarm if even monitoring fails."
+          },
+          {
+            "title": "Automatic patching",
+            "status": "live",
+            "desc": "All nodes are updated and rebooted one after another — without downtime."
+          }
+        ]
+      },
+      {
+        "title": "Security & independence",
+        "items": [
+          {
+            "title": "Vulnerability watch",
+            "status": "live",
+            "desc": "Matches every running software version against known vulnerabilities several times a day — currently a single low finding."
+          },
+          {
+            "title": "Password manager (Vaultwarden)",
+            "status": "live",
+            "desc": "Our own Bitwarden-compatible password manager; all cluster credentials are stored in it, encrypted."
+          },
+          {
+            "title": "Own mail server + webmail",
+            "status": "live",
+            "desc": "E-mail on our own domain, independent of big providers, with spam filtering and DKIM/SPF/DMARC."
+          },
+          {
+            "title": "Second alert channel (ntfy)",
+            "status": "live",
+            "desc": "Push notifications to the phone in addition to the existing messenger channel."
+          },
+          {
+            "title": "Document management (Paperless-ngx)",
+            "status": "live",
+            "desc": "Scans and invoices stored searchable with OCR."
+          },
+          {
+            "title": "Photo library (Immich)",
+            "status": "live",
+            "desc": "Our own alternative to cloud photo services with face recognition and search — all local."
+          }
+        ]
+      },
+      {
+        "title": "Up next",
+        "items": [
+          {
+            "title": "Off-site encrypted backup",
+            "status": "planned"
+          },
+          {
+            "title": "Controlled shutdown via the UPS",
+            "status": "planned"
+          },
+          {
+            "title": "Extended smart-home control for JARVIS (MCP)",
+            "status": "planned"
+          }
+        ]
+      }
+    ]
   }
 }

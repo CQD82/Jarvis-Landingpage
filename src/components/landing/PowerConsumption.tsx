@@ -1,5 +1,5 @@
 import type { CSSProperties } from "react";
-import { BatteryCharging, Leaf, PowerOff, TrendingDown, Zap } from "lucide-react";
+import { BatteryCharging, Gauge, Leaf, PowerOff, TrendingDown, Zap } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { HudCorners } from "@/components/landing/HudCorners";
 import { Reveal } from "@/components/landing/Reveal";
@@ -111,6 +111,17 @@ export function PowerConsumption() {
         </Reveal>
 
         <div className="flex flex-col gap-6">
+          <Reveal delay={0.12}>
+            <div className="rounded-xl border border-primary/40 bg-primary/5 p-6">
+              <h3 className="flex items-center gap-3 font-display text-base font-semibold tracking-tight">
+                <span className="hud-icon inline-flex size-10 items-center justify-center rounded-lg border border-primary/30 bg-primary/10 text-primary" style={{ "--i": 2 } as CSSProperties}>
+                  <Gauge className="size-5" aria-hidden="true" />
+                </span>
+                {t("power.measuredTitle")}
+              </h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{t("power.measuredBody")}</p>
+            </div>
+          </Reveal>
           <Reveal delay={0.15}>
             <div className="rounded-xl border border-[var(--hud-reactor)]/40 bg-card p-6">
               <div className="inline-flex size-10 items-center justify-center rounded-lg border border-[var(--hud-reactor)]/40 bg-[var(--hud-reactor)]/10 text-[var(--hud-reactor)] hud-icon" style={{ "--i": 1 } as CSSProperties}>
