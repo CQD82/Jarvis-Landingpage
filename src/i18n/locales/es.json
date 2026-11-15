@@ -613,7 +613,7 @@
   "updates": {
     "eyebrow": "Novedades desde la puesta en marcha",
     "title": "Lo que se ha añadido desde el 10 de noviembre",
-    "description": "Una semana en producción y unas 45 novedades, todo en local y sin IA en la nube. Este es el estado a 15 de noviembre.",
+    "description": "Una semana en producción y casi 50 novedades, todo en local y sin IA en la nube. Este es el estado a 15 de noviembre.",
     "counter": "{{live}} de {{total}} novedades ya en marcha: un recuento aparte, además de las funciones básicas de arriba",
     "hudCaption": "El nuevo HUD de quiosco: estado del clúster, medición real del consumo con coste, tiempo, copias de seguridad y GPU de un vistazo. Los nombres de nodos y salas, la estación meteorológica y la presencia están pixelados.",
     "comfyCaption": "Generada completamente en local: imagen de prueba de la generación de imágenes — Stable Diffusion XL en nuestra propia GPU, ahora en unos 16 segundos.",
@@ -787,6 +787,11 @@
             "desc": "Los datos locales del servidor GPU se copian automáticamente en cuanto está en marcha."
           },
           {
+            "title": "Segunda copia en un disco aparte",
+            "desc": "Todas las copias y los datos locales del servidor GPU se replican además en un disco propio y se verifican por suma de comprobación; una restauración de prueba fue correcta.",
+            "status": "live"
+          },
+          {
             "title": "Operación más ordenada",
             "status": "live",
             "desc": "Los trabajos terminados desaparecen a los tres días y el mantenimiento de copias solo conserva la última ejecución."
@@ -795,6 +800,11 @@
             "title": "Panel «Servicios»",
             "status": "live",
             "desc": "Correo, cámara y consultas de IA de un vistazo."
+          },
+          {
+            "title": "Mantenimiento automatizado",
+            "desc": "Una tarea semanal comprueba nuevas versiones de las obras de consulta —con suma de comprobación y 14 días de espera— y avisa de los pasos de mantenimiento pendientes; los resultados aparecen en el informe semanal.",
+            "status": "live"
           },
           {
             "title": "Más almacenamiento en el clúster",
@@ -877,7 +887,7 @@
             "desc": "Preparado como variante cuantizada que cabe en 16 GB; falta una última pieza."
           },
           {
-            "title": "Copia de seguridad externa cifrada",
+            "title": "Llevar la copia fuera de casa",
             "status": "planned"
           },
           {

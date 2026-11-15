@@ -613,7 +613,7 @@
   "updates": {
     "eyebrow": "Neu seit dem Go-Live",
     "title": "Was seit dem 10. November dazugekommen ist",
-    "description": "Eine Woche Produktivbetrieb, rund 45 Neuerungen — alles lokal, ohne Cloud-KI. Hier der Stand vom 15. November.",
+    "description": "Eine Woche Produktivbetrieb, knapp 50 Neuerungen — alles lokal, ohne Cloud-KI. Hier der Stand vom 15. November.",
     "counter": "{{live}} von {{total}} Neuerungen bereits im Betrieb — eigene Zählung, zusätzlich zu den Kernfunktionen oben",
     "hudCaption": "Das neue Kiosk-HUD: Cluster-Zustand, echte Strommessung mit Kosten, Wetter, Datensicherung und GPU auf einen Blick. Node- und Raumnamen, Wetterstation und Anwesenheit sind verpixelt.",
     "comfyCaption": "Komplett lokal erzeugt: Testbild der Bildgenerierung — Stable Diffusion XL auf der eigenen GPU, inzwischen in rund 16 Sekunden.",
@@ -787,6 +787,11 @@
             "desc": "Die lokalen Daten des GPU-Servers werden automatisch gesichert, sobald er läuft."
           },
           {
+            "title": "Zweite Sicherung auf separater Platte",
+            "desc": "Alle Backups und die lokalen Daten des GPU-Servers werden zusätzlich auf eine eigene Platte gespiegelt und per Prüfsumme kontrolliert; eine Test-Wiederherstellung war erfolgreich.",
+            "status": "live"
+          },
+          {
             "title": "Aufgeräumter Betrieb",
             "status": "live",
             "desc": "Erledigte Jobs verschwinden nach drei Tagen, die Backup-Wartung behält nur den letzten Lauf."
@@ -795,6 +800,11 @@
             "title": "Dashboard „Dienste“",
             "status": "live",
             "desc": "Mail, Kamera und KI-Anfragen auf einen Blick."
+          },
+          {
+            "title": "Wartung automatisiert",
+            "desc": "Ein wöchentlicher Job prüft neue Versionen der Nachschlagewerke — mit Prüfsumme und 14 Tagen Wartezeit — und erinnert an fällige Wartungsschritte; die Ergebnisse stehen im Wochenbericht.",
+            "status": "live"
           },
           {
             "title": "Mehr Cluster-Speicher",
@@ -877,7 +887,7 @@
             "desc": "Als quantisierte Variante vorbereitet, die in 16 GB passt — ein letzter Baustein fehlt noch."
           },
           {
-            "title": "Externe, verschlüsselte Datensicherung",
+            "title": "Auslagerung der Sicherung außer Haus",
             "status": "planned"
           },
           {

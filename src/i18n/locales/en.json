@@ -613,7 +613,7 @@
   "updates": {
     "eyebrow": "New since go-live",
     "title": "What has been added since 10 November",
-    "description": "One week in production, around 45 new additions — all local, no cloud AI. Here is the state as of 15 November.",
+    "description": "One week in production, nearly 50 new additions — all local, no cloud AI. Here is the state as of 15 November.",
     "counter": "{{live}} of {{total}} new features already running — a separate count, on top of the core functions above",
     "hudCaption": "The new kiosk HUD: cluster state, real power measurement with cost, weather, backups and GPU at a glance. Node and room names, the weather station and presence are pixelated.",
     "comfyCaption": "Generated entirely locally: a test image from the image generation — Stable Diffusion XL on our own GPU, now in about 16 seconds.",
@@ -787,6 +787,11 @@
             "desc": "The GPU server’s local data is backed up automatically whenever it is running."
           },
           {
+            "title": "Second backup on a separate drive",
+            "desc": "All backups and the GPU server’s local data are additionally mirrored to a dedicated drive and verified by checksum; a test restore succeeded.",
+            "status": "live"
+          },
+          {
             "title": "Tidier operations",
             "status": "live",
             "desc": "Finished jobs disappear after three days, and backup maintenance keeps only the latest run."
@@ -795,6 +800,11 @@
             "title": "“Services” dashboard",
             "status": "live",
             "desc": "Mail, camera and AI requests at a glance."
+          },
+          {
+            "title": "Automated maintenance",
+            "desc": "A weekly job checks for new versions of the reference works — with checksum and a 14-day waiting period — and flags due maintenance steps; results appear in the weekly report.",
+            "status": "live"
           },
           {
             "title": "More cluster storage",
@@ -877,7 +887,7 @@
             "desc": "Prepared as a quantised variant that fits into 16 GB — one last piece is still missing."
           },
           {
-            "title": "Off-site encrypted backup",
+            "title": "Moving the backup off-site",
             "status": "planned"
           },
           {

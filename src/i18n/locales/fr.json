@@ -613,7 +613,7 @@
   "updates": {
     "eyebrow": "Nouveau depuis la mise en service",
     "title": "Ce qui a été ajouté depuis le 10 novembre",
-    "description": "Une semaine en production, environ 45 nouveautés — tout en local, sans IA cloud. Voici l’état au 15 novembre.",
+    "description": "Une semaine en production, près de 50 nouveautés — tout en local, sans IA cloud. Voici l’état au 15 novembre.",
     "counter": "{{live}} nouveautés sur {{total}} déjà en service — un décompte distinct, en plus des fonctions de base ci-dessus",
     "hudCaption": "Le nouvel HUD kiosque : état du cluster, mesure réelle de la consommation avec coût, météo, sauvegardes et GPU en un coup d’œil. Noms des nœuds et des pièces, station météo et présence sont pixelisés.",
     "comfyCaption": "Généré entièrement en local : image de test de la génération d’images — Stable Diffusion XL sur notre propre GPU, désormais en 16 secondes environ.",
@@ -787,6 +787,11 @@
             "desc": "Les données locales du serveur GPU sont sauvegardées automatiquement dès qu’il fonctionne."
           },
           {
+            "title": "Seconde sauvegarde sur un disque séparé",
+            "desc": "Toutes les sauvegardes et les données locales du serveur GPU sont en plus copiées sur un disque dédié et vérifiées par somme de contrôle ; une restauration de test a réussi.",
+            "status": "live"
+          },
+          {
             "title": "Exploitation plus propre",
             "status": "live",
             "desc": "Les tâches terminées disparaissent après trois jours, la maintenance des sauvegardes ne garde que le dernier passage."
@@ -795,6 +800,11 @@
             "title": "Tableau de bord « Services »",
             "status": "live",
             "desc": "Mail, caméra et requêtes IA en un coup d’œil."
+          },
+          {
+            "title": "Maintenance automatisée",
+            "desc": "Une tâche hebdomadaire vérifie les nouvelles versions des ouvrages de référence — avec somme de contrôle et 14 jours d’attente — et signale les étapes de maintenance dues ; les résultats figurent dans le rapport hebdomadaire.",
+            "status": "live"
           },
           {
             "title": "Plus de stockage dans le cluster",
@@ -877,7 +887,7 @@
             "desc": "Préparé en variante quantifiée qui tient dans 16 Go — il manque encore une dernière pièce."
           },
           {
-            "title": "Sauvegarde externe chiffrée",
+            "title": "Externalisation de la sauvegarde hors site",
             "status": "planned"
           },
           {
