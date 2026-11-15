@@ -15,13 +15,16 @@ interface NodeDef {
   nvme: boolean;
 }
 
-/** 17 Kubernetes nodes as on the real HUD; the Pi Zero watchdog sits outside. */
-const NODES: NodeDef[] = [
-  { name: "pi4-util", nvme: false },
-  { name: "odroid", nvme: true },
-  ...Array.from({ length: 14 }, (_, i) => ({ name: `pi5-${String(i + 1).padStart(2, "0")}`, nvme: i < 10 })),
-  { name: "z840-01", nvme: false },
-];
+/**
+ * 17 Kubernetes nodes as on the real HUD (the Pi Zero watchdog sits
+ * outside). Labels are neutral on purpose: real hostnames stay private,
+ * just as they are pixelated in the screenshots. Order and NVMe layout
+ * mirror the real cluster: utility node, CPU reserve, 14 Pi 5, GPU last.
+ */
+const NODES: NodeDef[] = Array.from({ length: 17 }, (_, i) => ({
+  name: `N${String(i + 1).padStart(2, "0")}`,
+  nvme: i === 1 || (i >= 2 && i < 12),
+}));
 
 interface Sample {
   temp: number;
