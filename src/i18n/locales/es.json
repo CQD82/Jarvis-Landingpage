@@ -25,7 +25,7 @@
   "statusTicker": [
     "ENLACE NEURONAL: ESTABLE",
     "18/18 NODOS EN LÍNEA",
-    "RESPUESTA DE VOZ: ~1–2 S",
+    "PRIMERA FRASE: ~0,7 S",
     "WIREGUARD ESTRICTO: ACTIVO",
     "GITOPS: SINCRONIZADO",
     "IA EN LA NUBE: NINGUNA"
@@ -108,7 +108,7 @@
       },
       {
         "title": "Asistente de voz basado en fuentes y HUD",
-        "description": "«Hey Jarvis»: palabra de activación en el dispositivo, reconocimiento de voz y modelo de lenguaje en la GPU, voz británica. Las preguntas de conocimiento solo se responden a partir de fuentes (Wikipedia sin conexión, noticias) con verificación automática — en uno o dos segundos. Un HUD holográfico muestra resultados, tiempo, medios y estado del sistema."
+        "description": "«Hey Jarvis»: palabra de activación en el dispositivo, reconocimiento de voz y modelo de lenguaje en la GPU, voz británica. De media pronuncia la primera frase en unos 0,7 segundos. Las preguntas de conocimiento solo se responden a partir de fuentes —21 obras de consulta sin conexión y noticias— con verificación automática, y entiende las preguntas de seguimiento en contexto. Un HUD holográfico muestra resultados, tiempo, medios y estado del sistema."
       },
       {
         "title": "Segmentación de red zero trust",
@@ -189,7 +189,7 @@
       {
         "tier": "Conocimiento",
         "hardware": "Almacenamiento local",
-        "role": "Wikipedia sin conexión (45 GB) y metabuscador como fuentes"
+        "role": "21 obras de consulta sin conexión (incl. la Wikipedia alemana), un almacén de conocimiento que aprende y metabuscador como fuentes"
       },
       {
         "tier": "Nube",
@@ -297,11 +297,11 @@
     "items": [
       {
         "title": "El recorrido de una petición de voz",
-        "body": "La palabra «Hey Jarvis» se detecta directamente en el terminal de voz. La grabación va a Whisper en la GPU (menos de medio segundo) y Home Assistant decide: las órdenes sencillas — luz, calefacción, hora o tiempo — se resuelven al instante sin modelo de lenguaje. El resto va al modelo local, que puede usar herramientas: búsqueda web, Wikipedia, tiempo, medios, rutas. Kokoro pronuncia la respuesta frase a frase: la primera suena mientras el resto aún se calcula."
+        "body": "La palabra «Hey Jarvis» se detecta directamente en el terminal de voz. La grabación va a Whisper en la GPU (menos de medio segundo) y Home Assistant decide: las órdenes sencillas — luz, calefacción, hora o tiempo — se resuelven al instante sin modelo de lenguaje. El resto va al modelo local, que puede usar herramientas: búsqueda web, Wikipedia, tiempo, medios, rutas. Kokoro pronuncia la respuesta frase a frase: la primera suena mientras el resto aún se calcula. De media, la primera frase se oye a los 0,7 segundos."
       },
       {
         "title": "Hechos verificados en lugar de alucinaciones",
-        "body": "Ante preguntas de conocimiento o actualidad, Jarvis no responde de memoria. Primero consulta una copia completa sin conexión de la Wikipedia alemana o un metabuscador propio y redacta la respuesta solo con esas fuentes. Cada número y fecha se comprueba; si falta una prueba, se ejecuta una segunda verificación más estricta. Si no encuentra nada, lo dice con honestidad."
+        "body": "En las preguntas de conocimiento y actualidad, Jarvis no responde de memoria. Primero consulta —en 21 obras de consulta sin conexión, desde la Wikipedia alemana hasta documentación técnica, en su propio almacén de conocimiento o mediante un metabuscador autoalojado— y formula la respuesta solo a partir de esas fuentes. Cifras, fechas y nombres se comprueban con la fuente; las preguntas difíciles de varios pasos pasan por un bucle de investigación propio. Si no hay pruebas, Jarvis lo dice con honestidad. Lo que le faltaba lo investiga cada día un servicio de aprendizaje, y solo se conserva lo que tiene fuente."
       },
       {
         "title": "Domótica y n8n",
@@ -453,7 +453,7 @@
       },
       {
         "name": "Nivel GPU",
-        "role": "HP Z840 con RTX 5060 Ti: mantiene el modelo de lenguaje cargado durante el día y responde en uno o dos segundos; por la noche duerme y se despierta por Wake-on-LAN."
+        "role": "HP Z840 con RTX 5060 Ti: mantiene el modelo de lenguaje cargado durante el día, primera frase en unos 0,7 segundos; por la noche duerme y se despierta por Wake-on-LAN."
       },
       {
         "name": "Nivel CPU",
@@ -531,7 +531,7 @@
       },
       {
         "title": "Asistente de voz basado en fuentes",
-        "desc": "«Hey Jarvis» responde en uno o dos segundos — preguntas de conocimiento solo con fuentes verificadas."
+        "desc": "«Hey Jarvis» pronuncia la primera frase en unos 0,7 segundos; las preguntas de conocimiento, solo con fuentes."
       },
       {
         "title": "Control de calidad automático",
@@ -593,7 +593,7 @@
       },
       {
         "title": "Generación de imágenes con FLUX.1",
-        "desc": "Stable Diffusion XL ya funciona en local; el modelo FLUX.1, más grande, es el siguiente paso."
+        "desc": "Stable Diffusion XL funciona en local; FLUX.1 está preparado como variante cuantizada para 16 GB y falta una última pieza."
       }
     ],
     "counter": "Funciones básicas en marcha: {{done}} / {{total}}",
@@ -613,16 +613,18 @@
   "updates": {
     "eyebrow": "Novedades desde la puesta en marcha",
     "title": "Lo que se ha añadido desde el 10 de noviembre",
-    "description": "Una semana en producción y unas 30 funciones nuevas, todo en local y sin IA en la nube. Este es el estado actual.",
+    "description": "Una semana en producción y unas 45 novedades, todo en local y sin IA en la nube. Este es el estado a 15 de noviembre.",
     "counter": "{{live}} de {{total}} novedades ya en marcha: un recuento aparte, además de las funciones básicas de arriba",
     "hudCaption": "El nuevo HUD de quiosco: estado del clúster, medición real del consumo con coste, tiempo, copias de seguridad y GPU de un vistazo. Los nombres de nodos y salas, la estación meteorológica y la presencia están pixelados.",
-    "comfyCaption": "Generada completamente en local: imagen de prueba de la nueva generación de imágenes — Stable Diffusion XL en nuestra propia GPU, unos 36 segundos.",
+    "comfyCaption": "Generada completamente en local: imagen de prueba de la generación de imágenes — Stable Diffusion XL en nuestra propia GPU, ahora en unos 16 segundos.",
     "note": "Otras interfaces están protegidas con inicio de sesión de doble factor y no se muestran aquí a propósito.",
     "status": {
       "live": "activo",
       "ready": "listo",
       "wip": "en curso",
-      "planned": "previsto"
+      "planned": "previsto",
+      "done": "completado",
+      "fixed": "resuelto"
     },
     "groups": [
       {
@@ -631,62 +633,108 @@
           {
             "title": "Modo de emergencia sin servidor GPU",
             "status": "live",
-            "desc": "Nuevo: sin GPU toman el relevo pequeños modelos de reserva (Qwen3 4B en la reserva CPU, Qwen3 1.7B en la NPU edge); parar, reproducir y los chistes no necesitan modelo y las respuestas de conocimiento siguen con fuente."
+            "desc": "Si el servidor GPU está apagado, modelos de reserva más pequeños siguen respondiendo: en la reserva CPU y, como último recurso, cargado de forma permanente en la NPU edge. Parar, reproducir y los chistes no necesitan modelo."
+          },
+          {
+            "title": "Preguntas de seguimiento",
+            "status": "live",
+            "desc": "«¿Quién fue Einstein?» – «¿Dónde murió?» JARVIS resuelve referencias como «él» o «esa ciudad» a partir de la conversación antes de buscar."
+          },
+          {
+            "title": "Bucle de investigación para preguntas difíciles",
+            "status": "live",
+            "desc": "En preguntas de varios pasos, comparaciones o explicaciones, JARVIS planifica qué consultar y comprueba el resultado, en 2 a 4 segundos. Por ejemplo: ¿qué río atraviesa la ciudad natal de Mozart?"
+          },
+          {
+            "title": "Cálculo exacto",
+            "status": "live",
+            "desc": "Los cálculos y conversiones se hacen de forma exacta, no estimada."
+          },
+          {
+            "title": "Memoria",
+            "status": "live",
+            "desc": "«Recuerda que…», «olvida…», «¿qué sabes de mí?»: lo recordado se usa en las respuestas pertinentes, también en modo de emergencia."
+          },
+          {
+            "title": "Fidelidad a los hechos más estricta",
+            "status": "live",
+            "desc": "Cifras, fechas y nombres deben estar en las fuentes, los años con exactitud. Sin pruebas, JARVIS dice con honestidad que no tiene una fuente fiable; las personas inventadas siguen siendo inventadas."
           },
           {
             "title": "Modo silencio",
             "status": "live",
-            "desc": "«Cállate» o «silencio durante 30 minutos»: JARVIS calla, los avisos se retienen y después vuelve por sí solo."
+            "desc": "«Cállate» o «silencio durante 30 minutos»: JARVIS calla, los avisos se retienen y después vuelve solo."
           },
           {
             "title": "Informe por voz",
             "status": "live",
-            "desc": "«¿Cómo está el clúster?» o «¿Cuál es la situación de seguridad?», con consumo, temperaturas de discos y avisos de seguridad abiertos."
-          },
-          {
-            "title": "Prueba de calidad automática",
-            "status": "live",
-            "desc": "Nuevo: 31 casos de prueba con un simulacro del modo de emergencia sin GPU, resultados como métricas con alertas; la última vez, 31 de 31 superados."
+            "desc": "Clúster, consumo, temperaturas de discos y avisos de seguridad abiertos, a petición."
           }
         ]
+      },
+      {
+        "title": "Conocimiento y aprendizaje",
+        "items": [
+          {
+            "title": "21 obras de consulta sin conexión",
+            "status": "live",
+            "desc": "Además de la Wikipedia alemana: diccionario, guías de viaje, citas, libros de texto, guías de reparación, documentación de Linux y para desarrolladores y archivos de preguntas y respuestas. JARVIS elige la obra adecuada."
+          },
+          {
+            "title": "Consultas más rápidas",
+            "status": "live",
+            "desc": "Temas nuevos en 0,12 s de media en lugar de hasta 2 s; también lee fichas como superficie, población o altitud."
+          },
+          {
+            "title": "Bucle de aprendizaje sin entrenamiento manual",
+            "status": "live",
+            "desc": "Si falta una fuente o el usuario corrige a JARVIS, un servicio de aprendizaje investiga el caso a fondo cada día. Solo las respuestas con fuente y cifras comprobadas entran en el almacén de conocimiento; las correcciones se comprueban, no se aceptan a ciegas."
+          },
+          {
+            "title": "Nada se olvida",
+            "status": "live",
+            "desc": "La prueba de calidad nocturna revisa todo lo aprendido; el informe semanal muestra problemas, aprendizajes y temas abiertos."
+          }
+        ],
+        "note": "Deliberadamente sin entrenar pesos: el ajuste fino enseña estilo, no hechos fiables, y puede desplazar lo aprendido. El conocimiento consultable y con fuente es más seguro; aun así se recogen datos para un ajuste fino posterior."
       },
       {
         "title": "IA y modelos",
         "items": [
           {
-            "title": "Nuevos modelos locales",
+            "title": "Comparativa de modelos con cifras",
+            "status": "done",
+            "desc": "Modelos más recientes (Qwen3.8 27B, Gemma 4 26B, Qwen3.6 35B) se midieron frente al gpt-oss 20B en uso. Resultado: el modelo actual se queda, por ser el más rápido y el que más preguntas supera."
+          },
+          {
+            "title": "Prueba de calidad con 90 preguntas",
             "status": "live",
-            "desc": "Asistente de código (Devstral Small 2), Qwen2.5-Coder, Qwen3 14B y un modo de razonamiento a fondo, todo en nuestra RTX 5060 Ti."
+            "desc": "Cada noche 90 preguntas en ocho categorías, del conocimiento y las preguntas difíciles al modo de emergencia y lo aprendido; la última vez, 89 de 90 superadas."
           },
           {
             "title": "Comparativa de modelos (Promptfoo)",
             "status": "live",
-            "desc": "Compara cada semana todos los modelos de JARVIS con preguntas en alemán: ahora mismo 32 de 32 pruebas superadas."
+            "desc": "Comparación semanal y automática de todos los modelos con preguntas en alemán."
           },
           {
             "title": "Trazas de LLM (Langfuse)",
             "status": "live",
-            "desc": "Registra cada consulta de IA con tiempo de respuesta y tokens para que las mejoras sean medibles."
+            "desc": "Cada consulta de IA con tiempo de respuesta y tokens, para que las mejoras sean medibles."
           },
           {
-            "title": "Laboratorio de IA (JupyterLab + MLflow)",
+            "title": "Laboratorio de IA (JupyterLab, MLflow, Unsloth)",
             "status": "live",
-            "desc": "Entorno de experimentación con GPU; se registran entrenamientos y versiones de modelos."
-          },
-          {
-            "title": "Ajuste fino (Unsloth)",
-            "status": "ready",
-            "desc": "Reentrenar modelos pequeños con ejemplos propios (LoRA, 4 bits) y entregarlos directamente a JARVIS."
+            "desc": "Entorno de experimentación con GPU y ajuste fino; un servicio de mantenimiento limpia cachés e informa de lo no usado en el informe semanal en lugar de borrarlo."
           },
           {
             "title": "Generación de imágenes (ComfyUI)",
             "status": "live",
-            "desc": "Generación local en la GPU: Stable Diffusion XL en unos 36 segundos por imagen; después llegará FLUX.1."
+            "desc": "SDXL en unos 16 segundos en lugar de 36. El modelo de lenguaje y la generación de imágenes comparten la GPU automáticamente: la primera respuesta tras una imagen llega en 1 segundo en lugar de 6."
           },
           {
             "title": "Conversión de documentos (Docling)",
             "status": "live",
-            "desc": "Convierte PDF, archivos de Office e imágenes, tablas incluidas, en texto estructurado para la búsqueda documental."
+            "desc": "PDF, archivos de Office e imágenes, tablas incluidas, se convierten en texto estructurado, ahora también directamente en el chat para archivos subidos."
           },
           {
             "title": "Anotación (Label Studio)",
@@ -696,7 +744,7 @@
           {
             "title": "Análisis de cámara (Frigate)",
             "status": "live",
-            "desc": "Detecta personas y animales en la imagen y solo guarda eventos: totalmente local y solo en la red doméstica."
+            "desc": "Detecta personas y animales y solo guarda eventos: totalmente local y solo en la red doméstica."
           }
         ]
       },
@@ -706,7 +754,7 @@
           {
             "title": "Apagado nocturno del servidor GPU",
             "status": "live",
-            "desc": "Nuevo: se apaga en cuanto no hay nadie en la sala y la GPU está en reposo; se despierta al entrar alguien o por voz, y el modo de emergencia cubre el arranque."
+            "desc": "Se apaga en cuanto no hay nadie en la sala y la GPU está en reposo; se despierta al entrar alguien o por voz, y el modo de emergencia cubre el arranque."
           },
           {
             "title": "Medición real del consumo",
@@ -716,12 +764,12 @@
           {
             "title": "Salud de los discos",
             "status": "live",
-            "desc": "Temperatura, desgaste y limitación de todos los SSD y NVMe vigilados cada minuto, con umbrales y alertas."
+            "desc": "Temperatura, desgaste y limitación de todos los SSD y NVMe cada minuto, con umbrales y alertas."
           },
           {
             "title": "Informe semanal",
             "status": "live",
-            "desc": "Cada lunes, un resumen automático: copias de seguridad, alertas, seguridad, energía y discos."
+            "desc": "Cada lunes: copias, alertas, seguridad, energía y discos, ahora también con las secciones «Laboratorio de IA» y «Aprendizaje»."
           },
           {
             "title": "Vigilante externo con hombre muerto",
@@ -732,6 +780,26 @@
             "title": "Parches automáticos",
             "status": "live",
             "desc": "Todos los nodos se actualizan y reinician uno tras otro, sin interrupciones."
+          },
+          {
+            "title": "Copias también para el servidor GPU",
+            "status": "live",
+            "desc": "Los datos locales del servidor GPU se copian automáticamente en cuanto está en marcha."
+          },
+          {
+            "title": "Operación más ordenada",
+            "status": "live",
+            "desc": "Los trabajos terminados desaparecen a los tres días y el mantenimiento de copias solo conserva la última ejecución."
+          },
+          {
+            "title": "Panel «Servicios»",
+            "status": "live",
+            "desc": "Correo, cámara y consultas de IA de un vistazo."
+          },
+          {
+            "title": "Más almacenamiento en el clúster",
+            "status": "live",
+            "desc": "Un disco antes sin uso sirve ahora como almacenamiento del clúster; las obras de consulta están allí en local."
           }
         ]
       },
@@ -741,17 +809,22 @@
           {
             "title": "Vigilancia de vulnerabilidades",
             "status": "live",
-            "desc": "Compara varias veces al día todas las versiones de software con vulnerabilidades conocidas: ahora solo hay un hallazgo leve."
+            "desc": "Compara varias veces al día todos los servicios con vulnerabilidades conocidas, con alertas propias para correo, cámara y almacenamiento."
+          },
+          {
+            "title": "Inicio de sesión único con doble factor",
+            "status": "live",
+            "desc": "Documentos, fotos y trazas de LLM solo son accesibles mediante el inicio de sesión central con segundo factor."
           },
           {
             "title": "Gestor de contraseñas (Vaultwarden)",
             "status": "live",
-            "desc": "Gestor propio compatible con Bitwarden; todos los accesos del clúster están cifrados en él."
+            "desc": "Gestor propio compatible con Bitwarden; todos los accesos están cifrados en él."
           },
           {
             "title": "Servidor de correo propio + webmail",
             "status": "live",
-            "desc": "Correo en el dominio propio, sin depender de grandes proveedores, con filtro antispam y DKIM/SPF/DMARC."
+            "desc": "Correo en el dominio propio con filtro antispam y DKIM/SPF/DMARC, ahora con varios buzones."
           },
           {
             "title": "Segundo canal de alertas (ntfy)",
@@ -771,8 +844,38 @@
         ]
       },
       {
+        "title": "Problemas resueltos",
+        "items": [
+          {
+            "title": "Bloqueos de hasta un minuto",
+            "status": "fixed",
+            "desc": "Un formato de respuesta que el servidor rechazaba provocaba bucles de reintentos; internamente JARVIS usa ahora un formato sencillo por líneas."
+          },
+          {
+            "title": "Búsqueda de lugares lenta",
+            "status": "fixed",
+            "desc": "Hasta 76 segundos por un servicio de mapas público saturado; ahora unos 5 segundos gracias a un servicio alternativo, caché y precarga nocturna."
+          },
+          {
+            "title": "Datos desactualizados",
+            "status": "fixed",
+            "desc": "Los nombres deben estar respaldados igual que las cifras; los cargos se consultan por el cargo y no por la persona."
+          },
+          {
+            "title": "Arranque lento",
+            "status": "fixed",
+            "desc": "Las primeras órdenes de voz tras el arranque tardaban hasta 15 segundos; el reconocimiento de voz y el modelo de lenguaje se precalientan ahora."
+          }
+        ]
+      },
+      {
         "title": "Lo próximo",
         "items": [
+          {
+            "title": "Terminar FLUX.1",
+            "status": "wip",
+            "desc": "Preparado como variante cuantizada que cabe en 16 GB; falta una última pieza."
+          },
           {
             "title": "Copia de seguridad externa cifrada",
             "status": "planned"
@@ -793,6 +896,29 @@
       "comfy": "Imagen de prueba generada en local: una sala de control futurista"
     },
     "expandAll": "Desplegar todo",
-    "collapseAll": "Plegar todo"
+    "collapseAll": "Plegar todo",
+    "metricsTitle": "Mediciones",
+    "metrics": [
+      {
+        "value": "89/90",
+        "label": "Prueba de calidad (90 preguntas)"
+      },
+      {
+        "value": "47/47",
+        "label": "Prueba comparativa exigente"
+      },
+      {
+        "value": "~0,7 s",
+        "label": "Primera frase hablada"
+      },
+      {
+        "value": "0,2 s",
+        "label": "Reconocimiento de voz"
+      },
+      {
+        "value": "0,12 s",
+        "label": "Consulta de un tema nuevo"
+      }
+    ]
   }
 }

@@ -25,7 +25,7 @@
   "statusTicker": [
     "NEURAL LINK: STABLE",
     "18/18 NODES ONLINE",
-    "VOICE RESPONSE: ~1–2 S",
+    "FIRST SENTENCE: ~0.7 S",
     "WIREGUARD STRICT MODE: ACTIVE",
     "GITOPS: IN SYNC",
     "CLOUD AI: NONE"
@@ -108,7 +108,7 @@
       },
       {
         "title": "Fact-grounded voice assistant & HUD",
-        "description": "“Hey Jarvis”: on-device wake word, speech recognition and language model on the GPU, a British voice. Knowledge questions are answered only from cited sources (offline Wikipedia, news) with an automatic cross-check — in about one to two seconds. A holographic HUD shows search results, weather, media and system status."
+        "description": "“Hey Jarvis”: on-device wake word, speech recognition and language model on the GPU, a British voice. The first sentence is spoken after about 0.7 seconds on average. Knowledge questions are answered only from cited sources — 21 offline reference works and news — with an automatic cross-check, and follow-up questions are understood in context. A holographic HUD shows search results, weather, media and system status."
       },
       {
         "title": "Zero-trust network segmentation",
@@ -189,7 +189,7 @@
       {
         "tier": "Knowledge",
         "hardware": "Local storage",
-        "role": "Offline Wikipedia (45 GB) and metasearch as sources"
+        "role": "21 offline reference works (incl. German Wikipedia), a learning knowledge store and meta search as sources"
       },
       {
         "tier": "Cloud",
@@ -297,11 +297,11 @@
     "items": [
       {
         "title": "The path of a voice request",
-        "body": "The wake word “Hey Jarvis” is detected right on the voice terminal. The recording goes to Whisper on the GPU (under half a second); then Home Assistant decides: simple commands such as lights, heating, time or weather are handled instantly without a language model. Everything else goes to the local language model, which can use tools — web search, Wikipedia, weather, media, routes. Kokoro speaks the answer sentence by sentence: the first sentence plays while the rest is still being synthesised."
+        "body": "The wake word “Hey Jarvis” is detected right on the voice terminal. The recording goes to Whisper on the GPU (under half a second); then Home Assistant decides: simple commands such as lights, heating, time or weather are handled instantly without a language model. Everything else goes to the local language model, which can use tools — web search, Wikipedia, weather, media, routes. Kokoro speaks the answer sentence by sentence: the first sentence plays while the rest is still being synthesised. On average the first sentence can be heard after about 0.7 seconds."
       },
       {
         "title": "Grounded facts instead of hallucination",
-        "body": "For knowledge and news questions Jarvis does not answer from memory. It looks things up first — in a complete offline copy of the German Wikipedia or through a self-hosted metasearch — and phrases the answer exclusively from those sources. Every number and date is checked against the source; if one lacks evidence, a second, stricter verification pass runs. If nothing is found, Jarvis says so honestly."
+        "body": "For knowledge and news questions Jarvis does not answer from memory. It looks things up first — in 21 offline reference works from the German Wikipedia to technical documentation, in its own knowledge store or via a self-hosted meta search — and phrases the answer only from those sources. Numbers, dates and names are checked against the source; hard, multi-step questions are planned in a dedicated research loop. If there is no evidence, Jarvis says so honestly. Whatever it lacked is researched daily by a learning service — only sourced facts are kept."
       },
       {
         "title": "Home automation & n8n",
@@ -453,7 +453,7 @@
       },
       {
         "name": "GPU Tier",
-        "role": "HP Z840 with RTX 5060 Ti — keeps the language model loaded during the day and answers in one to two seconds; at night it sleeps and is woken via Wake-on-LAN."
+        "role": "HP Z840 with RTX 5060 Ti — keeps the language model loaded during the day, first sentence after about 0.7 seconds; at night it sleeps and is woken via Wake-on-LAN."
       },
       {
         "name": "CPU Tier",
@@ -531,7 +531,7 @@
       },
       {
         "title": "Fact-grounded voice assistant",
-        "desc": "“Hey Jarvis” answers in one to two seconds — knowledge questions only from cited sources."
+        "desc": "“Hey Jarvis” speaks its first sentence after about 0.7 seconds — knowledge questions only from cited sources."
       },
       {
         "title": "Automated quality assurance",
@@ -593,7 +593,7 @@
       },
       {
         "title": "Image generation with FLUX.1",
-        "desc": "Stable Diffusion XL already runs locally; the larger FLUX.1 model is next."
+        "desc": "Stable Diffusion XL runs locally; FLUX.1 is prepared as a quantised variant for 16 GB — one last piece is still missing."
       }
     ],
     "counter": "Core functions in production: {{done}} / {{total}}",
@@ -613,16 +613,18 @@
   "updates": {
     "eyebrow": "New since go-live",
     "title": "What has been added since 10 November",
-    "description": "One week in production, around 30 new features — all local, no cloud AI. Here is where things stand.",
+    "description": "One week in production, around 45 new additions — all local, no cloud AI. Here is the state as of 15 November.",
     "counter": "{{live}} of {{total}} new features already running — a separate count, on top of the core functions above",
     "hudCaption": "The new kiosk HUD: cluster state, real power measurement with cost, weather, backups and GPU at a glance. Node and room names, the weather station and presence are pixelated.",
-    "comfyCaption": "Generated entirely locally: a test image from the new image generation — Stable Diffusion XL on our own GPU, about 36 seconds.",
+    "comfyCaption": "Generated entirely locally: a test image from the image generation — Stable Diffusion XL on our own GPU, now in about 16 seconds.",
     "note": "Further interfaces sit behind a two-factor sign-in and are deliberately not shown here.",
     "status": {
       "live": "live",
       "ready": "ready",
       "wip": "in progress",
-      "planned": "planned"
+      "planned": "planned",
+      "done": "completed",
+      "fixed": "fixed"
     },
     "groups": [
       {
@@ -631,62 +633,108 @@
           {
             "title": "Fallback mode without the GPU server",
             "status": "live",
-            "desc": "New: without the GPU, small reserve models take over (Qwen3 4B on the CPU reserve, Qwen3 1.7B on the edge NPU); stop, playback and jokes need no model at all, and knowledge answers stay sourced."
+            "desc": "If the GPU server is off, smaller reserve models keep answering — on the CPU reserve and, as the last resort, permanently loaded on the edge NPU. Stop, playback and jokes need no model at all."
+          },
+          {
+            "title": "Follow-up questions",
+            "status": "live",
+            "desc": "“Who was Einstein?” – “Where did he die?” JARVIS resolves references like “he” or “that city” from the conversation before looking things up."
+          },
+          {
+            "title": "Research loop for hard questions",
+            "status": "live",
+            "desc": "For multi-step questions, comparisons or explanations JARVIS plans what to look up and checks the result — in 2 to 4 seconds. For example: which river flows through Mozart’s birthplace?"
+          },
+          {
+            "title": "Exact arithmetic",
+            "status": "live",
+            "desc": "Calculations and unit conversions are computed exactly instead of estimated."
+          },
+          {
+            "title": "Memory",
+            "status": "live",
+            "desc": "“Remember that …”, “forget …”, “what do you know about me?” — remembered facts feed into relevant answers, even in fallback mode."
+          },
+          {
+            "title": "Stricter fact grounding",
+            "status": "live",
+            "desc": "Numbers, dates and names must appear in the sources, years exactly. Without evidence JARVIS honestly says it has no reliable source — made-up people stay made up."
           },
           {
             "title": "Mute mode",
             "status": "live",
-            "desc": "“Be quiet” or “mute for 30 minutes”: JARVIS stays silent and announcements are held back, then it resumes on its own."
+            "desc": "“Be quiet” or “mute for 30 minutes”: JARVIS stays silent, announcements are held back, then it resumes on its own."
           },
           {
             "title": "Status report by voice",
             "status": "live",
-            "desc": "“How is the cluster?” or “What is the security situation?” — with power draw, drive temperatures and open security findings."
-          },
-          {
-            "title": "Automatic quality test",
-            "status": "live",
-            "desc": "New: 31 test cases including a fallback drill without the GPU, results as metrics with alerting — most recently 31 of 31 passed."
+            "desc": "Cluster, power, drive temperatures and open security findings on request."
           }
         ]
+      },
+      {
+        "title": "Knowledge & learning",
+        "items": [
+          {
+            "title": "21 offline reference works",
+            "status": "live",
+            "desc": "Besides the German Wikipedia: a dictionary, travel guides, quotations, textbooks, repair guides, Linux and developer documentation and Q&A archives. JARVIS picks the right one itself."
+          },
+          {
+            "title": "Faster lookups",
+            "status": "live",
+            "desc": "New topics in 0.12 s on average instead of up to 2 s; infobox facts such as area, population or elevation are read too."
+          },
+          {
+            "title": "Learning loop without manual training",
+            "status": "live",
+            "desc": "When a source is missing or the user corrects JARVIS, a learning service researches the case thoroughly every day. Only sourced answers with verified numbers enter the knowledge store — corrections are checked, not taken on trust."
+          },
+          {
+            "title": "Nothing forgotten",
+            "status": "live",
+            "desc": "Everything learned is re-checked by the nightly quality test; the weekly report shows issues, learnings and open items."
+          }
+        ],
+        "note": "Deliberately no weight training: fine-tuning teaches style, not reliable facts, and can push out what was learned. Sourced, retrievable knowledge is safer — data for a later fine-tune is still being collected."
       },
       {
         "title": "AI & models",
         "items": [
           {
-            "title": "New local models",
+            "title": "Model comparison with numbers",
+            "status": "done",
+            "desc": "Newer models (Qwen3.8 27B, Gemma 4 26B, Qwen3.6 35B) were tested against the running gpt-oss 20B. Result: the current model stays — fastest and with the most passed questions."
+          },
+          {
+            "title": "Quality test with 90 questions",
             "status": "live",
-            "desc": "Coding assistant (Devstral Small 2), Qwen2.5-Coder, Qwen3 14B and a thorough reasoning mode — all on our own RTX 5060 Ti."
+            "desc": "Every night 90 questions in eight categories — from knowledge and hard questions to fallback mode and learned facts; most recently 89 of 90 passed."
           },
           {
             "title": "Model comparison (Promptfoo)",
             "status": "live",
-            "desc": "Compares all JARVIS models weekly on German test questions — currently 32 of 32 tests passed."
+            "desc": "Weekly automatic comparison of all models on German test questions."
           },
           {
             "title": "LLM tracing (Langfuse)",
             "status": "live",
-            "desc": "Records every AI request with response time and token usage so improvements become measurable."
+            "desc": "Every AI request with response time and token usage — so improvements become measurable."
           },
           {
-            "title": "AI lab (JupyterLab + MLflow)",
+            "title": "AI lab (JupyterLab, MLflow, Unsloth)",
             "status": "live",
-            "desc": "A GPU-backed experimentation environment; training runs and model versions are tracked."
-          },
-          {
-            "title": "Fine-tuning (Unsloth)",
-            "status": "ready",
-            "desc": "Retrain small models on our own examples (LoRA, 4-bit) and hand them straight to JARVIS."
+            "desc": "GPU experimentation environment with fine-tuning; a housekeeping service clears caches and reports unused items in the weekly report instead of deleting them."
           },
           {
             "title": "Image generation (ComfyUI)",
             "status": "live",
-            "desc": "Local image generation on the GPU: Stable Diffusion XL in about 36 seconds per image; FLUX.1 comes next."
+            "desc": "SDXL in about 16 instead of 36 seconds. Language model and image generation share the GPU automatically — the first answer after an image comes after 1 instead of 6 seconds."
           },
           {
             "title": "Document conversion (Docling)",
             "status": "live",
-            "desc": "Turns PDFs, Office files and images — tables included — into structured text for document search."
+            "desc": "PDFs, Office files and images, tables included, become structured text — now also directly in the chat for uploaded files."
           },
           {
             "title": "Annotation (Label Studio)",
@@ -696,7 +744,7 @@
           {
             "title": "Camera analysis (Frigate)",
             "status": "live",
-            "desc": "Detects people and animals in the camera feed and stores only events — fully local, home network only."
+            "desc": "Detects people and animals and stores only events — fully local, home network only."
           }
         ]
       },
@@ -706,25 +754,25 @@
           {
             "title": "Night shutdown of the GPU server",
             "status": "live",
-            "desc": "New: switches off once nobody is in the room and the GPU is idle; wakes when someone enters or by voice, with fallback mode bridging the start-up."
+            "desc": "Switches off once nobody is in the room and the GPU is idle; wakes when someone enters or by voice, with fallback mode bridging the start-up."
           },
           {
             "title": "Real power measurement",
             "status": "live",
-            "desc": "Consumption per device measured instead of estimated, with total kWh and cost in the dashboards and on the kiosk HUD."
+            "desc": "Consumption per device measured instead of estimated, with total kWh and cost in dashboards and on the kiosk HUD."
           },
           {
             "title": "Drive health",
             "status": "live",
-            "desc": "Temperature, wear and throttling of every SSD and NVMe checked every minute, with thresholds and alerts."
+            "desc": "Temperature, wear and throttling of every SSD and NVMe every minute, with thresholds and alerts."
           },
           {
             "title": "Weekly report",
             "status": "live",
-            "desc": "Every Monday an automatic summary: backups, alerts, security, energy and drives."
+            "desc": "Every Monday: backups, alerts, security, energy, drives — now also with “AI lab” and “Learning” sections."
           },
           {
-            "title": "External watchdog with dead man's switch",
+            "title": "External watchdog with dead man’s switch",
             "status": "live",
             "desc": "A separate mini computer checks the cluster from outside and raises the alarm if even monitoring fails."
           },
@@ -732,6 +780,26 @@
             "title": "Automatic patching",
             "status": "live",
             "desc": "All nodes are updated and rebooted one after another — without downtime."
+          },
+          {
+            "title": "Backups for the GPU server too",
+            "status": "live",
+            "desc": "The GPU server’s local data is backed up automatically whenever it is running."
+          },
+          {
+            "title": "Tidier operations",
+            "status": "live",
+            "desc": "Finished jobs disappear after three days, and backup maintenance keeps only the latest run."
+          },
+          {
+            "title": "“Services” dashboard",
+            "status": "live",
+            "desc": "Mail, camera and AI requests at a glance."
+          },
+          {
+            "title": "More cluster storage",
+            "status": "live",
+            "desc": "A previously unused drive now serves as cluster storage; the reference works live there locally."
           }
         ]
       },
@@ -741,17 +809,22 @@
           {
             "title": "Vulnerability watch",
             "status": "live",
-            "desc": "Matches every running software version against known vulnerabilities several times a day — currently a single low finding."
+            "desc": "Checks every service against known vulnerabilities several times a day, with dedicated alerts for mail, camera and storage."
+          },
+          {
+            "title": "Single sign-on with two factors",
+            "status": "live",
+            "desc": "Documents, photos and LLM tracing are only reachable through the central sign-in with a second factor."
           },
           {
             "title": "Password manager (Vaultwarden)",
             "status": "live",
-            "desc": "Our own Bitwarden-compatible password manager; all cluster credentials are stored in it, encrypted."
+            "desc": "Our own Bitwarden-compatible password manager; all credentials are stored in it, encrypted."
           },
           {
             "title": "Own mail server + webmail",
             "status": "live",
-            "desc": "E-mail on our own domain, independent of big providers, with spam filtering and DKIM/SPF/DMARC."
+            "desc": "E-mail on our own domain with spam filtering and DKIM/SPF/DMARC, now with several mailboxes."
           },
           {
             "title": "Second alert channel (ntfy)",
@@ -771,8 +844,38 @@
         ]
       },
       {
+        "title": "Problems solved",
+        "items": [
+          {
+            "title": "Hangs of up to a minute",
+            "status": "fixed",
+            "desc": "A response format the server rejected caused retry loops; internally JARVIS now uses a simple line-based format."
+          },
+          {
+            "title": "Slow place search",
+            "status": "fixed",
+            "desc": "Up to 76 seconds because a public map service was overloaded — now about 5 seconds thanks to a fallback service, caching and nightly preloading."
+          },
+          {
+            "title": "Outdated facts",
+            "status": "fixed",
+            "desc": "Names now need the same evidence as numbers; offices are looked up via the office rather than a person."
+          },
+          {
+            "title": "Sluggish start",
+            "status": "fixed",
+            "desc": "The first voice commands after start-up took up to 15 seconds; speech recognition and the language model are now pre-warmed."
+          }
+        ]
+      },
+      {
         "title": "Up next",
         "items": [
+          {
+            "title": "Finish FLUX.1",
+            "status": "wip",
+            "desc": "Prepared as a quantised variant that fits into 16 GB — one last piece is still missing."
+          },
           {
             "title": "Off-site encrypted backup",
             "status": "planned"
@@ -793,6 +896,29 @@
       "comfy": "Locally generated test image: a futuristic control room"
     },
     "expandAll": "Expand all",
-    "collapseAll": "Collapse all"
+    "collapseAll": "Collapse all",
+    "metricsTitle": "Measurements",
+    "metrics": [
+      {
+        "value": "89/90",
+        "label": "Quality test (90 questions)"
+      },
+      {
+        "value": "47/47",
+        "label": "Hard comparison test"
+      },
+      {
+        "value": "~0.7 s",
+        "label": "First spoken sentence"
+      },
+      {
+        "value": "0.2 s",
+        "label": "Speech recognition"
+      },
+      {
+        "value": "0.12 s",
+        "label": "Lookup of a new topic"
+      }
+    ]
   }
 }

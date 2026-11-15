@@ -1,7 +1,7 @@
 import type { CSSProperties } from "react";
 import { useState } from "react";
 import type { LucideIcon } from "lucide-react";
-import { Activity, BrainCircuit, CalendarClock, ChevronDown, Mic, ShieldCheck } from "lucide-react";
+import { Activity, BookOpen, BrainCircuit, CalendarClock, ChevronDown, Mic, ShieldCheck, Wrench } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import comfySample from "@/assets/screens/comfyui-sample.webp";
 import hudKiosk from "@/assets/screens/hud-kiosk-v2.webp";
@@ -10,7 +10,7 @@ import { Reveal } from "@/components/landing/Reveal";
 import { SectionHeading } from "@/components/landing/SectionHeading";
 import { trackPointer } from "@/lib/pointer";
 
-type Status = "live" | "ready" | "wip" | "planned";
+type Status = "live" | "done" | "fixed" | "ready" | "wip" | "planned";
 
 interface Item {
   title: string;
@@ -20,14 +20,25 @@ interface Item {
 
 interface Group {
   title: string;
+  note?: string;
   items: Item[];
 }
 
+interface Metric {
+  value: string;
+  label: string;
+}
+
 /** Matches updates.groups in the locale files. */
-const GROUP_ICONS: LucideIcon[] = [Mic, BrainCircuit, Activity, ShieldCheck, CalendarClock];
+const GROUP_ICONS: LucideIcon[] = [Mic, BookOpen, BrainCircuit, Activity, ShieldCheck, Wrench, CalendarClock];
+
+/** Display order for legends and per-card summaries. */
+const STATUS_ORDER: Status[] = ["live", "done", "fixed", "ready", "wip", "planned"];
 
 const STATUS_BADGE: Record<Status, string> = {
   live: "border-[var(--hud-reactor)]/50 bg-[var(--hud-reactor)]/10 text-[var(--hud-reactor)]",
+  done: "border-[var(--hud-reactor)]/30 bg-transparent text-[var(--hud-reactor)]/80",
+  fixed: "border-emerald-400/40 bg-emerald-400/10 text-emerald-300",
   ready: "border-primary/50 bg-primary/10 text-primary",
   wip: "border-primary/40 bg-primary/5 text-primary/90",
   planned: "border-border bg-muted/40 text-muted-foreground",
@@ -35,6 +46,8 @@ const STATUS_BADGE: Record<Status, string> = {
 
 const STATUS_DOT: Record<Status, string> = {
   live: "bg-[var(--hud-reactor)] shadow-[0_0_6px_var(--hud-reactor)]",
+  done: "border border-[var(--hud-reactor)] bg-transparent",
+  fixed: "bg-emerald-400",
   ready: "bg-primary",
   wip: "bg-primary/70",
   planned: "bg-muted-foreground/50",
@@ -50,8 +63,17 @@ const STATUS_DOT: Record<Status, string> = {
 export function WhatsNew() {
   const { t } = useTranslation();
   const groups = t("updates.groups", { returnObjects: true }) as Group[];
+  const metrics = t("updates.metrics", { returnObjects: true }) as Metric[];
   const all = groups.flatMap((g) => g.items);
-  const liveCount = all.filter((i) => i.status === "live").length;
+  // Fixed problems are not features: the headline count covers additions only.
+  const features = all.filter((i) => i.status !== "fixed");
+  const running = features.filter((i) => i.status === "live" || i.status === "done").length;
+  const present = STATUS_ORDER.filter((s) => all.some((i) => i.status === s));
+  const summary = (items: Item[]) =>
+    STATUS_ORDER.map((s) => [s, items.filter((i) => i.status === s).length] as const)
+      .filter(([, n]) => n > 0)
+      .map(([s, n]) => `${n} ${t(`updates.status.${s}`)}`)
+      .join(" · ");
   const [open, setOpen] = useState<boolean[]>(() => groups.map(() => false));
   const allOpen = open.every(Boolean);
 
@@ -66,8 +88,20 @@ export function WhatsNew() {
 
       <Reveal delay={0.05}>
         <p className="mx-auto mt-6 max-w-2xl text-center font-mono text-xs tracking-widest text-muted-foreground uppercase">
-          {t("updates.counter", { live: liveCount, total: all.length })}
+          {t("updates.counter", { live: running, total: features.length })}
         </p>
+      </Reveal>
+
+      {/* Key measurements */}
+      <Reveal delay={0.08}>
+        <dl aria-label={t("updates.metricsTitle")} className="mx-auto mt-10 grid max-w-6xl grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+          {metrics.map((m) => (
+            <div key={m.label} className="flex flex-col-reverse rounded-xl border border-border bg-card/60 px-4 py-3 text-center">
+              <dt className="mt-1 text-[0.7rem] leading-snug text-muted-foreground">{m.label}</dt>
+              <dd className="font-display text-2xl text-primary text-glow tabular-nums">{m.value}</dd>
+            </div>
+          ))}
+        </dl>
       </Reveal>
 
       {/* Screenshots */}
@@ -103,7 +137,7 @@ export function WhatsNew() {
       {/* Legend + expand all */}
       <div className="mx-auto mt-14 flex max-w-6xl flex-wrap items-center justify-between gap-4">
         <ul className="flex flex-wrap items-center gap-4 font-mono text-[0.65rem] tracking-wider text-muted-foreground uppercase">
-          {(["live", "ready", "planned"] as Status[]).map((s) => (
+          {present.map((s) => (
             <li key={s} className="flex items-center gap-1.5">
               <span className={`size-2 rounded-full ${STATUS_DOT[s]}`} aria-hidden="true" />
               {t(`updates.status.${s}`)}
@@ -123,7 +157,6 @@ export function WhatsNew() {
       <div className="mx-auto mt-6 grid max-w-6xl items-start gap-6 md:grid-cols-2 xl:grid-cols-3">
         {groups.map((group, gi) => {
           const Icon = GROUP_ICONS[gi] ?? Activity;
-          const live = group.items.filter((i) => i.status === "live").length;
           const isOpen = open[gi] ?? false;
           return (
             <Reveal key={group.title} delay={(gi % 3) * 0.08}>
@@ -141,7 +174,7 @@ export function WhatsNew() {
                   <span className="min-w-0 flex-1">
                     <span className="block font-display text-base font-semibold tracking-tight">{group.title}</span>
                     <span className="mt-0.5 block font-mono text-[0.65rem] tracking-wider text-muted-foreground uppercase">
-                      {live > 0 ? `${live}/${group.items.length} ${t("updates.status.live")}` : `${group.items.length} ${t("updates.status.planned")}`}
+                      {summary(group.items)}
                     </span>
                   </span>
                   <ChevronDown className="size-4 shrink-0 text-muted-foreground transition-transform group-open/cat:rotate-180" aria-hidden="true" />
@@ -162,6 +195,9 @@ export function WhatsNew() {
                 </summary>
 
                 {/* Expanded: full list with descriptions */}
+                {group.note ? (
+                  <p className="mx-5 mb-4 rounded-lg border border-primary/20 bg-primary/5 px-3 py-2 text-xs leading-relaxed text-muted-foreground">{group.note}</p>
+                ) : null}
                 <ul className="space-y-4 border-t border-border/60 px-5 pt-4 pb-5">
                   {group.items.map((item) => (
                     <li key={item.title}>
