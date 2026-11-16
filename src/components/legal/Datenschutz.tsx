@@ -6,6 +6,7 @@ export function DatenschutzPage() {
     <LegalLayout title="Datenschutzerklärung">
       <LegalSection title="1. Verantwortlicher">
         <p>Marcus Kollosch</p>
+        <p>E-Mail: <a href="mailto:info@homelab-cluster.uk">info@homelab-cluster.uk</a></p>
       </LegalSection>
 
       <LegalSection title="2. Allgemeines zur Datenverarbeitung">
@@ -88,9 +89,26 @@ export function DatenschutzPage() {
 
       <LegalSection title="7. Kontaktaufnahme">
         <p>
-          Diese Website enthält kein Kontaktformular und keine veröffentlichte
-          Kontakt-E-Mail-Adresse. Über diese Website selbst werden daher keine
-          personenbezogenen Kontaktdaten erhoben oder verarbeitet.
+          Diese Website enthält kein Kontaktformular. Für Kontaktanfragen steht
+          die E-Mail-Adresse <a href="mailto:info@homelab-cluster.uk">info@homelab-cluster.uk</a> zur Verfügung.
+        </p>
+        <p>
+          Wenn Sie mir eine E-Mail schreiben, verarbeite ich Ihre
+          E-Mail-Adresse, Ihren Namen (sofern angegeben) und den Inhalt Ihrer
+          Nachricht ausschließlich, um Ihre Anfrage zu beantworten.
+          Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes
+          Interesse an der Beantwortung von Anfragen) bzw. Art. 6 Abs. 1
+          lit. b DSGVO, soweit Ihre Anfrage auf den Abschluss eines Vertrags
+          gerichtet ist.
+        </p>
+        <p>
+          Die Nachrichten werden auf einem selbst betriebenen Mailserver
+          gespeichert. Für die Zustellung von Antworten an einige große
+          E-Mail-Anbieter kann ein in der EU ansässiger Versanddienstleister
+          als Auftragsverarbeiter eingesetzt werden. Eine Weitergabe an
+          sonstige Dritte findet nicht statt. Ihre Daten werden gelöscht,
+          sobald die Anfrage abschließend bearbeitet ist und keine
+          gesetzlichen Aufbewahrungspflichten entgegenstehen.
         </p>
       </LegalSection>
 

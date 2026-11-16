@@ -8,6 +8,12 @@ export function ImpressumPage() {
         <p>Marcus Kollosch</p>
       </LegalSection>
 
+      <LegalSection title="Kontakt">
+        <p>
+          E-Mail: <a href="mailto:info@homelab-cluster.uk">info@homelab-cluster.uk</a>
+        </p>
+      </LegalSection>
+
       <LegalSection title="Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV">
         <p>Marcus Kollosch</p>
       </LegalSection>
