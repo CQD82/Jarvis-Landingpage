@@ -498,7 +498,7 @@
     "eyebrow": "Project Status",
     "title": "What's Running in Production",
     "description": "JARVIS has been in production since November 8. Real screenshots from the running system and where the build-out stands.",
-    "hudCaption": "The HUD on the room display: health of every node, weather, alerts, backups and GPU load — in the centre the voice core, waiting for “Hey Jarvis”.",
+    "hudCaption": "The room display in the new “Nachtblau” design: the neural network in the centre with the regions speech, knowledge, memory, research, cluster and vision, surrounded by cluster state, energy, switch and GPU. Names, weather, alerts, backups and news are pixelated.",
     "grafanaCaption": "The monitoring dashboard: status, temperatures and load of every node over the last 24 hours.",
     "chatCaption": "Sign-in to the local AI chat — access only through central single sign-on.",
     "note": "Room details, presence and news have been obscured; no internal addresses are visible.",
@@ -599,7 +599,7 @@
     "counter": "Core functions in production: {{done}} / {{total}}",
     "counterNote": "This counts the permanent core of the cluster. Features added since go-live are listed separately further down.",
     "alt": {
-      "hud": "Screenshot of the room-display HUD with details pixelated",
+      "hud": "Screenshot of the room-display HUD in the “Nachtblau” design with details pixelated",
       "grafana": "Photo of the monitoring dashboard with node names pixelated",
       "chat": "Screenshot of the local AI chat sign-in page"
     }
@@ -615,7 +615,6 @@
     "title": "What has been added since 10 November",
     "description": "One week in production, nearly 50 new additions — all local, no cloud AI. Here is the state as of 15 November.",
     "counter": "{{live}} of {{total}} new features already running — a separate count, on top of the core functions above",
-    "hudCaption": "The new kiosk HUD: cluster state, real power measurement with cost, weather, backups and GPU at a glance. Node and room names, the weather station and presence are pixelated.",
     "comfyCaption": "Generated entirely locally: a test image from the image generation — Stable Diffusion XL on our own GPU, now in about 16 seconds.",
     "note": "Further interfaces sit behind a two-factor sign-in and are deliberately not shown here.",
     "status": {
@@ -902,7 +901,6 @@
       }
     ],
     "alt": {
-      "hud": "Screenshot of the new kiosk HUD with details pixelated",
       "comfy": "Locally generated test image: a futuristic control room"
     },
     "expandAll": "Expand all",

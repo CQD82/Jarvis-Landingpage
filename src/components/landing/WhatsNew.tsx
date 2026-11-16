@@ -4,7 +4,6 @@ import type { LucideIcon } from "lucide-react";
 import { Activity, BookOpen, BrainCircuit, CalendarClock, ChevronDown, Mic, ShieldCheck, Wrench } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import comfySample from "@/assets/screens/comfyui-sample.webp";
-import hudKiosk from "@/assets/screens/hud-kiosk-v2.webp";
 import { HudCorners } from "@/components/landing/HudCorners";
 import { Reveal } from "@/components/landing/Reveal";
 import { SectionHeading } from "@/components/landing/SectionHeading";
@@ -104,34 +103,19 @@ export function WhatsNew() {
         </dl>
       </Reveal>
 
-      {/* Screenshots */}
-      <div className="mx-auto mt-12 grid max-w-6xl gap-6 lg:grid-cols-[1.9fr_1fr]">
-        <Reveal>
-          <figure className="relative">
-            <HudCorners />
-            <div className="border-glow relative overflow-hidden rounded-2xl border border-border">
-              <img src={hudKiosk} alt={t("updates.alt.hud")} loading="lazy" width={1920} height={1080} className="block h-auto w-full" />
-              <span aria-hidden="true" className="absolute top-3 left-3 flex items-center gap-1.5 rounded-sm bg-background/75 px-2 py-1 font-mono text-[0.6rem] tracking-widest text-primary backdrop-blur-sm">
-                <span className="animate-rec-blink size-1.5 rounded-full bg-[var(--hud-red)]" />
-                LIVE · KIOSK-HUD
-              </span>
-            </div>
-            <figcaption className="mt-3 text-center text-sm text-muted-foreground">{t("updates.hudCaption")}</figcaption>
-          </figure>
-        </Reveal>
-        <Reveal delay={0.1}>
-          <figure className="relative">
-            <HudCorners />
-            <div className="border-glow relative overflow-hidden rounded-2xl border border-border">
-              <img src={comfySample} alt={t("updates.alt.comfy")} loading="lazy" width={1024} height={1024} className="block aspect-square h-auto w-full object-cover" />
-              <span aria-hidden="true" className="absolute top-3 left-3 rounded-sm bg-background/75 px-2 py-1 font-mono text-[0.6rem] tracking-widest text-primary backdrop-blur-sm">
-                LOCAL · SDXL
-              </span>
-            </div>
-            <figcaption className="mt-3 text-center text-sm text-muted-foreground">{t("updates.comfyCaption")}</figcaption>
-          </figure>
-        </Reveal>
-      </div>
+      {/* Locally generated image (the current HUD screenshot sits in the progress section above) */}
+      <Reveal>
+        <figure className="relative mx-auto mt-12 max-w-md">
+          <HudCorners />
+          <div className="border-glow relative overflow-hidden rounded-2xl border border-border">
+            <img src={comfySample} alt={t("updates.alt.comfy")} loading="lazy" width={1024} height={1024} className="block aspect-square h-auto w-full object-cover" />
+            <span aria-hidden="true" className="absolute top-3 left-3 rounded-sm bg-background/75 px-2 py-1 font-mono text-[0.6rem] tracking-widest text-primary backdrop-blur-sm">
+              LOCAL · SDXL
+            </span>
+          </div>
+          <figcaption className="mt-3 text-center text-sm text-muted-foreground">{t("updates.comfyCaption")}</figcaption>
+        </figure>
+      </Reveal>
       <p className="mx-auto mt-6 max-w-2xl text-center text-xs text-muted-foreground/80">{t("updates.note")}</p>
 
       {/* Legend + expand all */}

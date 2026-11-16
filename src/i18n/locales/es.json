@@ -498,7 +498,7 @@
     "eyebrow": "Estado del proyecto",
     "title": "Lo que funciona en producción",
     "description": "JARVIS está en producción desde el 8 de noviembre. Capturas reales del sistema en marcha y el estado de la ampliación.",
-    "hudCaption": "El HUD en la pantalla de la sala: estado de cada nodo, tiempo, alertas, copias de seguridad y carga de la GPU — en el centro, el núcleo de voz esperando «Hey Jarvis».",
+    "hudCaption": "La pantalla de la sala con el nuevo diseño «Nachtblau»: en el centro la red neuronal con las áreas voz, conocimiento, memoria, investigación, clúster y visión, alrededor el estado del clúster, energía, switch y GPU. Nombres, tiempo, alertas, copias y noticias están pixelados.",
     "grafanaCaption": "El panel de monitorización: estado, temperaturas y carga de cada nodo en las últimas 24 horas.",
     "chatCaption": "Inicio de sesión en el chat de IA local — acceso solo mediante el inicio de sesión único central.",
     "note": "Se han ocultado los detalles de las habitaciones, la presencia y las noticias; no se ven direcciones internas.",
@@ -599,7 +599,7 @@
     "counter": "Funciones básicas en marcha: {{done}} / {{total}}",
     "counterNote": "Se cuenta el núcleo permanente del clúster. Las novedades desde la puesta en marcha aparecen por separado más abajo.",
     "alt": {
-      "hud": "Captura del HUD de la pantalla de la sala con detalles pixelados",
+      "hud": "Captura del HUD de la pantalla de la sala con el diseño «Nachtblau» y detalles pixelados",
       "grafana": "Foto del panel de monitorización con los nombres de nodos pixelados",
       "chat": "Captura de la página de acceso al chat de IA local"
     }
@@ -615,7 +615,6 @@
     "title": "Lo que se ha añadido desde el 10 de noviembre",
     "description": "Una semana en producción y casi 50 novedades, todo en local y sin IA en la nube. Este es el estado a 15 de noviembre.",
     "counter": "{{live}} de {{total}} novedades ya en marcha: un recuento aparte, además de las funciones básicas de arriba",
-    "hudCaption": "El nuevo HUD de quiosco: estado del clúster, medición real del consumo con coste, tiempo, copias de seguridad y GPU de un vistazo. Los nombres de nodos y salas, la estación meteorológica y la presencia están pixelados.",
     "comfyCaption": "Generada completamente en local: imagen de prueba de la generación de imágenes — Stable Diffusion XL en nuestra propia GPU, ahora en unos 16 segundos.",
     "note": "Otras interfaces están protegidas con inicio de sesión de doble factor y no se muestran aquí a propósito.",
     "status": {
@@ -902,7 +901,6 @@
       }
     ],
     "alt": {
-      "hud": "Captura del nuevo HUD de quiosco con detalles pixelados",
       "comfy": "Imagen de prueba generada en local: una sala de control futurista"
     },
     "expandAll": "Desplegar todo",
