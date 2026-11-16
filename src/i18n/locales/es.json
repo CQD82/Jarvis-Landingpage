@@ -424,7 +424,16 @@
       "metrics": "Copia de métricas",
       "gpuTemp": "Temperatura GPU",
       "gpuPower": "Potencia",
-      "ok": "OK"
+      "ok": "OK",
+      "regions": [
+        "VOZ",
+        "SABER",
+        "MEMORIA",
+        "BÚSQUEDA",
+        "CLÚSTER",
+        "VISIÓN"
+      ],
+      "regionActive": "activo"
     }
   },
   "liveTerminal": {

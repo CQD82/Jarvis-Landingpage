@@ -424,7 +424,16 @@
       "metrics": "Metrics backup",
       "gpuTemp": "GPU temperature",
       "gpuPower": "Power",
-      "ok": "OK"
+      "ok": "OK",
+      "regions": [
+        "SPEECH",
+        "KNOWLEDGE",
+        "MEMORY",
+        "RESEARCH",
+        "CLUSTER",
+        "VISION"
+      ],
+      "regionActive": "active"
     }
   },
   "liveTerminal": {
