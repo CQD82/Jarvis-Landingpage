@@ -622,7 +622,7 @@
   "updates": {
     "eyebrow": "Novedades desde la puesta en marcha",
     "title": "Lo que se ha añadido desde el 10 de noviembre",
-    "description": "Una semana en producción y casi 50 novedades, todo en local y sin IA en la nube. Este es el estado a 15 de noviembre.",
+    "description": "Una semana en producción y más de 50 novedades, todo en local y sin IA en la nube. Este es el estado a 16 de noviembre.",
     "counter": "{{live}} de {{total}} novedades ya en marcha: un recuento aparte, además de las funciones básicas de arriba",
     "comfyCaption": "Generada completamente en local: imagen de prueba de la generación de imágenes — Stable Diffusion XL en nuestra propia GPU, ahora en unos 16 segundos.",
     "note": "Otras interfaces están protegidas con inicio de sesión de doble factor y no se muestran aquí a propósito.",
@@ -666,7 +666,7 @@
           {
             "title": "Fidelidad a los hechos más estricta",
             "status": "live",
-            "desc": "Cifras, fechas y nombres deben estar en las fuentes, los años con exactitud. Sin pruebas, JARVIS dice con honestidad que no tiene una fuente fiable; las personas inventadas siguen siendo inventadas."
+            "desc": "Cifras, fechas y nombres deben estar en las fuentes, los años con exactitud. Sin pruebas, JARVIS dice con honestidad que no tiene una fuente fiable; las personas inventadas siguen siendo inventadas. Da las cifras en dígitos para que la comprobación las detecte con seguridad."
           },
           {
             "title": "Modo silencio",
@@ -717,7 +717,7 @@
           {
             "title": "Prueba de calidad con 90 preguntas",
             "status": "live",
-            "desc": "Cada noche 90 preguntas en ocho categorías, del conocimiento y las preguntas difíciles al modo de emergencia y lo aprendido; la última vez, 89 de 90 superadas."
+            "desc": "Cada noche 90 preguntas en ocho categorías, del conocimiento y las preguntas difíciles al modo de emergencia y lo aprendido; la última vez, 90 de 90 superadas."
           },
           {
             "title": "Comparativa de modelos (Promptfoo)",
@@ -818,6 +818,21 @@
             "title": "Más almacenamiento en el clúster",
             "status": "live",
             "desc": "Un disco antes sin uso sirve ahora como almacenamiento del clúster; las obras de consulta están allí en local."
+          },
+          {
+            "title": "Switch de red monitorizado",
+            "desc": "Enlace, tráfico y errores por puerto en un panel propio y como mosaico en el HUD; alerta si un nodo se desconecta o un cable falla.",
+            "status": "live"
+          },
+          {
+            "title": "HUD con el diseño «Nachtblau»",
+            "desc": "Paneles de vidrio en azul, cian y violeta, una red neuronal en el centro y sin líneas de barrido: el modelo del diseño de esta web.",
+            "status": "live"
+          },
+          {
+            "title": "Más silencioso en reposo",
+            "desc": "La base de datos de las trazas de LLM necesita en reposo una décima parte de CPU; el panel de energía muestra al instante el estado del servidor GPU.",
+            "status": "live"
           }
         ]
       },
@@ -858,6 +873,11 @@
             "title": "Fototeca (Immich)",
             "status": "live",
             "desc": "Alternativa propia a los servicios de fotos en la nube, con reconocimiento facial y búsqueda, todo en local."
+          },
+          {
+            "title": "Switch protegido",
+            "desc": "Protección frente a bucles de cable y tormentas de broadcast, sin cortar nunca la conexión a internet.",
+            "status": "live"
           }
         ]
       },
@@ -883,6 +903,11 @@
             "title": "Arranque lento",
             "status": "fixed",
             "desc": "Las primeras órdenes de voz tras el arranque tardaban hasta 15 segundos; el reconocimiento de voz y el modelo de lenguaje se precalientan ahora."
+          },
+          {
+            "title": "Bloqueos de red en nodos concretos",
+            "desc": "Si se bloquea la interfaz de red de una Pi, ahora se detecta y se corrige en segundos en lugar de hasta un minuto.",
+            "status": "fixed"
           }
         ]
       },
@@ -917,7 +942,7 @@
     "metricsTitle": "Mediciones",
     "metrics": [
       {
-        "value": "89/90",
+        "value": "90/90",
         "label": "Prueba de calidad (90 preguntas)"
       },
       {

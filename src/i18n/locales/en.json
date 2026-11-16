@@ -622,7 +622,7 @@
   "updates": {
     "eyebrow": "New since go-live",
     "title": "What has been added since 10 November",
-    "description": "One week in production, nearly 50 new additions — all local, no cloud AI. Here is the state as of 15 November.",
+    "description": "One week in production, more than 50 new additions — all local, no cloud AI. Here is the state as of 16 November.",
     "counter": "{{live}} of {{total}} new features already running — a separate count, on top of the core functions above",
     "comfyCaption": "Generated entirely locally: a test image from the image generation — Stable Diffusion XL on our own GPU, now in about 16 seconds.",
     "note": "Further interfaces sit behind a two-factor sign-in and are deliberately not shown here.",
@@ -666,7 +666,7 @@
           {
             "title": "Stricter fact grounding",
             "status": "live",
-            "desc": "Numbers, dates and names must appear in the sources, years exactly. Without evidence JARVIS honestly says it has no reliable source — made-up people stay made up."
+            "desc": "Numbers, dates and names must appear in the sources, years exactly. Without evidence JARVIS honestly says it has no reliable source — made-up people stay made up. Numbers are given as digits so the check reliably catches them."
           },
           {
             "title": "Mute mode",
@@ -717,7 +717,7 @@
           {
             "title": "Quality test with 90 questions",
             "status": "live",
-            "desc": "Every night 90 questions in eight categories — from knowledge and hard questions to fallback mode and learned facts; most recently 89 of 90 passed."
+            "desc": "Every night 90 questions in eight categories — from knowledge and hard questions to fallback mode and learned facts; most recently 90 of 90 passed."
           },
           {
             "title": "Model comparison (Promptfoo)",
@@ -818,6 +818,21 @@
             "title": "More cluster storage",
             "status": "live",
             "desc": "A previously unused drive now serves as cluster storage; the reference works live there locally."
+          },
+          {
+            "title": "Network switch in monitoring",
+            "desc": "Link, traffic and errors per port in a dedicated dashboard and as a tile on the HUD; alerts for a disconnected node or a faulty cable.",
+            "status": "live"
+          },
+          {
+            "title": "HUD in the “Nachtblau” design",
+            "desc": "Glass panels in blue, cyan and violet, a neural network at the core, no scan lines — the model for this website’s design.",
+            "status": "live"
+          },
+          {
+            "title": "Quieter at idle",
+            "desc": "The LLM-tracing database now needs a tenth of the CPU time at idle; the energy dashboard shows the GPU server’s state instantly.",
+            "status": "live"
           }
         ]
       },
@@ -858,6 +873,11 @@
             "title": "Photo library (Immich)",
             "status": "live",
             "desc": "Our own alternative to cloud photo services with face recognition and search — all local."
+          },
+          {
+            "title": "Switch hardened",
+            "desc": "Protection against cable loops and broadcast storms — without ever cutting the internet connection.",
+            "status": "live"
           }
         ]
       },
@@ -883,6 +903,11 @@
             "title": "Sluggish start",
             "status": "fixed",
             "desc": "The first voice commands after start-up took up to 15 seconds; speech recognition and the language model are now pre-warmed."
+          },
+          {
+            "title": "Network hangs on single nodes",
+            "desc": "If a Pi’s network interface hangs, this is now detected and fixed within seconds instead of up to a minute.",
+            "status": "fixed"
           }
         ]
       },
@@ -917,7 +942,7 @@
     "metricsTitle": "Measurements",
     "metrics": [
       {
-        "value": "89/90",
+        "value": "90/90",
         "label": "Quality test (90 questions)"
       },
       {
