@@ -88,8 +88,7 @@ export function HardwareGallery() {
                   className="size-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06]"
                 />
               </div>
-              {/* Scan beam + HUD frame on hover */}
-              <div aria-hidden="true" className="photo-scan pointer-events-none absolute inset-0" />
+              {/* HUD frame on hover */}
               <div aria-hidden="true" className="pointer-events-none absolute inset-2">
                 <span className="photo-bracket absolute top-0 left-0 size-4 border-t-2 border-l-2 border-primary" />
                 <span className="photo-bracket absolute top-0 right-0 size-4 border-t-2 border-r-2 border-primary" />

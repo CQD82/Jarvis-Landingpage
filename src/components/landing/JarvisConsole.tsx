@@ -56,8 +56,9 @@ function drift(s: Sample, i: number): Sample {
   };
 }
 
-const GOLD = "#e0a64a";
-const DIM = "rgba(232,214,184,0.55)";
+/** Kiosk HUD "Nachtblau" palette: cyan signal colour on night blue. */
+const GOLD = "#5ce1ff";
+const DIM = "rgba(200,222,255,0.6)";
 
 export function JarvisConsole() {
   const { t, i18n } = useTranslation();
@@ -112,18 +113,18 @@ export function JarvisConsole() {
     "↓3.4 ↑2.2",
   ];
 
-  const panel = "relative rounded-md border border-[#e0a64a]/25 bg-[#120d07]/90 p-4 [clip-path:polygon(0_0,calc(100%-14px)_0,100%_14px,100%_100%,0_100%)]";
+  const panel = "relative rounded-xl border border-[#5ce1ff]/20 bg-[#071226]/80 p-4 shadow-[inset_0_1px_0_rgba(92,225,255,0.28)] backdrop-blur-sm";
   const heading = "flex items-center gap-2 font-mono text-[0.62rem] font-semibold tracking-[0.28em] uppercase";
   const bar = (pct: number, color: string) => (
-    <span className="block h-[3px] overflow-hidden rounded-full bg-[#e8d6b8]/10">
+    <span className="block h-[3px] overflow-hidden rounded-full bg-[#e6f1ff]/10">
       <span className="block h-full rounded-full transition-[width] duration-700" style={{ width: `${clamp(pct, 2, 100)}%`, background: color }} />
     </span>
   );
 
   return (
-    <div className="relative text-left text-[#e8d6b8]">
+    <div className="relative text-left text-[#e6f1ff]">
       {/* Header */}
-      <div className="flex flex-wrap items-start justify-between gap-3 border-b border-[#e0a64a]/20 pb-3">
+      <div className="flex flex-wrap items-start justify-between gap-3 border-b border-[#5ce1ff]/20 pb-3">
         <div className="flex items-center gap-2.5">
           <span className="size-2 rounded-full bg-[#5fae7a] shadow-[0_0_8px_#5fae7a]" />
           <span className="font-display text-sm tracking-[0.4em] sm:text-base" style={{ color: GOLD }}>J.A.R.V.I.S</span>
@@ -159,12 +160,12 @@ export function JarvisConsole() {
               style={{
                 animationDuration: "18s",
                 background:
-                  "radial-gradient(circle, rgba(255,240,205,0.95) 0%, rgba(240,190,110,0.55) 18%, transparent 46%), repeating-conic-gradient(from 0deg, rgba(240,200,140,0.45) 0deg 0.6deg, transparent 0.6deg 7deg)",
+                  "radial-gradient(circle, rgba(235,252,255,0.95) 0%, rgba(92,225,255,0.55) 18%, transparent 46%), repeating-conic-gradient(from 0deg, rgba(120,190,255,0.45) 0deg 0.6deg, transparent 0.6deg 7deg)",
                 maskImage: "radial-gradient(circle, #000 40%, transparent 70%)",
                 WebkitMaskImage: "radial-gradient(circle, #000 40%, transparent 70%)",
               }}
             />
-            <div aria-hidden="true" className="absolute inset-[30%] rounded-full shadow-[0_0_70px_24px_rgba(224,166,74,0.25)]" />
+            <div aria-hidden="true" className="absolute inset-[30%] rounded-full shadow-[0_0_70px_24px_rgba(61,139,255,0.3)]" />
           </div>
           <div className="mt-3 font-mono text-[0.6rem] tracking-[0.5em] uppercase" style={{ color: DIM }}>{t("hud.console.standby")}</div>
           <div className="mt-2 text-sm" style={{ color: DIM }}>{t("hud.console.wake")}</div>
@@ -173,7 +174,7 @@ export function JarvisConsole() {
         {/* Node table */}
         <div className={`${panel} lg:order-1`}>
           <div className={heading} style={{ color: GOLD }}>
-            ◇ {t("hud.console.cluster")} <span className="text-[#e8d6b8]">{NODES.length}/{NODES.length}</span>
+            ◇ {t("hud.console.cluster")} <span className="text-[#e6f1ff]">{NODES.length}/{NODES.length}</span>
           </div>
           <div className="mt-3 grid grid-cols-[4.4rem_1fr_2rem_2rem_2.2rem_2.2rem] gap-x-2 font-mono text-[0.5rem] tracking-[0.15em] uppercase" style={{ color: DIM }}>
             <span>Node</span><span>CPU · RAM</span><span className="text-right">°C</span><span className="text-right">NVMe</span><span className="text-right">CPU</span><span className="text-right">RAM</span>
@@ -190,7 +191,7 @@ export function JarvisConsole() {
                   </span>
                   <span className="space-y-[2px]">
                     {bar(s.cpu * 2, GOLD)}
-                    {bar(s.ram * 2, "rgba(232,214,184,0.45)")}
+                    {bar(s.ram * 2, "rgba(155,123,255,0.75)")}
                   </span>
                   <span className="text-right tabular-nums">{Math.round(s.temp)}°</span>
                   <span className="text-right tabular-nums" style={{ color: hot ? GOLD : undefined }}>{n.nvme ? `${Math.round(s.nvme)}°` : "–"}</span>
@@ -206,7 +207,7 @@ export function JarvisConsole() {
         <div className={`${panel} space-y-4 lg:order-3`}>
           <div>
             <div className={heading} style={{ color: GOLD }}>
-              ◇ {t("hud.console.alarms")} <span className="text-[#e8d6b8]">0</span>
+              ◇ {t("hud.console.alarms")} <span className="text-[#e6f1ff]">0</span>
             </div>
             <p className="mt-2 border-l-2 border-[#5fae7a] pl-2 text-xs" style={{ color: DIM }}>{t("hud.console.noAlarms")}</p>
           </div>
@@ -238,7 +239,7 @@ export function JarvisConsole() {
               ].map(([k, v, pct]) => (
                 <div key={String(k)} className="grid grid-cols-[3.2rem_1fr_auto] items-center gap-2">
                   <dt style={{ color: DIM }}>{k}</dt>
-                  <span>{bar(Number(pct), `linear-gradient(90deg, #b86b2a, ${GOLD})`)}</span>
+                  <span>{bar(Number(pct), `linear-gradient(90deg, #3d8bff, ${GOLD})`)}</span>
                   <dd className="font-semibold tabular-nums">{v}</dd>
                 </div>
               ))}
@@ -256,9 +257,9 @@ export function JarvisConsole() {
       </div>
 
       {/* KPI strip: 2 × 6 like the real HUD */}
-      <dl className="mt-4 grid grid-cols-2 gap-px overflow-hidden rounded-md border border-[#e0a64a]/25 bg-[#e0a64a]/15 sm:grid-cols-3 lg:grid-cols-6">
+      <dl className="mt-4 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-[#5ce1ff]/20 bg-[#5ce1ff]/10 sm:grid-cols-3 lg:grid-cols-6">
         {kpiLabels.map((label, i) => (
-          <div key={label} className="bg-[#120d07] px-2 py-2.5 text-center">
+          <div key={label} className="bg-[#071226] px-2 py-2.5 text-center">
             <dt className="font-mono text-[0.48rem] tracking-[0.2em] uppercase" style={{ color: DIM }}>{label}</dt>
             <dd className="mt-1 font-display text-base tabular-nums sm:text-lg">{kpis[i]}</dd>
           </div>

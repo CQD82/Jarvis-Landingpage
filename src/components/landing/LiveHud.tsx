@@ -22,8 +22,8 @@ export function LiveHud() {
 
       <Reveal delay={0.1}>
         <div
-          className="relative mx-auto mt-10 max-w-6xl overflow-hidden rounded-xl border p-4 sm:p-6"
-          style={{ background: "#0d0a06", borderColor: "rgba(224, 166, 74, 0.45)", boxShadow: "0 0 40px rgba(224, 166, 74, 0.08)" }}
+          className="relative mx-auto mt-10 max-w-6xl overflow-hidden rounded-2xl border p-4 sm:p-6"
+          style={{ background: "#02060f", borderColor: "rgba(92, 225, 255, 0.3)", boxShadow: "0 0 48px rgba(61, 139, 255, 0.12)" }}
         >
           <JarvisConsole />
         </div>

@@ -7,38 +7,42 @@
 /*
   JARVIS runs a single always-dark "HUD" theme by design (futuristic
   sci-fi control-panel aesthetic) rather than a light/dark toggle.
-  Palette: Mark-XLVI-style armor — red + gold plating, with the icy
-  white-cyan "arc reactor" glow reserved for core/energy accents only.
+  Palette "Nachtblau" — mirrors the room-display kiosk HUD: night-blue
+  ground, electric-blue frames and glows, cyan as the primary signal
+  colour, violet as a secondary accent; red stays reserved for alarms.
+  (--hud-gold keeps its name for compatibility; it is the frame/glow
+  colour, now electric blue.)
   Tokens still follow the shadcn convention so any future shadcn/ui
   component drops in without restyling.
 */
 :root {
-  --radius: 0.5rem;
+  --radius: 0.75rem;
 
-  --background: #0c0705;
-  --foreground: #f5e9d6;
-  --card: #170f09;
-  --card-foreground: #f5e9d6;
-  --popover: #170f09;
-  --popover-foreground: #f5e9d6;
-  --primary: #f2b545;
-  --primary-foreground: #1a1006;
-  --secondary: #241209;
-  --secondary-foreground: #f2c98a;
-  --muted: #1c130b;
-  --muted-foreground: #c2b09a;
-  --accent: #2a160a;
-  --accent-foreground: #f2b545;
-  --destructive: #ff5a36;
-  --border: rgba(242, 181, 69, 0.16);
-  --input: rgba(242, 181, 69, 0.2);
-  --ring: #f2b545;
+  --background: #02060f;
+  --foreground: #e6f1ff;
+  --card: #071226;
+  --card-foreground: #e6f1ff;
+  --popover: #071226;
+  --popover-foreground: #e6f1ff;
+  --primary: #5ce1ff;
+  --primary-foreground: #02060f;
+  --secondary: #0a1a36;
+  --secondary-foreground: #a8dcff;
+  --muted: #08152b;
+  --muted-foreground: #9fb4d1;
+  --accent: #0c1f42;
+  --accent-foreground: #5ce1ff;
+  --destructive: #ff4d6d;
+  --border: rgba(92, 225, 255, 0.14);
+  --input: rgba(92, 225, 255, 0.2);
+  --ring: #5ce1ff;
 
   /* HUD-specific accents */
-  --hud-gold: #f2b545;
-  --hud-red: #e0303f;
-  --hud-reactor: #bdeeff;
-  --hud-grid: rgba(242, 181, 69, 0.045);
+  --hud-gold: #3d8bff;
+  --hud-red: #ff4d6d;
+  --hud-reactor: #c9f4ff;
+  --hud-violet: #9b7bff;
+  --hud-grid: rgba(92, 225, 255, 0.09);
 }
 
 @theme inline {
@@ -81,19 +85,9 @@
   body {
     @apply bg-background text-foreground font-sans;
     position: relative;
-    background-image:
-      repeating-linear-gradient(
-        0deg,
-        rgba(242, 181, 69, 0.03) 0px,
-        transparent 1px,
-        transparent 3px
-      ),
-      linear-gradient(var(--hud-grid) 1px, transparent 1px),
-      linear-gradient(90deg, var(--hud-grid) 1px, transparent 1px);
-    background-size:
-      100% 3px,
-      44px 44px,
-      44px 44px;
+    /* Dot grid, as on the kiosk HUD — no scanlines. */
+    background-image: radial-gradient(var(--hud-grid) 1px, transparent 1.6px);
+    background-size: 24px 24px;
     background-attachment: fixed;
     overflow-x: hidden;
   }
@@ -120,7 +114,7 @@
     bottom: -15%;
     width: 46vw;
     height: 46vw;
-    background: color-mix(in oklab, var(--hud-red) 10%, transparent);
+    background: color-mix(in oklab, var(--hud-violet) 12%, transparent);
   }
 }
 
@@ -263,6 +257,8 @@
   opacity: 1;
 }
 .hud-icon::after {
+  /* Scan line removed with the "Nachtblau" redesign (no top-to-bottom sweeps). */
+  display: none;
   content: "";
   position: absolute;
   inset-inline: 0;
@@ -322,19 +318,6 @@
     transform: scale(1.1) translate(-2%, -1.5%);
   }
 }
-@keyframes photo-scan {
-  0% {
-    transform: translateY(-100%);
-    opacity: 0;
-  }
-  15% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-}
 @keyframes rec-blink {
   0%,
   100% {
@@ -345,16 +328,6 @@
   }
 }
 
-.photo-scan {
-  background: linear-gradient(
-    to bottom,
-    transparent 0%,
-    color-mix(in oklab, var(--hud-reactor) 0%, transparent) 40%,
-    color-mix(in oklab, var(--hud-reactor) 35%, transparent) 50%,
-    transparent 52%
-  );
-  opacity: 0;
-}
 .photo-bracket {
   opacity: 0;
   transform: scale(1.12);
@@ -373,19 +346,12 @@
     animation: hud-arc 4.5s linear infinite;
     animation-delay: calc(var(--i, 0) * -0.65s);
   }
-  .hud-icon::after {
-    animation: hud-scan 4s ease-in infinite;
-    animation-delay: calc(var(--i, 0) * -0.9s);
-  }
   .hud-icon > svg {
     animation: hud-breathe 3.6s ease-in-out infinite;
     animation-delay: calc(var(--i, 0) * -0.5s);
   }
   .animate-ken-burns {
     animation: ken-burns 18s ease-in-out infinite alternate;
-  }
-  .group:hover .photo-scan {
-    animation: photo-scan 1.4s ease-out infinite;
   }
   .animate-rec-blink {
     animation: rec-blink 1.2s steps(2, jump-none) infinite;
@@ -553,27 +519,10 @@
   0%, 100% { transform: scaleY(0.18); }
   50% { transform: scaleY(1); }
 }
-@keyframes holo-scan {
-  0% { transform: translateY(-30%); opacity: 0; }
-  10% { opacity: 1; }
-  90% { opacity: 1; }
-  100% { transform: translateY(330%); opacity: 0; }
-}
-.holo-lines {
-  background: repeating-linear-gradient(
-    0deg,
-    transparent 0,
-    transparent 3px,
-    color-mix(in oklab, var(--hud-reactor) 7%, transparent) 4px
-  );
-}
 @media (prefers-reduced-motion: no-preference) {
   .animate-voice-bar {
     animation-name: voice-bar;
     animation-timing-function: ease-in-out;
     animation-iteration-count: infinite;
-  }
-  .animate-holo-scan {
-    animation: holo-scan 4.2s cubic-bezier(0.45, 0, 0.55, 1) infinite;
   }
 }

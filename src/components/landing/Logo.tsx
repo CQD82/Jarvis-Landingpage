@@ -43,7 +43,7 @@ function HexCap({ dim }: { dim: boolean }) {
         ))}
       <polygon
         points={HEX_POINTS}
-        fill={dim ? "rgba(242,181,69,0.06)" : "rgba(242,181,69,0.08)"}
+        fill={dim ? "rgba(92,225,255,0.06)" : "rgba(92,225,255,0.08)"}
         stroke="var(--hud-gold)"
         strokeOpacity={dim ? 0.35 : 1}
         strokeWidth={1.5}
