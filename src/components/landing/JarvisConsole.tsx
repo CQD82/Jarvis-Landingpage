@@ -1,6 +1,7 @@
 import { useReducedMotion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { type CoreRegion, NeuralCore } from "@/components/landing/NeuralCore";
 
 /**
  * Simulated replica of the real JARVIS room-display HUD (see the screenshot
@@ -64,6 +65,20 @@ export function JarvisConsole() {
   const { t, i18n } = useTranslation();
   const reduceMotion = useReducedMotion();
   const kpiLabels = t("hud.console.kpis", { returnObjects: true }) as string[];
+  const regions = useMemo<CoreRegion[]>(() => {
+    const labels = t("hud.console.regions", { returnObjects: true }) as string[];
+    // Positions/colours mirror the kiosk layout: speech, knowledge, memory,
+    // research, cluster, vision.
+    const layout: Omit<CoreRegion, "label">[] = [
+      { x: 0.2, y: 0.2, color: "#b06bff" },
+      { x: 0.55, y: 0.09, color: "#5ce1ff" },
+      { x: 0.83, y: 0.27, color: "#d06bff" },
+      { x: 0.83, y: 0.7, color: "#4fe3b0" },
+      { x: 0.6, y: 0.9, color: "#6bffb0" },
+      { x: 0.18, y: 0.75, color: "#3d8bff" },
+    ];
+    return layout.map((l, i) => ({ ...l, label: labels[i] ?? "" }));
+  }, [t]);
   const [samples, setSamples] = useState<Sample[]>(() => NODES.map((_, i) => initial(i)));
   const [now, setNow] = useState(() => new Date());
   const [tokens, setTokens] = useState(0);
@@ -144,28 +159,11 @@ export function JarvisConsole() {
         </div>
       </div>
 
-      <div className="mt-4 grid gap-4 lg:grid-cols-[1.15fr_1fr_1.05fr]">
-        {/* Voice orb (first on mobile) */}
+      <div className="mt-4 grid gap-4 lg:grid-cols-[1.1fr_1.15fr_1fr]">
+        {/* Neuron-network core (first on mobile), as on the kiosk HUD */}
         <div className="flex flex-col items-center justify-center py-2 lg:order-2">
-          <div className="relative aspect-square w-[min(66vw,16rem)]">
-            <svg viewBox="0 0 200 200" className="absolute inset-0 size-full" aria-hidden="true">
-              <circle cx="100" cy="100" r="95" fill="none" stroke={GOLD} strokeOpacity="0.45" strokeWidth="0.7" strokeDasharray="1 3" className={reduceMotion ? undefined : "animate-radar-sweep"} style={{ transformOrigin: "100px 100px", animationDuration: "50s" }} />
-              <circle cx="100" cy="100" r="86" fill="none" stroke={GOLD} strokeWidth="2" strokeDasharray="46 10 14 22 30 12" strokeLinecap="round" className={reduceMotion ? undefined : "animate-radar-sweep"} style={{ transformOrigin: "100px 100px", animationDuration: "28s", animationDirection: "reverse" }} />
-              <circle cx="100" cy="100" r="79" fill="none" stroke={GOLD} strokeOpacity="0.3" strokeWidth="0.6" />
-            </svg>
-            {/* particle sphere */}
-            <div
-              aria-hidden="true"
-              className={`absolute inset-[24%] rounded-full ${reduceMotion ? "" : "animate-radar-sweep"}`}
-              style={{
-                animationDuration: "18s",
-                background:
-                  "radial-gradient(circle, rgba(235,252,255,0.95) 0%, rgba(92,225,255,0.55) 18%, transparent 46%), repeating-conic-gradient(from 0deg, rgba(120,190,255,0.45) 0deg 0.6deg, transparent 0.6deg 7deg)",
-                maskImage: "radial-gradient(circle, #000 40%, transparent 70%)",
-                WebkitMaskImage: "radial-gradient(circle, #000 40%, transparent 70%)",
-              }}
-            />
-            <div aria-hidden="true" className="absolute inset-[30%] rounded-full shadow-[0_0_70px_24px_rgba(61,139,255,0.3)]" />
+          <div className="w-full max-w-[22rem]">
+            <NeuralCore regions={regions} activeLabel={t("hud.console.regionActive")} reduceMotion={!!reduceMotion} />
           </div>
           <div className="mt-3 font-mono text-[0.6rem] tracking-[0.5em] uppercase" style={{ color: DIM }}>{t("hud.console.standby")}</div>
           <div className="mt-2 text-sm" style={{ color: DIM }}>{t("hud.console.wake")}</div>

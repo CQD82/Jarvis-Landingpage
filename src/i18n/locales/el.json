@@ -424,7 +424,16 @@
       "metrics": "Αντίγραφο μετρικών",
       "gpuTemp": "Θερμοκρασία GPU",
       "gpuPower": "Ισχύς",
-      "ok": "OK"
+      "ok": "OK",
+      "regions": [
+        "ΟΜΙΛΙΑ",
+        "ΓΝΩΣΗ",
+        "ΜΝΗΜΗ",
+        "ΕΡΕΥΝΑ",
+        "CLUSTER",
+        "ΟΡΑΣΗ"
+      ],
+      "regionActive": "ενεργό"
     }
   },
   "liveTerminal": {
