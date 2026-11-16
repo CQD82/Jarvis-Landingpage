@@ -10,11 +10,11 @@ import { HudCorners } from "@/components/landing/HudCorners";
 import { StatusTicker } from "@/components/landing/StatusTicker";
 import { TiltPanel } from "@/components/landing/TiltPanel";
 
-/** Repulsor-red → armor-gold sweep for the hero title. */
+/** Electric blue → cyan → violet sweep for the hero title (kiosk HUD palette). */
 const TITLE_GRADIENT = [
-  { position: 0, color: "#ff5c3d" },
-  { position: 0.5, color: "#f2b545" },
-  { position: 1, color: "#ffe3a3" },
+  { position: 0, color: "#3d8bff" },
+  { position: 0.5, color: "#5ce1ff" },
+  { position: 1, color: "#b9a6ff" },
 ];
 
 interface Stat {
@@ -30,14 +30,14 @@ export function Hero() {
 
   return (
     <section id="top" className="relative overflow-hidden px-6 pt-16 pb-24 sm:pt-24 lg:pt-20">
-      {/* Ambient glow — layered gold + red for depth, armor-plate style */}
+      {/* Ambient glow — layered blue + violet for depth */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[560px] bg-[radial-gradient(ellipse_at_top,color-mix(in_oklab,var(--hud-gold)_20%,transparent),transparent_65%)]"
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute top-10 left-1/2 -z-10 h-[420px] w-[720px] -translate-x-1/2 rounded-full bg-[radial-gradient(ellipse,color-mix(in_oklab,var(--hud-red)_18%,transparent),transparent_70%)] blur-2xl"
+        className="pointer-events-none absolute top-10 left-1/2 -z-10 h-[420px] w-[720px] -translate-x-1/2 rounded-full bg-[radial-gradient(ellipse,color-mix(in_oklab,var(--hud-violet)_18%,transparent),transparent_70%)] blur-2xl"
       />
       {/* Thin rotating targeting ring behind the title */}
       <div
@@ -123,10 +123,7 @@ export function Hero() {
                   </g>
                 ))}
               </svg>
-              {/* Hologram treatment: fine projection lines, a scan plane
-                  sweeping down, and a cyan/red chromatic edge. */}
-              <div aria-hidden="true" className="holo-lines pointer-events-none absolute inset-0 opacity-60 mix-blend-screen" />
-              <div aria-hidden="true" className="animate-holo-scan pointer-events-none absolute inset-x-0 top-0 h-1/4 bg-gradient-to-b from-transparent via-[color-mix(in_oklab,var(--hud-reactor)_22%,transparent)] to-transparent opacity-0 mix-blend-screen" />
+              {/* Hologram treatment: a subtle chromatic edge (no scan lines). */}
               <div aria-hidden="true" className="pointer-events-none absolute inset-0 rounded-2xl shadow-[inset_2px_0_0_color-mix(in_oklab,var(--hud-reactor)_35%,transparent),inset_-2px_0_0_color-mix(in_oklab,var(--hud-red)_30%,transparent)]" />
             </div>
           </TiltPanel>

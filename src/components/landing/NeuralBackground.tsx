@@ -14,8 +14,8 @@ interface Pulse {
 }
 
 const LINK_DISTANCE = 150;
-const GOLD_RGB = "242, 181, 69";
-const REACTOR_RGB = "189, 238, 255";
+const GOLD_RGB = "92, 225, 255";
+const REACTOR_RGB = "155, 123, 255";
 
 function particleCountFor(width: number) {
   return Math.round(Math.min(85, Math.max(26, width / 18)));

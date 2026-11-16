@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 
 const SIZE = 520;
 
-/** Soft gold spotlight that trails the pointer. Skipped on touch devices and reduced motion. */
+/** Soft blue spotlight that trails the pointer. Skipped on touch devices and reduced motion. */
 export function CursorGlow() {
   const ref = useRef<HTMLDivElement | null>(null);
 

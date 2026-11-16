@@ -126,8 +126,6 @@ export function LiveTerminal() {
           </p>
         ) : null}
       </div>
-      {/* scanline sheen */}
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[repeating-linear-gradient(0deg,transparent_0,transparent_2px,rgba(242,181,69,0.025)_3px)]" />
     </div>
   );
 }
