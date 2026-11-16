@@ -498,7 +498,7 @@
     "eyebrow": "État du projet",
     "title": "Ce qui tourne en production",
     "description": "JARVIS est en production depuis le 8 novembre. De vraies captures du système en service et l’état d’avancement.",
-    "hudCaption": "Le HUD sur l’écran de la pièce : état de chaque nœud, météo, alertes, sauvegardes et charge GPU — au centre, le noyau vocal qui attend « Hey Jarvis ».",
+    "hudCaption": "L’écran mural dans le nouveau design « Nachtblau » : au centre le réseau neuronal avec les zones parole, savoir, mémoire, recherche, cluster et vision, autour l’état du cluster, l’énergie, le switch et le GPU. Noms, météo, alertes, sauvegardes et actualités sont pixelisés.",
     "grafanaCaption": "Le tableau de bord de supervision : état, températures et charge de chaque nœud sur les dernières 24 heures.",
     "chatCaption": "Connexion au chat IA local — accès uniquement via l’authentification unique centrale.",
     "note": "Détails des pièces, présence et actualités ont été masqués ; aucune adresse interne n’est visible.",
@@ -599,7 +599,7 @@
     "counter": "Fonctions de base en service : {{done}} / {{total}}",
     "counterNote": "Ce compteur porte sur le socle permanent du cluster. Les nouveautés depuis la mise en service sont listées séparément plus bas.",
     "alt": {
-      "hud": "Capture de l’HUD de l’écran mural, détails pixelisés",
+      "hud": "Capture de l’HUD de l’écran mural en design « Nachtblau », détails pixelisés",
       "grafana": "Photo du tableau de supervision, noms des nœuds pixelisés",
       "chat": "Capture de la page de connexion du chat IA local"
     }
@@ -615,7 +615,6 @@
     "title": "Ce qui a été ajouté depuis le 10 novembre",
     "description": "Une semaine en production, près de 50 nouveautés — tout en local, sans IA cloud. Voici l’état au 15 novembre.",
     "counter": "{{live}} nouveautés sur {{total}} déjà en service — un décompte distinct, en plus des fonctions de base ci-dessus",
-    "hudCaption": "Le nouvel HUD kiosque : état du cluster, mesure réelle de la consommation avec coût, météo, sauvegardes et GPU en un coup d’œil. Noms des nœuds et des pièces, station météo et présence sont pixelisés.",
     "comfyCaption": "Généré entièrement en local : image de test de la génération d’images — Stable Diffusion XL sur notre propre GPU, désormais en 16 secondes environ.",
     "note": "Les autres interfaces sont protégées par une connexion à deux facteurs et ne sont volontairement pas montrées ici.",
     "status": {
@@ -902,7 +901,6 @@
       }
     ],
     "alt": {
-      "hud": "Capture du nouvel HUD kiosque, détails pixelisés",
       "comfy": "Image de test générée localement : une salle de contrôle futuriste"
     },
     "expandAll": "Tout déplier",

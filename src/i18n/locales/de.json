@@ -498,7 +498,7 @@
     "eyebrow": "Projektstand",
     "title": "Was im Betrieb läuft",
     "description": "Seit dem 8. November ist JARVIS im Produktivbetrieb. Echte Bildschirmfotos aus dem laufenden System und der aktuelle Stand des Ausbaus.",
-    "hudCaption": "Das HUD am Raumdisplay: Zustand aller Nodes, Wetter, Alarme, Datensicherung und GPU-Auslastung — in der Mitte der Sprachkern, der auf „Hey Jarvis“ wartet.",
+    "hudCaption": "Das Raumdisplay im neuen Design „Nachtblau“: in der Mitte das Neuronen-Netz mit den Bereichen Sprache, Wissen, Gedächtnis, Recherche, Cluster und Sehen, darum Cluster-Zustand, Energie, Switch und GPU. Namen, Wetter, Alarme, Datensicherung und Nachrichten sind verpixelt.",
     "grafanaCaption": "Das Monitoring-Dashboard: Status, Temperaturen und Auslastung jedes Nodes über die letzten 24 Stunden.",
     "chatCaption": "Anmeldung zum lokalen KI-Chat — Zugang nur über das zentrale Single Sign-on.",
     "note": "Raumdetails, Anwesenheit und Nachrichten sind unkenntlich gemacht; interne Adressen sind nicht zu sehen.",
@@ -599,7 +599,7 @@
     "counter": "Kernfunktionen im Betrieb: {{done}} / {{total}}",
     "counterNote": "Gezählt wird der dauerhafte Kern des Clusters. Die Neuerungen seit dem Go-Live sind weiter unten separat aufgeführt.",
     "alt": {
-      "hud": "Screenshot des Raumdisplay-HUD mit verpixelten Details",
+      "hud": "Screenshot des Raumdisplay-HUD im Design „Nachtblau“ mit verpixelten Details",
       "grafana": "Foto des Monitoring-Dashboards mit verpixelten Node-Namen",
       "chat": "Screenshot der Anmeldeseite des lokalen KI-Chats"
     }
@@ -615,7 +615,6 @@
     "title": "Was seit dem 10. November dazugekommen ist",
     "description": "Eine Woche Produktivbetrieb, knapp 50 Neuerungen — alles lokal, ohne Cloud-KI. Hier der Stand vom 15. November.",
     "counter": "{{live}} von {{total}} Neuerungen bereits im Betrieb — eigene Zählung, zusätzlich zu den Kernfunktionen oben",
-    "hudCaption": "Das neue Kiosk-HUD: Cluster-Zustand, echte Strommessung mit Kosten, Wetter, Datensicherung und GPU auf einen Blick. Node- und Raumnamen, Wetterstation und Anwesenheit sind verpixelt.",
     "comfyCaption": "Komplett lokal erzeugt: Testbild der Bildgenerierung — Stable Diffusion XL auf der eigenen GPU, inzwischen in rund 16 Sekunden.",
     "note": "Weitere Oberflächen liegen hinter einer Anmeldung mit Zwei-Faktor und werden hier bewusst nicht gezeigt.",
     "status": {
@@ -902,7 +901,6 @@
       }
     ],
     "alt": {
-      "hud": "Screenshot des neuen Kiosk-HUD mit verpixelten Details",
       "comfy": "Lokal erzeugtes Testbild: futuristischer Kontrollraum"
     },
     "expandAll": "Alle aufklappen",
