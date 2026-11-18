@@ -10,7 +10,7 @@ export function ImpressumPage() {
 
       <LegalSection title="Kontakt">
         <p>
-          E-Mail: <a href="mailto:info@homelab-cluster.uk">info@homelab-cluster.uk</a>
+          E-Mail: <span className="whitespace-nowrap">info (at) homelab-cluster.uk</span>
         </p>
       </LegalSection>
 
