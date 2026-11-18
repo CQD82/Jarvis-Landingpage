@@ -6,7 +6,7 @@ export function DatenschutzPage() {
     <LegalLayout title="Datenschutzerklärung">
       <LegalSection title="1. Verantwortlicher">
         <p>Marcus Kollosch</p>
-        <p>E-Mail: <a href="mailto:info@homelab-cluster.uk">info@homelab-cluster.uk</a></p>
+        <p>E-Mail: <span className="whitespace-nowrap">info (at) homelab-cluster.uk</span></p>
       </LegalSection>
 
       <LegalSection title="2. Allgemeines zur Datenverarbeitung">
@@ -90,7 +90,7 @@ export function DatenschutzPage() {
       <LegalSection title="7. Kontaktaufnahme">
         <p>
           Diese Website enthält kein Kontaktformular. Für Kontaktanfragen steht
-          die E-Mail-Adresse <a href="mailto:info@homelab-cluster.uk">info@homelab-cluster.uk</a> zur Verfügung.
+          die E-Mail-Adresse <span className="whitespace-nowrap">info (at) homelab-cluster.uk</span> zur Verfügung.
         </p>
         <p>
           Wenn Sie mir eine E-Mail schreiben, verarbeite ich Ihre
