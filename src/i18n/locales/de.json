@@ -179,7 +179,7 @@
       {
         "tier": "GPU-Tier",
         "hardware": "Workstation mit RTX 5060 Ti (16 GB)",
-        "role": "Sprache und Agenten (gpt-oss 20B, 64k Kontext), Denkmodus (Qwen3.6 35B), Programmieren (Devstral Small 2, Qwen2.5-Coder) und Bilder (FLUX.1, SDXL)"
+        "role": "Sprache und Agenten (gpt-oss 20B, 64k Kontext), Denkmodus (Qwen3.6 35B), Programmieren (Devstral Small 2, Qwen2.5-Coder), Bildverständnis (Gemma 4) und Bilder (FLUX.1, FLUX.2 klein, SDXL)"
       },
       {
         "tier": "Sprache",
@@ -600,10 +600,6 @@
       {
         "title": "Vision-Tracker",
         "desc": "Anwesenheitserkennung aktiv, Kameraverfolgung folgt: Die Kamera soll der Person per Schwenken, Neigen und Zoom folgen — weiterhin vollständig lokal, ohne gespeicherte Bilder."
-      },
-      {
-        "title": "Eigene CI-Pipeline",
-        "desc": "Prüf-Image gebaut und getestet; die automatische Prüfung jeder Änderung wird als Nächstes aktiviert."
       }
     ],
     "counter": "Kernfunktionen im Betrieb: {{done}} / {{total}}",
@@ -811,6 +807,11 @@
             "desc": "FLUX.1 erzeugt Bilder direkt in der Chat-Oberfläche, dazu SDXL — komplett lokal. Sprach- und Bildmodell teilen sich die GPU automatisch."
           },
           {
+            "title": "Bilder verstehen und bearbeiten",
+            "desc": "Hochgeladene Bilder beschreibt ein lokales Bildverständnis-Modell (Gemma 4); FLUX.2 klein bearbeitet sie nach Anweisung — etwa „mach daraus eine Winterlandschaft“, in rund 18 Sekunden.",
+            "status": "live"
+          },
+          {
             "title": "Dokumenten-Umwandlung (Docling)",
             "status": "live",
             "desc": "PDFs, Office-Dateien und Bilder samt Tabellen werden zu strukturiertem Text — jetzt auch direkt im Chat für hochgeladene Dateien."
@@ -939,6 +940,11 @@
             "title": "Neue Alarme",
             "status": "live",
             "desc": "Für nicht nutzbare Modelle, aus Speichermangel verdrängte Pods und genauer bei der Datenbank-Sicherung."
+          },
+          {
+            "title": "Eigene CI prüft jede Änderung",
+            "desc": "Ein abgesicherter Prüf-Runner kontrolliert jede Änderung im Infrastruktur-Repository automatisch — signiertes Image, nur Prüfen, kein Zugriff auf die Infrastruktur.",
+            "status": "live"
           }
         ]
       },
@@ -1056,11 +1062,6 @@
         "title": "Als Nächstes",
         "items": [
           {
-            "title": "Eigene CI-Pipeline aktivieren",
-            "status": "wip",
-            "desc": "Das Prüf-Image ist gebaut und getestet; die Pipeline wird als Nächstes eingeschaltet."
-          },
-          {
             "title": "Auslagerung der Sicherung außer Haus",
             "status": "planned"
           },
@@ -1070,10 +1071,6 @@
           },
           {
             "title": "Strengere Absender-Richtlinie für die eigene Maildomain",
-            "status": "planned"
-          },
-          {
-            "title": "Bilder im Chat hochladen und auswerten",
             "status": "planned"
           },
           {

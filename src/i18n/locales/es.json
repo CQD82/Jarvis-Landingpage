@@ -179,7 +179,7 @@
       {
         "tier": "Nivel GPU",
         "hardware": "Estación con RTX 5060 Ti (16 GB)",
-        "role": "Voz y agentes (gpt-oss 20B, contexto de 64k), razonamiento (Qwen3.6 35B), programación (Devstral Small 2, Qwen2.5-Coder) e imágenes (FLUX.1, SDXL)"
+        "role": "Voz y agentes (gpt-oss 20B, contexto de 64k), razonamiento (Qwen3.6 35B), programación (Devstral Small 2, Qwen2.5-Coder), comprensión de imágenes (Gemma 4) e imágenes (FLUX.1, FLUX.2 klein, SDXL)"
       },
       {
         "tier": "Voz",
@@ -600,10 +600,6 @@
       {
         "title": "Rastreador visual",
         "desc": "Detección de presencia activa, seguimiento por cámara en camino: la cámara seguirá a la persona con giro, inclinación y zoom, siempre en local y sin guardar imágenes."
-      },
-      {
-        "title": "Canalización de CI propia",
-        "desc": "Imagen de comprobación creada y probada; la verificación automática de cada cambio se activa a continuación."
       }
     ],
     "counter": "Funciones básicas en marcha: {{done}} / {{total}}",
@@ -811,6 +807,11 @@
             "desc": "FLUX.1 crea imágenes directamente en la interfaz del chat, además de SDXL, todo en local. Los modelos de lenguaje e imagen comparten la GPU automáticamente."
           },
           {
+            "title": "Entender y editar imágenes",
+            "desc": "Las imágenes subidas las describe un modelo de visión local (Gemma 4); FLUX.2 klein las edita según la instrucción, por ejemplo «conviértela en un paisaje invernal», en unos 18 segundos.",
+            "status": "live"
+          },
+          {
             "title": "Conversión de documentos (Docling)",
             "status": "live",
             "desc": "PDF, archivos de Office e imágenes, tablas incluidas, se convierten en texto estructurado, ahora también directamente en el chat para archivos subidos."
@@ -939,6 +940,11 @@
             "title": "Nuevas alertas",
             "status": "live",
             "desc": "Para modelos no utilizables, pods desalojados por falta de memoria y más precisas en la copia de las bases de datos."
+          },
+          {
+            "title": "Nuestra CI revisa cada cambio",
+            "desc": "Un runner de comprobación protegido revisa automáticamente cada cambio del repositorio de infraestructura: imagen firmada, solo comprobación, sin acceso a la infraestructura.",
+            "status": "live"
           }
         ]
       },
@@ -1056,11 +1062,6 @@
         "title": "Lo próximo",
         "items": [
           {
-            "title": "Activar nuestra propia canalización de CI",
-            "status": "wip",
-            "desc": "La imagen de comprobación está creada y probada; la canalización se activa a continuación."
-          },
-          {
             "title": "Llevar la copia fuera de casa",
             "status": "planned"
           },
@@ -1070,10 +1071,6 @@
           },
           {
             "title": "Política de remitente más estricta para nuestro dominio de correo",
-            "status": "planned"
-          },
-          {
-            "title": "Subir y analizar imágenes en el chat",
             "status": "planned"
           },
           {

@@ -179,7 +179,7 @@
       {
         "tier": "Niveau GPU",
         "hardware": "Station avec RTX 5060 Ti (16 Go)",
-        "role": "Voix et agents (gpt-oss 20B, contexte 64k), réflexion (Qwen3.6 35B), programmation (Devstral Small 2, Qwen2.5-Coder) et images (FLUX.1, SDXL)"
+        "role": "Voix et agents (gpt-oss 20B, contexte 64k), réflexion (Qwen3.6 35B), programmation (Devstral Small 2, Qwen2.5-Coder), compréhension d’images (Gemma 4) et images (FLUX.1, FLUX.2 klein, SDXL)"
       },
       {
         "tier": "Voix",
@@ -600,10 +600,6 @@
       {
         "title": "Suivi visuel",
         "desc": "Détection de présence active, suivi caméra à venir : la caméra suivra la personne par panoramique, inclinaison et zoom — toujours entièrement local, sans images enregistrées."
-      },
-      {
-        "title": "Pipeline CI maison",
-        "desc": "Image de vérification construite et testée ; la vérification automatique de chaque modification sera activée ensuite."
       }
     ],
     "counter": "Fonctions de base en service : {{done}} / {{total}}",
@@ -811,6 +807,11 @@
             "desc": "FLUX.1 crée des images directement dans l’interface de chat, en plus de SDXL — entièrement en local. Modèle de langage et d’image se partagent le GPU automatiquement."
           },
           {
+            "title": "Comprendre et retoucher des images",
+            "desc": "Les images envoyées sont décrites par un modèle de vision local (Gemma 4) ; FLUX.2 klein les modifie sur demande — par exemple « transforme-la en paysage d’hiver », en 18 secondes environ.",
+            "status": "live"
+          },
+          {
             "title": "Conversion de documents (Docling)",
             "status": "live",
             "desc": "PDF, fichiers Office et images, tableaux compris, deviennent du texte structuré — désormais aussi directement dans le chat pour les fichiers envoyés."
@@ -939,6 +940,11 @@
             "title": "Nouvelles alertes",
             "status": "live",
             "desc": "Pour les modèles inutilisables, les pods évincés faute de mémoire et plus précises pour la sauvegarde des bases."
+          },
+          {
+            "title": "Notre CI vérifie chaque modification",
+            "desc": "Un runner de vérification sécurisé contrôle automatiquement chaque modification du dépôt d’infrastructure — image signée, vérification seule, aucun accès à l’infrastructure.",
+            "status": "live"
           }
         ]
       },
@@ -1056,11 +1062,6 @@
         "title": "Prochaines étapes",
         "items": [
           {
-            "title": "Activer notre propre pipeline CI",
-            "status": "wip",
-            "desc": "L’image de vérification est construite et testée ; la pipeline sera activée ensuite."
-          },
-          {
             "title": "Externalisation de la sauvegarde hors site",
             "status": "planned"
           },
@@ -1070,10 +1071,6 @@
           },
           {
             "title": "Politique d’expéditeur plus stricte pour notre domaine mail",
-            "status": "planned"
-          },
-          {
-            "title": "Envoyer et analyser des images dans le chat",
             "status": "planned"
           },
           {

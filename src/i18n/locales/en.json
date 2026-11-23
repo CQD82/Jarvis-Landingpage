@@ -179,7 +179,7 @@
       {
         "tier": "GPU tier",
         "hardware": "Workstation with RTX 5060 Ti (16 GB)",
-        "role": "Voice and agents (gpt-oss 20B, 64k context), reasoning (Qwen3.6 35B), coding (Devstral Small 2, Qwen2.5-Coder) and images (FLUX.1, SDXL)"
+        "role": "Voice and agents (gpt-oss 20B, 64k context), reasoning (Qwen3.6 35B), coding (Devstral Small 2, Qwen2.5-Coder), image understanding (Gemma 4) and images (FLUX.1, FLUX.2 klein, SDXL)"
       },
       {
         "tier": "Speech",
@@ -600,10 +600,6 @@
       {
         "title": "Vision tracker",
         "desc": "Presence detection is live, camera tracking comes next: the camera will follow the person with pan, tilt and zoom — still fully local, no images stored."
-      },
-      {
-        "title": "Own CI pipeline",
-        "desc": "Check image built and tested; automatic checking of every change is activated next."
       }
     ],
     "counter": "Core functions in production: {{done}} / {{total}}",
@@ -811,6 +807,11 @@
             "desc": "FLUX.1 creates images right in the chat interface, plus SDXL — fully local. Language and image model share the GPU automatically."
           },
           {
+            "title": "Understand and edit images",
+            "desc": "Uploaded images are described by a local vision model (Gemma 4); FLUX.2 klein edits them on request — e.g. “turn it into a winter landscape”, in about 18 seconds.",
+            "status": "live"
+          },
+          {
             "title": "Document conversion (Docling)",
             "status": "live",
             "desc": "PDFs, Office files and images, tables included, become structured text — now also directly in the chat for uploaded files."
@@ -939,6 +940,11 @@
             "title": "New alerts",
             "status": "live",
             "desc": "For unusable models, pods evicted for lack of memory and more precise ones for the database backup."
+          },
+          {
+            "title": "Own CI checks every change",
+            "desc": "A hardened check runner automatically validates every change to the infrastructure repository — signed image, checks only, no access to the infrastructure.",
+            "status": "live"
           }
         ]
       },
@@ -1056,11 +1062,6 @@
         "title": "Up next",
         "items": [
           {
-            "title": "Activate our own CI pipeline",
-            "status": "wip",
-            "desc": "The check image is built and tested; the pipeline is switched on next."
-          },
-          {
             "title": "Moving the backup off-site",
             "status": "planned"
           },
@@ -1070,10 +1071,6 @@
           },
           {
             "title": "Stricter sender policy for our own mail domain",
-            "status": "planned"
-          },
-          {
-            "title": "Upload and analyse images in the chat",
             "status": "planned"
           },
           {
