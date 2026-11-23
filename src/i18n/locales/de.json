@@ -25,7 +25,7 @@
   "statusTicker": [
     "NEURAL LINK: STABIL",
     "18/18 NODES ONLINE",
-    "ERSTER SATZ: ~0,7 S",
+    "ERSTER SATZ: ~1 S",
     "WIREGUARD STRICT MODE: AKTIV",
     "GITOPS: SYNCHRONISIERT",
     "CLOUD-KI: KEINE"
@@ -108,7 +108,7 @@
       },
       {
         "title": "Faktentreuer Sprachassistent & HUD",
-        "description": "„Hey Jarvis“: Weckwort auf dem Gerät, Spracherkennung und Sprachmodell auf der GPU, britische Stimme. Den ersten Satz spricht er im Mittel nach rund 0,7 Sekunden. Wissensfragen beantwortet er nur aus belegten Quellen — 21 Offline-Nachschlagewerke und Nachrichten — mit automatischer Gegenprüfung; Rückfragen versteht er im Gesprächszusammenhang. Ein holografisches HUD zeigt Suchergebnisse, Wetter, Medien und Systemstatus."
+        "description": "„Hey Jarvis“: Weckwort auf dem Gerät, Spracherkennung und Sprachmodell auf der GPU, britische Stimme. Den ersten Satz spricht er im Mittel nach rund einer Sekunde. Wissensfragen beantwortet er nur aus belegten Quellen — 21 Offline-Nachschlagewerke und Nachrichten — mit automatischer Gegenprüfung; Rückfragen versteht er im Gesprächszusammenhang. Ein holografisches HUD zeigt Suchergebnisse, Wetter, Medien und Systemstatus."
       },
       {
         "title": "Zero-Trust-Netzwerksegmentierung",
@@ -169,27 +169,27 @@
       {
         "tier": "Edge / NPU",
         "hardware": "4× Raspberry Pi 5 mit Hailo-10H",
-        "role": "Kleine Sprachmodelle bis 4 B Parameter; im Notbetrieb das Reservemodell für den Dialog"
+        "role": "Letzte Reserve-Stufe (Qwen3 1.7B) und kleine Modelle bis 4 B Parameter"
       },
       {
         "tier": "CPU-Reserve",
         "hardware": "ODROID-H5",
-        "role": "Notreserve-Modell sowie Spracherkennung und -ausgabe, wenn die GPU schläft"
+        "role": "Notbetrieb (Qwen3 4B, Qwen3.5 2B), Code-Vervollständigung und Einbettungen für die Suche"
       },
       {
         "tier": "GPU-Tier",
         "hardware": "Workstation mit RTX 5060 Ti (16 GB)",
-        "role": "Sprachassistent (gpt-oss-20b), Code-Assistenten (Devstral Small 2, Qwen2.5-Coder), Qwen3 14B, gründlicher Denk-Modus und Bildgenerierung (SDXL)"
+        "role": "Sprache und Agenten (gpt-oss 20B, 64k Kontext), Denkmodus (Qwen3.6 35B), Programmieren (Devstral Small 2, Qwen2.5-Coder) und Bilder (FLUX.1, SDXL)"
       },
       {
         "tier": "Sprache",
         "hardware": "GPU + CPU",
-        "role": "Whisper-Spracherkennung, Kokoro-Sprachausgabe"
+        "role": "Whisper large-v3-turbo zur Spracherkennung, Kokoro zur Sprachausgabe (Reserve Piper)"
       },
       {
         "tier": "Wissen",
         "hardware": "Lokaler Speicher",
-        "role": "21 Offline-Nachschlagewerke (u. a. deutsche Wikipedia), lernender Wissensspeicher und Metasuche als Belegquellen"
+        "role": "21 Offline-Nachschlagewerke, lernender Wissensspeicher und eine Metasuche über drei Quellen"
       },
       {
         "tier": "Cloud",
@@ -214,6 +214,7 @@
       "Secrets ausschließlich verschlüsselt im Repository (nie im Klartext)",
       "Policy-Enforcement, Laufzeit-Bedrohungserkennung und Image-Scanning",
       "Laufzeit-Durchsetzung im Kernel (Tetragon): unerlaubte Programmstarts und Verbindungen der KI-Dienste werden sofort beendet — auch auf den Raspberry-Pi-Nodes, dank eines eigens gebauten Kernels aus signaturgeprüften Quellen",
+      "Ausgehende Telemetrie aller Dienste abgeschaltet — es verlassen keine Fehler- oder Nutzungsberichte das Netzwerk",
       "Eigene Container-Images werden signiert (cosign) und nur mit gültiger Signatur zugelassen",
       "Kompromittierte Upstream-Komponenten werden gesperrt und ersetzt — das KI-Gateway wurde nach einem Supply-Chain-Vorfall vollständig ausgetauscht",
       "CI-Läufe in gehärteten, isolierten Runnern ohne Fremd-Actions; KI-Agenten dürfen nur Pull-Requests öffnen, nie direkt Befehle ausführen",
@@ -275,8 +276,8 @@
       {
         "title": "Agenten",
         "items": [
-          "ZeroClaw (Tool-Calling, Sandbox)",
-          "Hermes (Gedächtnis, Telegram/CLI)"
+          "ZeroClaw (Sandbox, eigenes Postfach)",
+          "Hermes (Recherche, Gedächtnis, Messenger)"
         ]
       },
       {
@@ -297,7 +298,7 @@
     "items": [
       {
         "title": "Der Weg einer Sprachanfrage",
-        "body": "Das Weckwort „Hey Jarvis“ wird direkt am Sprachterminal erkannt. Die Aufnahme geht an Whisper auf der GPU (unter einer halben Sekunde), danach entscheidet Home Assistant: Einfache Befehle wie Licht, Heizung, Uhrzeit oder Wetter erledigt es sofort ohne Sprachmodell. Alles andere geht an das lokale Sprachmodell, das Werkzeuge nutzen kann — Websuche, Wikipedia, Wetter, Medien, Routen. Die Antwort spricht Kokoro satzweise aus: Der erste Satz klingt bereits, während der Rest noch berechnet wird. Im Mittel ist der erste Satz nach rund 0,7 Sekunden zu hören."
+        "body": "Das Weckwort „Hey Jarvis“ wird direkt am Sprachterminal erkannt. Die Aufnahme geht an Whisper auf der GPU (unter einer halben Sekunde), danach entscheidet Home Assistant: Einfache Befehle wie Licht, Heizung, Uhrzeit oder Wetter erledigt es sofort ohne Sprachmodell. Alles andere geht an das lokale Sprachmodell, das Werkzeuge nutzen kann — Websuche, Wikipedia, Wetter, Medien, Routen. Die Antwort spricht Kokoro satzweise aus: Der erste Satz klingt bereits, während der Rest noch berechnet wird. Im Mittel ist der erste Satz nach rund einer Sekunde zu hören."
       },
       {
         "title": "Faktentreue statt Halluzination",
@@ -320,11 +321,11 @@
     "rows": [
       {
         "label": "Edge-Nodes (Pi 5 16 GB + Hailo-10H + SSD) ×4",
-        "w": 36
+        "w": 28
       },
       {
         "label": "Pi 5 + NVMe (Control Plane & Worker) ×10",
-        "w": 65
+        "w": 50
       },
       {
         "label": "Utility-Node (Pi 4 8 GB + SSD)",
@@ -336,7 +337,7 @@
       },
       {
         "label": "GPU-Workstation HP Z840 + RTX 5060 Ti (Dauerbetrieb, Leerlauf)",
-        "w": 110
+        "w": 95
       },
       {
         "label": "Netzwerk-Switch (24 Port)",
@@ -386,7 +387,7 @@
       }
     ],
     "measuredTitle": "Gemessen statt geschätzt",
-    "measuredBody": "Seit Kurzem misst der Cluster seinen Verbrauch selbst: Im Ruhebetrieb liegt er bei rund 196 W — umgerechnet etwa 40 € im Monat bei 28 ct/kWh. Die Nachtabschaltung des GPU-Servers drückt den Wert weiter."
+    "measuredBody": "Der Cluster misst seinen Verbrauch selbst: Im 7-Tage-Mittel liegt er bei rund 121 W (Spanne 84–367 W), umgerechnet etwa 25 € im Monat bei 28 ct/kWh. Ohne den GPU-Server sind es rund 105 W, ein Pi 5 braucht 3–6 W — die Nachtabschaltung wirkt."
   },
   "hud": {
     "eyebrow": "Monitoring",
@@ -462,7 +463,7 @@
       },
       {
         "name": "GPU-Tier",
-        "role": "HP Z840 mit RTX 5060 Ti — hält tagsüber das Sprachmodell geladen, erster Satz nach rund 0,7 Sekunden; nachts schläft sie und wird per Wake-on-LAN geweckt."
+        "role": "HP Z840 mit RTX 5060 Ti — hält tagsüber das Sprachmodell geladen, erster Satz nach rund einer Sekunde; nachts schläft sie und wird per Wake-on-LAN geweckt."
       },
       {
         "name": "CPU-Tier",
@@ -499,7 +500,7 @@
       },
       {
         "q": "Wie viel Strom verbraucht das Rack?",
-        "a": "Gerade rund hundertsechsundneunzig Watt, gemessen — etwa vierzig Euro im Monat. Nachts schaltet sich die GPU-Workstation ab, wenn niemand im Raum ist."
+        "a": "Im Wochenmittel rund hundertzwanzig Watt, gemessen — etwa fünfundzwanzig Euro im Monat. Nachts schaltet sich der GPU-Server ab, wenn niemand im Raum ist."
       }
     ]
   },
@@ -540,7 +541,7 @@
       },
       {
         "title": "Faktentreuer Sprachassistent",
-        "desc": "„Hey Jarvis“ spricht den ersten Satz nach rund 0,7 Sekunden — Wissensfragen nur aus belegten Quellen."
+        "desc": "„Hey Jarvis“ spricht den ersten Satz nach rund einer Sekunde — Wissensfragen nur aus belegten Quellen."
       },
       {
         "title": "Automatische Qualitätssicherung",
@@ -601,8 +602,8 @@
         "desc": "Anwesenheitserkennung aktiv, Kameraverfolgung folgt: Die Kamera soll der Person per Schwenken, Neigen und Zoom folgen — weiterhin vollständig lokal, ohne gespeicherte Bilder."
       },
       {
-        "title": "Bildgenerierung mit FLUX.1",
-        "desc": "Stable Diffusion XL läuft lokal; FLUX.1 ist als quantisierte Variante für 16 GB vorbereitet — ein letzter Baustein fehlt noch."
+        "title": "Eigene CI-Pipeline",
+        "desc": "Prüf-Image gebaut und getestet; die automatische Prüfung jeder Änderung wird als Nächstes aktiviert."
       }
     ],
     "counter": "Kernfunktionen im Betrieb: {{done}} / {{total}}",
@@ -622,7 +623,7 @@
   "updates": {
     "eyebrow": "Neu seit dem Go-Live",
     "title": "Was seit dem 10. November dazugekommen ist",
-    "description": "Eine Woche Produktivbetrieb, über 50 Neuerungen — alles lokal, ohne Cloud-KI. Hier der Stand vom 16. November.",
+    "description": "Zwei Wochen Produktivbetrieb, über 70 Neuerungen — alles lokal, ohne Cloud-KI. Hier der Stand vom 23. November.",
     "counter": "{{live}} von {{total}} Neuerungen bereits im Betrieb — eigene Zählung, zusätzlich zu den Kernfunktionen oben",
     "comfyCaption": "Komplett lokal erzeugt: Testbild der Bildgenerierung — Stable Diffusion XL auf der eigenen GPU, inzwischen in rund 16 Sekunden.",
     "note": "Weitere Oberflächen liegen hinter einer Anmeldung mit Zwei-Faktor und werden hier bewusst nicht gezeigt.",
@@ -641,7 +642,37 @@
           {
             "title": "Notbetrieb ohne GPU-Server",
             "status": "live",
-            "desc": "Ist der GPU-Server aus, antworten kleinere Reservemodelle weiter — auf der CPU-Reserve und, als letzte Reserve, dauerhaft geladen auf der Edge-NPU. Stopp, Wiedergabe und Witze laufen ganz ohne Modell."
+            "desc": "Ist der GPU-Server aus, antworten kleinere Reservemodelle weiter — auf der CPU-Reserve und, als letzte Reserve, dauerhaft geladen auf der Edge-NPU. Stopp, Wiedergabe und Witze laufen ganz ohne Modell. Orte, Routen und Wetter beantworten im Notbetrieb feste Funktionen, statt das kleine Modell raten zu lassen."
+          },
+          {
+            "title": "Antworten ohne Sprachmodell",
+            "status": "live",
+            "desc": "Prozent, Wurzeln, Umrechnungen, Uhrzeit, Tage bis zu Festtagen, Kalenderwoche sowie Pods, Nodes und Alarme werden exakt berechnet oder abgefragt — in unter 0,1 Sekunden."
+          },
+          {
+            "title": "Immer metrisch, Einheiten ausgesprochen",
+            "status": "live",
+            "desc": "Meilen, Fuß, Pfund und Fahrenheit aus Quellen werden automatisch umgerechnet; „km/h“ oder „°C“ werden ausgesprochen statt buchstabiert."
+          },
+          {
+            "title": "Wetter für 7 Tage",
+            "status": "live",
+            "desc": "Mit Wochentag sowie „heute“ und „morgen“ — auch Fragen zum Wochenende lassen sich beantworten."
+          },
+          {
+            "title": "„Hat das jetzt offen?“",
+            "status": "live",
+            "desc": "Öffnungszeiten aus Kartendaten werden ausgewertet, auch über Mitternacht; fällt ein Kartendienst aus, übernimmt sofort ein zweiter."
+          },
+          {
+            "title": "Entfernungen und Routen",
+            "status": "live",
+            "desc": "„Ist Rom oder Paris näher an Zürich?“ wird erkannt und nachgerechnet; Ortsangaben wie „Hauptbahnhof“ werden richtig aufgelöst."
+          },
+          {
+            "title": "Erklärfragen",
+            "status": "live",
+            "desc": "Bei „Wie funktioniert …?“ sucht JARVIS gezielt nach dem Wirkprinzip."
           },
           {
             "title": "Rückfragen im Gespräch",
@@ -702,9 +733,49 @@
             "title": "Nichts vergessen",
             "status": "live",
             "desc": "Alles Gelernte prüft der nächtliche Qualitätstest mit; der Wochenbericht zeigt Probleme, Gelerntes und Offenes."
+          },
+          {
+            "title": "Suchmaschinen-Mix",
+            "status": "live",
+            "desc": "Die eigene Metasuche fragt drei Quellen statt einer ab — Antwortzeit im Median 0,64 statt bis zu 4 Sekunden."
           }
         ],
         "note": "Bewusst kein Gewichtstraining: Feintuning lehrt Stil, aber keine verlässlichen Fakten und kann Gelerntes verdrängen. Nachschlagbares, belegtes Wissen ist sicherer — die Daten für ein späteres Feintuning werden trotzdem gesammelt."
+      },
+      {
+        "title": "KI-Agenten & Automatisierung",
+        "items": [
+          {
+            "title": "Hermes Agent",
+            "status": "live",
+            "desc": "Recherche-Assistent im Messenger mit Websuche über die eigene Metasuche, Gedächtnis und Aufgabenliste — bewusst ohne Dateizugriff und Shell."
+          },
+          {
+            "title": "ZeroClaw",
+            "status": "live",
+            "desc": "Zweiter Agent in einer abgeschotteten Sandbox: ohne Internet, ohne Shell, nur ein eigener Arbeitsordner."
+          },
+          {
+            "title": "Eigenes Postfach für den Agenten",
+            "status": "live",
+            "desc": "Ein kleiner Vermittlungsdienst gibt ZeroClaw Zugriff auf genau ein Postfach. Senden, Weiterleiten und Löschen nur nach Bestätigung, Empfänger fest vorgegeben."
+          },
+          {
+            "title": "Echte Werkzeugliste",
+            "status": "live",
+            "desc": "Agenten bekommen eine strukturierte Werkzeugliste statt einer Textbeschreibung — keine leeren Antworten mehr; riskante Werkzeuge wurden entfernt."
+          },
+          {
+            "title": "n8n mit lokaler KI",
+            "status": "live",
+            "desc": "Automatisierungen mit Anbindung an die lokalen Modelle, Konto mit Zwei-Faktor."
+          },
+          {
+            "title": "Bessere Mail-Zustellung",
+            "status": "wip",
+            "desc": "Ein 30-tägiger Test soll klären, wie ausgehende Mails zuverlässiger ankommen."
+          }
+        ]
       },
       {
         "title": "KI & Modelle",
@@ -715,9 +786,9 @@
             "desc": "Neuere Modelle (Qwen3.8 27B, Gemma 4 26B, Qwen3.6 35B) traten gegen das laufende gpt-oss 20B an. Ergebnis: Das laufende Modell bleibt — am schnellsten und mit den meisten bestandenen Fragen."
           },
           {
-            "title": "Qualitätstest mit 90 Fragen",
+            "title": "Qualitätstest mit 110 Fragen",
             "status": "live",
-            "desc": "Jede Nacht 90 Fragen in acht Kategorien — von Wissen und schweren Fragen bis Notbetrieb und Gelerntem; zuletzt 90 von 90 bestanden."
+            "desc": "Jede Nacht 110 Fragen in acht Kategorien — von Wissen und schweren Fragen bis Notbetrieb und Gelerntem; zuletzt 110 von 110 bei einem Median von 1,5 Sekunden."
           },
           {
             "title": "Modellvergleich (Promptfoo)",
@@ -735,9 +806,9 @@
             "desc": "GPU-Experimentierumgebung mit Feintuning; ein Pflegedienst räumt Caches auf und meldet Ungenutztes im Wochenbericht, statt es zu löschen."
           },
           {
-            "title": "Bildgenerierung (ComfyUI)",
+            "title": "Bilderzeugung im Chat (ComfyUI)",
             "status": "live",
-            "desc": "SDXL in rund 16 statt 36 Sekunden. Sprachmodell und Bildgenerierung teilen sich die GPU automatisch — die erste Antwort nach einem Bild kommt nach 1 statt 6 Sekunden."
+            "desc": "FLUX.1 erzeugt Bilder direkt in der Chat-Oberfläche, dazu SDXL — komplett lokal. Sprach- und Bildmodell teilen sich die GPU automatisch."
           },
           {
             "title": "Dokumenten-Umwandlung (Docling)",
@@ -753,6 +824,21 @@
             "title": "Kamera-Auswertung (Frigate)",
             "status": "live",
             "desc": "Erkennt Personen und Tiere und speichert nur Ereignisse — komplett lokal, nur im Heimnetz."
+          },
+          {
+            "title": "Coding-Konsistenztest",
+            "status": "done",
+            "desc": "16 Programmieraufgaben × 3 Läufe, der Code wird ohne Netz ausgeführt — vier lokale Modelle schafften je 48 von 48."
+          },
+          {
+            "title": "Wöchentlicher Modell-Check",
+            "status": "live",
+            "desc": "Ein Labor-Job prüft jede Woche, ob alle Modelle laden und Aufgaben richtig lösen; bei Fehlern gibt es einen Alarm."
+          },
+          {
+            "title": "Größerer Kontext für Agenten",
+            "status": "live",
+            "desc": "Das Hauptmodell arbeitet mit 64.000 Token Kontext und zwei parallelen Anfragen."
           }
         ]
       },
@@ -833,6 +919,26 @@
             "title": "Leiser im Leerlauf",
             "desc": "Die Datenbank der LLM-Aufzeichnung braucht im Leerlauf nur noch ein Zehntel der Rechenzeit; das Energie-Dashboard zeigt den Zustand des GPU-Servers sofort aktuell.",
             "status": "live"
+          },
+          {
+            "title": "Eigener Kernel für alle Pis",
+            "status": "live",
+            "desc": "Selbst gebaut mit tieferer Sicherheitsüberwachung und Korrekturen für den Netzwerktreiber — erst auf einem Test-Pi, dann auf allen Pis, mit Rückfallmöglichkeit."
+          },
+          {
+            "title": "Updates mit Sicherung vorab",
+            "status": "live",
+            "desc": "Speicher, Backup, Kamera und Git-Server aktualisiert, dazu Pakete auf allen Pis; vor jedem Update eine Sicherung, eine Test-Wiederherstellung war erfolgreich."
+          },
+          {
+            "title": "Zuverlässigere Update-Automatik",
+            "status": "live",
+            "desc": "Abhängigkeiten werden ohne Ratenbegrenzung geprüft, Prüfsummen vollständig ergänzt."
+          },
+          {
+            "title": "Neue Alarme",
+            "status": "live",
+            "desc": "Für nicht nutzbare Modelle, aus Speichermangel verdrängte Pods und genauer bei der Datenbank-Sicherung."
           }
         ]
       },
@@ -878,6 +984,11 @@
             "title": "Switch abgesichert",
             "desc": "Schutz gegen Kabel-Schleifen und Broadcast-Stürme — ohne dass die Internetverbindung dabei je getrennt wird.",
             "status": "live"
+          },
+          {
+            "title": "Keine Telemetrie nach außen",
+            "status": "live",
+            "desc": "Zwei Dienste schickten Fehler- und Nutzungsberichte ins Internet — abgestellt, die blockierten Verbindungsversuche sanken auf null."
           }
         ]
       },
@@ -906,8 +1017,38 @@
           },
           {
             "title": "Netzwerk-Hänger einzelner Nodes",
-            "desc": "Hängt die Netzwerkkarte eines Pi, wird das jetzt in Sekunden statt in bis zu einer Minute erkannt und behoben.",
+            "desc": "Kurze Aussetzer der Netzwerkkarte eines Pi werden in unter 5 Sekunden zurückgesetzt, Steuerebene und GitOps tolerieren kurze Ausfälle; ob der neue Kernel sie ganz verhindert, wird noch beobachtet.",
             "status": "fixed"
+          },
+          {
+            "title": "Sprachmodell aus dem Speicher verdrängt",
+            "status": "fixed",
+            "desc": "Zwischengespeicherte Modelldateien füllten den Arbeitsspeicher des GPU-Servers; Speichergrenzen angepasst, ungenutzte Bildmodelle werden entladen."
+          },
+          {
+            "title": "Falsche Alarmzahl beim Aufwachen",
+            "status": "fixed",
+            "desc": "Beim Start des GPU-Servers liefen zwei Zählungen kurz auseinander („42 Alarme“, tatsächlich einer)."
+          },
+          {
+            "title": "Leere Agenten-Antworten",
+            "status": "fixed",
+            "desc": "Werkzeugaufrufe gingen verloren, weil die Werkzeuge nur im Text beschrieben waren."
+          },
+          {
+            "title": "Fehlende Sandbox-Komponente",
+            "status": "fixed",
+            "desc": "Ein Teil der Sandbox-Laufzeit fehlte seit der Installation und wurde mit geprüfter Prüfsumme nachinstalliert."
+          },
+          {
+            "title": "Falsch gerechnete Tage bis Weihnachten",
+            "status": "fixed",
+            "desc": "Statt das Modell schätzen zu lassen, rechnet JARVIS solche Fragen jetzt exakt."
+          },
+          {
+            "title": "Falsche Route, erfundener Ort, falscher Artikel",
+            "status": "fixed",
+            "desc": "Der „Hauptbahnhof“ führte in eine andere Stadt, ein ausgedachter Ort bekam echte Daten, ein Unterartikel wurde zitiert — alles behoben."
           }
         ]
       },
@@ -915,9 +1056,9 @@
         "title": "Als Nächstes",
         "items": [
           {
-            "title": "FLUX.1 fertigstellen",
+            "title": "Eigene CI-Pipeline aktivieren",
             "status": "wip",
-            "desc": "Als quantisierte Variante vorbereitet, die in 16 GB passt — ein letzter Baustein fehlt noch."
+            "desc": "Das Prüf-Image ist gebaut und getestet; die Pipeline wird als Nächstes eingeschaltet."
           },
           {
             "title": "Auslagerung der Sicherung außer Haus",
@@ -925,6 +1066,14 @@
           },
           {
             "title": "Kontrolliertes Herunterfahren über die USV",
+            "status": "planned"
+          },
+          {
+            "title": "Strengere Absender-Richtlinie für die eigene Maildomain",
+            "status": "planned"
+          },
+          {
+            "title": "Bilder im Chat hochladen und auswerten",
             "status": "planned"
           },
           {
@@ -942,24 +1091,24 @@
     "metricsTitle": "Messwerte",
     "metrics": [
       {
-        "value": "90/90",
-        "label": "Qualitätstest (90 Fragen)"
+        "value": "110/110",
+        "label": "Qualitätstest (110 Fragen)"
       },
       {
-        "value": "47/47",
-        "label": "Harter Vergleichstest"
+        "value": "~1,0 s",
+        "label": "Bis zum ersten gesprochenen Text"
       },
       {
-        "value": "~0,7 s",
-        "label": "Erster gesprochener Satz"
+        "value": "< 0,1 s",
+        "label": "Rechnen, Uhrzeit, Cluster-Fragen"
       },
       {
         "value": "0,2 s",
         "label": "Spracherkennung"
       },
       {
-        "value": "0,12 s",
-        "label": "Nachschlagen neues Thema"
+        "value": "4 × 48/48",
+        "label": "Coding-Konsistenztest"
       }
     ]
   }

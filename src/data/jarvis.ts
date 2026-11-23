@@ -41,12 +41,12 @@ export const pipelineIcons: LucideIcon[] = [Workflow, Server, GitBranch, Refresh
 
 /** Matches systemMap.categories in the locale files. Tool names stay in code — product names aren't translated. */
 export const techCategoryTools: string[][] = [
-  ["FluxCD", "Helmfile", "Renovate", "Forgejo", "Forgejo Actions", "Ansible"],
-  ["K3s", "Longhorn", "Cilium LB-IPAM + L2", "Traefik", "cert-manager", "Garage"],
-  ["Bifrost", "llama.cpp", "llama-swap", "Qdrant", "Open WebUI", "Kiwix", "ComfyUI", "Promptfoo", "Langfuse", "Docling", "JupyterLab", "MLflow", "Unsloth", "Label Studio"],
-  ["Cilium", "Kyverno", "Falco", "Tetragon", "Trivy", "gVisor", "cosign", "Authentik", "SOPS + Age", "Vaultwarden"],
-  ["Wyoming", "Whisper", "Kokoro TTS", "Home Assistant", "Wake-Word", "HUD", "Frigate"],
-  ["VictoriaMetrics", "VictoriaLogs", "Grafana", "Alertmanager", "Velero", "kured", "system-upgrade-controller", "n8n", "Shelly-Exporter", "ntfy", "Paperless-ngx", "Immich"],
+  ["FluxCD", "Forgejo", "Forgejo Actions", "Renovate", "Helm", "Kustomize", "Ansible", "SOPS + age", "kube-linter", "n8n"],
+  ["K3s", "Longhorn", "Garage", "kube-vip", "Cilium LB-IPAM + L2", "Traefik", "cert-manager", "CloudNativePG", "Valkey", "Spegel", "Headlamp"],
+  ["llama.cpp", "llama-swap", "Bifrost", "Hailo-10H", "Open WebUI", "Qdrant", "SearXNG", "Apache Tika", "Docling", "Kiwix", "ComfyUI", "JupyterLab", "MLflow", "Unsloth", "Label Studio", "Promptfoo", "Langfuse", "Hermes Agent", "ZeroClaw"],
+  ["Cilium + WireGuard", "Hubble", "Tetragon", "Kyverno", "Falco", "Trivy", "gVisor", "cosign", "Authentik", "Pi-hole", "Vaultwarden", "Stalwart + Roundcube"],
+  ["Home Assistant", "ESPHome-Satellit", "Wake-Word", "Whisper", "Kokoro TTS", "Piper", "Frigate", "HUD"],
+  ["VictoriaMetrics", "VictoriaLogs", "Grafana", "Alloy", "Alertmanager", "Velero", "kured", "system-upgrade-controller", "SNMP-Exporter", "Shelly-Exporter", "ntfy", "Paperless-ngx", "Immich"],
 ];
 
 export const techCategoryIcons: LucideIcon[] = [

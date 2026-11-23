@@ -25,7 +25,7 @@
   "statusTicker": [
     "ENLACE NEURONAL: ESTABLE",
     "18/18 NODOS EN LÍNEA",
-    "PRIMERA FRASE: ~0,7 S",
+    "PRIMERA FRASE: ~1 S",
     "WIREGUARD ESTRICTO: ACTIVO",
     "GITOPS: SINCRONIZADO",
     "IA EN LA NUBE: NINGUNA"
@@ -108,7 +108,7 @@
       },
       {
         "title": "Asistente de voz basado en fuentes y HUD",
-        "description": "«Hey Jarvis»: palabra de activación en el dispositivo, reconocimiento de voz y modelo de lenguaje en la GPU, voz británica. De media pronuncia la primera frase en unos 0,7 segundos. Las preguntas de conocimiento solo se responden a partir de fuentes —21 obras de consulta sin conexión y noticias— con verificación automática, y entiende las preguntas de seguimiento en contexto. Un HUD holográfico muestra resultados, tiempo, medios y estado del sistema."
+        "description": "«Hey Jarvis»: palabra de activación en el dispositivo, reconocimiento de voz y modelo de lenguaje en la GPU, voz británica. De media pronuncia la primera frase en un segundo aproximadamente. Las preguntas de conocimiento solo se responden a partir de fuentes —21 obras de consulta sin conexión y noticias— con verificación automática, y entiende las preguntas de seguimiento en contexto. Un HUD holográfico muestra resultados, tiempo, medios y estado del sistema."
       },
       {
         "title": "Segmentación de red zero trust",
@@ -169,27 +169,27 @@
       {
         "tier": "Edge / NPU",
         "hardware": "4× Raspberry Pi 5 con Hailo-10H",
-        "role": "Modelos de lenguaje pequeños de hasta 4 B parámetros; modelo de diálogo de reserva en modo de emergencia"
+        "role": "Nivel de última reserva (Qwen3 1.7B) y modelos pequeños de hasta 4 B parámetros"
       },
       {
         "tier": "Reserva CPU",
         "hardware": "ODROID-H5",
-        "role": "Modelo de reserva de emergencia y reconocimiento y síntesis de voz mientras la GPU duerme"
+        "role": "Modo de emergencia (Qwen3 4B, Qwen3.5 2B), autocompletado de código y embeddings para la búsqueda"
       },
       {
         "tier": "Nivel GPU",
         "hardware": "Estación con RTX 5060 Ti (16 GB)",
-        "role": "Asistente de voz (gpt-oss-20b), asistentes de código (Devstral Small 2, Qwen2.5-Coder), Qwen3 14B, modo de razonamiento a fondo y generación de imágenes (SDXL)"
+        "role": "Voz y agentes (gpt-oss 20B, contexto de 64k), razonamiento (Qwen3.6 35B), programación (Devstral Small 2, Qwen2.5-Coder) e imágenes (FLUX.1, SDXL)"
       },
       {
         "tier": "Voz",
         "hardware": "GPU + CPU",
-        "role": "Reconocimiento Whisper, síntesis Kokoro"
+        "role": "Whisper large-v3-turbo para el reconocimiento de voz, Kokoro para la síntesis (Piper de reserva)"
       },
       {
         "tier": "Conocimiento",
         "hardware": "Almacenamiento local",
-        "role": "21 obras de consulta sin conexión (incl. la Wikipedia alemana), un almacén de conocimiento que aprende y metabuscador como fuentes"
+        "role": "21 obras de consulta sin conexión, un almacén de conocimiento que aprende y un metabuscador sobre tres fuentes"
       },
       {
         "tier": "Nube",
@@ -214,6 +214,7 @@
       "Secretos almacenados solo cifrados en el repositorio (nunca en texto plano)",
       "Aplicación de políticas, detección de amenazas en tiempo de ejecución y escaneo de imágenes",
       "Aplicación de reglas en tiempo de ejecución en el kernel (Tetragon): los arranques de procesos y conexiones no autorizados de los servicios de IA se terminan al instante — también en los nodos Raspberry Pi, gracias a un kernel compilado a medida a partir de fuentes con firma verificada",
+      "Telemetría saliente desactivada en todos los servicios: ningún informe de errores o de uso sale de la red",
       "Las imágenes de contenedor propias se firman (cosign) y solo se admiten con una firma válida",
       "Los componentes upstream comprometidos se bloquean y se sustituyen — la puerta de enlace de IA se reemplazó por completo tras un incidente en la cadena de suministro",
       "Ejecuciones de CI en runners endurecidos y aislados, sin acciones de terceros; los agentes de IA solo pueden abrir pull requests, nunca ejecutar comandos directamente",
@@ -275,8 +276,8 @@
       {
         "title": "Agentes",
         "items": [
-          "ZeroClaw (tool-calling, aislado)",
-          "Hermes (memoria, Telegram/CLI)"
+          "ZeroClaw (sandbox, buzón propio)",
+          "Hermes (investigación, memoria, mensajería)"
         ]
       },
       {
@@ -297,7 +298,7 @@
     "items": [
       {
         "title": "El recorrido de una petición de voz",
-        "body": "La palabra «Hey Jarvis» se detecta directamente en el terminal de voz. La grabación va a Whisper en la GPU (menos de medio segundo) y Home Assistant decide: las órdenes sencillas — luz, calefacción, hora o tiempo — se resuelven al instante sin modelo de lenguaje. El resto va al modelo local, que puede usar herramientas: búsqueda web, Wikipedia, tiempo, medios, rutas. Kokoro pronuncia la respuesta frase a frase: la primera suena mientras el resto aún se calcula. De media, la primera frase se oye a los 0,7 segundos."
+        "body": "La palabra «Hey Jarvis» se detecta directamente en el terminal de voz. La grabación va a Whisper en la GPU (menos de medio segundo) y Home Assistant decide: las órdenes sencillas — luz, calefacción, hora o tiempo — se resuelven al instante sin modelo de lenguaje. El resto va al modelo local, que puede usar herramientas: búsqueda web, Wikipedia, tiempo, medios, rutas. Kokoro pronuncia la respuesta frase a frase: la primera suena mientras el resto aún se calcula. De media, la primera frase se oye al cabo de un segundo aproximadamente."
       },
       {
         "title": "Hechos verificados en lugar de alucinaciones",
@@ -320,11 +321,11 @@
     "rows": [
       {
         "label": "Nodos edge (Pi 5 16 GB + Hailo-10H + SSD) ×4",
-        "w": 36
+        "w": 28
       },
       {
         "label": "Pi 5 + NVMe (plano de control y workers) ×10",
-        "w": 65
+        "w": 50
       },
       {
         "label": "Nodo utilitario (Pi 4 8 GB + SSD)",
@@ -336,7 +337,7 @@
       },
       {
         "label": "Estación GPU HP Z840 + RTX 5060 Ti (siempre encendida, en reposo)",
-        "w": 110
+        "w": 95
       },
       {
         "label": "Switch de red (24 puertos)",
@@ -386,7 +387,7 @@
       }
     ],
     "measuredTitle": "Medido, no estimado",
-    "measuredBody": "El clúster ya mide su propio consumo: en reposo ronda los 196 W, unos 40 € al mes a 28 ct/kWh. El apagado nocturno del servidor GPU lo reduce aún más."
+    "measuredBody": "El clúster mide su propio consumo: la media de 7 días ronda los 121 W (rango 84–367 W), unos 25 € al mes a 28 ct/kWh. Sin el servidor GPU son unos 105 W y una Pi 5 necesita 3–6 W: el apagado nocturno funciona."
   },
   "hud": {
     "eyebrow": "Monitorización",
@@ -462,7 +463,7 @@
       },
       {
         "name": "Nivel GPU",
-        "role": "HP Z840 con RTX 5060 Ti: mantiene el modelo de lenguaje cargado durante el día, primera frase en unos 0,7 segundos; por la noche duerme y se despierta por Wake-on-LAN."
+        "role": "HP Z840 con RTX 5060 Ti: mantiene el modelo de lenguaje cargado durante el día, primera frase en un segundo aproximadamente; por la noche duerme y se despierta por Wake-on-LAN."
       },
       {
         "name": "Nivel CPU",
@@ -499,7 +500,7 @@
       },
       {
         "q": "¿Cuánta energía consume el rack?",
-        "a": "Ahora mismo unos ciento noventa y seis vatios, medidos: unos cuarenta euros al mes. Por la noche la estación GPU se apaga si no hay nadie en la sala."
+        "a": "En la media semanal unos ciento veinte vatios, medidos: unos veinticinco euros al mes. Por la noche el servidor GPU se apaga si no hay nadie en la sala."
       }
     ]
   },
@@ -540,7 +541,7 @@
       },
       {
         "title": "Asistente de voz basado en fuentes",
-        "desc": "«Hey Jarvis» pronuncia la primera frase en unos 0,7 segundos; las preguntas de conocimiento, solo con fuentes."
+        "desc": "«Hey Jarvis» pronuncia la primera frase en un segundo aproximadamente; las preguntas de conocimiento, solo con fuentes."
       },
       {
         "title": "Control de calidad automático",
@@ -601,8 +602,8 @@
         "desc": "Detección de presencia activa, seguimiento por cámara en camino: la cámara seguirá a la persona con giro, inclinación y zoom, siempre en local y sin guardar imágenes."
       },
       {
-        "title": "Generación de imágenes con FLUX.1",
-        "desc": "Stable Diffusion XL funciona en local; FLUX.1 está preparado como variante cuantizada para 16 GB y falta una última pieza."
+        "title": "Canalización de CI propia",
+        "desc": "Imagen de comprobación creada y probada; la verificación automática de cada cambio se activa a continuación."
       }
     ],
     "counter": "Funciones básicas en marcha: {{done}} / {{total}}",
@@ -622,7 +623,7 @@
   "updates": {
     "eyebrow": "Novedades desde la puesta en marcha",
     "title": "Lo que se ha añadido desde el 10 de noviembre",
-    "description": "Una semana en producción y más de 50 novedades, todo en local y sin IA en la nube. Este es el estado a 16 de noviembre.",
+    "description": "Dos semanas en producción y más de 70 novedades, todo en local y sin IA en la nube. Este es el estado a 23 de noviembre.",
     "counter": "{{live}} de {{total}} novedades ya en marcha: un recuento aparte, además de las funciones básicas de arriba",
     "comfyCaption": "Generada completamente en local: imagen de prueba de la generación de imágenes — Stable Diffusion XL en nuestra propia GPU, ahora en unos 16 segundos.",
     "note": "Otras interfaces están protegidas con inicio de sesión de doble factor y no se muestran aquí a propósito.",
@@ -641,7 +642,37 @@
           {
             "title": "Modo de emergencia sin servidor GPU",
             "status": "live",
-            "desc": "Si el servidor GPU está apagado, modelos de reserva más pequeños siguen respondiendo: en la reserva CPU y, como último recurso, cargado de forma permanente en la NPU edge. Parar, reproducir y los chistes no necesitan modelo."
+            "desc": "Si el servidor GPU está apagado, modelos de reserva más pequeños siguen respondiendo: en la reserva CPU y, como último recurso, cargado de forma permanente en la NPU edge. Parar, reproducir y los chistes no necesitan modelo. En modo de emergencia, lugares, rutas y tiempo se responden con funciones fijas en lugar de dejar que el modelo pequeño adivine."
+          },
+          {
+            "title": "Respuestas sin modelo de lenguaje",
+            "status": "live",
+            "desc": "Porcentajes, raíces, conversiones, hora, días hasta festivos, semana del año y también pods, nodos y alertas se calculan o consultan con exactitud, en menos de 0,1 segundos."
+          },
+          {
+            "title": "Siempre métrico, unidades pronunciadas",
+            "status": "live",
+            "desc": "Millas, pies, libras y Fahrenheit de las fuentes se convierten automáticamente; «km/h» o «°C» se pronuncian en lugar de deletrearse."
+          },
+          {
+            "title": "El tiempo a 7 días",
+            "status": "live",
+            "desc": "Con día de la semana y «hoy» y «mañana»: también se responden preguntas sobre el fin de semana."
+          },
+          {
+            "title": "«¿Está abierto ahora?»",
+            "status": "live",
+            "desc": "Se evalúan los horarios de los datos de mapas, incluso pasada la medianoche; si falla un servicio de mapas, otro toma el relevo al instante."
+          },
+          {
+            "title": "Distancias y rutas",
+            "status": "live",
+            "desc": "«¿Está Roma o París más cerca de Zúrich?» se reconoce y se calcula; lugares como «estación central» se resuelven bien."
+          },
+          {
+            "title": "Preguntas de explicación",
+            "status": "live",
+            "desc": "Ante «¿Cómo funciona…?», JARVIS busca específicamente el principio de funcionamiento."
           },
           {
             "title": "Preguntas de seguimiento",
@@ -702,9 +733,49 @@
             "title": "Nada se olvida",
             "status": "live",
             "desc": "La prueba de calidad nocturna revisa todo lo aprendido; el informe semanal muestra problemas, aprendizajes y temas abiertos."
+          },
+          {
+            "title": "Mezcla de buscadores",
+            "status": "live",
+            "desc": "Nuestro metabuscador consulta tres fuentes en lugar de una: respuesta mediana de 0,64 s en lugar de hasta 4 s."
           }
         ],
         "note": "Deliberadamente sin entrenar pesos: el ajuste fino enseña estilo, no hechos fiables, y puede desplazar lo aprendido. El conocimiento consultable y con fuente es más seguro; aun así se recogen datos para un ajuste fino posterior."
+      },
+      {
+        "title": "Agentes de IA y automatización",
+        "items": [
+          {
+            "title": "Hermes Agent",
+            "status": "live",
+            "desc": "Asistente de investigación en el mensajero con búsqueda web mediante nuestro metabuscador, memoria y lista de tareas, a propósito sin acceso a archivos ni shell."
+          },
+          {
+            "title": "ZeroClaw",
+            "status": "live",
+            "desc": "Segundo agente en una sandbox aislada: sin internet, sin shell, solo su propia carpeta de trabajo."
+          },
+          {
+            "title": "Buzón propio para el agente",
+            "status": "live",
+            "desc": "Un pequeño servicio intermediario da a ZeroClaw acceso a un único buzón. Enviar, reenviar y borrar solo tras confirmación, con destinatarios fijos."
+          },
+          {
+            "title": "Lista real de herramientas",
+            "status": "live",
+            "desc": "Los agentes reciben una lista estructurada de herramientas en lugar de una descripción en texto: no más respuestas vacías; se retiraron las herramientas arriesgadas."
+          },
+          {
+            "title": "n8n con IA local",
+            "status": "live",
+            "desc": "Automatizaciones conectadas a los modelos locales, cuenta con doble factor."
+          },
+          {
+            "title": "Mejor entrega de correo",
+            "status": "wip",
+            "desc": "Una prueba de 30 días debe aclarar cómo llega el correo saliente con más fiabilidad."
+          }
+        ]
       },
       {
         "title": "IA y modelos",
@@ -715,9 +786,9 @@
             "desc": "Modelos más recientes (Qwen3.8 27B, Gemma 4 26B, Qwen3.6 35B) se midieron frente al gpt-oss 20B en uso. Resultado: el modelo actual se queda, por ser el más rápido y el que más preguntas supera."
           },
           {
-            "title": "Prueba de calidad con 90 preguntas",
+            "title": "Prueba de calidad con 110 preguntas",
             "status": "live",
-            "desc": "Cada noche 90 preguntas en ocho categorías, del conocimiento y las preguntas difíciles al modo de emergencia y lo aprendido; la última vez, 90 de 90 superadas."
+            "desc": "Cada noche 110 preguntas en ocho categorías, del conocimiento y las preguntas difíciles al modo de emergencia y lo aprendido; la última vez, 110 de 110 con una mediana de 1,5 segundos."
           },
           {
             "title": "Comparativa de modelos (Promptfoo)",
@@ -735,9 +806,9 @@
             "desc": "Entorno de experimentación con GPU y ajuste fino; un servicio de mantenimiento limpia cachés e informa de lo no usado en el informe semanal en lugar de borrarlo."
           },
           {
-            "title": "Generación de imágenes (ComfyUI)",
+            "title": "Generación de imágenes en el chat (ComfyUI)",
             "status": "live",
-            "desc": "SDXL en unos 16 segundos en lugar de 36. El modelo de lenguaje y la generación de imágenes comparten la GPU automáticamente: la primera respuesta tras una imagen llega en 1 segundo en lugar de 6."
+            "desc": "FLUX.1 crea imágenes directamente en la interfaz del chat, además de SDXL, todo en local. Los modelos de lenguaje e imagen comparten la GPU automáticamente."
           },
           {
             "title": "Conversión de documentos (Docling)",
@@ -753,6 +824,21 @@
             "title": "Análisis de cámara (Frigate)",
             "status": "live",
             "desc": "Detecta personas y animales y solo guarda eventos: totalmente local y solo en la red doméstica."
+          },
+          {
+            "title": "Prueba de coherencia de código",
+            "status": "done",
+            "desc": "16 tareas de programación × 3 ejecuciones, el código se ejecuta sin red: cuatro modelos locales lograron 48 de 48 cada uno."
+          },
+          {
+            "title": "Comprobación semanal de modelos",
+            "status": "live",
+            "desc": "Un trabajo del laboratorio comprueba cada semana que todos los modelos cargan y resuelven bien las tareas; si falla, hay alerta."
+          },
+          {
+            "title": "Más contexto para los agentes",
+            "status": "live",
+            "desc": "El modelo principal trabaja con 64.000 tokens de contexto y dos peticiones en paralelo."
           }
         ]
       },
@@ -833,6 +919,26 @@
             "title": "Más silencioso en reposo",
             "desc": "La base de datos de las trazas de LLM necesita en reposo una décima parte de CPU; el panel de energía muestra al instante el estado del servidor GPU.",
             "status": "live"
+          },
+          {
+            "title": "Kernel propio para todas las Pi",
+            "status": "live",
+            "desc": "Compilado con supervisión de seguridad más profunda y correcciones del controlador de red: primero en una Pi de prueba y luego en todas, con vuelta atrás."
+          },
+          {
+            "title": "Actualizaciones con copia previa",
+            "status": "live",
+            "desc": "Almacenamiento, copias, cámara y servidor Git actualizados, más paquetes en todas las Pi; antes de cada actualización una copia, y la restauración de prueba fue correcta."
+          },
+          {
+            "title": "Automatización de actualizaciones más fiable",
+            "status": "live",
+            "desc": "Las dependencias se comprueban sin límite de tasa y las sumas de comprobación se completan."
+          },
+          {
+            "title": "Nuevas alertas",
+            "status": "live",
+            "desc": "Para modelos no utilizables, pods desalojados por falta de memoria y más precisas en la copia de las bases de datos."
           }
         ]
       },
@@ -878,6 +984,11 @@
             "title": "Switch protegido",
             "desc": "Protección frente a bucles de cable y tormentas de broadcast, sin cortar nunca la conexión a internet.",
             "status": "live"
+          },
+          {
+            "title": "Sin telemetría hacia fuera",
+            "status": "live",
+            "desc": "Dos servicios enviaban informes de errores y de uso a internet: se ha cortado y los intentos bloqueados bajaron a cero."
           }
         ]
       },
@@ -906,8 +1017,38 @@
           },
           {
             "title": "Bloqueos de red en nodos concretos",
-            "desc": "Si se bloquea la interfaz de red de una Pi, ahora se detecta y se corrige en segundos en lugar de hasta un minuto.",
+            "desc": "Los cortes breves de la interfaz de red de una Pi se restablecen en menos de 5 segundos, y el plano de control y GitOps toleran fallos cortos; aún se observa si el nuevo kernel los evita del todo.",
             "status": "fixed"
+          },
+          {
+            "title": "Modelo de lenguaje expulsado de la memoria",
+            "status": "fixed",
+            "desc": "Archivos de modelos en caché llenaban la memoria del servidor GPU; se ajustaron los límites y se descargan los modelos de imagen sin uso."
+          },
+          {
+            "title": "Número de alertas erróneo al despertar",
+            "status": "fixed",
+            "desc": "Al arrancar el servidor GPU, dos recuentos divergían brevemente («42 alertas», en realidad una)."
+          },
+          {
+            "title": "Respuestas vacías de los agentes",
+            "status": "fixed",
+            "desc": "Se perdían llamadas a herramientas porque solo estaban descritas en texto."
+          },
+          {
+            "title": "Componente de sandbox ausente",
+            "status": "fixed",
+            "desc": "Faltaba una parte del entorno de la sandbox desde la instalación; se añadió con suma de comprobación verificada."
+          },
+          {
+            "title": "Días hasta Navidad mal contados",
+            "status": "fixed",
+            "desc": "En lugar de dejar que el modelo estime, JARVIS lo calcula ahora con exactitud."
+          },
+          {
+            "title": "Ruta errónea, lugar inventado, artículo equivocado",
+            "status": "fixed",
+            "desc": "La «estación central» llevaba a otra ciudad, un lugar inventado recibía datos reales y se citaba un subartículo: todo resuelto."
           }
         ]
       },
@@ -915,9 +1056,9 @@
         "title": "Lo próximo",
         "items": [
           {
-            "title": "Terminar FLUX.1",
+            "title": "Activar nuestra propia canalización de CI",
             "status": "wip",
-            "desc": "Preparado como variante cuantizada que cabe en 16 GB; falta una última pieza."
+            "desc": "La imagen de comprobación está creada y probada; la canalización se activa a continuación."
           },
           {
             "title": "Llevar la copia fuera de casa",
@@ -925,6 +1066,14 @@
           },
           {
             "title": "Apagado controlado mediante el SAI",
+            "status": "planned"
+          },
+          {
+            "title": "Política de remitente más estricta para nuestro dominio de correo",
+            "status": "planned"
+          },
+          {
+            "title": "Subir y analizar imágenes en el chat",
             "status": "planned"
           },
           {
@@ -942,24 +1091,24 @@
     "metricsTitle": "Mediciones",
     "metrics": [
       {
-        "value": "90/90",
-        "label": "Prueba de calidad (90 preguntas)"
+        "value": "110/110",
+        "label": "Prueba de calidad (110 preguntas)"
       },
       {
-        "value": "47/47",
-        "label": "Prueba comparativa exigente"
+        "value": "~1,0 s",
+        "label": "Hasta el primer texto hablado"
       },
       {
-        "value": "~0,7 s",
-        "label": "Primera frase hablada"
+        "value": "< 0,1 s",
+        "label": "Cálculo, hora, preguntas del clúster"
       },
       {
         "value": "0,2 s",
         "label": "Reconocimiento de voz"
       },
       {
-        "value": "0,12 s",
-        "label": "Consulta de un tema nuevo"
+        "value": "4 × 48/48",
+        "label": "Prueba de coherencia de código"
       }
     ]
   }
