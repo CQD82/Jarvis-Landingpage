@@ -1,7 +1,7 @@
 import type { CSSProperties } from "react";
 import { useState } from "react";
 import type { LucideIcon } from "lucide-react";
-import { Activity, BookOpen, BrainCircuit, CalendarClock, ChevronDown, Mic, ShieldCheck, Wrench } from "lucide-react";
+import { Activity, BookOpen, Bot, BrainCircuit, CalendarClock, ChevronDown, Mic, ShieldCheck, Wrench } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import comfySample from "@/assets/screens/comfyui-sample.webp";
 import { HudCorners } from "@/components/landing/HudCorners";
@@ -29,7 +29,7 @@ interface Metric {
 }
 
 /** Matches updates.groups in the locale files. */
-const GROUP_ICONS: LucideIcon[] = [Mic, BookOpen, BrainCircuit, Activity, ShieldCheck, Wrench, CalendarClock];
+const GROUP_ICONS: LucideIcon[] = [Mic, BookOpen, Bot, BrainCircuit, Activity, ShieldCheck, Wrench, CalendarClock];
 
 /** Display order for legends and per-card summaries. */
 const STATUS_ORDER: Status[] = ["live", "done", "fixed", "ready", "wip", "planned"];

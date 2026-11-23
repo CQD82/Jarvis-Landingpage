@@ -25,7 +25,7 @@
   "statusTicker": [
     "NEURAL LINK: STABLE",
     "18/18 NODES ONLINE",
-    "FIRST SENTENCE: ~0.7 S",
+    "FIRST SENTENCE: ~1 S",
     "WIREGUARD STRICT MODE: ACTIVE",
     "GITOPS: IN SYNC",
     "CLOUD AI: NONE"
@@ -108,7 +108,7 @@
       },
       {
         "title": "Fact-grounded voice assistant & HUD",
-        "description": "“Hey Jarvis”: on-device wake word, speech recognition and language model on the GPU, a British voice. The first sentence is spoken after about 0.7 seconds on average. Knowledge questions are answered only from cited sources — 21 offline reference works and news — with an automatic cross-check, and follow-up questions are understood in context. A holographic HUD shows search results, weather, media and system status."
+        "description": "“Hey Jarvis”: on-device wake word, speech recognition and language model on the GPU, a British voice. The first sentence is spoken after about one second on average. Knowledge questions are answered only from cited sources — 21 offline reference works and news — with an automatic cross-check, and follow-up questions are understood in context. A holographic HUD shows search results, weather, media and system status."
       },
       {
         "title": "Zero-trust network segmentation",
@@ -169,27 +169,27 @@
       {
         "tier": "Edge / NPU",
         "hardware": "4× Raspberry Pi 5 with Hailo-10H",
-        "role": "Small language models up to 4 B parameters; the fallback dialogue model in fallback mode"
+        "role": "Last-resort tier (Qwen3 1.7B) and small models up to 4 B parameters"
       },
       {
         "tier": "CPU reserve",
         "hardware": "ODROID-H5",
-        "role": "Emergency reserve model plus speech recognition and synthesis while the GPU sleeps"
+        "role": "Fallback mode (Qwen3 4B, Qwen3.5 2B), code completion and embeddings for search"
       },
       {
         "tier": "GPU tier",
         "hardware": "Workstation with RTX 5060 Ti (16 GB)",
-        "role": "Voice assistant (gpt-oss-20b), coding assistants (Devstral Small 2, Qwen2.5-Coder), Qwen3 14B, a thorough reasoning mode and image generation (SDXL)"
+        "role": "Voice and agents (gpt-oss 20B, 64k context), reasoning (Qwen3.6 35B), coding (Devstral Small 2, Qwen2.5-Coder), image understanding (Gemma 4) and images (FLUX.1, FLUX.2 klein, SDXL)"
       },
       {
         "tier": "Speech",
         "hardware": "GPU + CPU",
-        "role": "Whisper speech recognition, Kokoro speech synthesis"
+        "role": "Whisper large-v3-turbo for speech recognition, Kokoro for speech output (Piper as reserve)"
       },
       {
         "tier": "Knowledge",
         "hardware": "Local storage",
-        "role": "21 offline reference works (incl. German Wikipedia), a learning knowledge store and meta search as sources"
+        "role": "21 offline reference works, a learning knowledge store and a meta search across three sources"
       },
       {
         "tier": "Cloud",
@@ -214,6 +214,7 @@
       "Secrets stored encrypted only in the repository (never in plaintext)",
       "Policy enforcement, runtime threat detection, and image scanning",
       "In-kernel runtime enforcement (Tetragon): unauthorized process starts and connections by the AI services are killed instantly — on the Raspberry Pi nodes too, thanks to a purpose-built kernel compiled from signature-verified sources",
+      "Outbound telemetry switched off for all services — no error or usage reports leave the network",
       "Own container images are signed (cosign) and admitted only with a valid signature",
       "Compromised upstream components are blocked and replaced — the AI gateway was swapped out entirely after a supply-chain incident",
       "CI runs in hardened, isolated runners with no third-party actions; AI agents may only open pull requests, never run commands directly",
@@ -275,8 +276,8 @@
       {
         "title": "Agents",
         "items": [
-          "ZeroClaw (tool-calling, sandboxed)",
-          "Hermes (memory, Telegram/CLI)"
+          "ZeroClaw (sandbox, own mailbox)",
+          "Hermes (research, memory, messenger)"
         ]
       },
       {
@@ -297,7 +298,7 @@
     "items": [
       {
         "title": "The path of a voice request",
-        "body": "The wake word “Hey Jarvis” is detected right on the voice terminal. The recording goes to Whisper on the GPU (under half a second); then Home Assistant decides: simple commands such as lights, heating, time or weather are handled instantly without a language model. Everything else goes to the local language model, which can use tools — web search, Wikipedia, weather, media, routes. Kokoro speaks the answer sentence by sentence: the first sentence plays while the rest is still being synthesised. On average the first sentence can be heard after about 0.7 seconds."
+        "body": "The wake word “Hey Jarvis” is detected right on the voice terminal. The recording goes to Whisper on the GPU (under half a second); then Home Assistant decides: simple commands such as lights, heating, time or weather are handled instantly without a language model. Everything else goes to the local language model, which can use tools — web search, Wikipedia, weather, media, routes. Kokoro speaks the answer sentence by sentence: the first sentence plays while the rest is still being synthesised. On average the first sentence can be heard after about one second."
       },
       {
         "title": "Grounded facts instead of hallucination",
@@ -320,11 +321,11 @@
     "rows": [
       {
         "label": "Edge nodes (Pi 5 16 GB + Hailo-10H + SSD) ×4",
-        "w": 36
+        "w": 28
       },
       {
         "label": "Pi 5 + NVMe (control plane & workers) ×10",
-        "w": 65
+        "w": 50
       },
       {
         "label": "Utility node (Pi 4 8 GB + SSD)",
@@ -336,7 +337,7 @@
       },
       {
         "label": "GPU workstation HP Z840 + RTX 5060 Ti (always on, idle)",
-        "w": 110
+        "w": 95
       },
       {
         "label": "Network switch (24 port)",
@@ -386,7 +387,7 @@
       }
     ],
     "measuredTitle": "Measured, not estimated",
-    "measuredBody": "The cluster now measures its own consumption: at rest it draws about 196 W — roughly €40 a month at 28 ct/kWh. The GPU server's night shutdown pushes that further down."
+    "measuredBody": "The cluster measures its own consumption: the 7-day average is about 121 W (range 84–367 W), roughly €25 a month at 28 ct/kWh. Without the GPU server it is about 105 W, and a Pi 5 needs 3–6 W — the night shutdown works."
   },
   "hud": {
     "eyebrow": "Monitoring",
@@ -462,7 +463,7 @@
       },
       {
         "name": "GPU Tier",
-        "role": "HP Z840 with RTX 5060 Ti — keeps the language model loaded during the day, first sentence after about 0.7 seconds; at night it sleeps and is woken via Wake-on-LAN."
+        "role": "HP Z840 with RTX 5060 Ti — keeps the language model loaded during the day, first sentence after about one second; at night it sleeps and is woken via Wake-on-LAN."
       },
       {
         "name": "CPU Tier",
@@ -499,7 +500,7 @@
       },
       {
         "q": "How much power is the rack drawing?",
-        "a": "Right now about one hundred and ninety-six watts, measured — roughly forty euros a month. At night the GPU workstation switches off when nobody is in the room."
+        "a": "About one hundred and twenty watts on the weekly average, measured — roughly twenty-five euros a month. At night the GPU server switches off when nobody is in the room."
       }
     ]
   },
@@ -540,7 +541,7 @@
       },
       {
         "title": "Fact-grounded voice assistant",
-        "desc": "“Hey Jarvis” speaks its first sentence after about 0.7 seconds — knowledge questions only from cited sources."
+        "desc": "“Hey Jarvis” speaks its first sentence after about one second — knowledge questions only from cited sources."
       },
       {
         "title": "Automated quality assurance",
@@ -599,10 +600,6 @@
       {
         "title": "Vision tracker",
         "desc": "Presence detection is live, camera tracking comes next: the camera will follow the person with pan, tilt and zoom — still fully local, no images stored."
-      },
-      {
-        "title": "Image generation with FLUX.1",
-        "desc": "Stable Diffusion XL runs locally; FLUX.1 is prepared as a quantised variant for 16 GB — one last piece is still missing."
       }
     ],
     "counter": "Core functions in production: {{done}} / {{total}}",
@@ -622,7 +619,7 @@
   "updates": {
     "eyebrow": "New since go-live",
     "title": "What has been added since 10 November",
-    "description": "One week in production, more than 50 new additions — all local, no cloud AI. Here is the state as of 16 November.",
+    "description": "Two weeks in production, more than 70 new additions — all local, no cloud AI. Here is the state as of 23 November.",
     "counter": "{{live}} of {{total}} new features already running — a separate count, on top of the core functions above",
     "comfyCaption": "Generated entirely locally: a test image from the image generation — Stable Diffusion XL on our own GPU, now in about 16 seconds.",
     "note": "Further interfaces sit behind a two-factor sign-in and are deliberately not shown here.",
@@ -641,7 +638,37 @@
           {
             "title": "Fallback mode without the GPU server",
             "status": "live",
-            "desc": "If the GPU server is off, smaller reserve models keep answering — on the CPU reserve and, as the last resort, permanently loaded on the edge NPU. Stop, playback and jokes need no model at all."
+            "desc": "If the GPU server is off, smaller reserve models keep answering — on the CPU reserve and, as the last resort, permanently loaded on the edge NPU. Stop, playback and jokes need no model at all. In fallback mode, places, routes and weather are answered by fixed functions instead of letting the small model guess."
+          },
+          {
+            "title": "Answers without a language model",
+            "status": "live",
+            "desc": "Percentages, roots, conversions, time, days until holidays, calendar week as well as pods, nodes and alerts are computed or queried exactly — in under 0.1 seconds."
+          },
+          {
+            "title": "Always metric, units spoken out",
+            "status": "live",
+            "desc": "Miles, feet, pounds and Fahrenheit from sources are converted automatically; “km/h” or “°C” are spoken out instead of spelled."
+          },
+          {
+            "title": "7-day weather",
+            "status": "live",
+            "desc": "With weekday plus “today” and “tomorrow” — weekend questions can be answered too."
+          },
+          {
+            "title": "“Is it open now?”",
+            "status": "live",
+            "desc": "Opening hours from map data are evaluated, even past midnight; if one map service fails, a second takes over at once."
+          },
+          {
+            "title": "Distances and routes",
+            "status": "live",
+            "desc": "“Is Rome or Paris closer to Zurich?” is recognised and calculated; places like “main station” are resolved correctly."
+          },
+          {
+            "title": "Explanation questions",
+            "status": "live",
+            "desc": "For “How does … work?” JARVIS looks specifically for the working principle."
           },
           {
             "title": "Follow-up questions",
@@ -702,9 +729,49 @@
             "title": "Nothing forgotten",
             "status": "live",
             "desc": "Everything learned is re-checked by the nightly quality test; the weekly report shows issues, learnings and open items."
+          },
+          {
+            "title": "Search engine mix",
+            "status": "live",
+            "desc": "Our own meta search now queries three sources instead of one — median response 0.64 instead of up to 4 seconds."
           }
         ],
         "note": "Deliberately no weight training: fine-tuning teaches style, not reliable facts, and can push out what was learned. Sourced, retrievable knowledge is safer — data for a later fine-tune is still being collected."
+      },
+      {
+        "title": "AI agents & automation",
+        "items": [
+          {
+            "title": "Hermes Agent",
+            "status": "live",
+            "desc": "Research assistant in the messenger with web search via our own meta search, memory and a task list — deliberately without file access or shell."
+          },
+          {
+            "title": "ZeroClaw",
+            "status": "live",
+            "desc": "Second agent in an isolated sandbox: no internet, no shell, only its own working folder."
+          },
+          {
+            "title": "A mailbox of its own for the agent",
+            "status": "live",
+            "desc": "A small broker service gives ZeroClaw access to exactly one mailbox. Sending, forwarding and deleting only after confirmation, recipients fixed."
+          },
+          {
+            "title": "Real tool list",
+            "status": "live",
+            "desc": "Agents receive a structured tool list instead of a text description — no more empty answers; risky tools were removed."
+          },
+          {
+            "title": "n8n with local AI",
+            "status": "live",
+            "desc": "Automations connected to the local models, account with two-factor sign-in."
+          },
+          {
+            "title": "Better mail delivery",
+            "status": "wip",
+            "desc": "A 30-day test is to show how outgoing mail arrives more reliably."
+          }
+        ]
       },
       {
         "title": "AI & models",
@@ -715,9 +782,9 @@
             "desc": "Newer models (Qwen3.8 27B, Gemma 4 26B, Qwen3.6 35B) were tested against the running gpt-oss 20B. Result: the current model stays — fastest and with the most passed questions."
           },
           {
-            "title": "Quality test with 90 questions",
+            "title": "Quality test with 110 questions",
             "status": "live",
-            "desc": "Every night 90 questions in eight categories — from knowledge and hard questions to fallback mode and learned facts; most recently 90 of 90 passed."
+            "desc": "Every night 110 questions in eight categories — from knowledge and hard questions to fallback mode and learned facts; most recently 110 of 110 with a median of 1.5 seconds."
           },
           {
             "title": "Model comparison (Promptfoo)",
@@ -735,9 +802,14 @@
             "desc": "GPU experimentation environment with fine-tuning; a housekeeping service clears caches and reports unused items in the weekly report instead of deleting them."
           },
           {
-            "title": "Image generation (ComfyUI)",
+            "title": "Image generation in the chat (ComfyUI)",
             "status": "live",
-            "desc": "SDXL in about 16 instead of 36 seconds. Language model and image generation share the GPU automatically — the first answer after an image comes after 1 instead of 6 seconds."
+            "desc": "FLUX.1 creates images right in the chat interface, plus SDXL — fully local. Language and image model share the GPU automatically."
+          },
+          {
+            "title": "Understand and edit images",
+            "desc": "Uploaded images are described by a local vision model (Gemma 4); FLUX.2 klein edits them on request — e.g. “turn it into a winter landscape”, in about 18 seconds.",
+            "status": "live"
           },
           {
             "title": "Document conversion (Docling)",
@@ -753,6 +825,21 @@
             "title": "Camera analysis (Frigate)",
             "status": "live",
             "desc": "Detects people and animals and stores only events — fully local, home network only."
+          },
+          {
+            "title": "Coding consistency test",
+            "status": "done",
+            "desc": "16 programming tasks × 3 runs, code executed offline — four local models each scored 48 of 48."
+          },
+          {
+            "title": "Weekly model check",
+            "status": "live",
+            "desc": "A lab job checks every week that all models load and solve tasks correctly; failures raise an alert."
+          },
+          {
+            "title": "Larger context for agents",
+            "status": "live",
+            "desc": "The main model works with a 64,000-token context and two parallel requests."
           }
         ]
       },
@@ -833,6 +920,31 @@
             "title": "Quieter at idle",
             "desc": "The LLM-tracing database now needs a tenth of the CPU time at idle; the energy dashboard shows the GPU server’s state instantly.",
             "status": "live"
+          },
+          {
+            "title": "Own kernel for all Pis",
+            "status": "live",
+            "desc": "Self-built with deeper security monitoring and fixes for the network driver — first on a test Pi, then on all Pis, with rollback."
+          },
+          {
+            "title": "Updates with a backup first",
+            "status": "live",
+            "desc": "Storage, backup, camera and Git server updated, plus packages on all Pis; a backup before every update, and a test restore succeeded."
+          },
+          {
+            "title": "More reliable update automation",
+            "status": "live",
+            "desc": "Dependencies are checked without rate limits, checksums fully added."
+          },
+          {
+            "title": "New alerts",
+            "status": "live",
+            "desc": "For unusable models, pods evicted for lack of memory and more precise ones for the database backup."
+          },
+          {
+            "title": "Own CI checks every change",
+            "desc": "A hardened check runner automatically validates every change to the infrastructure repository — signed image, checks only, no access to the infrastructure.",
+            "status": "live"
           }
         ]
       },
@@ -878,6 +990,11 @@
             "title": "Switch hardened",
             "desc": "Protection against cable loops and broadcast storms — without ever cutting the internet connection.",
             "status": "live"
+          },
+          {
+            "title": "No telemetry leaving the network",
+            "status": "live",
+            "desc": "Two services sent error and usage reports to the internet — stopped; blocked connection attempts dropped to zero."
           }
         ]
       },
@@ -906,8 +1023,38 @@
           },
           {
             "title": "Network hangs on single nodes",
-            "desc": "If a Pi’s network interface hangs, this is now detected and fixed within seconds instead of up to a minute.",
+            "desc": "Brief dropouts of a Pi’s network interface are reset within 5 seconds, and the control plane and GitOps tolerate short outages; whether the new kernel prevents them entirely is still being observed.",
             "status": "fixed"
+          },
+          {
+            "title": "Language model pushed out of memory",
+            "status": "fixed",
+            "desc": "Cached model files filled the GPU server’s memory; limits adjusted and unused image models are unloaded."
+          },
+          {
+            "title": "Wrong alert count on wake-up",
+            "status": "fixed",
+            "desc": "When the GPU server started, two counters briefly diverged (“42 alerts”, actually one)."
+          },
+          {
+            "title": "Empty agent answers",
+            "status": "fixed",
+            "desc": "Tool calls got lost because the tools were only described in text."
+          },
+          {
+            "title": "Missing sandbox component",
+            "status": "fixed",
+            "desc": "Part of the sandbox runtime had been missing since installation and was added with a verified checksum."
+          },
+          {
+            "title": "Wrongly counted days until Christmas",
+            "status": "fixed",
+            "desc": "Instead of letting the model estimate, JARVIS now calculates such questions exactly."
+          },
+          {
+            "title": "Wrong route, invented place, wrong article",
+            "status": "fixed",
+            "desc": "“Main station” led to another city, an invented place got real data, a sub-article was quoted — all fixed."
           }
         ]
       },
@@ -915,16 +1062,15 @@
         "title": "Up next",
         "items": [
           {
-            "title": "Finish FLUX.1",
-            "status": "wip",
-            "desc": "Prepared as a quantised variant that fits into 16 GB — one last piece is still missing."
-          },
-          {
             "title": "Moving the backup off-site",
             "status": "planned"
           },
           {
             "title": "Controlled shutdown via the UPS",
+            "status": "planned"
+          },
+          {
+            "title": "Stricter sender policy for our own mail domain",
             "status": "planned"
           },
           {
@@ -942,24 +1088,24 @@
     "metricsTitle": "Measurements",
     "metrics": [
       {
-        "value": "90/90",
-        "label": "Quality test (90 questions)"
+        "value": "110/110",
+        "label": "Quality test (110 questions)"
       },
       {
-        "value": "47/47",
-        "label": "Hard comparison test"
+        "value": "~1.0 s",
+        "label": "Until the first spoken text"
       },
       {
-        "value": "~0.7 s",
-        "label": "First spoken sentence"
+        "value": "< 0.1 s",
+        "label": "Maths, time, cluster questions"
       },
       {
         "value": "0.2 s",
         "label": "Speech recognition"
       },
       {
-        "value": "0.12 s",
-        "label": "Lookup of a new topic"
+        "value": "4 × 48/48",
+        "label": "Coding consistency test"
       }
     ]
   }
