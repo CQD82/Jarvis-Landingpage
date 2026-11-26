@@ -179,7 +179,7 @@
       {
         "tier": "GPU-Tier",
         "hardware": "Workstation mit RTX 5060 Ti (16 GB)",
-        "role": "Sprache und Agenten (gpt-oss 20B, 64k Kontext), Denkmodus (Qwen3.6 35B), Programmieren (Devstral Small 2, Qwen2.5-Coder), Bildverständnis (Gemma 4) und Bilder (FLUX.1, FLUX.2 klein, SDXL)"
+        "role": "Sprache und Agenten (gpt-oss 20B, 64k Kontext), Denkmodus (Qwen3.6 35B), Programmieren (Devstral Small 2, Qwen2.5-Coder), Bildverständnis (Gemma 4) und Bilder (FLUX.1, FLUX.2 klein, SDXL) samt eigenem LoRA-Training"
       },
       {
         "tier": "Sprache",
@@ -619,7 +619,7 @@
   "updates": {
     "eyebrow": "Neu seit dem Go-Live",
     "title": "Was seit dem 10. November dazugekommen ist",
-    "description": "Zwei Wochen Produktivbetrieb, über 70 Neuerungen — alles lokal, ohne Cloud-KI. Hier der Stand vom 23. November.",
+    "description": "Zwei Wochen Produktivbetrieb, über 80 Neuerungen — alles lokal, ohne Cloud-KI. Hier der Stand vom 26. November.",
     "counter": "{{live}} von {{total}} Neuerungen bereits im Betrieb — eigene Zählung, zusätzlich zu den Kernfunktionen oben",
     "comfyCaption": "Komplett lokal erzeugt: Testbild der Bildgenerierung — Stable Diffusion XL auf der eigenen GPU, inzwischen in rund 16 Sekunden.",
     "note": "Weitere Oberflächen liegen hinter einer Anmeldung mit Zwei-Faktor und werden hier bewusst nicht gezeigt.",
@@ -704,6 +704,26 @@
             "title": "Lagebericht per Sprache",
             "status": "live",
             "desc": "Cluster, Strom, Laufwerkstemperaturen und offene Sicherheitsmeldungen auf Zuruf."
+          },
+          {
+            "title": "Lautstärke per Sprache",
+            "status": "live",
+            "desc": "„Lauter“, „leiser“ oder „Lautstärke auf 60 Prozent“ — auf Deutsch und Englisch; bei unklaren Wünschen nennt JARVIS die möglichen Befehle."
+          },
+          {
+            "title": "Gespräche im Raum erkannt",
+            "status": "live",
+            "desc": "Lange Sätze ohne Frage, Befehl oder Anrede hält JARVIS für ein Gespräch im Raum, antwortet nur kurz und schließt das Mikrofon."
+          },
+          {
+            "title": "Aktienkurse auch im Notbetrieb",
+            "status": "live",
+            "desc": "Kursabfragen funktionieren auch, wenn der GPU-Server schläft; Begriffsfragen gehen weiterhin an das Lexikon."
+          },
+          {
+            "title": "Cluster-Fragen genauer",
+            "status": "live",
+            "desc": "„Wie viele Nodes sind online?“ wird direkt aus dem Cluster beantwortet — inklusive der Knoten, die gerade nicht bereit sind."
           }
         ]
       },
@@ -840,6 +860,16 @@
             "title": "Größerer Kontext für Agenten",
             "status": "live",
             "desc": "Das Hauptmodell arbeitet mit 64.000 Token Kontext und zwei parallelen Anfragen."
+          },
+          {
+            "title": "Eigene Motive trainieren (LoRA)",
+            "status": "live",
+            "desc": "Mit 15–50 Fotos lernt das Bildmodell ein Motiv und setzt es danach in beliebige Szenen — Training in rund einer Stunde auf der eigenen GPU, Fotos verlassen das Haus nicht."
+          },
+          {
+            "title": "Chat-Oberfläche aktualisiert",
+            "status": "live",
+            "desc": "Neue Version mit Sicherheitskorrekturen; Datenbank vorher gesichert, alle Chats und Modelle danach unverändert."
           }
         ]
       },
@@ -945,6 +975,16 @@
             "title": "Eigene CI prüft jede Änderung",
             "desc": "Ein abgesicherter Prüf-Runner kontrolliert jede Änderung im Infrastruktur-Repository automatisch — signiertes Image, nur Prüfen, kein Zugriff auf die Infrastruktur.",
             "status": "live"
+          },
+          {
+            "title": "Zweite Datenbank laufend gesichert",
+            "status": "live",
+            "desc": "Auch die Datenbank der LLM-Aufzeichnung wird fortlaufend gesichert; eine Rücksicherung ergab in rund 20 Sekunden eine identische Kopie."
+          },
+          {
+            "title": "GPU-Server per Wächter wecken",
+            "status": "live",
+            "desc": "Der stromsparende Wächter-Knoten kann den GPU-Server bei Bedarf per Wake-on-LAN einschalten."
           }
         ]
       },
@@ -995,6 +1035,16 @@
             "title": "Keine Telemetrie nach außen",
             "status": "live",
             "desc": "Zwei Dienste schickten Fehler- und Nutzungsberichte ins Internet — abgestellt, die blockierten Verbindungsversuche sanken auf null."
+          },
+          {
+            "title": "Werbe- und Trackingfilter fürs ganze Heimnetz",
+            "status": "live",
+            "desc": "Der eigene DNS-Filter schützt jetzt alle Geräte im Haus und blockiert rund 1,4 Millionen Werbe-, Tracking- und Schadadressen statt 76 000."
+          },
+          {
+            "title": "Schwachstellenscanner prüft auch eigene Images",
+            "status": "live",
+            "desc": "Die automatische Schwachstellensuche läuft über alle Container — jetzt auch über die selbst gebauten."
           }
         ]
       },
@@ -1055,6 +1105,26 @@
             "title": "Falsche Route, erfundener Ort, falscher Artikel",
             "status": "fixed",
             "desc": "Der „Hauptbahnhof“ führte in eine andere Stadt, ein ausgedachter Ort bekam echte Daten, ein Unterartikel wurde zitiert — alles behoben."
+          },
+          {
+            "title": "Schwachstellenscanner stand still",
+            "status": "fixed",
+            "desc": "Liegengebliebene Scan-Aufträge belegten alle Plätze; behoben, der Scanner arbeitet wieder alle Images ab."
+          },
+          {
+            "title": "Laufschrift im HUD ruckelte",
+            "status": "fixed",
+            "desc": "Jetzt gleichmäßig ein Pixel pro Bild bei 60 Hz, mit nahtloser Schleife."
+          },
+          {
+            "title": "Lautstärke nach Neustart zurückgesetzt",
+            "status": "fixed",
+            "desc": "Die Einstellung des Sprach-Satelliten wird jetzt dauerhaft gespeichert."
+          },
+          {
+            "title": "Leere Mail-Vorschau im Browser",
+            "status": "fixed",
+            "desc": "Eine veraltete, zwischengespeicherte Sicherheitseinstellung blockierte die Vorschau — behoben."
           }
         ]
       },
@@ -1075,6 +1145,14 @@
           },
           {
             "title": "Erweiterte Smart-Home-Steuerung für JARVIS (MCP)",
+            "status": "planned"
+          },
+          {
+            "title": "Zweiter DNS-Filter für unterbrechungsfreie Updates",
+            "status": "planned"
+          },
+          {
+            "title": "Wandpanel mit Touch-Display für die Hausautomation",
             "status": "planned"
           }
         ]

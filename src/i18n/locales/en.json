@@ -179,7 +179,7 @@
       {
         "tier": "GPU tier",
         "hardware": "Workstation with RTX 5060 Ti (16 GB)",
-        "role": "Voice and agents (gpt-oss 20B, 64k context), reasoning (Qwen3.6 35B), coding (Devstral Small 2, Qwen2.5-Coder), image understanding (Gemma 4) and images (FLUX.1, FLUX.2 klein, SDXL)"
+        "role": "Voice and agents (gpt-oss 20B, 64k context), reasoning (Qwen3.6 35B), coding (Devstral Small 2, Qwen2.5-Coder), image understanding (Gemma 4) and images (FLUX.1, FLUX.2 klein, SDXL) including our own LoRA training"
       },
       {
         "tier": "Speech",
@@ -619,7 +619,7 @@
   "updates": {
     "eyebrow": "New since go-live",
     "title": "What has been added since 10 November",
-    "description": "Two weeks in production, more than 70 new additions — all local, no cloud AI. Here is the state as of 23 November.",
+    "description": "Two weeks in production, more than 80 new additions — all local, no cloud AI. Here is the state as of 26 November.",
     "counter": "{{live}} of {{total}} new features already running — a separate count, on top of the core functions above",
     "comfyCaption": "Generated entirely locally: a test image from the image generation — Stable Diffusion XL on our own GPU, now in about 16 seconds.",
     "note": "Further interfaces sit behind a two-factor sign-in and are deliberately not shown here.",
@@ -704,6 +704,26 @@
             "title": "Status report by voice",
             "status": "live",
             "desc": "Cluster, power, drive temperatures and open security findings on request."
+          },
+          {
+            "title": "Volume by voice",
+            "status": "live",
+            "desc": "“Louder”, “quieter” or “volume to 60 percent” — in German and English; for unclear requests JARVIS lists the possible commands."
+          },
+          {
+            "title": "Room conversations recognised",
+            "status": "live",
+            "desc": "Long sentences without a question, command or address are treated as a conversation in the room — JARVIS answers briefly and closes the microphone."
+          },
+          {
+            "title": "Stock quotes in fallback mode too",
+            "status": "live",
+            "desc": "Price queries work even while the GPU server sleeps; definition questions still go to the encyclopedia."
+          },
+          {
+            "title": "More precise cluster questions",
+            "status": "live",
+            "desc": "“How many nodes are online?” is answered straight from the cluster — including nodes that are currently not ready."
           }
         ]
       },
@@ -840,6 +860,16 @@
             "title": "Larger context for agents",
             "status": "live",
             "desc": "The main model works with a 64,000-token context and two parallel requests."
+          },
+          {
+            "title": "Train your own subjects (LoRA)",
+            "status": "live",
+            "desc": "With 15–50 photos the image model learns a subject and can place it in any scene — training takes about an hour on our own GPU, photos never leave the house."
+          },
+          {
+            "title": "Chat interface updated",
+            "status": "live",
+            "desc": "New version with security fixes; database backed up first, all chats and models unchanged afterwards."
           }
         ]
       },
@@ -945,6 +975,16 @@
             "title": "Own CI checks every change",
             "desc": "A hardened check runner automatically validates every change to the infrastructure repository — signed image, checks only, no access to the infrastructure.",
             "status": "live"
+          },
+          {
+            "title": "Second database backed up continuously",
+            "status": "live",
+            "desc": "The LLM-tracing database is now backed up continuously too; a restore produced an identical copy in about 20 seconds."
+          },
+          {
+            "title": "Wake the GPU server via the watchdog",
+            "status": "live",
+            "desc": "The low-power watchdog node can switch the GPU server on via Wake-on-LAN when needed."
           }
         ]
       },
@@ -995,6 +1035,16 @@
             "title": "No telemetry leaving the network",
             "status": "live",
             "desc": "Two services sent error and usage reports to the internet — stopped; blocked connection attempts dropped to zero."
+          },
+          {
+            "title": "Ad and tracking filter for the whole home network",
+            "status": "live",
+            "desc": "Our own DNS filter now protects every device in the house and blocks about 1.4 million ad, tracking and malware domains instead of 76,000."
+          },
+          {
+            "title": "Vulnerability scanner also checks own images",
+            "status": "live",
+            "desc": "Automatic vulnerability scanning covers all containers — now including the self-built ones."
           }
         ]
       },
@@ -1055,6 +1105,26 @@
             "title": "Wrong route, invented place, wrong article",
             "status": "fixed",
             "desc": "“Main station” led to another city, an invented place got real data, a sub-article was quoted — all fixed."
+          },
+          {
+            "title": "Vulnerability scanner had stalled",
+            "status": "fixed",
+            "desc": "Leftover scan jobs occupied all slots; fixed, the scanner is working through all images again."
+          },
+          {
+            "title": "Choppy HUD ticker",
+            "status": "fixed",
+            "desc": "Now a steady one pixel per frame at 60 Hz, with a seamless loop."
+          },
+          {
+            "title": "Volume reset after restart",
+            "status": "fixed",
+            "desc": "The voice satellite’s setting is now stored permanently."
+          },
+          {
+            "title": "Empty mail preview in the browser",
+            "status": "fixed",
+            "desc": "An outdated, cached security setting blocked the preview — fixed."
           }
         ]
       },
@@ -1075,6 +1145,14 @@
           },
           {
             "title": "Extended smart-home control for JARVIS (MCP)",
+            "status": "planned"
+          },
+          {
+            "title": "Second DNS filter for uninterrupted updates",
+            "status": "planned"
+          },
+          {
+            "title": "Wall panel with touch display for home automation",
             "status": "planned"
           }
         ]
