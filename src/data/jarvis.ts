@@ -43,8 +43,8 @@ export const pipelineIcons: LucideIcon[] = [Workflow, Server, GitBranch, Refresh
 export const techCategoryTools: string[][] = [
   ["FluxCD", "Forgejo", "Forgejo Actions", "Renovate", "Helm", "Kustomize", "Ansible", "SOPS + age", "kube-linter", "n8n"],
   ["K3s", "Longhorn", "Garage", "kube-vip", "Cilium LB-IPAM + L2", "Traefik", "cert-manager", "CloudNativePG", "Valkey", "Spegel", "Headlamp"],
-  ["llama.cpp", "llama-swap", "Bifrost", "Hailo-10H", "Open WebUI", "Qdrant", "SearXNG", "Apache Tika", "Docling", "Kiwix", "ComfyUI", "JupyterLab", "MLflow", "Unsloth", "Label Studio", "Promptfoo", "Langfuse", "Hermes Agent", "ZeroClaw"],
-  ["Cilium + WireGuard", "Hubble", "Tetragon", "Kyverno", "Falco", "Trivy", "gVisor", "cosign", "Authentik", "Pi-hole", "Vaultwarden", "Stalwart + Roundcube"],
+  ["llama.cpp", "llama-swap", "Bifrost", "Hailo-10H", "Open WebUI", "Qdrant", "SearXNG", "Apache Tika", "Docling", "Kiwix", "ComfyUI", "JupyterLab", "MLflow", "Unsloth", "Label Studio", "Promptfoo", "Langfuse", "Hermes Agent", "ZeroClaw", "ai-toolkit (LoRA)"],
+  ["Cilium + WireGuard", "Hubble", "Tetragon", "Kyverno", "Falco", "Trivy", "gVisor", "cosign", "Authentik", "Pi-hole + HaGeZi", "Vaultwarden", "Stalwart + Roundcube"],
   ["Home Assistant", "ESPHome-Satellit", "Wake-Word", "Whisper", "Kokoro TTS", "Piper", "Frigate", "HUD"],
   ["VictoriaMetrics", "VictoriaLogs", "Grafana", "Alloy", "Alertmanager", "Velero", "kured", "system-upgrade-controller", "SNMP-Exporter", "Shelly-Exporter", "ntfy", "Paperless-ngx", "Immich"],
 ];

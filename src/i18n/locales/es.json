@@ -179,7 +179,7 @@
       {
         "tier": "Nivel GPU",
         "hardware": "Estación con RTX 5060 Ti (16 GB)",
-        "role": "Voz y agentes (gpt-oss 20B, contexto de 64k), razonamiento (Qwen3.6 35B), programación (Devstral Small 2, Qwen2.5-Coder), comprensión de imágenes (Gemma 4) e imágenes (FLUX.1, FLUX.2 klein, SDXL)"
+        "role": "Voz y agentes (gpt-oss 20B, contexto de 64k), razonamiento (Qwen3.6 35B), programación (Devstral Small 2, Qwen2.5-Coder), comprensión de imágenes (Gemma 4) e imágenes (FLUX.1, FLUX.2 klein, SDXL), con entrenamiento LoRA propio"
       },
       {
         "tier": "Voz",
@@ -619,7 +619,7 @@
   "updates": {
     "eyebrow": "Novedades desde la puesta en marcha",
     "title": "Lo que se ha añadido desde el 10 de noviembre",
-    "description": "Dos semanas en producción y más de 70 novedades, todo en local y sin IA en la nube. Este es el estado a 23 de noviembre.",
+    "description": "Dos semanas en producción y más de 80 novedades, todo en local y sin IA en la nube. Este es el estado a 26 de noviembre.",
     "counter": "{{live}} de {{total}} novedades ya en marcha: un recuento aparte, además de las funciones básicas de arriba",
     "comfyCaption": "Generada completamente en local: imagen de prueba de la generación de imágenes — Stable Diffusion XL en nuestra propia GPU, ahora en unos 16 segundos.",
     "note": "Otras interfaces están protegidas con inicio de sesión de doble factor y no se muestran aquí a propósito.",
@@ -704,6 +704,26 @@
             "title": "Informe por voz",
             "status": "live",
             "desc": "Clúster, consumo, temperaturas de discos y avisos de seguridad abiertos, a petición."
+          },
+          {
+            "title": "Volumen por voz",
+            "status": "live",
+            "desc": "«Más alto», «más bajo» o «volumen al 60 por ciento», en alemán e inglés; si la petición no es clara, JARVIS enumera los comandos posibles."
+          },
+          {
+            "title": "Reconoce conversaciones en la sala",
+            "status": "live",
+            "desc": "Las frases largas sin pregunta, orden ni apelación se tratan como una conversación: JARVIS responde brevemente y cierra el micrófono."
+          },
+          {
+            "title": "Cotizaciones también en modo de emergencia",
+            "status": "live",
+            "desc": "Las consultas de cotización funcionan aunque el servidor GPU duerma; las preguntas de concepto siguen yendo a la enciclopedia."
+          },
+          {
+            "title": "Preguntas del clúster más precisas",
+            "status": "live",
+            "desc": "«¿Cuántos nodos están en línea?» se responde directamente desde el clúster, incluidos los nodos que aún no están listos."
           }
         ]
       },
@@ -840,6 +860,16 @@
             "title": "Más contexto para los agentes",
             "status": "live",
             "desc": "El modelo principal trabaja con 64.000 tokens de contexto y dos peticiones en paralelo."
+          },
+          {
+            "title": "Entrenar motivos propios (LoRA)",
+            "status": "live",
+            "desc": "Con 15–50 fotos el modelo de imagen aprende un motivo y puede ponerlo en cualquier escena: el entrenamiento dura una hora en nuestra GPU y las fotos no salen de casa."
+          },
+          {
+            "title": "Interfaz de chat actualizada",
+            "status": "live",
+            "desc": "Nueva versión con correcciones de seguridad; base de datos copiada antes, chats y modelos intactos después."
           }
         ]
       },
@@ -945,6 +975,16 @@
             "title": "Nuestra CI revisa cada cambio",
             "desc": "Un runner de comprobación protegido revisa automáticamente cada cambio del repositorio de infraestructura: imagen firmada, solo comprobación, sin acceso a la infraestructura.",
             "status": "live"
+          },
+          {
+            "title": "Segunda base de datos con copia continua",
+            "status": "live",
+            "desc": "La base de datos de las trazas de LLM también se copia de forma continua; una restauración dio una copia idéntica en unos 20 segundos."
+          },
+          {
+            "title": "Despertar el servidor GPU desde el vigilante",
+            "status": "live",
+            "desc": "El nodo vigilante de bajo consumo puede encender el servidor GPU por Wake-on-LAN cuando haga falta."
           }
         ]
       },
@@ -995,6 +1035,16 @@
             "title": "Sin telemetría hacia fuera",
             "status": "live",
             "desc": "Dos servicios enviaban informes de errores y de uso a internet: se ha cortado y los intentos bloqueados bajaron a cero."
+          },
+          {
+            "title": "Filtro de publicidad y rastreo para toda la red doméstica",
+            "status": "live",
+            "desc": "Nuestro filtro DNS protege ahora todos los dispositivos de casa y bloquea unos 1,4 millones de dominios de publicidad, rastreo y malware en lugar de 76.000."
+          },
+          {
+            "title": "El escáner de vulnerabilidades revisa también las imágenes propias",
+            "status": "live",
+            "desc": "El análisis automático cubre todos los contenedores, ahora también los construidos en casa."
           }
         ]
       },
@@ -1055,6 +1105,26 @@
             "title": "Ruta errónea, lugar inventado, artículo equivocado",
             "status": "fixed",
             "desc": "La «estación central» llevaba a otra ciudad, un lugar inventado recibía datos reales y se citaba un subartículo: todo resuelto."
+          },
+          {
+            "title": "El escáner de vulnerabilidades estaba parado",
+            "status": "fixed",
+            "desc": "Trabajos de análisis olvidados ocupaban todas las plazas; resuelto, el escáner vuelve a procesar todas las imágenes."
+          },
+          {
+            "title": "Texto desplazable del HUD a saltos",
+            "status": "fixed",
+            "desc": "Ahora un píxel uniforme por fotograma a 60 Hz, en bucle continuo."
+          },
+          {
+            "title": "Volumen restablecido tras reiniciar",
+            "status": "fixed",
+            "desc": "El ajuste del satélite de voz se guarda ahora de forma permanente."
+          },
+          {
+            "title": "Vista previa de correo vacía en el navegador",
+            "status": "fixed",
+            "desc": "Un ajuste de seguridad antiguo en caché bloqueaba la vista previa: resuelto."
           }
         ]
       },
@@ -1075,6 +1145,14 @@
           },
           {
             "title": "Control ampliado del hogar inteligente para JARVIS (MCP)",
+            "status": "planned"
+          },
+          {
+            "title": "Segundo filtro DNS para actualizaciones sin cortes",
+            "status": "planned"
+          },
+          {
+            "title": "Panel de pared táctil para la domótica",
             "status": "planned"
           }
         ]
