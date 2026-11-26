@@ -482,27 +482,59 @@
   "askJarvis": {
     "eyebrow": "Asistente de voz",
     "title": "Pregunta a JARVIS",
-    "description": "Una demo preparada de cómo transcurre un diálogo con el asistente de voz.",
+    "description": "Una demo preparada: elige una pregunta y mira qué parte del sistema la respondería en funcionamiento real.",
     "start": "Iniciar demo",
     "again": "Siguiente pregunta",
     "listening": "Escuchando …",
     "thinking": "Pensando …",
     "you": "Tú",
-    "disclaimer": "Demo pregrabada: sin micrófono, sin IA real, nada sale de tu navegador. La voz — si está disponible — procede de la síntesis de voz local de tu dispositivo.",
+    "disclaimer": "Demo preparada: sin micrófono, sin IA real, nada sale del navegador. La voz procede, si está disponible, de la síntesis de voz local de tu dispositivo.",
     "qa": [
       {
+        "chip": "Estado del clúster",
         "q": "JARVIS, ¿cuál es el estado del clúster?",
-        "a": "Todos los nodos están en línea. Flux no informa de desviaciones, las políticas de red están activas y no hay alertas abiertas."
+        "a": "Todos los nodos están en línea y listos. Flux no informa de desviaciones, las políticas de red están activas y no hay alertas abiertas.",
+        "route": "Consulta al clúster"
       },
       {
-        "q": "¿Qué tiempo hará mañana?",
-        "a": "Mañana estará nublado, con máximas de unos doce grados y probable lluvia por la tarde. Yo llevaría paraguas."
-      },
-      {
+        "chip": "Consumo",
         "q": "¿Cuánta energía consume el rack?",
-        "a": "En la media semanal unos ciento veinte vatios, medidos: unos veinticinco euros al mes. Por la noche el servidor GPU se apaga si no hay nadie en la sala."
+        "a": "Unos ciento veinte vatios de media semanal, medidos: unos veinticinco euros al mes. Por la noche el servidor GPU se apaga si no hay nadie en la sala.",
+        "route": "Medición eléctrica"
+      },
+      {
+        "chip": "Tiempo",
+        "q": "¿Qué tiempo hará mañana?",
+        "a": "Mañana estará nublado con hasta doce grados y probablemente lloverá por la tarde. Yo llevaría paraguas.",
+        "route": "Domótica"
+      },
+      {
+        "chip": "Volumen",
+        "q": "Pon el volumen al sesenta por ciento.",
+        "a": "Hecho: el volumen está ahora al sesenta por ciento.",
+        "route": "Control de dispositivos"
+      },
+      {
+        "chip": "Enciclopedia",
+        "q": "¿Qué es una Raspberry Pi?",
+        "a": "Un ordenador de placa única del tamaño de una tarjeta, eficiente y barato. Forman la columna vertebral de este clúster. La respuesta viene de la enciclopedia local, sin internet.",
+        "route": "Enciclopedia local · sin conexión"
+      },
+      {
+        "chip": "Modo de emergencia",
+        "q": "¿Cómo va el DAX ahora mismo?",
+        "a": "El servidor GPU está dormido, así que respondo en modo de emergencia: el DAX sube ligeramente hoy. Las cotizaciones funcionan incluso sin el modelo grande.",
+        "route": "Emergencia · sin GPU"
       }
-    ]
+    ],
+    "skip": "Saltar",
+    "pick": "Elige una pregunta",
+    "empty": "Elige una pregunta o toca el micrófono.",
+    "routeLabel": "Respondido por",
+    "followUp": "«¿Algo más, señor?»",
+    "voiceOn": "Activar voz",
+    "voiceOff": "Desactivar voz",
+    "aiNotice": "Aviso de IA: JARVIS es un asistente de IA; en funcionamiento real hablas con una IA. Esta demo reproduce respuestas preparadas."
   },
   "progress": {
     "eyebrow": "Estado del proyecto",
