@@ -249,7 +249,14 @@
       "rackCabledFull": "La baie entièrement câblée, moniteur en haut — tous les nœuds connectés.",
       "rackInteriorCabling": "Vue intérieure de la baie : rails, câblage réseau et bandeau de brassage.",
       "nodeBaysCabled": "Les nœuds de calcul, chacun raccordé au switch par un câble de brassage.",
-      "apcUps": "L'onduleur APC Back-UPS Pro 900 — protège la baie des coupures de courant."
+      "apcUps": "L’APC Back-UPS Pro 900 — protège le rack lors des coupures de courant.",
+      "rackGlassDoor": "L’armoire serveur en service — nœuds de calcul, switch et station GPU derrière la vitre.",
+      "rackOpenFront": "Armoire ouverte : baies des nœuds en haut, switch et nœuds de contrôle en dessous.",
+      "rtxBox": "La GeForce RTX 5060 Ti (16 Go) — le cœur de l’IA locale.",
+      "z840Wd": "HP Z840 avec RTX 5060 Ti et le disque WD Elements 22 To pour les sauvegardes.",
+      "z840Gpu": "À l’intérieur de la Z840 : la RTX 5060 Ti dans le boîtier de la station.",
+      "hudWorkstation": "L’HUD JARVIS sur l’écran kiosque et un portable (détails pixellisés).",
+      "rackOpenLow": "Partie basse de l’armoire avec le nœud veilleur et le réseau."
     }
   },
   "howItWorks": {

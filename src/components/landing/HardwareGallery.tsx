@@ -20,9 +20,26 @@ import rackInteriorCabling from "@/assets/hardware/rack-interior-cabling.webp";
 import rackNodeBays from "@/assets/hardware/rack-node-bays.webp";
 import rackWithZ840 from "@/assets/hardware/rack-with-z840.webp";
 import workbenchSetup from "@/assets/hardware/workbench-setup.webp";
+import rackGlassDoor from "@/assets/hardware/rack-glass-door.webp";
+import rackOpenFront from "@/assets/hardware/rack-open-front.webp";
+import rackOpenLow from "@/assets/hardware/rack-open-low.webp";
+import z840GpuInterior from "@/assets/hardware/z840-gpu-interior.webp";
+import z840Wd from "@/assets/hardware/z840-wd-22tb.webp";
+import rtxBox from "@/assets/hardware/rtx-5060ti-box.webp";
+import hudWorkstation from "@/assets/hardware/hud-workstation.webp";
 
 const PHOTOS: { src: string; captionKey: string; span?: string }[] = [
+  // Current state (November 2026)
+  { src: rackGlassDoor, captionKey: "rackGlassDoor", span: "col-span-2 row-span-2" },
+  { src: rackOpenFront, captionKey: "rackOpenFront", span: "row-span-2" },
+  { src: rtxBox, captionKey: "rtxBox" },
+  { src: z840Wd, captionKey: "z840Wd" },
+  { src: z840GpuInterior, captionKey: "z840Gpu", span: "col-span-2" },
+  { src: hudWorkstation, captionKey: "hudWorkstation", span: "col-span-2" },
+  { src: rackOpenLow, captionKey: "rackOpenLow", span: "row-span-2" },
   { src: rackWithZ840, captionKey: "rackWithZ840", span: "col-span-2 row-span-2" },
+  { src: apcUps, captionKey: "apcUps", span: "row-span-2" },
+  // Build phase
   { src: rackCabledFull, captionKey: "rackCabledFull", span: "row-span-2" },
   { src: rackNodeBays, captionKey: "rackBays", span: "col-span-2" },
   { src: nodeAssembly, captionKey: "assembly" },
@@ -36,7 +53,6 @@ const PHOTOS: { src: string; captionKey: string; span?: string }[] = [
   { src: piZero2W, captionKey: "piZero" },
   { src: chipMacro, captionKey: "chipMacro" },
   { src: backupDrive, captionKey: "backupDrive" },
-  { src: apcUps, captionKey: "apcUps" },
   { src: workbenchSetup, captionKey: "workbench" },
 ];
 

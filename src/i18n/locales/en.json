@@ -249,7 +249,14 @@
       "rackCabledFull": "The fully cabled rack with the monitor on top — every node connected.",
       "rackInteriorCabling": "Inside the rack: rails, network cabling, and the patch panel.",
       "nodeBaysCabled": "The compute nodes, each patched into the switch.",
-      "apcUps": "The APC Back-UPS Pro 900 — protects the rack against power outages."
+      "apcUps": "The APC Back-UPS Pro 900 — protects the rack during power outages.",
+      "rackGlassDoor": "The server cabinet in operation — compute nodes, switch and GPU workstation behind glass.",
+      "rackOpenFront": "Cabinet open: node bays on top, switch and control nodes below.",
+      "rtxBox": "The GeForce RTX 5060 Ti (16 GB) — the heart of the local AI.",
+      "z840Wd": "HP Z840 with RTX 5060 Ti and the WD Elements 22 TB drive for backups.",
+      "z840Gpu": "Inside the Z840: the RTX 5060 Ti in the workstation chassis.",
+      "hudWorkstation": "The JARVIS HUD on the kiosk display and a laptop (details pixelated).",
+      "rackOpenLow": "Lower cabinet section with the watchdog node and network gear."
     }
   },
   "howItWorks": {
