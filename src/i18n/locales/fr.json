@@ -482,27 +482,59 @@
   "askJarvis": {
     "eyebrow": "Assistant vocal",
     "title": "Demandez à JARVIS",
-    "description": "Une démo préparée du déroulement d'un dialogue avec l'assistant vocal.",
+    "description": "Une démo préparée : choisis une question et vois quelle partie du système y répondrait en fonctionnement réel.",
     "start": "Lancer la démo",
     "again": "Question suivante",
     "listening": "Écoute …",
     "thinking": "Réfléchit …",
     "you": "Vous",
-    "disclaimer": "Démo préenregistrée : pas de micro, pas d'IA réelle, rien ne quitte votre navigateur. La voix — si disponible — provient de la synthèse vocale locale de votre appareil.",
+    "disclaimer": "Démo préparée : pas de micro, pas de vraie IA, rien ne quitte le navigateur. La voix vient — si disponible — de la synthèse vocale locale de ton appareil.",
     "qa": [
       {
-        "q": "JARVIS, quel est l'état du cluster ?",
-        "a": "Tous les nœuds sont en ligne. Flux ne signale aucune dérive, les politiques réseau sont actives et aucune alerte n’est ouverte."
+        "chip": "État du cluster",
+        "q": "JARVIS, quel est l’état du cluster ?",
+        "a": "Tous les nœuds sont en ligne et prêts. Flux ne signale aucune dérive, les règles réseau sont actives et il n’y a aucune alerte ouverte.",
+        "route": "Requête cluster"
       },
       {
+        "chip": "Consommation",
+        "q": "Combien consomme le rack ?",
+        "a": "Environ cent vingt watts en moyenne sur la semaine, mesurés — soit vingt-cinq euros par mois. La nuit, le serveur GPU s’éteint quand personne n’est dans la pièce.",
+        "route": "Mesure électrique"
+      },
+      {
+        "chip": "Météo",
         "q": "Quel temps fera-t-il demain ?",
-        "a": "Demain, temps nuageux avec jusqu’à douze degrés, et de la pluie probable l’après-midi. Je prendrais un parapluie."
+        "a": "Demain, ciel nuageux et jusqu’à douze degrés, avec de la pluie probable l’après-midi. Je prendrais un parapluie.",
+        "route": "Domotique"
       },
       {
-        "q": "Combien consomme la baie ?",
-        "a": "En moyenne hebdomadaire environ cent vingt watts, mesurés — à peu près vingt-cinq euros par mois. La nuit, le serveur GPU s’éteint quand personne n’est dans la pièce."
+        "chip": "Volume",
+        "q": "Règle le volume à soixante pour cent.",
+        "a": "C’est fait — le volume est maintenant à soixante pour cent.",
+        "route": "Pilotage d’appareil"
+      },
+      {
+        "chip": "Encyclopédie",
+        "q": "Qu’est-ce qu’un Raspberry Pi ?",
+        "a": "Un ordinateur monocarte au format carte bancaire, sobre et bon marché. Ils forment la colonne vertébrale de ce cluster. Cette réponse vient de l’encyclopédie locale — sans Internet.",
+        "route": "Encyclopédie locale · hors ligne"
+      },
+      {
+        "chip": "Mode secours",
+        "q": "Où en est le DAX en ce moment ?",
+        "a": "Le serveur GPU dort, je réponds donc en mode secours : le DAX est en légère hausse aujourd’hui. Les cours fonctionnent même sans le grand modèle.",
+        "route": "Mode secours · sans GPU"
       }
-    ]
+    ],
+    "skip": "Passer",
+    "pick": "Choisir une question",
+    "empty": "Choisis une question ou touche le micro.",
+    "routeLabel": "Répondu par",
+    "followUp": "« Autre chose, monsieur ? »",
+    "voiceOn": "Activer la voix",
+    "voiceOff": "Couper la voix",
+    "aiNotice": "Avis IA : JARVIS est un assistant IA — en fonctionnement réel, tu parles à une IA. Cette démo diffuse des réponses préparées."
   },
   "progress": {
     "eyebrow": "État du projet",

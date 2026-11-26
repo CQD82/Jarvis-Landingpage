@@ -482,7 +482,7 @@
   "askJarvis": {
     "eyebrow": "Sprachassistenz",
     "title": "Frag JARVIS",
-    "description": "Eine vorbereitete Demo, wie ein Dialog mit der Sprachassistenz abläuft.",
+    "description": "Eine vorbereitete Demo: Wähle eine Frage und sieh, welcher Teil des Systems sie im echten Betrieb beantworten würde.",
     "start": "Demo starten",
     "again": "Nächste Frage",
     "listening": "Hört zu …",
@@ -491,18 +491,50 @@
     "disclaimer": "Vorgefertigte Demo: kein Mikrofon, keine echte KI, nichts verlässt den Browser. Die Stimme kommt — falls verfügbar — von der lokalen Sprachausgabe deines Geräts.",
     "qa": [
       {
+        "chip": "Cluster-Status",
         "q": "JARVIS, wie ist der Status des Clusters?",
-        "a": "Alle Nodes sind online. Flux meldet keinen Drift, die Netzwerk-Policies sind aktiv und es gibt keine offenen Alarme."
+        "a": "Alle Nodes sind online und bereit. Flux meldet keinen Drift, die Netzwerk-Policies sind aktiv und es gibt keine offenen Alarme.",
+        "route": "Cluster-Abfrage"
       },
       {
-        "q": "Wie wird das Wetter morgen?",
-        "a": "Morgen wird es bewölkt bei bis zu zwölf Grad, am Nachmittag ist Regen wahrscheinlich. Ich würde einen Schirm mitnehmen."
-      },
-      {
+        "chip": "Stromverbrauch",
         "q": "Wie viel Strom verbraucht das Rack?",
-        "a": "Im Wochenmittel rund hundertzwanzig Watt, gemessen — etwa fünfundzwanzig Euro im Monat. Nachts schaltet sich der GPU-Server ab, wenn niemand im Raum ist."
+        "a": "Im Wochenmittel rund hundertzwanzig Watt, gemessen — etwa fünfundzwanzig Euro im Monat. Nachts schaltet sich der GPU-Server ab, wenn niemand im Raum ist.",
+        "route": "Strommessung"
+      },
+      {
+        "chip": "Wetter",
+        "q": "Wie wird das Wetter morgen?",
+        "a": "Morgen wird es bewölkt bei bis zu zwölf Grad, am Nachmittag ist Regen wahrscheinlich. Ich würde einen Schirm mitnehmen.",
+        "route": "Hausautomation"
+      },
+      {
+        "chip": "Lautstärke",
+        "q": "Stell die Lautstärke auf sechzig Prozent.",
+        "a": "Erledigt — die Lautstärke steht jetzt auf sechzig Prozent.",
+        "route": "Gerätesteuerung"
+      },
+      {
+        "chip": "Lexikon",
+        "q": "Was ist ein Raspberry Pi?",
+        "a": "Ein Einplatinencomputer im Scheckkartenformat, sparsam und günstig. Sie bilden das Rückgrat dieses Clusters. Die Antwort stammt aus dem lokalen Lexikon — ganz ohne Internet.",
+        "route": "Lokales Lexikon · offline"
+      },
+      {
+        "chip": "Notbetrieb",
+        "q": "Wie steht der DAX gerade?",
+        "a": "Der GPU-Server schläft gerade, deshalb antworte ich im Notbetrieb: Der DAX liegt heute leicht im Plus. Kursabfragen funktionieren auch ohne großes Modell.",
+        "route": "Notbetrieb · ohne GPU"
       }
-    ]
+    ],
+    "skip": "Überspringen",
+    "pick": "Frage auswählen",
+    "empty": "Wähle eine Frage oder tippe auf das Mikrofon.",
+    "routeLabel": "Beantwortet von",
+    "followUp": "„Noch etwas, Sir?“",
+    "voiceOn": "Sprachausgabe einschalten",
+    "voiceOff": "Sprachausgabe ausschalten",
+    "aiNotice": "KI-Hinweis: JARVIS ist ein KI-Assistent — im echten Betrieb sprichst du mit einer KI. Diese Demo spielt vorbereitete Antworten ab."
   },
   "progress": {
     "eyebrow": "Projektstand",

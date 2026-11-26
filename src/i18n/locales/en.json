@@ -482,27 +482,59 @@
   "askJarvis": {
     "eyebrow": "Voice Assistant",
     "title": "Ask JARVIS",
-    "description": "A prepared demo of how a conversation with the voice assistant plays out.",
+    "description": "A scripted demo: pick a question and see which part of the system would answer it in real operation.",
     "start": "Start demo",
     "again": "Next question",
     "listening": "Listening …",
     "thinking": "Thinking …",
     "you": "You",
-    "disclaimer": "Pre-scripted demo: no microphone, no real AI, nothing leaves your browser. The voice — if available — comes from your device's local speech synthesis.",
+    "disclaimer": "Scripted demo: no microphone, no real AI, nothing leaves your browser. The voice comes — if available — from your device’s local speech output.",
     "qa": [
       {
-        "q": "JARVIS, what's the cluster status?",
-        "a": "All nodes are online. Flux reports no drift, the network policies are active and there are no open alerts."
+        "chip": "Cluster status",
+        "q": "JARVIS, what is the status of the cluster?",
+        "a": "All nodes are online and ready. Flux reports no drift, network policies are active and there are no open alerts.",
+        "route": "Cluster query"
       },
       {
-        "q": "What's the weather tomorrow?",
-        "a": "Tomorrow will be cloudy with highs around twelve degrees, and rain is likely in the afternoon. I'd take an umbrella."
+        "chip": "Power draw",
+        "q": "How much power does the rack use?",
+        "a": "About one hundred and twenty watts on a weekly average, measured — roughly twenty-five euros a month. At night the GPU server switches off when nobody is in the room.",
+        "route": "Power metering"
       },
       {
-        "q": "How much power is the rack drawing?",
-        "a": "About one hundred and twenty watts on the weekly average, measured — roughly twenty-five euros a month. At night the GPU server switches off when nobody is in the room."
+        "chip": "Weather",
+        "q": "What will the weather be like tomorrow?",
+        "a": "Tomorrow will be cloudy with up to twelve degrees, and rain is likely in the afternoon. I would take an umbrella.",
+        "route": "Home automation"
+      },
+      {
+        "chip": "Volume",
+        "q": "Set the volume to sixty percent.",
+        "a": "Done — the volume is now at sixty percent.",
+        "route": "Device control"
+      },
+      {
+        "chip": "Encyclopedia",
+        "q": "What is a Raspberry Pi?",
+        "a": "A credit-card-sized single-board computer, frugal and inexpensive. They form the backbone of this cluster. This answer comes from the local encyclopedia — no internet needed.",
+        "route": "Local encyclopedia · offline"
+      },
+      {
+        "chip": "Fallback mode",
+        "q": "How is the DAX doing right now?",
+        "a": "The GPU server is asleep, so I am answering in fallback mode: the DAX is slightly up today. Price queries work even without the large model.",
+        "route": "Fallback · no GPU"
       }
-    ]
+    ],
+    "skip": "Skip",
+    "pick": "Pick a question",
+    "empty": "Pick a question or tap the microphone.",
+    "routeLabel": "Answered by",
+    "followUp": "“Anything else, sir?”",
+    "voiceOn": "Turn voice on",
+    "voiceOff": "Turn voice off",
+    "aiNotice": "AI notice: JARVIS is an AI assistant — in real operation you are talking to an AI. This demo plays back prepared answers."
   },
   "progress": {
     "eyebrow": "Project Status",
